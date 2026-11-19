@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "60c9c02a06750be6d64aa99eb146802aa1f3d28bc2322f3da618680584995ca4",
+  "requestSha256": "a2394188538e09682aef3f96b17b225b15e2f3a74faca6dc71b4f6b2a443f58e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 31943,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 1560,
+          "cacheReadInputTokens": 6649,
+          "cacheCreationInputTokens": 5382,
+          "webSearchRequests": 0,
+          "costUSD": 0.0756018,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 412,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 42337,
+          "outputTokens": 2998,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 3,
+          "costUSD": 0.035732700000000006,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 770,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1113345,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD/USD latest November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Boston cost of living prices restaurant meal cappuccino domestic beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Boston average cocktail price glass of wine price bar 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:39:38.292Z",
+      "finishedAt": "2026-11-19T06:40:10.235Z"
+    }
+  ]
+}

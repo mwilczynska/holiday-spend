@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "08fb48cad34267c998c16d84e2aa29c89fdf3749679a7a7ab3da8052e7b12d25",
+  "requestSha256": "9170a0433bf87d07283c77bedaf9736d84104b9e1d188af8938be3889ef95f39",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 35266,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 79213,
+          "outputTokens": 7133,
+          "cacheReadInputTokens": 15519,
+          "cacheCreationInputTokens": 11870,
+          "webSearchRequests": 5,
+          "costUSD": 0.06401699,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2637,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06401699,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD per AUD F11 observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jamaica Ocho Rios restaurant meal prices beer cocktail cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jamaica cost of living cappuccino wine glass restaurant price USD",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD USD November 2026 4pm",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:01:49.171Z",
+      "finishedAt": "2026-11-19T07:02:24.437Z"
+    }
+  ]
+}

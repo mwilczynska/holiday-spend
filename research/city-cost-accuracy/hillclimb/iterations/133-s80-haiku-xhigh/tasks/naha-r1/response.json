@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Beer, coffee and meal anchors come from cost-of-living aggregators with mixed dates, mostly Naha-specific or Okinawa-wide, so they are medium quality. Cocktail and wine are inferred from the beer relationship and from Tokyo, Kyoto and Osaka hotel-bar menus, so they are weaker. All four accommodation anchors are holistic model estimates for July peak season; I did not check booking pages or current listings. The only official rba.gov.au observation I could surface is dated 2026-03-20, which is stale. Later non-RBA quotes around 0.70 were not used, so verify against the RBA table before relying on this rate.",
+  "comparable_city_reasoning": "Benchmarked to Naha-specific and Okinawa-prefecture cost-of-living figures for beer, coffee and meals. Tokyo, Kyoto and Osaka hotel-bar menus were used as upper-bound references for cocktail and wine. Accommodation is set against typical summer-peak pricing in other mid-sized Japanese regional tourist cities.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.80,
+    "coffee": 3.20,
+    "inexp_meal_1p": 6.80,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 23.00,
+    "hostel_private_2p": 49.00,
+    "hotel_1star_2p": 62.00,
+    "hotel_3star_2p": 125.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on five web searches that returned summaries of aggregated cost-of-living and travel-budget pages (e.g. Traveltables, Whereandwhen, Gotripzi, Expatistan, Everything Punta Cana, cana.tours). I did not open the pages themselves. The sources are dated about 2023-2026 and disagree. Index-style figures run lower (beer about $2.5, cappuccino about $1.7-2.4, inexpensive meal about $7-8) than tourist-zone and resort figures (beer $4-8, cocktail $8-12, cappuccino up to about $5-6). I therefore weighted toward Bavaro/Punta Cana tourist-zone restaurants rather than local comedores. A mid-range three-course meal for two ranged about $40-75, and I took $60. Several guides support the cocktail figure ($8-12 at tourist bars, $5-10 at simpler venues). I found no direct source for wine by the glass, so I set it from the local beer/cocktail relationship (about 1.9x beer, slightly below the cocktail). Accommodation anchors are holistic model estimates for July 2026 from general knowledge, not from live listings or booking pages. The market is resort-dominated with few registered hostels, so these are the least certain. FX is the latest RBA observation I found (18 Nov 2026); the 19 Nov rate was not yet visible.",
+  "comparable_city_reasoning": "Punta Cana-specific aggregated prices were used where found. Lodging was judged against other Caribbean and Mexican resort zones such as Cancun and the Riviera Maya. Bavaro/Punta Cana tourist-zone restaurant prices were set above Dominican local-comedor levels.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 8.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 100.00
+  }
+}

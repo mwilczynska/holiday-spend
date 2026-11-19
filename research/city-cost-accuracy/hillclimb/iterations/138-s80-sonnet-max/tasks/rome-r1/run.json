@@ -1,0 +1,104 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "c1b2fbbddd5be845eba3d81ee7dce43054cd77918bd0957d9d595c66690fdd67",
+  "requestSha256": "d494b494c6dc1d3f5379da6e6b2fc68a22a545d7819a46625a2ec4621bc19b81",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 219193,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 27421,
+          "cacheReadInputTokens": 19935,
+          "cacheCreationInputTokens": 18035,
+          "webSearchRequests": 0,
+          "costUSD": 0.350349,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 26094,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 98487,
+          "outputTokens": 6757,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.07322719999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2271,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.4235762,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates US dollar Australian dollar latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Rome Italy restaurant prices cappuccino domestic beer inexpensive meal mid-range meal for 2",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Rome Italy prices 2026 cappuccino at the bar, beer draft pint restaurant, average cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Rome cocktail price bar Aperol spritz negroni cost euros 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Rome price of a glass of house wine in a restaurant euros 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Cost of Living in Rome, Italy restaurants meal inexpensive restaurant mid-range three-course cappuccino domestic beer draught",
+            "mode": "extended",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:53:12.547Z",
+      "finishedAt": "2026-11-19T06:56:51.740Z"
+    }
+  ]
+}

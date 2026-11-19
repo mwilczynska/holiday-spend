@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are based on aggregated crowd-sourced cost-of-living figures for Tainan and nearby Taiwanese cities, with several sources from 2025-2026, so they are rough. Beer and coffee are the best-supported drink anchors. No cocktail or wine-by-the-glass price was found, so cocktail and wine_glass are estimated from the local beer price (cocktail about 2.8x beer, wine glass about 2.5x beer) and are less certain. Accommodation anchors are holistic model estimates from general knowledge of Tainan's market and were not checked against live listings. The FX observation (0.6720, 2026-11-18) came from a search-result summary that attributed it to the RBA exchange rates overview; I did not open the RBA page itself, so verify it against rba.gov.au before use.",
+  "comparable_city_reasoning": "Priced as a lower-cost Taiwanese city relative to Taipei, with reference to Taichung, Kaohsiung and Hsinchu price levels. Tainan restaurant and drink prices are assumed to sit below Taipei. Accommodation is based on the general Taiwanese guesthouse, hostel and 3-star hotel market.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 8.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 95.00
+  }
+}

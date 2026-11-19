@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "d9e05052b46a762e9ef98e940c6c68b3680d134d3eb8f2e268f7e2ea4c8397ae",
+  "requestSha256": "674c5f6b1561e4566f534f05fcefd4c01551b6bc382ca76f59fca1624038e396",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 54445,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 123262,
+          "outputTokens": 14973,
+          "cacheReadInputTokens": 19085,
+          "cacheCreationInputTokens": 12893,
+          "webSearchRequests": 8,
+          "costUSD": 0.10258215000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 9077,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.10258215000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Orlando cost of living restaurant meal prices beer cappuccino cocktail wine Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Orlando average price cappuccino coffee and draft beer restaurant 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Orlando average cost of cocktail and glass of wine at bar 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11.1 exchange rates daily USD AUD November 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Orlando mid-range restaurant dinner for two cost average 2026 Numbeo inexpensive meal",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:04:30.252Z",
+      "finishedAt": "2026-11-19T03:05:24.697Z"
+    }
+  ]
+}

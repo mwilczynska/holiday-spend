@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "994260df3165c4beb793d918e7fd2c05cd6dba5093a88edc2709f0f95d541f22",
+  "requestSha256": "f7532089ed0e48182c89bd0287932f231cd26acd7724e82bb9df8700b2338bc0",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 36487,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 1684,
+          "cacheReadInputTokens": 6655,
+          "cacheCreationInputTokens": 5798,
+          "webSearchRequests": 0,
+          "costUSD": 0.081411,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 624,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 51470,
+          "outputTokens": 4447,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 4,
+          "costUSD": 0.0473705,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1328,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1287815,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Saranda Albania cost of living prices meal inexpensive restaurant cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Saranda prices 2026 cocktail glass of wine beer restaurant euros lek",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:41:29.991Z",
+      "finishedAt": "2026-11-19T06:42:06.478Z"
+    }
+  ]
+}

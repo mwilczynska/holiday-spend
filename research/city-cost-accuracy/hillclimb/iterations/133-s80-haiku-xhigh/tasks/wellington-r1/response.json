@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Inexpensive meal and coffee anchors are the most reliable, based on several NZ-specific guide and aggregator snapshots from 2024-2026 that agree roughly. Beer, wine, cocktail and the mid-range meal rest on thinner, undated or conflicting sources, so they are bounded estimates. Cocktail and wine were set relative to the beer anchor, with the few Wellington data points treated as weak checks. Hostel and hotel anchors are holistic model estimates for a July (winter) Wellington stay, not checked against live listings or current booking pages. NZD figures were converted at an assumed rate of about 0.61 USD per NZD that I did not source separately. The FX observation is the RBA 4pm AUD/USD for 18 Nov 2026, as shown on the RBA exchange-rates overview page in search results. I did not verify it against the F11.1 table, and no 19 Nov observation was available.",
+  "comparable_city_reasoning": "No comparable foreign city was used. Anchors are Wellington-specific, drawn from NZ price snapshots (guide, aggregator and a few venue listings with mixed dates) and converted to USD. Accommodation is a general-knowledge estimate of Wellington lodging levels in winter.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.60,
+    "coffee": 3.95,
+    "inexp_meal_1p": 13.40,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 12.20,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 30.50,
+    "hostel_private_2p": 79.30,
+    "hotel_1star_2p": 97.60,
+    "hotel_3star_2p": 160.00
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "c8a2b979f9cd69284d218d193e51b61e0206c0db04facb5ca25870accd59effd",
+  "requestSha256": "388d902b6892268240c0ca7adff248608fcd84317632c52d51b980337f962c2a",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 44053,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 61146,
+          "outputTokens": 8181,
+          "cacheReadInputTokens": 16136,
+          "cacheCreationInputTokens": 7723,
+          "webSearchRequests": 4,
+          "costUSD": 0.051911059999999995,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3441,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.051911059999999995,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest observation November 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jaipur cost of living restaurant meal cappuccino beer prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jaipur India budget travel guide food prices thali cocktail beer wine",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11 exchange rates AUD USD daily 4pm",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:03:11.940Z",
+      "finishedAt": "2026-11-19T07:03:55.994Z"
+    }
+  ]
+}

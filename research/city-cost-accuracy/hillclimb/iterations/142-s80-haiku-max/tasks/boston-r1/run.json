@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "60c9c02a06750be6d64aa99eb146802aa1f3d28bc2322f3da618680584995ca4",
+  "requestSha256": "a2394188538e09682aef3f96b17b225b15e2f3a74faca6dc71b4f6b2a443f58e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 487582,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 216470,
+          "outputTokens": 219912,
+          "cacheReadInputTokens": 18284,
+          "cacheCreationInputTokens": 30533,
+          "webSearchRequests": 11,
+          "costUSD": 0.24789244,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 213053,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.24789244,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Boston restaurant meal inexpensive mid-range cappuccino domestic beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Boston MA average price cappuccino pint of beer cocktail glass of wine restaurant 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia F11.1 daily exchange rate AUD USD November 2026 official rba.gov.au",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Boston restaurant glass of wine average price by the glass 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:12:19.812Z",
+      "finishedAt": "2026-11-19T02:20:27.394Z"
+    }
+  ]
+}

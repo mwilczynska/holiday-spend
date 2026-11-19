@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "a631220d0570f113ff81ffa11db1b50b916ee6cb9e813d0cede1f22af32f4943",
+  "requestSha256": "d205e0d0576bd7ea8b08631086525539f946b5cdfd8f30c0e3e165e1c5ac2aef",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 21398,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 947,
+          "cacheReadInputTokens": 4548,
+          "cacheCreationInputTokens": 5437,
+          "webSearchRequests": 0,
+          "costUSD": 0.0321356,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 174,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 30421,
+          "outputTokens": 2067,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 2,
+          "costUSD": 0.024075600000000003,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 867,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0562112,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wellington New Zealand cost of living restaurant meal cappuccino beer cocktail wine prices",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:31:39.914Z",
+      "finishedAt": "2026-11-19T06:32:01.312Z"
+    }
+  ]
+}

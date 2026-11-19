@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0935b861f4f179335f8ecd5f229dcc3c48c07e1d6b1e4e7d66f2e9bff6ed923a",
+  "requestSha256": "dc043ac04dffa516e4f7febedf2a8435e76fc989f610669ac1c29f7b6923ddae",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 25433,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 1089,
+          "cacheReadInputTokens": 6660,
+          "cacheCreationInputTokens": 3573,
+          "webSearchRequests": 0,
+          "costUSD": 0.026522000000000004,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 182,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 30497,
+          "outputTokens": 2374,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 2,
+          "costUSD": 0.0242367,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 852,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.050758700000000004,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tokyo cost of living restaurant prices meal cappuccino beer wine cocktail",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:35:21.046Z",
+      "finishedAt": "2026-11-19T06:35:46.479Z"
+    }
+  ]
+}

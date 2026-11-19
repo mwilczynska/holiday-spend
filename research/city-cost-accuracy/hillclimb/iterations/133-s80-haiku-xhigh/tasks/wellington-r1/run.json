@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "a631220d0570f113ff81ffa11db1b50b916ee6cb9e813d0cede1f22af32f4943",
+  "requestSha256": "d205e0d0576bd7ea8b08631086525539f946b5cdfd8f30c0e3e165e1c5ac2aef",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 149067,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 191812,
+          "outputTokens": 44437,
+          "cacheReadInputTokens": 23316,
+          "cacheCreationInputTokens": 18604,
+          "webSearchRequests": 11,
+          "costUSD": 0.15535366,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 37685,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.15535366,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wellington New Zealand restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wellington NZ flat white cappuccino price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wellington NZ pub beer schooner price cocktail wine glass price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates table F11.1 USD per AUD November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wellington NZ bar wine by the glass price NZ$ 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:15:19.609Z",
+      "finishedAt": "2026-11-19T07:17:48.676Z"
+    }
+  ]
+}

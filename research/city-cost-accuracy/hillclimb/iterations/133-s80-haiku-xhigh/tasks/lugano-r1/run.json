@@ -1,0 +1,80 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "f38095013c08f8f229b60bc339db0a57cfe0541c6a4c3a608165080e57739917",
+  "requestSha256": "48c7846375f7b1a60167ae24fbb1329501a497559bb285f49b4cf87891c11070",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 99709,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 87745,
+          "outputTokens": 34107,
+          "cacheReadInputTokens": 6685,
+          "cacheCreationInputTokens": 12226,
+          "webSearchRequests": 6,
+          "costUSD": 0.08834005,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 27319,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.08834005,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lugano restaurant prices meal cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lugano cappuccino beer cocktail wine glass price restaurant bar",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Switzerland Ticino prices beer cappuccino restaurant meal typical cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lugano Numbeo cost of living restaurant prices",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:12:00.710Z",
+      "finishedAt": "2026-11-19T07:13:40.421Z"
+    }
+  ]
+}

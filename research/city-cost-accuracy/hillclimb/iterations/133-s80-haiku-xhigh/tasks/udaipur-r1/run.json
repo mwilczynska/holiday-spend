@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "24bfad4a2f2a96445ff88129566c798072dd68d211c2f626c5a7bb69ee7e9678",
+  "requestSha256": "908924f3d5fee2a2ba2f1f1b58730f2745da93d43bceb3c8ee4708ce323d5edc",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 163964,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 130861,
+          "outputTokens": 44569,
+          "cacheReadInputTokens": 21198,
+          "cacheCreationInputTokens": 24394,
+          "webSearchRequests": 9,
+          "costUSD": 0.13046138,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 36813,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.13046138,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia F11 exchange rates USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur beer cocktail wine price bar restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur cappuccino coffee price cafe",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur bar menu Kingfisher beer price INR restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur restaurant wine by the glass price INR menu",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:14:49.125Z",
+      "finishedAt": "2026-11-19T07:17:33.089Z"
+    }
+  ]
+}

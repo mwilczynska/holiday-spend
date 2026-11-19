@@ -1,0 +1,87 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "23a810986fa1008e4e49743ba8e82e55c17fda1cfe44a43acf3f6a1e8ce937b6",
+  "requestSha256": "10b521db2fdb3016d32f2a21450f28347bf78135981a924000deb618f1a032c3",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 49258,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 1795,
+          "cacheReadInputTokens": 14783,
+          "cacheCreationInputTokens": 9014,
+          "webSearchRequests": 0,
+          "costUSD": 0.11099260000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 523,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 68629,
+          "outputTokens": 5223,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 5,
+          "costUSD": 0.059474400000000004,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2038,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.170467,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD AUD latest November 2026",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Newcastle Australia cost of living prices restaurant meal cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Newcastle Australia prices meal for 2 mid-range restaurant cappuccino domestic beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Newcastle NSW cocktail price glass of wine price bar 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:41:05.334Z",
+      "finishedAt": "2026-11-19T06:41:54.592Z"
+    }
+  ]
+}

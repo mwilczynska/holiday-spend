@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "43f51266c3df7fba6fdd898d97fb7d93ced2ce4f139b02eb5bdcc5a447d1fadd",
+  "requestSha256": "699077d1509bcbb9a295062a9ab2882d3cefc443ebce7cc70081e8df2aac971b",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 45677,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 105739,
+          "outputTokens": 15466,
+          "cacheReadInputTokens": 6680,
+          "cacheCreationInputTokens": 12787,
+          "webSearchRequests": 7,
+          "costUSD": 0.0909311,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 9521,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0909311,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Melbourne cost of eating out average restaurant meal price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Melbourne average price flat white cappuccino coffee 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Melbourne pub average price schooner beer 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Melbourne average cocktail price bar 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Melbourne average price glass of wine restaurant 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:07:34.773Z",
+      "finishedAt": "2026-11-19T07:08:20.451Z"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "10402a494b256539895e3eb2e643cf00c2abda4d9ad0f71e87d9081ca6f319b5",
+  "requestSha256": "a8a9031fde1a394e5b80a82daaed3a9d74c6393f61c2e2aed54241b052796186",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 231819,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 29037,
+          "cacheReadInputTokens": 20417,
+          "cacheCreationInputTokens": 21898,
+          "webSearchRequests": 0,
+          "costUSD": 0.3820574,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 27566,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 89969,
+          "outputTokens": 7969,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.0729814,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2303,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.4550388,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates US dollar AUD latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cairo Egypt cost of living restaurant prices inexpensive meal mid-range meal for two three-course",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cairo cappuccino price coffee shop cost EGP 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cairo beer price Stella restaurant bar EGP 2026 domestic beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cairo cocktail price bar glass of wine restaurant EGP 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cairo cost of living restaurant prices meal inexpensive restaurant, mid-range meal for 2, domestic beer 0.5 draught, cappuccino",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com",
+              "citycost.org"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:45:50.301Z",
+      "finishedAt": "2026-11-19T06:49:42.121Z"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "5acd9d078f8f5424f29062988c5aea194cf883ccf50f5106e046d1dcd9f33c01",
+  "requestSha256": "830d4069a592aa703e7c286a270deae5ce67dd013c19708c5e35798a8204fc1c",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 19419,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 785,
+          "cacheReadInputTokens": 6670,
+          "cacheCreationInputTokens": 3426,
+          "webSearchRequests": 0,
+          "costUSD": 0.022896,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 29609,
+          "outputTokens": 1965,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 2,
+          "costUSD": 0.0239434,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 474,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0468394,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Vang Vieng restaurant meal price beer cappuccino cocktail wine cost",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:35:25.688Z",
+      "finishedAt": "2026-11-19T06:35:45.107Z"
+    }
+  ]
+}

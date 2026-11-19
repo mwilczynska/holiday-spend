@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3c120fd2bd593149e1d91004b9580d48a645292637b57b57431e922a2f194014",
+  "requestSha256": "752dcf0cdbd72ca044c1dcee7244cf7fefb03cf5e0e047994d1fe1be35a8bb48",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 37859,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 1474,
+          "cacheReadInputTokens": 15540,
+          "cacheCreationInputTokens": 7663,
+          "webSearchRequests": 0,
+          "costUSD": 0.093916,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 279,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 57435,
+          "outputTokens": 4184,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 4,
+          "costUSD": 0.047835499999999996,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1126,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.14175149999999997,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rate AUD/USD latest November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Antonio cost of living prices restaurant meal cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Antonio average cocktail price bar 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Antonio restaurant glass of wine price average",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:36:50.954Z",
+      "finishedAt": "2026-11-19T06:37:28.814Z"
+    }
+  ]
+}

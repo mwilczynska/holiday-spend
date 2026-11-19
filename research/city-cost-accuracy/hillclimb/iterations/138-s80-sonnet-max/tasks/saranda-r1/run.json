@@ -1,0 +1,104 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "994260df3165c4beb793d918e7fd2c05cd6dba5093a88edc2709f0f95d541f22",
+  "requestSha256": "f7532089ed0e48182c89bd0287932f231cd26acd7724e82bb9df8700b2338bc0",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 191935,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 22366,
+          "cacheReadInputTokens": 20751,
+          "cacheCreationInputTokens": 14994,
+          "webSearchRequests": 0,
+          "costUSD": 0.2877982,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 20909,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 96673,
+          "outputTokens": 7848,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 7,
+          "costUSD": 0.0835913,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2609,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.37138950000000004,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates US dollar AUD latest daily rate",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Saranda Albania cost of living prices meal inexpensive restaurant cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Saranda restaurant prices 2026 meal for two mid-range three-course cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Saranda Albania prices coffee cappuccino beer cocktail glass of wine bar",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Albania Saranda how much does a beer cost draft Korca Tirana price lek restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Sarande Albania restaurants \"Meal, Inexpensive Restaurant\" \"Domestic Beer\" Cappuccino Lek",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:54:04.842Z",
+      "finishedAt": "2026-11-19T06:57:16.777Z"
+    }
+  ]
+}

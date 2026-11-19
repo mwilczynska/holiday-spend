@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0aa65b48a2edbdc378e81d71ac03b02a4b8076686bc115b5f1b0e66ee4293de5",
+  "requestSha256": "9e03739d26d11172d7779271da43dc84937d5e975e9bff6cc7a33d61d66f1ba9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 41500,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 61903,
+          "outputTokens": 6761,
+          "cacheReadInputTokens": 13095,
+          "cacheCreationInputTokens": 10722,
+          "webSearchRequests": 4,
+          "costUSD": 0.05184615000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2771,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05184615000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD per AUD F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok cost of living 2026 restaurant meal beer cappuccino cocktail prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok price of a glass of wine and cocktail in bars 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:00:31.297Z",
+      "finishedAt": "2026-11-19T07:01:12.797Z"
+    }
+  ]
+}

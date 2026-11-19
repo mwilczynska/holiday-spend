@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Beer, coffee, lunch and three-course dinner rest on 2026-dated Vang Vieng cost aggregates from web search. They are indicative and not menu-checked, and beer comes from a single listing. Cocktail rests on a rough Vang Vieng bar range and sits about three times the beer anchor. No Vang Vieng wine price was found, so wine_glass uses a judgment-based relationship of about 3.5 times the beer anchor and is the least supported food or drink figure. Accommodation anchors are holistic general-knowledge estimates, not checked against live listings or booking pages, and carry the widest uncertainty. July is generally low season.",
+  "comparable_city_reasoning": "Vang Vieng-specific 2026 aggregates were used directly where found. Laos-wide and Vientiane averages served only as cross-checks, and Vientiane nightlife benchmarks were treated as upper references because they reflect urban, upscale bars. Accommodation has no searched comparable and rests on general knowledge of small Laos backpacker towns.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.30,
+    "coffee": 1.55,
+    "inexp_meal_1p": 1.95,
+    "midrange_meal_2p": 17.50,
+    "cocktail": 4.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 4.50,
+    "hostel_private_2p": 9.00,
+    "hotel_1star_2p": 10.00,
+    "hotel_3star_2p": 42.00
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "4b974d61d3e339456489b0ec46e789052ee1f4b123752d7fdda51c10fc192787",
+  "requestSha256": "020c82bdb720a04fd4a195d5d8930260d9c8ddad40b64460fc038f71b993d532",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 28566,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 69817,
+          "outputTokens": 7385,
+          "cacheReadInputTokens": 4567,
+          "cacheCreationInputTokens": 11634,
+          "webSearchRequests": 5,
+          "costUSD": 0.06304667000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2308,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06304667000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily F11 observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lisbon cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lisbon coffee cappuccino beer price 2026 typical",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lisbon cocktail wine glass restaurant price average 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Lisbon cost of living meal inexpensive restaurant",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:01:18.328Z",
+      "finishedAt": "2026-11-19T07:01:46.895Z"
+    }
+  ]
+}

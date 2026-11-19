@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from crowd-reported and travel-site aggregates (Numbeo, Expatica, and similar), dated 2023 to 2026 and not checked against current menus. Cappuccino, restaurant meal, and beer are the most reliable. Cocktail and wine glass are weaker: cocktail is a single rough site estimate and wine glass is taken from a Florence-based source, so both are bounded estimates. Accommodation anchors are holistic model estimates from general knowledge of Pisa's tourist-driven hotel and hostel market; no booking pages or current listings were inspected. Pisa's centre near the Leaning Tower is pricier than the city's outskirts.",
+  "comparable_city_reasoning": "Priced as a mid-sized Tuscan tourist city, comparable to Florence at the budget end and to Lucca or Siena for accommodation. Restaurant and coffee anchors follow the Pisa aggregates found in search, converted at an approximate EUR-to-USD rate. Accommodation follows regional Italian mid-sized city norms.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 2.10,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 10.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 170.00
+  }
+}

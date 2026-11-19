@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Overall medium. Beer, cappuccino and inexpensive and mid-range meal anchors agree reasonably well across 2026 aggregator sources (Expatistan, MyLifeElsewhere, Gotripzi, CityCost, Combien-coute, and Estonia-wide Numbeo figures). EUR figures were converted at about 1.10 USD per EUR, the cross-rate implied by the same 18 Nov FX summary. Cocktail is weaker: it rests on one thin Expatistan figure (7 data points), a guide range and a blog, and is cross-checked against beer (about 2.2x a domestic draft). Wine glass is also weaker: it rests on wine-bar listings, with a restaurant-glass check against beer (about 1.2x a domestic draft). Hostel and hotel anchors are holistic model estimates for July peak season. No accommodation searches were run and no live listings were checked. FX: 0.6720 USD per AUD is the RBA 4pm figure for 2026-11-18 as reported by a third-party summary (ozfinancehub), roughly matching Trading Economics (0.6715) and Macrotrends (0.6732). I could not open rba.gov.au to verify it directly, so the source_url is the official RBA page where this series is published, not a page I read. No RBA figure for 2026-11-19 was found.",
+  "comparable_city_reasoning": "Food and drink anchors are based on Tallinn-specific 2026 aggregated price data, cross-checked against Estonia-wide Numbeo-style figures. Cocktail and wine_glass are cross-checked against the local beer price. Accommodation anchors use general model knowledge of Tallinn's summer market, compared with other Baltic and Northern European capitals.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.05,
+    "coffee": 4.40,
+    "inexp_meal_1p": 15.40,
+    "midrange_meal_2p": 82.50,
+    "cocktail": 13.20,
+    "wine_glass": 7.15,
+    "hostel_dorm_1p": 30.80,
+    "hostel_private_2p": 71.50,
+    "hotel_1star_2p": 82.50,
+    "hotel_3star_2p": 143.00
+  }
+}

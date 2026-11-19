@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are based on aggregator and cost-of-living snapshots. Cappuccino and beer agree reasonably across sources; cocktail and wine rest on fewer data points, and the wine figure was set from a bar-price range. The midrange three-course figure is a judgement call, since one source's two-person estimate (about $45) looks low for three courses, so I kept it well above that. Accommodation anchors are holistic model estimates from general knowledge and Boston context. No live booking pages or current listings were inspected. FX: I could not confirm the latest RBA observation on the generation date. The value used is the one shown on the RBA exchange-rates overview page in search results (as at 20 March 2026), which is older than the latest available observation. A third-party aggregator showed a later figure, but it is not an RBA source, so I did not use it.",
+  "comparable_city_reasoning": "Boston-specific food and drink sources were used where available, cross-checked against general US major-city price levels. Accommodation uses a model estimate for a high-demand, high-cost US city in July.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.00,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 18.00,
+    "wine_glass": 16.00,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 160.00,
+    "hotel_3star_2p": 300.00
+  }
+}

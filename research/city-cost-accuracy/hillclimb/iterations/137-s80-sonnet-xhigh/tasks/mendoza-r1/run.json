@@ -1,0 +1,104 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "26dc1011d9e21e65beeb9faf6891813421d3627fc0d176b4854096c79e67a740",
+  "requestSha256": "7b59747ab84fe0f874842bad1226cc57ae54b1c2a17ef914b9db5d0378c9c4fb",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 54379,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 3029,
+          "cacheReadInputTokens": 19028,
+          "cacheCreationInputTokens": 10979,
+          "webSearchRequests": 0,
+          "costUSD": 0.0780236,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1527,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 89789,
+          "outputTokens": 8043,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.0730004,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3209,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.15102400000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mendoza Argentina cost of living restaurant prices meal inexpensive restaurant cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Mendoza Argentina prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "precio cerveza café cappuccino cóctel copa de vino restaurante Mendoza 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mendoza travel costs daily budget meal price coffee beer glass of wine 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Precios en restaurantes en Argentina preciosmundi menú económico cena para dos cóctel copa de vino",
+            "mode": "standard",
+            "allowed_domains": [
+              "preciosmundi.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:43:50.107Z",
+      "finishedAt": "2026-11-19T06:44:44.487Z"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "08fb48cad34267c998c16d84e2aa29c89fdf3749679a7a7ab3da8052e7b12d25",
+  "requestSha256": "9170a0433bf87d07283c77bedaf9736d84104b9e1d188af8938be3889ef95f39",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 44960,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 2221,
+          "cacheReadInputTokens": 17054,
+          "cacheCreationInputTokens": 11427,
+          "webSearchRequests": 0,
+          "costUSD": 0.0713408,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 808,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 90687,
+          "outputTokens": 6996,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.0725667,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2335,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1439075,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD Australian dollar latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ocho Rios Jamaica cost of living restaurant meal price inexpensive restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ocho Rios Jamaica Red Stripe beer price restaurant bar cocktail price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jamaica cappuccino coffee price glass of wine restaurant Numbeo Jamaica prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ocho Rios restaurant prices wine by the glass menu USD mid-range dinner for two",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ocho Rios cost of living beer cappuccino meal for two mid-range restaurant traveltables",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:43:57.319Z",
+      "finishedAt": "2026-11-19T06:44:42.279Z"
+    }
+  ]
+}

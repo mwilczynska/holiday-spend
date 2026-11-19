@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are triangulated from a few aggregated 2026 sources (Numbeo June 2026 figures, a cost-of-living guide, and aperitivo-style price ranges), so restaurant anchors are moderately reliable, and beer, cocktail and wine are less certain. Accommodation anchors are holistic model estimates for a July high-season window, not based on inspected booking pages or current listings. EUR is converted to USD at an assumed rate of about 1.10, which I did not verify directly. The FX observation (0.6720 USD per AUD, 18 Nov 2026) was taken from a search snippet of the RBA exchange-rates page, not from opening the full table, and no 19 Nov observation was confirmed. Cocktail and wine estimates are cross-checked against typical beer-to-drink price relationships in Rome.",
+  "comparable_city_reasoning": "Anchored on Rome's own published 2026 food and drink price ranges. Accommodation is benchmarked against other major Italian tourist cities (such as Florence and Milan) in peak summer, with a holistic adjustment for Rome's high-season demand.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 2.20,
+    "inexp_meal_1p": 17.50,
+    "midrange_meal_2p": 66.00,
+    "cocktail": 10.00,
+    "wine_glass": 6.60,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 220.00
+  }
+}

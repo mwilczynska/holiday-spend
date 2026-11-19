@@ -1,0 +1,87 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "4b974d61d3e339456489b0ec46e789052ee1f4b123752d7fdda51c10fc192787",
+  "requestSha256": "020c82bdb720a04fd4a195d5d8930260d9c8ddad40b64460fc038f71b993d532",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 32429,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 1318,
+          "cacheReadInputTokens": 15429,
+          "cacheCreationInputTokens": 7642,
+          "webSearchRequests": 0,
+          "costUSD": 0.0468458,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 214,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 62217,
+          "outputTokens": 4574,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 4,
+          "costUSD": 0.0485087,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1326,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0953545,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lisbon cost of living restaurant prices meal inexpensive cappuccino beer wine cocktail",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lisbon prices Numbeo cappuccino domestic beer restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lisbon cocktail price bar average glass of wine restaurant price euro 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:38:30.795Z",
+      "finishedAt": "2026-11-19T06:39:03.224Z"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3c120fd2bd593149e1d91004b9580d48a645292637b57b57431e922a2f194014",
+  "requestSha256": "752dcf0cdbd72ca044c1dcee7244cf7fefb03cf5e0e047994d1fe1be35a8bb48",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 37973,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 80592,
+          "outputTokens": 7268,
+          "cacheReadInputTokens": 17060,
+          "cacheCreationInputTokens": 9385,
+          "webSearchRequests": 6,
+          "costUSD": 0.0737408,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3296,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0737408,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Antonio cost of living restaurant meal coffee beer prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Antonio cocktail price wine glass price bar average",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD/USD November 2026 daily rate",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:04:36.039Z",
+      "finishedAt": "2026-11-19T07:05:14.012Z"
+    }
+  ]
+}

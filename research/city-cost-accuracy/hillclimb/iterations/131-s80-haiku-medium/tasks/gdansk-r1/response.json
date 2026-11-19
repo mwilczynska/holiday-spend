@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on crowd-sourced aggregator figures (Numbeo, Expatistan, Combien-coute, Openshores, Europe Nightlife) and a few sources disagree, so they are bounded estimates. Beer and coffee are the most consistent; cocktail rests on a small-sample average (Expatistan, 8 data points) and a guide's range. Wine glass has no direct source and is inferred from local bottle and beer prices. Converting zloty and euro figures to USD used an assumed rate of about 3.7 PLN per USD (about 1.16 USD per EUR), which I did not look up. Accommodation anchors are holistic model estimates from general knowledge of Gdansk's July seasonal demand; no accommodation searches or live listings were checked, so they are low confidence. FX: the 0.6720 value was taken from a search-result snippet that attributes it to the RBA 4.00pm rate for 18 November 2026. I did not open the RBA page directly, and a third-party aggregator also showed it, so treat provenance as secondary-confirmed.",
+  "comparable_city_reasoning": "Priced against Polish tourist-facing city-centre levels, with Gdansk's Old Town and seaside premium applied for July. Food and drink anchors use the aggregated typical values from the searched sources. Wine glass is inferred from local beer and retail bottle prices. Accommodation is a model estimate based on comparable Polish Baltic and Central European mid-sized cities in peak summer.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 4.20,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 58.00,
+    "cocktail": 8.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 72.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 145.00
+  }
+}

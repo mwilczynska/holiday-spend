@@ -1,0 +1,94 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3c120fd2bd593149e1d91004b9580d48a645292637b57b57431e922a2f194014",
+  "requestSha256": "752dcf0cdbd72ca044c1dcee7244cf7fefb03cf5e0e047994d1fe1be35a8bb48",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 71178,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 2182,
+          "cacheReadInputTokens": 15836,
+          "cacheCreationInputTokens": 11022,
+          "webSearchRequests": 0,
+          "costUSD": 0.0690872,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 764,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 100302,
+          "outputTokens": 5770,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 7,
+          "costUSD": 0.08291520000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2032,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1520024,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Antonio Texas cost of living restaurant prices meal inexpensive restaurant cappuccino domestic beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Antonio average price of a cocktail and glass of wine at restaurant bar",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo San Antonio Texas prices domestic beer restaurant cappuccino meal for 2 mid-range",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Antonio pint of draft beer price bar 2026 average",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:44:18.528Z",
+      "finishedAt": "2026-11-19T06:45:29.706Z"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b4ebeec8978d0ec1737aaf0207f3ac42f95324a1b1824dd39008d4b6f877ddc2",
+  "requestSha256": "ee3a72c3434030a64835dd6259302c959598f7207feb843ff3b4c4203b76668c",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 220830,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 27008,
+          "cacheReadInputTokens": 19903,
+          "cacheCreationInputTokens": 26292,
+          "webSearchRequests": 0,
+          "costUSD": 0.37924060000000004,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 25619,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 95444,
+          "outputTokens": 8227,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 7,
+          "costUSD": 0.08365790000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3078,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.46289850000000005,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD AUD latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Uyuni Bolivia restaurant meal prices cost of a meal bolivianos",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Uyuni price of beer and cappuccino coffee in restaurants bolivianos",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Uyuni cocktail price glass of wine bar prices Bolivia",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bolivia cost of living prices Numbeo domestic beer restaurant cappuccino meal for two",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Uyuni bar prices cocktail happy hour Bs, glass of Tarija wine Bs, beer Bs 2026 travel costs",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:56:19.503Z",
+      "finishedAt": "2026-11-19T07:00:00.333Z"
+    }
+  ]
+}

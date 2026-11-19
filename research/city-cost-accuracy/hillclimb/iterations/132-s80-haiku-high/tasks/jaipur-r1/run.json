@@ -1,0 +1,90 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "c8a2b979f9cd69284d218d193e51b61e0206c0db04facb5ca25870accd59effd",
+  "requestSha256": "388d902b6892268240c0ca7adff248608fcd84317632c52d51b980337f962c2a",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 70426,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 106917,
+          "outputTokens": 15886,
+          "cacheReadInputTokens": 31454,
+          "cacheCreationInputTokens": 12691,
+          "webSearchRequests": 7,
+          "costUSD": 0.09148743999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 9341,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.09148743999999999,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jaipur cost of living restaurant meal prices beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jaipur restaurant prices 2026 cocktail wine glass price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates daily F11.1 AUD USD November 2026",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jaipur bar beer price pint cocktail price rupees 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates 18 November 2026 United States dollar AUD",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:06:24.399Z",
+      "finishedAt": "2026-11-19T07:07:34.825Z"
+    }
+  ]
+}

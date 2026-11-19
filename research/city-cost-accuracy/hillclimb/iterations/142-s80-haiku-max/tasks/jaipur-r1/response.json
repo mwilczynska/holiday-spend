@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant meal and coffee anchors are best supported by aggregated Jaipur sources (Numbeo and cost-of-living guides, mostly 2026 snapshots used as a proxy for July 2026), which differ by up to about 40 percent. Beer rests on Numbeo domestic draught prices checked against bar guides. Cocktail and wine rest on thin bar listings and were cross-checked against beer at about 1.9 to 2.1 times the beer anchor. INR is converted at an assumed 92 per USD, not a live rate. Hostel and hotel anchors are holistic model estimates for the July monsoon low season, not checked against listings or booking pages. The RBA rate is the 2026-11-18 reading shown in search-result text for the official RBA page; the page was not opened directly and a later reading may exist.",
+  "comparable_city_reasoning": "No single comparable city was used. Food and drink were benchmarked directly to Jaipur listings and aggregated guides; accommodation was benchmarked holistically to general knowledge of mid-sized North Indian tourist cities.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.90,
+    "coffee": 1.60,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 12.00,
+    "cocktail": 5.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 15.00,
+    "hotel_1star_2p": 11.00,
+    "hotel_3star_2p": 40.00
+  }
+}

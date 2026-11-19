@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3992389c83ecf0f63658b254f2ff16716066cb9149d721e75e91dd7eabcdd825",
+  "requestSha256": "845bf606721af89e196beda59192cd48f5fd529a66d8670e3766efc8358ce134",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 57004,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 110519,
+          "outputTokens": 13944,
+          "cacheReadInputTokens": 16883,
+          "cacheCreationInputTokens": 11607,
+          "webSearchRequests": 7,
+          "costUSD": 0.09051413,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 8609,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.09051413,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD per AUD latest observation rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Trinidad Cuba restaurant meal prices tourists cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cuba Trinidad beer cocktail coffee price dollars 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia AUD/USD exchange rate November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Trinidad Cuba prices wine glass cocktail menu tourist 2026 budget guide",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:08:32.877Z",
+      "finishedAt": "2026-11-19T07:09:29.881Z"
+    }
+  ]
+}

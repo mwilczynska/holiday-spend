@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "364c4a7ae9c9b44e80b81f38a6b6328c04344ebbe7df0df71b98938a8bcd4218",
+  "requestSha256": "3e61d08dc55eac5a425e3781704ed7a610b0af0617dff07c73d96beff05238e0",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 37528,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 57059,
+          "outputTokens": 5969,
+          "cacheReadInputTokens": 13641,
+          "cacheCreationInputTokens": 9894,
+          "webSearchRequests": 4,
+          "costUSD": 0.050805609999999994,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2164,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.050805609999999994,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates US dollar latest F11 USD per AUD",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Varanasi cost of living restaurant meal cappuccino beer price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "India restaurant prices cappuccino beer cocktail typical cost cost of living index 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates F11 historical 2026 AUD USD 4pm observation November 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:04:28.735Z",
+      "finishedAt": "2026-11-19T03:05:06.263Z"
+    }
+  ]
+}

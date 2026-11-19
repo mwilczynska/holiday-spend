@@ -1,0 +1,80 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "bafad6af9310168c3b37e82a26dbb2803aeaad1329d73e11c7bfd6b33297a0b9",
+  "requestSha256": "8eb874165b4c154a8a88bdad45601d15e1ac055c80555d564cd86206ef556a18",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 59583,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 70706,
+          "outputTokens": 14287,
+          "cacheReadInputTokens": 15757,
+          "cacheCreationInputTokens": 10383,
+          "webSearchRequests": 5,
+          "costUSD": 0.06644827000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 8318,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06644827000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11.1 daily",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lima Peru cost of living restaurant meal price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lima Peru beer cappuccino cocktail wine glass restaurant prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lima cappuccino price cafe Miraflores soles",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lima Peru cost of living index restaurant prices beer cocktail Numbeo",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:07:21.611Z",
+      "finishedAt": "2026-11-19T07:08:21.194Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Beer and cappuccino agree reasonably across several aggregated sources surfaced in web search results (Numbeo, Expatistan, MyLifeElsewhere, World Travel Index), but most are undated and none is clearly July 2026. Peso figures were converted at an assumed 17.5 MXN per USD, not a verified rate. Meal anchors rest on wide-spread budget guides. Cocktail uses mezcal-cocktail prices of about MX$145-160 in a Yucatan Today bar guide (venue unclear), cross-checked against beer at about 2.5x. Wine_glass is the weakest food and drink anchor: sources give only a broad, mostly dated range of about MX$150-350, so it uses a beer ratio of about 2.9x and is low confidence. All accommodation anchors are holistic model estimates from general knowledge; no accommodation searches or listing checks were done. FX: the only RBA-attributed observation located is 2026-03-20 (0.7088 USD per AUD), as reported in search results and not verified against the live RBA table. It is about eight months older than the generation date and may be stale. Unverified third-party figures near 0.70 for August 2026 were not used.",
+  "comparable_city_reasoning": "No comparable city used. Food and drink anchors are Mérida-specific from aggregated cost-of-living and travel sources, with peso prices converted at an assumed 17.5 MXN per USD. Accommodation is a general-knowledge estimate for Mérida, not based on any comparable city.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.25,
+    "coffee": 3.75,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 8.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 95.00
+  }
+}

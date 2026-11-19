@@ -1,0 +1,94 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "bafad6af9310168c3b37e82a26dbb2803aeaad1329d73e11c7bfd6b33297a0b9",
+  "requestSha256": "8eb874165b4c154a8a88bdad45601d15e1ac055c80555d564cd86206ef556a18",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 46662,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 2409,
+          "cacheReadInputTokens": 15250,
+          "cacheCreationInputTokens": 9506,
+          "webSearchRequests": 0,
+          "costUSD": 0.06517600000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1089,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 76429,
+          "outputTokens": 7286,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 5,
+          "costUSD": 0.061285900000000004,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2880,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.12646190000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lima Peru cost of living restaurant prices meal inexpensive restaurant cappuccino domestic beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lima Peru prices cocktail glass of wine restaurant mid-range meal for two",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Lima Peru cost of living prices restaurants",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "pisco sour price Lima bar restaurant soles glass of wine price Miraflores",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:43:41.075Z",
+      "finishedAt": "2026-11-19T06:44:27.738Z"
+    }
+  ]
+}

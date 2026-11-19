@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on web-search results summarizing Numbeo's Split page (inexpensive meal about EUR 15, three-course mid-range dinner for two about EUR 66, 0.5 L draft beer about EUR 4.25-4.50, cappuccino about EUR 2.45), a thin Expatistan Split page, and travel-guide price ranges. I nudged them up modestly for July peak season. The Numbeo and Expatistan Split samples are small and crowdsourced. Cocktail and wine by the glass have no aggregate index. I used guide ranges (cocktail about EUR 8-15, glass of wine about EUR 4-8) and kept them consistent with the beer price (cocktail roughly 2 to 2.5 times a beer, wine glass about one beer). EUR prices were converted to USD at an assumed rate of about 1.17 USD per EUR, which I did not verify by search. Accommodation anchors are holistic general-knowledge estimates for July peak season. No booking pages or listings were searched or inspected, so they are the least certain. FX is the 18 Nov 2026 RBA observation, taken from one search of the RBA exchange-rates page.",
+  "comparable_city_reasoning": "Food and drink use Split-specific aggregates, so no proxy city was needed. Accommodation is reasoned by analogy with other peak-season Croatian Adriatic tourist cities (e.g., Zadar and Dubrovnik), with Split in between.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 3.15,
+    "inexp_meal_1p": 18.50,
+    "midrange_meal_2p": 84.00,
+    "cocktail": 12.00,
+    "wine_glass": 5.85,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 108.00,
+    "hotel_3star_2p": 200.00
+  }
+}

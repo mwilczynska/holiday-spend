@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are rough estimates from a few aggregated but inconsistent sources (cost-of-living sites, some dated, some generic calculators) plus a tourist-area uplift; they are not a single current price survey. Cocktail is estimated from the beer anchor with an assumed cocktail-to-draught ratio of about 2.5x, since direct cocktail data was weak. Wine glass is inferred from bottle prices rather than observed glass prices. Accommodation anchors are holistic model estimates from general knowledge of Ocho Rios resort-area pricing; no accommodation searches or live listings were consulted. The FX value is the only RBA observation confirmed in the search results (20 March 2026 on the RBA overview page), so it is stale relative to the generation date of 2026-11-19; a newer RBA observation could not be verified and no third-party rate is used here.",
+  "comparable_city_reasoning": "Caribbean resort-town pricing, benchmarked to Jamaica-wide cost-of-living aggregates with a tourist-area uplift for Ocho Rios; accommodation is a holistic estimate for a mid-sized Jamaican north-coast resort town.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 10.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 180.00
+  }
+}

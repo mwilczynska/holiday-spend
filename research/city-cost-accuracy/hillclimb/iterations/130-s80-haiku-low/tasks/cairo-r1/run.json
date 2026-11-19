@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "10402a494b256539895e3eb2e643cf00c2abda4d9ad0f71e87d9081ca6f319b5",
+  "requestSha256": "a8a9031fde1a394e5b80a82daaed3a9d74c6393f61c2e2aed54241b052796186",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 25734,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 44073,
+          "outputTokens": 4937,
+          "cacheReadInputTokens": 6683,
+          "cacheCreationInputTokens": 6139,
+          "webSearchRequests": 3,
+          "costUSD": 0.03817043,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1849,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.03817043,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates current US dollar per Australian dollar F11.1",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cairo cost of living restaurant meal beer cappuccino prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cairo Egypt cocktail wine price restaurant bar typical 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:59:36.014Z",
+      "finishedAt": "2026-11-19T03:00:01.748Z"
+    }
+  ]
+}

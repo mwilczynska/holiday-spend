@@ -1,0 +1,101 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "376a670fccf925b590cc876b0c68768a90e40b9e435741d0f90b214b28c425ba",
+  "requestSha256": "a06ca02f88ab985227635afe3a5e7e60e2c00d2aaca8a338211da19a98e7077f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 58449,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 2529,
+          "cacheReadInputTokens": 19167,
+          "cacheCreationInputTokens": 13393,
+          "webSearchRequests": 0,
+          "costUSD": 0.0827074,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1171,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 113598,
+          "outputTokens": 8927,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 8,
+          "costUSD": 0.0958233,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 4005,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.17853070000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Querétaro Mexico restaurant prices meal inexpensive restaurant domestic beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Querétaro precio cerveza cóctel copa de vino restaurante precios 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Querétaro cost of living cappuccino price cafe cocktail price bar",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cost of living in Queretaro mylifeelsewhere restaurant meal for two three-course mid-range, glass of wine, cocktail",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Queretaro prices dinner for two mid-range restaurant MXN expatistan beer wine bottle",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:44:13.253Z",
+      "finishedAt": "2026-11-19T06:45:11.702Z"
+    }
+  ]
+}

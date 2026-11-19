@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are based on web search-result summaries, not page reads. I ran six searches in total, one of them for FX. Aggregators quoted about KES 3,000 for a two-person mid-range meal (Numbeo, Jan 2026 snapshot; Hikers Bay), about KES 300-570 for a basic meal (MyLifeElsewhere, Expatistan) and about KES 320-415 for a cappuccino (combien-coute.net, MyLifeElsewhere). An undated third-party Nyali venue guide gave beer KES 200-500, cocktails KES 400-1,200 and wine KES 500-900 per glass. I converted at roughly KES 129-133 per USD. Beer, cocktail and wine are the weakest food and drink anchors because I found no authoritative Mombasa draught-beer or wine data. I set cocktail and wine from those venue ranges, and they sit at about 2.2x and 2.1x my beer anchor. Accommodation anchors are holistic model estimates for a July 2026 window, from general knowledge of Mombasa and the Kenyan coast. They are not based on live listings or booking pages. Registered hostel supply in Mombasa is thin, so the hostel anchors are the least certain.",
+  "comparable_city_reasoning": "Mombasa-specific aggregator and venue-guide prices were used where found. Where evidence was thin (drinks and all accommodation), I relied on general knowledge of the Kenyan coastal tourist market (the Nyali/Bamburi resort belt), with Nairobi hotel menus as a rough upper reference.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.60,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 24.00,
+    "cocktail": 5.50,
+    "wine_glass": 5.30,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 26.00,
+    "hotel_3star_2p": 75.00
+  }
+}

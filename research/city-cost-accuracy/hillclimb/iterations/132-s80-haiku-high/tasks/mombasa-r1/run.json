@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "87e0392843fcb7bc2f1e460aabcdc9d5773f0b3b75a2debf8f9104006bc5a2bf",
+  "requestSha256": "9fbcc663c8783dca472ea088b91a4ce714b874a3213b43131534bb3e3fc49183",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 55396,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 79707,
+          "outputTokens": 11409,
+          "cacheReadInputTokens": 17271,
+          "cacheCreationInputTokens": 10590,
+          "webSearchRequests": 5,
+          "costUSD": 0.06596591,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 6694,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06596591,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates historical USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mombasa cost of living restaurant meal beer price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mombasa Kenya cappuccino cocktail wine glass restaurant prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mombasa cappuccino price KES coffee shop cost",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:07:34.951Z",
+      "finishedAt": "2026-11-19T07:08:30.347Z"
+    }
+  ]
+}

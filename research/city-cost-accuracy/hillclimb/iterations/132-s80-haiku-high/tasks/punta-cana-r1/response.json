@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on several cost-of-living and travel sources that broadly agree, though they conflict and some are low quality. Beer and cocktail anchors come from scattered bar and beach-bar examples, and the wine anchor is derived from the beer anchor because no direct Punta Cana wine price was found. Accommodation anchors are holistic model estimates from general knowledge and the city context; no booking pages or current listings were inspected. FX: the 0.6720 value (18 Nov 2026) was read from a third-party page that reproduces the RBA table, not from the rba.gov.au page itself, and is consistent with a Trading Economics quote of about 0.6715 the same day. The official RBA page is listed as the canonical source but was not directly read.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors are based on Punta Cana and Dominican Republic price data from the sources above. Wine is inferred from the beer anchor (about 1.75x) and cocktails from local and beach-bar examples. Accommodation is a holistic estimate for a resort-oriented Caribbean coastal market with a basic-to-three-star range.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 2.25,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 130.00
+  }
+}

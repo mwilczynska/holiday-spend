@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are bounded estimates from crowdsourced and secondary price sources (Numbeo-style indexes, a French cost-of-living site, UK and Turkish travel guides), with sources disagreeing by roughly 1.5x to 2x; the Turkish lira is volatile, so these July 2026 figures may not hold. Accommodation anchors are holistic model estimates from general knowledge of Marmaris resort-town seasonality in July and were not checked against live listings. Beer and coffee are at the midpoint of several sources. Cocktail was set from the beer price using a bar-to-beer ratio of about 2.3x, because direct Marmaris cocktail data was weak. Wine was set from Turkish resort wine-glass reports, adjusted down for Marmaris. The FX observation is from an 18 November 2026 search result attributed to the RBA homepage and a secondary site; I could not open the RBA F11.1 table directly, so verify it before relying on it.",
+  "comparable_city_reasoning": "Treated as a Turkish Aegean resort town. Food and drink are benchmarked against Turkish resort and Istanbul price reports and Numbeo-style Marmaris figures. Accommodation is benchmarked against typical summer resort pricing for mid-sized Turkish Mediterranean and Aegean towns. Region is assigned to Middle East because Turkey is conventionally grouped there in this taxonomy.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 8.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 90.00
+  }
+}

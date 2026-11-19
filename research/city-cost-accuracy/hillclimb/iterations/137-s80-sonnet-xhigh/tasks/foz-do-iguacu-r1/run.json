@@ -1,0 +1,101 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "ed544e165cd2b22578e44022062d3faa0d5c2d38a38d0d037b3dcf1d14a901c5",
+  "requestSha256": "efcfbeb85edb167c4792e2c231a231ae492a619c7c892ce9d28a0120c77bd240",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 48666,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 2378,
+          "cacheReadInputTokens": 17044,
+          "cacheCreationInputTokens": 9291,
+          "webSearchRequests": 0,
+          "costUSD": 0.0643648,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 918,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 80671,
+          "outputTokens": 6360,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 5,
+          "costUSD": 0.0612471,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2036,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1256119,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Foz do Iguaçu cost of living restaurant prices meal inexpensive restaurant cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Foz do Iguaçu preço cerveja chopp coquetel taça de vinho restaurante",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Foz do Iguaçu prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Foz do Iguaçu cost of living cocktail price glass of wine restaurant domestic beer 0.5 draught cappuccino",
+            "mode": "standard",
+            "allowed_domains": [
+              "mylifeelsewhere.com",
+              "traveltables.com",
+              "livingcost.org",
+              "expatistan.com",
+              "globalcostdata.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:43:01.431Z",
+      "finishedAt": "2026-11-19T06:43:50.097Z"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "ed544e165cd2b22578e44022062d3faa0d5c2d38a38d0d037b3dcf1d14a901c5",
+  "requestSha256": "efcfbeb85edb167c4792e2c231a231ae492a619c7c892ce9d28a0120c77bd240",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 22600,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 775,
+          "cacheReadInputTokens": 6671,
+          "cacheCreationInputTokens": 3832,
+          "webSearchRequests": 0,
+          "costUSD": 0.024420200000000003,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 31315,
+          "outputTokens": 2554,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 2,
+          "costUSD": 0.0244085,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 885,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0488287,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Foz do Iguaçu cost of living prices restaurant meal beer cappuccino",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:34:13.102Z",
+      "finishedAt": "2026-11-19T06:34:35.702Z"
+    }
+  ]
+}

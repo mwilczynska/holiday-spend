@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "ba6e58edf3dfe440fac4f515e2406f35009a752cce7a8f06edf724695c771ef6",
+  "requestSha256": "69384a5e9d9a798b05ccc7796fbf1bda1b0c6b6e39f270098025ad1893df7e50",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 53193,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 90589,
+          "outputTokens": 15636,
+          "cacheReadInputTokens": 6676,
+          "cacheCreationInputTokens": 10820,
+          "webSearchRequests": 6,
+          "costUSD": 0.07910766,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 10199,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07910766,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pisa Italy restaurant meal prices 2026 cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pisa Italy cappuccino coffee price bar 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pisa Italy beer cocktail wine glass price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Italy cost of living restaurant meal cappuccino beer price index 2026 Numbeo Tuscany",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:07:52.649Z",
+      "finishedAt": "2026-11-19T07:08:45.842Z"
+    }
+  ]
+}

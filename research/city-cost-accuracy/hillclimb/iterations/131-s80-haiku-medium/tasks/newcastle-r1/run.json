@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "23a810986fa1008e4e49743ba8e82e55c17fda1cfe44a43acf3f6a1e8ce937b6",
+  "requestSha256": "10b521db2fdb3016d32f2a21450f28347bf78135981a924000deb618f1a032c3",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 46922,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 91609,
+          "outputTokens": 10732,
+          "cacheReadInputTokens": 17146,
+          "cacheCreationInputTokens": 10789,
+          "webSearchRequests": 6,
+          "costUSD": 0.07685616000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 5433,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07685616000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily F11 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Newcastle NSW cost of living restaurant meal coffee beer prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Australia average price cappuccino beer pot cocktail wine glass restaurant 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD/USD as at 4.00 pm November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Newcastle NSW typical restaurant main meal price cheap eats 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:02:18.390Z",
+      "finishedAt": "2026-11-19T03:03:05.312Z"
+    }
+  ]
+}

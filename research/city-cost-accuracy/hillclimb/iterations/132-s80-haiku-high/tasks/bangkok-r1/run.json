@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0aa65b48a2edbdc378e81d71ac03b02a4b8076686bc115b5f1b0e66ee4293de5",
+  "requestSha256": "9e03739d26d11172d7779271da43dc84937d5e975e9bff6cc7a33d61d66f1ba9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 57479,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 93530,
+          "outputTokens": 18565,
+          "cacheReadInputTokens": 6682,
+          "cacheCreationInputTokens": 12908,
+          "webSearchRequests": 6,
+          "costUSD": 0.08128392000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 12229,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.08128392000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia F11 exchange rates USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok restaurant meal prices cost of living 2026 Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok beer cocktail wine glass restaurant price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok cappuccino coffee price baht 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok average price street food meal baht 2026 budget",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:06:16.785Z",
+      "finishedAt": "2026-11-19T07:07:14.264Z"
+    }
+  ]
+}

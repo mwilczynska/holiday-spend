@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and drink anchors rest on aggregated but inconsistent sources. Several figures are dated (one table was updated July 2023), and cocktail and wine are weak, so they are derived from the local beer price. Hostel and hotel anchors are holistic model estimates from general knowledge and city context, with no accommodation search performed. The FX value comes from an rba.gov.au search summary showing 0.6720 for 18 November 2026, which I did not verify on the RBA page itself.",
+  "comparable_city_reasoning": "Priced against the South Asian budget-to-mid-range tourist tier, using Indian rupee price levels from the cost-of-living and travel-budget sources. Cocktail and wine use the local price relationship to beer: cocktail is about 2.5 to 3 times beer, and a restaurant wine glass is about 1.5 times the beer price.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 1.60,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 15.00,
+    "cocktail": 7.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 55.00
+  }
+}

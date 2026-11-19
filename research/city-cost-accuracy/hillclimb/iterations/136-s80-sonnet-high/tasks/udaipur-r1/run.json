@@ -1,0 +1,80 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "24bfad4a2f2a96445ff88129566c798072dd68d211c2f626c5a7bb69ee7e9678",
+  "requestSha256": "908924f3d5fee2a2ba2f1f1b58730f2745da93d43bceb3c8ee4708ce323d5edc",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 30911,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 1372,
+          "cacheReadInputTokens": 6653,
+          "cacheCreationInputTokens": 5564,
+          "webSearchRequests": 0,
+          "costUSD": 0.0373146,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 271,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 45393,
+          "outputTokens": 3527,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 3,
+          "costUSD": 0.0363028,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1301,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0736174,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur cost of living restaurant meal cappuccino beer prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur cocktail price wine glass restaurant bar India",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:39:01.821Z",
+      "finishedAt": "2026-11-19T06:39:32.732Z"
+    }
+  ]
+}

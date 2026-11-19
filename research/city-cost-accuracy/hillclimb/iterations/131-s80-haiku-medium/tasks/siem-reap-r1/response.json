@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on crowd-sourced and undated guide figures, with restaurant-meal and drink ranges cross-checked against each other. Accommodation anchors are holistic model estimates from general knowledge and the city context, not checked against live listings. The FX observation is the RBA figure from the cached rba.gov.au page dated 2026-03-20, not the latest published rate; a search for the November 2026 observation did not find an official RBA figure.",
+  "comparable_city_reasoning": "Priced against other tourist-oriented towns in mainland Southeast Asia with similar USD-dominated pricing for restaurants and guesthouses, adjusted for Siem Reap's Angkor-driven tourist demand. Cocktail and wine anchors use the local price relationship to beer where direct figures were inconsistent.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.25,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 6.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 55.00
+  }
+}

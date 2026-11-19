@@ -1,0 +1,25 @@
+{
+"region": "East Asia",
+"confidence": "medium",
+"confidence_notes": "Restaurant and coffee anchors rest on aggregated Tottori and Japan-wide price sources, mostly crowdsourced guides and comparison sites, so they are approximate. Beer and cocktail anchors are Japan-wide izakaya ranges adjusted down for a smaller city. Wine has no usable local price data and is set at about 1.5 times the beer anchor, which is the local beer-to-wine relationship assumed here. Accommodation anchors are holistic model estimates from general knowledge and were not checked against live listings or current availability; no July seasonal uplift is applied. Yen figures are converted at an assumed working rate of about 155 yen per US dollar, which is not sourced. The FX observation comes from RBA exchange-rate page search results and was not opened directly.",
+"comparable_city_reasoning": "Tottori is a small prefectural capital in western Japan, priced below Tokyo and Japan-wide urban averages. Food and drink anchors use Tottori-specific aggregator comparisons (citycost, expatistan) and Japan-wide cafe and izakaya ranges adjusted down for the smaller city. Accommodation anchors reflect typical regional Japanese business-hotel, guesthouse and hostel levels.",
+"fx": {
+"as_of_date": "2026-11-18",
+"source_name": "Reserve Bank of Australia",
+"source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+"source_rate": 0.6720,
+"source_rate_basis": "USD_PER_AUD"
+},
+"anchors_usd": {
+"beer": 3.90,
+"coffee": 3.50,
+"inexp_meal_1p": 8.00,
+"midrange_meal_2p": 45.00,
+"cocktail": 5.20,
+"wine_glass": 5.80,
+"hostel_dorm_1p": 19.50,
+"hostel_private_2p": 48.00,
+"hotel_1star_2p": 58.00,
+"hotel_3star_2p": 105.00
+}
+}

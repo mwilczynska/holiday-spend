@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors are based on aggregated cost-of-living figures found by web search (Numbeo data published by Expatica around June 2026, MyLifeElsewhere and Expat Arrivals): inexpensive meal about £15, mid-range three-course meal for two about £65-66, cappuccino about £3.45, domestic draught beer about £4.90-5.30. The cocktail anchor uses Expatistan's crowd-sourced figure of about £9 from October 2025 and a general guide range of £8-12, so it is moderately uncertain. Wine is based on a general guide range of £5-8 per glass, which is not clearly dated, so it is less certain. The searches did not return a GBP/USD rate, so GBP was converted at an assumed rate of about 1.34 USD per GBP for July 2026, which adds roughly ±5% uncertainty. All four accommodation anchors are model estimates from general knowledge, not from searches or listings. They allow for higher July summer and event-season demand in Cardiff and are the least certain anchors. The RBA figure is the 18 Nov 2026 rate of 0.6720 (16 Nov 0.6759, 17 Nov 0.6742), but a search summary reported it, citing the RBA's daily table. The RBA page itself was not opened, so the figure is unconfirmed.",
+  "comparable_city_reasoning": "Food and drink prices are based on Cardiff-specific aggregated data. Accommodation is benchmarked against mid-sized UK regional cities such as Bristol, Newcastle and Leeds, where Cardiff is usually close to or slightly below their summer room rates.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.90,
+    "coffee": 4.65,
+    "inexp_meal_1p": 20.30,
+    "midrange_meal_2p": 88.00,
+    "cocktail": 13.40,
+    "wine_glass": 8.70,
+    "hostel_dorm_1p": 33.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 92.00,
+    "hotel_3star_2p": 138.00
+  }
+}

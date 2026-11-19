@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "a631220d0570f113ff81ffa11db1b50b916ee6cb9e813d0cede1f22af32f4943",
+  "requestSha256": "d205e0d0576bd7ea8b08631086525539f946b5cdfd8f30c0e3e165e1c5ac2aef",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 40711,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 73454,
+          "outputTokens": 8202,
+          "cacheReadInputTokens": 15498,
+          "cacheCreationInputTokens": 11480,
+          "webSearchRequests": 5,
+          "costUSD": 0.06389738,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3150,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06389738,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wellington New Zealand cost of living restaurant meal coffee beer prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wellington cafe flat white cappuccino price NZD 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wellington bar cocktail price wine glass pint price NZD 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates A$1=USD latest observation November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:02:29.250Z",
+      "finishedAt": "2026-11-19T07:03:09.961Z"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "24f4c8f7941f819f386c24fc8997d649a49281be0ed3d1e239051ad748911a5d",
+  "requestSha256": "bd647435d53e9fd918cf321a2edbb74c200574e68ba4a19d7ba61a69f019bcda",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 139371,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 103886,
+          "outputTokens": 41259,
+          "cacheReadInputTokens": 22302,
+          "cacheCreationInputTokens": 16794,
+          "webSearchRequests": 7,
+          "costUSD": 0.10459992000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 33429,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.10459992000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD USD latest daily F11 rate",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wollongong cost of living restaurant meal prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Australia average price cappuccino coffee cafe 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Australia average price schooner beer pub 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Australia average price cocktail bar wine glass restaurant 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Australia 2026 average cost mid-range restaurant dinner for two three courses main meal price",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:15:20.629Z",
+      "finishedAt": "2026-11-19T07:17:40.001Z"
+    }
+  ]
+}

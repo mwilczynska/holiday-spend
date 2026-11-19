@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "c28b2d42a8b44ef99b93edc999c57f69f5f5530e7b69012d16efc3574c2c9c1e",
+  "requestSha256": "4c24faca2ebd5c4d3939e2ad7be3f52022b5572c2f8179f577bef4c03e4295eb",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 54701,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 72311,
+          "outputTokens": 9026,
+          "cacheReadInputTokens": 16280,
+          "cacheCreationInputTokens": 9814,
+          "webSearchRequests": 5,
+          "costUSD": 0.0638697,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3640,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0638697,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kenting Taiwan restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Taiwan cost of living coffee beer cocktail wine restaurant prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD/USD as at 4.00 pm November 2026",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Taiwan bar cocktail price NT$ craft beer draft price Taipei 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:01:04.179Z",
+      "finishedAt": "2026-11-19T03:01:58.880Z"
+    }
+  ]
+}

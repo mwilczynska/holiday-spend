@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3ae397fe0de7010437480e546dabfdfa719eba749ab46121c6408ae590fc8c1e",
+  "requestSha256": "0672ff612063cde9e2b3cb4d4ac550fb25b57a9ed1eb4d44c70ed5bf9d9a3d55",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 35983,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 60634,
+          "outputTokens": 5949,
+          "cacheReadInputTokens": 14484,
+          "cacheCreationInputTokens": 10332,
+          "webSearchRequests": 5,
+          "costUSD": 0.06124914,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1915,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06124914,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tampa FL cost of living restaurant meal prices coffee beer 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tampa cocktail and glass of wine price average bar",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11 exchange rates daily USD 2026 November",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:02:09.357Z",
+      "finishedAt": "2026-11-19T07:02:45.341Z"
+    }
+  ]
+}

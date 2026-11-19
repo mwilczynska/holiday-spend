@@ -1,0 +1,87 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "8d7d93070e9ceae433d832464fe087b80e5eb8035ec54c7b05c3ca9c3b10f721",
+  "requestSha256": "464c685229915aeb6dcde0a20c5b525fcd479a6d3fb2d6c4f930ab4472355a49",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 408803,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 100134,
+          "outputTokens": 272519,
+          "cacheReadInputTokens": 6679,
+          "cacheCreationInputTokens": 15573,
+          "webSearchRequests": 8,
+          "costUSD": 0.22945429000000003,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 264656,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.22945429000000003,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia F11.1 exchange rates daily A$1 US dollar latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "London inexpensive restaurant meal price per person 2026 cost of living Numbeo",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "London mid-range restaurant three-course meal for two price 2026 average",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "London pint of draught beer average price 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "London cappuccino regular coffee average price 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "London average cocktail price bar and glass of wine restaurant price 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:17:49.757Z",
+      "finishedAt": "2026-11-19T07:24:38.561Z"
+    }
+  ]
+}

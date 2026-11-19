@@ -1,0 +1,63 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "2f9227b7baa241428e1072e22a08b4f865b36ddd55d565520962337bdb275c16",
+  "requestSha256": "59b78c5c9e6f095c1f1900720326fc7114cf0a9498ff3289793010e7c93eb80d",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 34296,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 80805,
+          "outputTokens": 7570,
+          "cacheReadInputTokens": 6677,
+          "cacheCreationInputTokens": 9100,
+          "webSearchRequests": 6,
+          "costUSD": 0.07375227000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 4033,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07375227000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD USD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Naha Okinawa restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Japan cappuccino price yen beer draft price restaurant cocktail price Okinawa",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:04:06.779Z",
+      "finishedAt": "2026-11-19T07:04:41.076Z"
+    }
+  ]
+}

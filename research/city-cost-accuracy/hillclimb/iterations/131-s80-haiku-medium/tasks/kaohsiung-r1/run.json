@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "9dfa70c12f65d4fda4f745c753ce79cb37423b460a28d8f62c08a183081700b2",
+  "requestSha256": "746ae8abc0eb46036a93cc5c5b5df459de26f1328b45aadf2c66c74f5d611b08",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 51609,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 91714,
+          "outputTokens": 11609,
+          "cacheReadInputTokens": 19705,
+          "cacheCreationInputTokens": 12058,
+          "webSearchRequests": 6,
+          "costUSD": 0.07758455000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 5823,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07758455000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates F11 historical USD per AUD latest observation 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kaohsiung cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Taiwan cappuccino price beer restaurant price Taipei Kaohsiung 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Taiwan cocktail price wine glass price bar Kaohsiung Taipei",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD USD November 2026 latest daily F11.1",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:03:12.052Z",
+      "finishedAt": "2026-11-19T07:04:03.661Z"
+    }
+  ]
+}

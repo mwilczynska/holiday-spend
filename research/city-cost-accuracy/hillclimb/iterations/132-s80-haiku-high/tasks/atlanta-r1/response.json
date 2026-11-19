@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from aggregated but mixed-method sources (Square bar and coffee benchmarks, Citiesinsider, Expatistan, Numbeo via Expatica, LifeIndexed, MyLifeElsewhere). Beer, cappuccino and inexpensive and mid-range meals are medium confidence. Cocktail and wine are lower: wine has no clean citywide average, so the wine figure rests on a few individual menus and a relation to the beer anchor. Accommodation is a holistic model estimate with no searches, so it is low to medium confidence. July 2026 coincides with FIFA World Cup 2026 matches in Atlanta, which may push hotel and hostel rates above typical levels. FX: the 18 Nov 2026 rate was taken from a search summary that cited the RBA RSS feed. I did not open the feed or the F11.1 table, so the value is unverified against the primary page. The first RBA search returned only a stale March 2026 page, so I ran a second RBA search in extended mode, which goes beyond the one RBA search allotted in the brief (four searches used in total, within the six-search cap).",
+  "comparable_city_reasoning": "No comparable foreign city was used. Anchors are based on Atlanta-specific aggregated menu and cost-of-living data for food and drink, and on a general model of large US metro hotel and hostel pricing for accommodation.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/rss/rss-cb-exchange-rates.xml",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 5.50,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 14.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 225.00
+  }
+}

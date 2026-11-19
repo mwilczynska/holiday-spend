@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "8f8560a301a8c08af3663089ad4cbc80db12cb07864140473be914de90554ba3",
+  "requestSha256": "8a0721ee914e32593c980f23d5f38f9f94f27fc3fcb371f6f2aeada9bd98eb00",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 533460,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 94054,
+          "outputTokens": 224867,
+          "cacheReadInputTokens": 21307,
+          "cacheCreationInputTokens": 35751,
+          "webSearchRequests": 6,
+          "costUSD": 0.18920216999999998,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 218174,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.18920216999999998,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily F11",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siem Reap cost of living restaurant meal prices beer coffee 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siem Reap price of beer cocktail wine glass restaurant Pub Street",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siem Reap glass of wine restaurant price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siem Reap mid-range restaurant dinner for two cost three courses 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:32:19.577Z",
+      "finishedAt": "2026-11-19T07:41:13.037Z"
+    }
+  ]
+}

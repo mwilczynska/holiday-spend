@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0e47c2d90a1a604bb608e37e6dc237727d7b55370feef43db99804592db31bd2",
+  "requestSha256": "a4d838c62cab8a5cd489948369ec81e56df47d622d4022320620b64de6cfe6ac",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 368286,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 58580,
+          "outputTokens": 194483,
+          "cacheReadInputTokens": 6679,
+          "cacheCreationInputTokens": 14815,
+          "webSearchRequests": 4,
+          "costUSD": 0.14612929,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 188310,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.14612929,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA daily exchange rates A$1 = US$ latest observation Australian dollar",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gdansk cost of living restaurant meal beer cappuccino prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gdansk Poland restaurant bar prices beer cocktail glass of wine average",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gdansk Expatistan cost of living restaurant prices",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:17:40.425Z",
+      "finishedAt": "2026-11-19T07:23:48.713Z"
+    }
+  ]
+}

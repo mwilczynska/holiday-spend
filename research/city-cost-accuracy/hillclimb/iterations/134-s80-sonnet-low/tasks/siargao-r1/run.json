@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "5408d74ba5a2d967bfdd3e07644349e2284dca02acaa08dc71893b9428033f5b",
+  "requestSha256": "de5d18d87385f3059982f4f22d7ca2f95dd193f6af4d09f5da029b2ce5e01324",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 21984,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 753,
+          "cacheReadInputTokens": 4547,
+          "cacheCreationInputTokens": 6426,
+          "webSearchRequests": 0,
+          "costUSD": 0.0341514,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 40471,
+          "outputTokens": 2323,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 3,
+          "costUSD": 0.0352086,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 979,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06936,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siargao General Luna restaurant prices beer cappuccino cocktail meal cost",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:31:17.606Z",
+      "finishedAt": "2026-11-19T06:31:39.590Z"
+    }
+  ]
+}

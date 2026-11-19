@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b9aae5303682b28d75f68a7ef4c9afd3f2ecfd464c51c86651e818cd03b75669",
+  "requestSha256": "a868a90407ac399319170155bddd3664ddb50366973b50a34c96bf1b3bbed48f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 56048,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 69851,
+          "outputTokens": 9243,
+          "cacheReadInputTokens": 15812,
+          "cacheCreationInputTokens": 9724,
+          "webSearchRequests": 5,
+          "costUSD": 0.06370952,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 4183,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06370952,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates Australian dollar US dollar latest F11 rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cluj-Napoca restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cluj-Napoca beer price cappuccino price cocktail price wine glass",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia F11 exchange rates United States dollar November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cluj-Napoca wine by the glass price restaurant lei",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:03:10.716Z",
+      "finishedAt": "2026-11-19T07:04:06.764Z"
+    }
+  ]
+}

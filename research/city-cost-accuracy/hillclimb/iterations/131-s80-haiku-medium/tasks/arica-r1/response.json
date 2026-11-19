@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and beer anchors rest on crowd-sourced aggregator figures (CityCost, Nomad Watch, Expat Arrivals, Expat.cl) that disagree somewhat, and were not verified against venues. The cocktail anchor has no direct price found; it is set at about 2x the beer anchor, a local price-relationship assumption. Wine is also a bounded estimate, not a sourced figure. Accommodation anchors are holistic model estimates from general knowledge and the city context, with no booking pages or current listings inspected, so they are lower confidence. The FX figure is the RBA 4:00 pm observation for 18 November 2026 as reported in a search summary; I did not open the RBA F11 table to confirm it directly.",
+  "comparable_city_reasoning": "Priced as a mid-sized Chilean northern coastal city, below Santiago and in line with other regional Chilean cities such as Iquique and Antofagasta, with local peso prices converted at the reference-period rate. Accommodation is benchmarked to similar Latin American coastal tourist towns.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.20,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 7.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 34.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 85.00
+  }
+}

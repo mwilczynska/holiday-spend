@@ -1,0 +1,80 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3592f4bad5ca4b93d200a59050c60f075f7b3011ddbf7b24b3ae17afdf8dcde6",
+  "requestSha256": "806ac37168ca631545b535a083cd93949251b9843a230a85fc16de0d89c43a5d",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 54068,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 74502,
+          "outputTokens": 10474,
+          "cacheReadInputTokens": 16092,
+          "cacheCreationInputTokens": 9816,
+          "webSearchRequests": 5,
+          "costUSD": 0.06481131999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 4816,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06481131999999999,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Interlaken Switzerland restaurant meal beer cappuccino prices cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Switzerland cost of living restaurant prices beer wine cocktail coffee 2026 Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11 exchange rates Australian dollar US dollar November 2026",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Interlaken restaurant main course price CHF typical meal 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:03:11.893Z",
+      "finishedAt": "2026-11-19T07:04:05.961Z"
+    }
+  ]
+}

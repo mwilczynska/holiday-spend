@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "I ran five web searches: one for the RBA rate and four for Siargao prices. They returned mostly undated or older blogs, travel-cost aggregators and resort guides, which disagree with each other. Meal anchors rest on the best-supported figures: local meals at roughly PHP 150-250 and mid-range pizza or pasta at PHP 250-400, with a mid-range meal at about $9 and a mid-range dinner for two at about $20 in aggregators. I set the two-person mid-range meal above that aggregator figure because General Luna tourist-area prices are the highest on the island. Coffee is based on a cup at about PHP 90-130 and a cappuccino at about $2 in the sources, nudged up for a tourist cafe. Beer is based on San Miguel at about $1.50-2 in the sources, and I assumed restaurant pricing. The searches found no direct Siargao price for cocktails or wine. The cocktail anchor uses an aggregator's roughly $5 average, which is about 2.5 times beer. The wine anchor is a judgement that imported wine by the glass costs somewhat more than a cocktail. Wine is the weakest estimate. Accommodation anchors are holistic model estimates from general knowledge of Siargao, where General Luna and Cloud 9 are high-demand surf-tourism areas. They are not based on live listings. Sources also conflict on the PHP/USD rate (about 56 to 64), which adds uncertainty. Estimates are for General Luna and may be lower elsewhere on the island. Prices may also differ from July 2026 peak-season levels.",
+  "comparable_city_reasoning": "Siargao (General Luna) is treated as a Philippine island surf-tourism hub. It is cheaper than Boracay and El Nido at the top end, with local eateries very cheap and tourist-oriented cafes, bars and boutique stays priced well above local norms. It is somewhat comparable to Canggu or Ubud in Bali, but a little cheaper.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.1,
+    "coffee": 2.4,
+    "inexp_meal_1p": 4.0,
+    "midrange_meal_2p": 27.0,
+    "cocktail": 5.0,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 11.0,
+    "hostel_private_2p": 30.0,
+    "hotel_1star_2p": 32.0,
+    "hotel_3star_2p": 85.0
+  }
+}

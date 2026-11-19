@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on a few third-party cost-of-living and price-tracker pages, which are partly crowd-sourced and mix venue types, so they are rough. Wine is the weakest drink anchor, with no reliable 2026 restaurant-glass figure found, so it is a bounded estimate. The cocktail is set from the 140-160 SEK range for mid-tier bars, and the beer from pub and restaurant draft prices of about 66-100 SEK. Meal anchors use Numbeo-derived estimates cited via third-party sites. The three-course midrange figure is a judgement from the 800-1000 SEK two-person meal range and wider knowledge of Gothenburg restaurants. All four accommodation anchors are holistic model estimates from general knowledge of Gothenburg's July hotel and hostel market. No live booking pages or listings were inspected. FX: the 0.6720 observation for 2026-11-18 was taken from a third-party site that attributes it to the RBA; the RBA page itself was not opened or read, so verify it against the official F11.1 series before use.",
+  "comparable_city_reasoning": "Priced against Swedish and Nordic mid-sized and capital cities, mainly Stockholm and Malmo, with Gothenburg's own restaurant and hotel levels used as the anchor. Food and drink use Gothenburg-specific price data where available. Accommodation uses general knowledge of Gothenburg's summer tourist demand, with reference to other Swedish cities of similar size.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 4.60,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 15.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 210.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "low",
+  "confidence_notes": "Restaurant anchors rely on aggregator and crowd-sourced prices that conflict with each other, and some are dated. Beer, cocktail and wine are inferred from Melbourne and Sydney pub and bar data with a downward adjustment for Newcastle. Accommodation is a holistic model estimate; no live listings were checked. The FX value (0.6720 for 2026-11-18) came from search-result summaries that cite RBA data. I did not open the RBA page directly, and I found no 2026-11-19 fixing.",
+  "comparable_city_reasoning": "Drink and restaurant anchors are benchmarked against aggregated Sydney and Melbourne price data, lowered slightly because one cost-of-living aggregator puts Newcastle restaurant prices modestly below Sydney's. Accommodation is a holistic estimate for a mid-sized regional Australian coastal city, not a Sydney-level market.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 3.45,
+    "inexp_meal_1p": 14.80,
+    "midrange_meal_2p": 67.20,
+    "cocktail": 12.80,
+    "wine_glass": 9.40,
+    "hostel_dorm_1p": 30.20,
+    "hostel_private_2p": 70.50,
+    "hotel_1star_2p": 84.00,
+    "hotel_3star_2p": 134.40
+  }
+}

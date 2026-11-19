@@ -1,0 +1,87 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "24f4c8f7941f819f386c24fc8997d649a49281be0ed3d1e239051ad748911a5d",
+  "requestSha256": "bd647435d53e9fd918cf321a2edbb74c200574e68ba4a19d7ba61a69f019bcda",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 649516,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 160544,
+          "outputTokens": 339891,
+          "cacheReadInputTokens": 29102,
+          "cacheCreationInputTokens": 43342,
+          "webSearchRequests": 9,
+          "costUSD": 0.28495932,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 330795,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.28495932,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD daily latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wollongong cost of living restaurant meal cappuccino beer prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Australia average cappuccino price cafe 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Australia average price inexpensive restaurant meal mid-range three-course meal for two 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Australia average price pub beer schooner cocktail wine glass 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "average price of a cocktail and glass of wine at Australian bars and restaurants 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:39:05.187Z",
+      "finishedAt": "2026-11-19T07:49:54.703Z"
+    }
+  ]
+}

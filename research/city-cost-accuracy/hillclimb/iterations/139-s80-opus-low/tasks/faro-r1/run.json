@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "df74aa44fc29b30de85eecd7fce2af03be99b6e5853682dbf92f8f74ee475fda",
+  "requestSha256": "6f81026ffc9ed2addb5c31dda50e5c12d4eb07a2be84dc545ed1df1b4971713e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 27891,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 1134,
+          "cacheReadInputTokens": 4542,
+          "cacheCreationInputTokens": 6067,
+          "webSearchRequests": 0,
+          "costUSD": 0.0721404,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 201,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 30242,
+          "outputTokens": 2415,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 2,
+          "costUSD": 0.024231700000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 781,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0963721,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD USD latest November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Faro Portugal cost of living prices restaurant meal cappuccino beer",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:32:09.495Z",
+      "finishedAt": "2026-11-19T06:32:37.386Z"
+    }
+  ]
+}

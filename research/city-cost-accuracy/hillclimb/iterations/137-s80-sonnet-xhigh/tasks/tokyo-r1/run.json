@@ -1,0 +1,101 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0935b861f4f179335f8ecd5f229dcc3c48c07e1d6b1e4e7d66f2e9bff6ed923a",
+  "requestSha256": "dc043ac04dffa516e4f7febedf2a8435e76fc989f610669ac1c29f7b6923ddae",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 52075,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 2918,
+          "cacheReadInputTokens": 17702,
+          "cacheCreationInputTokens": 12886,
+          "webSearchRequests": 0,
+          "costUSD": 0.0842764,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1481,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 85791,
+          "outputTokens": 8335,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.0727466,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2120,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.157023,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tokyo cost of living restaurant prices inexpensive meal, mid-range meal for two, domestic beer, cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tokyo average price cappuccino coffee cafe 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tokyo izakaya draft beer price nama biru cocktail price glass of wine restaurant 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tokyo cost of living cocktail price bar glass of wine restaurant price yen average",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tokyo nightlife budget guide cocktail price yen wine by the glass price bar",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:44:38.081Z",
+      "finishedAt": "2026-11-19T06:45:30.157Z"
+    }
+  ]
+}

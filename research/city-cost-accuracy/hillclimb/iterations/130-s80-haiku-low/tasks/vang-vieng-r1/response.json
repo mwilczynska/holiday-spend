@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded estimates from aggregator and crowd-sourced cost-of-living pages (combien-coute.net, Nomadic Matt, Southeast Asia Backpacker, MyLifeElsewhere, ExpatExchange). Several of these sources are undated or older, and their figures conflict, so beer, coffee and meal values are adjusted upward for Vang Vieng's tourist pricing. Cocktail has no direct price source; it is set at about 2.5 times the beer anchor, following the local price relationship to beer. Wine is a judgement estimate for imported wine by the glass. Accommodation anchors are holistic model estimates from general knowledge and the city context, not inspected booking pages or current listings. The FX observation comes from an rba.gov.au-restricted search snippet that reported 0.6720 for 18 Nov 2026; I did not open the RBA table directly.",
+  "comparable_city_reasoning": "Priced against Vientiane's published restaurant, beer and coffee estimates, adjusted upward for Vang Vieng's backpacker tourism; accommodation is set against typical budget guesthouse and hostel levels in other Laos tourist towns, based on general knowledge.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 20.00,
+    "cocktail": 5.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 15.00,
+    "hotel_1star_2p": 12.00,
+    "hotel_3star_2p": 35.00
+  }
+}

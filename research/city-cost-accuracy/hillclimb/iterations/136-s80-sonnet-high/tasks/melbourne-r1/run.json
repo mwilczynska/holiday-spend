@@ -1,0 +1,80 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "43f51266c3df7fba6fdd898d97fb7d93ced2ce4f139b02eb5bdcc5a447d1fadd",
+  "requestSha256": "699077d1509bcbb9a295062a9ab2882d3cefc443ebce7cc70081e8df2aac971b",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 26669,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 1201,
+          "cacheReadInputTokens": 6664,
+          "cacheCreationInputTokens": 5659,
+          "webSearchRequests": 0,
+          "costUSD": 0.0359868,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 225,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 47025,
+          "outputTokens": 4727,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 3,
+          "costUSD": 0.037066,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2041,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0730528,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Melbourne cost of living prices restaurant meal cappuccino beer wine cocktail",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Melbourne Australia cost of living restaurants prices",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:38:34.309Z",
+      "finishedAt": "2026-11-19T06:39:00.978Z"
+    }
+  ]
+}

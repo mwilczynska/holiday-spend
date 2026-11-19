@@ -1,0 +1,80 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3292484ab3f700c29c5c99014ee6e0b75fb3c33374e5b16fdde31cbb8b4c0c78",
+  "requestSha256": "ca717fb5cc904521a5bae6a0149b294c1471bb2ab89f2e2f29397bc8b82f3699",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 34974,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 1502,
+          "cacheReadInputTokens": 6657,
+          "cacheCreationInputTokens": 8328,
+          "webSearchRequests": 0,
+          "costUSD": 0.0980114,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 417,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 81852,
+          "outputTokens": 3803,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 5,
+          "costUSD": 0.0600867,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1243,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1580981,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest daily observation November 2026",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "La Spezia cost of living prices restaurant meal cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "La Spezia Cinque Terre prices aperitivo spritz cocktail glass of wine cost",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:40:30.351Z",
+      "finishedAt": "2026-11-19T06:41:05.325Z"
+    }
+  ]
+}

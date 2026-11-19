@@ -1,0 +1,107 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "73bd8bd71ae93da2aca0212140e12ae4363fa31fc9ea8932ba37bbd184c3db73",
+  "requestSha256": "e14363aebf34332cbe5f139ae3ad0ad92958a26ab09c62cc6d48b9d3ace4e8ff",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 261964,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 8,
+          "outputTokens": 31522,
+          "cacheReadInputTokens": 36025,
+          "cacheCreationInputTokens": 21323,
+          "webSearchRequests": 0,
+          "costUSD": 0.407733,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 29899,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 108463,
+          "outputTokens": 6835,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 7,
+          "costUSD": 0.08426380000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2818,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.4919968,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates US dollar Australian dollar latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Matsuyama Japan cost of living Numbeo restaurant prices meal inexpensive restaurant domestic beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Matsuyama Ehime izakaya draft beer price cocktail glass of wine price yen",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Matsuyama cafe cappuccino price yen coffee cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Cost of Living in Matsuyama, Japan restaurants: Meal Inexpensive Restaurant, Mid-range Meal for 2, Domestic Beer draught, Cappuccino",
+            "mode": "extended",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Matsuyama Japan cost of living prices in USD (displayCurrency=USD) Meal at an Inexpensive Restaurant $, Domestic Draft Beer $, Cappuccino $",
+            "mode": "extended",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:49:47.915Z",
+      "finishedAt": "2026-11-19T06:54:09.880Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, beer, coffee and cocktail anchors are aggregated from 2026 Numbeo-style and bar-menu averages, with some crowdsourced or small-sample figures. No citywide wine-by-the-glass average was found, so wine_glass is a single-venue benchmark cross-checked against draft beer (about 1.9x). Accommodation anchors are holistic model estimates from general knowledge of Atlanta hotel and hostel tiers, not checked against live listings or booking pages. The FX observation (18 Nov 2026, 4pm) came from search summaries that attribute it to the RBA page; a third-party site also reported it. I did not open rba.gov.au directly, and a second, extended RBA search was needed because the first result was about eight months old. No 19 Nov 4pm RBA figure was found.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors are Atlanta-specific aggregated estimates. Wine glass uses a local beer-ratio basis because direct citywide wine data was weak. Accommodation tiers are holistic estimates for a mid-sized US Southeast metro, drawn from general knowledge rather than any named comparable city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 5.35,
+    "inexp_meal_1p": 25.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 14.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 185.00
+  }
+}

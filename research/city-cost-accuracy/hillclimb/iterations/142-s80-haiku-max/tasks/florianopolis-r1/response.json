@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Overall low. Beer, coffee and meal anchors rest on loosely matching aggregator figures and local guides, several undated or from small samples, converted at about R$5.25 per USD (implied by the sources, not a live rate). Cocktail and wine_glass are beer-relative estimates because only undated cocktail ranges and no current per-glass wine price were found; midrange_meal_2p is adjusted from an expat-area two-person dinner figure that included wine. Restaurant figures exclude the optional 10% service charge. Accommodation anchors are holistic model estimates for a July stay outside the December-February peak, not drawn from live listings or booking pages. FX comes from a search excerpt of the RBA exchange-rates page (18 Nov 2026 USD line); the F11.1 file was not opened and no 19 Nov value was confirmed.",
+  "comparable_city_reasoning": "No single comparable city was used. Food and drink anchors follow Florianópolis aggregator price points and local guides; Expatistan overall cost-of-living comparisons (roughly level with Sofia, about 16 percent below Split) were used only as a loose sanity check. Accommodation anchors reflect general knowledge of mid-sized Brazilian beach-city hotel and hostel pricing.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.05,
+    "coffee": 2.80,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 6.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 31.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 76.00
+  }
+}

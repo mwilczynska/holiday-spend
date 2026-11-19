@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Food and drink anchors come from search-result excerpts (mostly 2026-dated Numbeo-based Seattle cost-of-living figures, plus Seattle bar and wine guides); no pages were opened or menus checked. Restaurant meal and coffee are corroborated across several sources; beer rests mainly on one Numbeo figure. Cocktail and wine_glass are weaker, partly 2025 or wine-bar based, and were cross-checked against the beer anchor (about 2x and 1.6x). Midrange_meal_2p sits between tax-inclusive and tax-exclusive readings. Hostel and hotel anchors are holistic model estimates with no accommodation search or listing check; July may coincide with FIFA World Cup matches in Seattle (unverified), which could push them higher. FX is from search-surfaced RBA data, not an opened page.",
+  "comparable_city_reasoning": "No comparable city was needed: food and drink use Seattle-specific search evidence. Accommodation tiers are general-knowledge estimates for summer in a large US West Coast metro; no comparable city was searched.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 6.60,
+    "inexp_meal_1p": 23.50,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 16.50,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 65.00,
+    "hostel_private_2p": 160.00,
+    "hotel_1star_2p": 180.00,
+    "hotel_3star_2p": 310.00
+  }
+}

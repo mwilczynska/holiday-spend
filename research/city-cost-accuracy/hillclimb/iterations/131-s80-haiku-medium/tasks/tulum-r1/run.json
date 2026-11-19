@@ -1,0 +1,63 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "04528f095ad11896a2179a422dd2002682d1065c9096026e6a4cb5b5306b864f",
+  "requestSha256": "2b603d46261b4300b4746fb163cf5473baffdf68cad48c20eb609ea41a1098a6",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 36958,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 53644,
+          "outputTokens": 7227,
+          "cacheReadInputTokens": 6683,
+          "cacheCreationInputTokens": 7470,
+          "webSearchRequests": 4,
+          "costUSD": 0.05053873,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3586,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05053873,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tulum Mexico cost of living restaurant meal beer cappuccino prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tulum prices cocktail wine glass cost guide 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:04:54.112Z",
+      "finishedAt": "2026-11-19T07:05:31.070Z"
+    }
+  ]
+}

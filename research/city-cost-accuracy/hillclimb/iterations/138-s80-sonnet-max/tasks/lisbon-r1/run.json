@@ -1,0 +1,104 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "4b974d61d3e339456489b0ec46e789052ee1f4b123752d7fdda51c10fc192787",
+  "requestSha256": "020c82bdb720a04fd4a195d5d8930260d9c8ddad40b64460fc038f71b993d532",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 211408,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 25413,
+          "cacheReadInputTokens": 19922,
+          "cacheCreationInputTokens": 21795,
+          "webSearchRequests": 0,
+          "costUSD": 0.3453064,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 23992,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 92796,
+          "outputTokens": 7106,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.0728326,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2416,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.41813900000000004,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates US dollar USD AUD latest daily rate",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Lisbon restaurant prices meal inexpensive restaurant domestic beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lisbon price of beer (imperial) and cappuccino coffee in cafe 2026 euros",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lisbon cocktail price bar restaurant euros 2026 cost of drinks",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lisbon glass of wine price restaurant euros 2026 typical cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Cost of Living in Lisbon restaurants meal inexpensive restaurant, mid-range three-course for 2, domestic beer 0.5 draught, cappuccino, last update",
+            "mode": "extended",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:49:34.258Z",
+      "finishedAt": "2026-11-19T06:53:05.666Z"
+    }
+  ]
+}

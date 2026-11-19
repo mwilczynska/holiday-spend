@@ -1,0 +1,101 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3592f4bad5ca4b93d200a59050c60f075f7b3011ddbf7b24b3ae17afdf8dcde6",
+  "requestSha256": "806ac37168ca631545b535a083cd93949251b9843a230a85fc16de0d89c43a5d",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 47335,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 2480,
+          "cacheReadInputTokens": 17111,
+          "cacheCreationInputTokens": 11505,
+          "webSearchRequests": 0,
+          "costUSD": 0.07425419999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1056,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 90200,
+          "outputTokens": 7387,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.07271350000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2907,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.14696769999999998,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Interlaken Switzerland cost of living restaurant meal price cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Interlaken prices meal inexpensive restaurant mid-range three-course dinner for two",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Switzerland price of cappuccino beer draft cocktail glass of wine restaurant numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Interlaken bar menu prices cocktail glass of wine 1dl CHF",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Interlaken cost of living prices cappuccino domestic beer 0.5l cocktail glass of wine traveltables",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:43:01.531Z",
+      "finishedAt": "2026-11-19T06:43:48.867Z"
+    }
+  ]
+}

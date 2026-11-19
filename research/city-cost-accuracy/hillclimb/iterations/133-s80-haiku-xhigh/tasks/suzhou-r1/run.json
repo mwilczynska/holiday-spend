@@ -1,0 +1,87 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "accf35d8ad43240be3b9cbfbbb7998e392da3431536bf1240fe37d9dfbb630ea",
+  "requestSha256": "b63267c384f74c263c0ab4156967118069704a4652fd714df24a49cf92fec4db",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 165605,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 194039,
+          "outputTokens": 45591,
+          "cacheReadInputTokens": 25667,
+          "cacheCreationInputTokens": 20674,
+          "webSearchRequests": 11,
+          "costUSD": 0.15659087000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 38330,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.15659087000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Suzhou cost of living restaurant meal prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Suzhou cappuccino price coffee shop yuan",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Suzhou beer price bar cocktail wine glass price yuan",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Suzhou restaurant beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD USD latest 4pm daily rate",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:14:20.565Z",
+      "finishedAt": "2026-11-19T07:17:06.171Z"
+    }
+  ]
+}

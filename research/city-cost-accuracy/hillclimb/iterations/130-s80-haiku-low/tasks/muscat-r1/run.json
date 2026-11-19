@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0341f6285c32e99b90057f961bec01a1fb284402d5484533b1dbf554e0662966",
+  "requestSha256": "cb2f612ddaeb2f82c9044b541b7f24061b16df1fb28232ce6aadec8eafbab60c",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 43698,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 56652,
+          "outputTokens": 6211,
+          "cacheReadInputTokens": 12056,
+          "cacheCreationInputTokens": 9440,
+          "webSearchRequests": 4,
+          "costUSD": 0.05077926000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1996,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05077926000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Muscat Oman restaurant meal cappuccino beer prices cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates current AUD USD 4pm November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Muscat bar cocktail glass of wine price OMR typical",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:01:46.774Z",
+      "finishedAt": "2026-11-19T07:02:30.472Z"
+    }
+  ]
+}

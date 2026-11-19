@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant meal, coffee and beer prices are based on 2026 cost-of-living figures (mostly Numbeo data reported by Expatica, Idealista, MyLifeElsewhere and Portugal Buyer's Agent). They give about EUR 12.5 for an inexpensive meal, EUR 35-40 for a mid-range meal for two, EUR 1.6-1.95 for a cappuccino and EUR 2.5-3.1 for a 0.5 L domestic draft beer. I raised these slightly for July high season in the Algarve. Cocktails are less certain: the only Faro figure was Expatistan's EUR 8 average, which comes from very few data points. I found no Faro data for wine by the glass. The wine estimate uses an Albufeira guide's EUR 3-6 range and the usual Portuguese price relationship to beer. EUR was converted to USD at about 1.10 USD per EUR, worked out from a third-party (non-RBA) page that showed RBA-reported AUD rates on 18 Nov 2026. Accommodation anchors were not researched. They are my own estimates for July peak season, so they are the least certain and could be off by about 25-35%.",
+  "comparable_city_reasoning": "Faro is a mid-sized regional capital and airport gateway. The cost-of-living sources put its prices about 8-12% above the Portugal average, below Lisbon but similar to other Algarve resort towns such as Lagos and Albufeira in summer. I used the Algarve resort towns and southern Portuguese tourist cities as the basis for accommodation, adjusted upward for July peak demand.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.3,
+    "coffee": 2.0,
+    "inexp_meal_1p": 14.0,
+    "midrange_meal_2p": 45.0,
+    "cocktail": 9.0,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 33.0,
+    "hostel_private_2p": 88.0,
+    "hotel_1star_2p": 95.0,
+    "hotel_3star_2p": 155.0
+  }
+}

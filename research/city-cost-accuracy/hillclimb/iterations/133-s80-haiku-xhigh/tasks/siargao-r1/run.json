@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "5408d74ba5a2d967bfdd3e07644349e2284dca02acaa08dc71893b9428033f5b",
+  "requestSha256": "de5d18d87385f3059982f4f22d7ca2f95dd193f6af4d09f5da029b2ce5e01324",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 150930,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 197078,
+          "outputTokens": 44280,
+          "cacheReadInputTokens": 22375,
+          "cacheCreationInputTokens": 19952,
+          "webSearchRequests": 11,
+          "costUSD": 0.15606195000000003,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 37279,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.15606195000000003,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11.1 US dollar latest daily observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siargao restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siargao beer cocktail wine prices bars",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siargao cappuccino coffee price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siargao restaurant wine by the glass price peso",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siargao cafe menu cappuccino php price General Luna",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:14:16.336Z",
+      "finishedAt": "2026-11-19T07:16:47.267Z"
+    }
+  ]
+}

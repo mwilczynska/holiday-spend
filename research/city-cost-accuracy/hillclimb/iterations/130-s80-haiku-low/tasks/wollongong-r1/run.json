@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "24f4c8f7941f819f386c24fc8997d649a49281be0ed3d1e239051ad748911a5d",
+  "requestSha256": "bd647435d53e9fd918cf321a2edbb74c200574e68ba4a19d7ba61a69f019bcda",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 37772,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 59414,
+          "outputTokens": 6791,
+          "cacheReadInputTokens": 13636,
+          "cacheCreationInputTokens": 9664,
+          "webSearchRequests": 4,
+          "costUSD": 0.05140606,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2357,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05140606,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest A$1 = US dollar F11.1 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Australia average price restaurant meal coffee cappuccino beer pub cocktail 2026 cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wollongong cost of living restaurant prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11.1 exchange rates daily USD per AUD November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:02:29.641Z",
+      "finishedAt": "2026-11-19T07:03:07.413Z"
+    }
+  ]
+}

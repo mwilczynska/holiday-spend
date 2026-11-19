@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Food anchors (inexpensive meal, mid-range meal, coffee, beer) rest on aggregated but crowd-sourced cost-of-living figures that disagree by roughly 1.5x, so they are medium quality. Beer is set at about 18 CNY, within a 15-25 CNY restaurant range from Numbeo-attributed and older expat figures. Cocktail and wine have no usable Suzhou-specific data. Cocktail is set at about 3x the beer anchor, using an undated Beijing range of 40-70 CNY and a generic 60-100 CNY bar-drink range. Wine glass is set at about 2.7x beer, using a bottle listing and a Beijing hotel rose pour, so both are low quality. All four accommodation anchors are holistic model estimates from general knowledge for a July peak season. No accommodation search was run, and no live booking pages or listings were inspected. CNY conversions use about 7.15 CNY per USD. The FX value is the RBA 4pm reference for 18 Nov 2026, as surfaced by a search restricted to rba.gov.au. The first RBA search returned no current official table, so a second RBA-restricted search was used (six searches total).",
+  "comparable_city_reasoning": "No single comparable city was used. Food and drink anchors are based on Suzhou-specific aggregated sources and mainland China price levels. Beer is the local proxy for cocktail and wine pricing. Accommodation anchors reflect general knowledge of mid-sized Chinese city hotel and hostel rates for July.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.60,
+    "coffee": 4.20,
+    "inexp_meal_1p": 4.20,
+    "midrange_meal_2p": 33.60,
+    "cocktail": 7.70,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 9.80,
+    "hostel_private_2p": 25.20,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 58.70
+  }
+}

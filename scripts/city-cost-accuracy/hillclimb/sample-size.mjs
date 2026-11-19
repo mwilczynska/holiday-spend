@@ -10,7 +10,7 @@
 // Corrected anchors are the production table's correctedAnchors; cocktail and wine stay uncorrected.
 import fs from 'node:fs';
 import path from 'node:path';
-import { hcRoot, readJson, loadPanel, cityLoss, mean, quantile, BUDGET_WEIGHTS, ANCHORS } from './lib.mjs';
+import { hcRoot, readJson, loadPanel, cityLoss, mean, quantile, BUDGET_WEIGHTS, ANCHORS, pairedBootstrap } from './lib.mjs';
 
 const [appRepo, ...rest] = process.argv.slice(2);
 const opt = (n, f) => (rest.includes(`--${n}`) ? rest[rest.indexOf(`--${n}`) + 1] : f);
@@ -67,14 +67,14 @@ const f3 = x => x.toFixed(3);
 
 const luna = answers(lunaId);
 console.log('1. Paired noise against Luna, own per-anchor correction fitted leave-one-city-out on the lane\'s cities');
-console.log('lane | cities | own-fit loss (Luna) | mean diff | sd of diff | cities for 80% power at diff 0.015 / 0.03 / 0.05');
+console.log('lane | cities | own-fit loss (Luna) | mean diff [95% paired bootstrap] | sd of diff | cities for 80% power at diff 0.015 / 0.03 / 0.05');
 const allSd = [];
 for (const lane of lanes) {
   const ans = answers(lane), keys = [...ans.keys()].filter(k => luna.has(k));
   if (keys.length < 5) { console.log(`${lane} | ${keys.length} | too few`); continue; }
   const mine = looLosses(ans, keys), base = looLosses(luna, keys), d = keys.map(k => mine[k] - base[k]), s = sd(d);
   allSd.push(s);
-  console.log([lane, keys.length, `${f3(mean(Object.values(mine)))} (${f3(mean(Object.values(base)))})`, f3(mean(d)), f3(s),
+  console.log([lane, keys.length, `${f3(mean(Object.values(mine)))} (${f3(mean(Object.values(base)))})`, `${f3(mean(d))} [${f3(-pairedBootstrap(base, mine).upper95)}, ${f3(-pairedBootstrap(base, mine).lower95)}]`, f3(s),
     [0.015, 0.03, 0.05].map(x => nFor(s, x)).join(' / ')].join(' | '));
 }
 if (allSd.length) console.log(`median sd of paired difference ${f3(quantile(allSd, 0.5))}`);

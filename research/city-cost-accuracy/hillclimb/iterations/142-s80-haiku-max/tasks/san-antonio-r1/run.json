@@ -1,0 +1,87 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3c120fd2bd593149e1d91004b9580d48a645292637b57b57431e922a2f194014",
+  "requestSha256": "752dcf0cdbd72ca044c1dcee7244cf7fefb03cf5e0e047994d1fe1be35a8bb48",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 537298,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 132097,
+          "outputTokens": 237181,
+          "cacheReadInputTokens": 55567,
+          "cacheCreationInputTokens": 32041,
+          "webSearchRequests": 8,
+          "costUSD": 0.21876407,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 230181,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.21876407,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily AUD USD latest November 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Antonio restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Antonio average price beer cocktail wine bar restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Antonio cappuccino coffee shop average price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11.1 exchange rates daily A$1 US dollar latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living San Antonio meal inexpensive restaurant mid-range three-course for two",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:28:51.890Z",
+      "finishedAt": "2026-11-19T07:37:49.188Z"
+    }
+  ]
+}

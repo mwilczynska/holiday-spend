@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Low overall. Food and drink anchors rest on web search excerpts (Numbeo city and province pages, Wise, Hikersbay, Livingcost, Tripbase, LorenziGo and similar) from mixed dates between 2025 and November 2026, with peso prices converted inconsistently across sources, so FX-basis uncertainty is high. Values approximate July 2026. Restaurant meal anchors agree best, while beer and coffee sources spread widely. No reliable restaurant per-glass wine price was found, so wine_glass is set at about 1.07x the beer anchor. Accommodation anchors are holistic model estimates for a mid-sized Argentine wine-tourism city, not based on any accommodation search or live listing check.",
+  "comparable_city_reasoning": "Food and drink anchors use Mendoza-specific evidence from search excerpts, with no substitute city. Cocktail is cross-checked against the local beer relationship (about 1.9x beer) and reported price ranges. Wine_glass follows the beer relationship (about 1.07x beer) because direct restaurant per-glass evidence was not found. Accommodation anchors are benchmarked to general knowledge of mid-sized Argentine provincial tourist cities with wine-tourism demand; no accommodation search was run.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 11.00,
+    "midrange_meal_2p": 48.00,
+    "cocktail": 6.75,
+    "wine_glass": 3.75,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 110.00
+  }
+}

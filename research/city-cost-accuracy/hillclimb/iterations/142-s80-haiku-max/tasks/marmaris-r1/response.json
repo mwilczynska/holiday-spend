@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on user-submitted Numbeo Marmaris figures and Turkish resort price listings, with TRY converted at an assumed 48 to 50 TRY per USD and a judgment-based July peak uplift. Cocktail and wine rely on bar and wine listings and were sense-checked against the beer anchor. Accommodation anchors are holistic model estimates with no accommodation searches or live listings, so they are the weakest. FX is the latest RBA daily rate I could verify (2026-03-20), about eight months before the generation date, so it may be stale and should be refreshed before use.",
+  "comparable_city_reasoning": "No named comparable city was used. Basis is Marmaris-specific food and drink listings, plus a holistic July peak-season resort view for accommodation. Region set to Europe as a Mediterranean/Aegean resort, although Turkey is transcontinental and could also be classed as Middle East.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.75,
+    "coffee": 3.50,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 8.50,
+    "wine_glass": 4.75,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 110.00
+  }
+}

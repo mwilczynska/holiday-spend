@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "I used six web searches: one for the RBA rate and five for Penang prices. Beer, coffee, inexpensive meal and mid-range meal rest on Numbeo's Penang table (crowd-sourced, ringgit converted at roughly RM4.1 per USD) and Expatistan. Numbeo gives about RM17 for domestic draft beer, RM12 for a cappuccino, RM15 for an inexpensive meal and RM80 for a mid-range meal for two. I rounded the mid-range meal up to allow for tourist-area George Town restaurants and Expatistan's RM136 dinner-for-two figure, which includes wine. Cocktail is based on a 2026 nightlife guide (RM35-55 at speakeasy bars) and Expatistan's older RM30 club figure; this is about 2.2 times the beer price. I found no direct glass-of-wine price. The wine glass is inferred from bottle prices of about RM74-78 and a typical Malaysian restaurant markup, so it is the weakest drink anchor. Accommodation anchors are holistic model estimates from general knowledge of George Town. I did not search accommodation prices or inspect any listings, so they are the least certain anchors. The price sources are not all dated to July 2026, and I did not check for July seasonality. The FX figure is the 4 pm RBA observation for 18 November 2026 (0.6720 USD per AUD), as reported in search results from RBA pages. I did not open the RBA page myself.",
+  "comparable_city_reasoning": "Priced against Penang/George Town's own Numbeo and Expatistan data. Prices are broadly in line with Malaysian secondary tourist cities such as Melaka and Ipoh, and below Kuala Lumpur and Bangkok in the tourist core. Hawker-centre prices are well below the sit-down restaurant anchors used here.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.0,
+    "coffee": 2.9,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 22.0,
+    "cocktail": 9.0,
+    "wine_glass": 7.5,
+    "hostel_dorm_1p": 10.0,
+    "hostel_private_2p": 26.0,
+    "hotel_1star_2p": 21.0,
+    "hotel_3star_2p": 55.0
+  }
+}

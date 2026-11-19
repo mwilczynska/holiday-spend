@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Overall low: no usable Uyuni-specific prices were found (Numbeo's Uyuni listing had none), so food and drink use Bolivia-wide and La Paz Numbeo averages plus less reliable Uyuni travel-guide ranges. Cocktail and wine rest on a few La Paz and Santa Cruz bar listings, cross-checked against beer (cocktail about 2.4x beer, glass of wine about 1.9x beer). Local prices use about 6.96 Bs per USD, the rate implied by Numbeo's USD equivalents and one guide. One retrieved source cited about 9.5 Bs per USD for April 2026, which would cut local-price USD figures by about 27 percent, so the higher-cost basis was kept. Accommodation anchors are holistic model estimates, not checked against listings. The RBA 18 Nov 2026 rate came from search-result text citing the RBA exchange-rates page, which was not opened directly; a 19 Nov figure was not confirmed.",
+  "comparable_city_reasoning": "No Uyuni-specific aggregated price data was retrieved. Food and drink use Bolivia-wide Numbeo averages with La Paz as the nearest comparator, plus a modest uplift for Uyuni's role as a salt-flat tour town. Accommodation is a holistic model judgement for a small, high-altitude tourist town, not derived from any accommodation search.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.40,
+    "coffee": 3.00,
+    "inexp_meal_1p": 3.75,
+    "midrange_meal_2p": 26.00,
+    "cocktail": 5.75,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 60.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are rough aggregated estimates from travel and cost-of-living sites with 2024 to 2026 data, converted from EUR at an assumed rate of about 1.16 USD per EUR. Accommodation anchors are holistic model estimates from general knowledge and were not checked against live listings. The FX observation is not the latest available: the search did not return a current RBA F11.1 table, so the value used is the most recent RBA figure found (20 March 2026), which is about eight months old at the 2026-11-19 generation date. A third-party mirror suggested about 0.7021 for 27 October 2026, but that was not verified against rba.gov.au and was not used.",
+  "comparable_city_reasoning": "Based on general southern Italian and Sicilian price levels for mid-sized tourist cities, with central Palermo bar and restaurant prices taken from the aggregated sources above. Cocktail and wine anchors were checked against those sources rather than derived from the beer anchor.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 2.30,
+    "inexp_meal_1p": 12.50,
+    "midrange_meal_2p": 64.00,
+    "cocktail": 10.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 87.00,
+    "hotel_3star_2p": 139.00
+  }
+}

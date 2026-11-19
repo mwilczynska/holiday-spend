@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are based on mixed, partly undated web guides (blogs, expat sites, bar listings) that disagree by venue and date, so they are rough. Restaurant meal anchors are the most reliable; cocktail and wine are less certain. Cocktail and wine anchors were checked against the local beer relationship because direct data was weak. Accommodation anchors are holistic model estimates from general knowledge and city context, not from inspected booking pages or current listings. The FX rate was taken from the RBA overview page's 18 November 2026 observation as reported in search results, not from the F11.1 table itself.",
+  "comparable_city_reasoning": "Regional basis: Latin American capital cities with similar mid-range tourist pricing and a mix of local and tourist-district venues, adjusted for Lima's sol-denominated restaurant prices and tourist-district premiums in Miraflores and Barranco.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 9.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 95.00
+  }
+}

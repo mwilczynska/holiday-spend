@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "a07b3e790f76f633398adf7937530d86e35d90c7f374dad1691881da8e8ec4ac",
+  "requestSha256": "3d0a4133d354a8fa4389183b69139098ff37cadfab52a54cf8f1b82a120661ed",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 78418,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 90695,
+          "outputTokens": 16678,
+          "cacheReadInputTokens": 19561,
+          "cacheCreationInputTokens": 12421,
+          "webSearchRequests": 6,
+          "costUSD": 0.08008831000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 10614,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.08008831000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates historical US dollar AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bratislava cost of living restaurant meal beer coffee prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bratislava price of beer cappuccino cocktail wine restaurant typical price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Bratislava restaurant prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11.1 exchange rates November 2026 AUD USD 4pm",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:06:16.818Z",
+      "finishedAt": "2026-11-19T07:07:35.236Z"
+    }
+  ]
+}

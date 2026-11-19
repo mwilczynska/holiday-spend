@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded from several aggregated and hotel-menu sources, with wide spread: beer and cocktail figures lean toward hotel-bar prices and may overstate typical local venues. Cappuccino and meal anchors are more consistent across sources. Accommodation anchors are holistic model estimates from general knowledge and city context, not inspected listings. Hostel anchors are lowest confidence because registered hostel supply in Muscat is thin. The FX observation was taken from a search-result summary of the RBA RSS feed, not from an opened RBA page, so verify it against the RBA table before use.",
+  "comparable_city_reasoning": "Gulf city priced below Dubai and Abu Dhabi, per an Oman Observer comparison. Drink anchors use hotel and bar menus converted at the OMR peg (about 1 OMR = 2.60 USD). Cocktail and wine are set relative to the beer and hotel-menu price level, since direct local evidence was weak. Accommodation is a holistic estimate for a mid-sized Gulf capital with limited budget supply.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/rss/rss-cb-exchange-rates.xml",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 13.50,
+    "wine_glass": 12.50,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 110.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors come from aggregated but crowd-sourced or secondary sources with small samples (Cities Insider, Expatistan, and a French price site), so they are rough. Cappuccino ($6-7), cocktail ($14-22) and pint ($7-12) ranges cluster consistently across sources. Inexpensive and mid-range meal anchors rely on a casual-lunch range ($16-22) and a mid-range dinner range ($30-55 per person). No direct current source for wine-by-the-glass was found, so wine_glass is a bounded estimate set relative to the beer anchor, not a sourced price. Accommodation anchors are holistic model estimates from general knowledge and city context; no accommodation searches or live listings were checked. The FX value is the most recent RBA page observation I could verify (20 March 2026), which is likely not the latest observation as of 2026-11-19.",
+  "comparable_city_reasoning": "No comparable city was needed. Seattle is a US city, so the anchors use US major-city price levels. Food and drink anchors are informed by Seattle-specific aggregated sources, which report prices above the US national average. Accommodation is a general-knowledge estimate for a mid-sized US West Coast metro with strong tourism demand.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 6.25,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 17.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 140.00,
+    "hotel_3star_2p": 240.00
+  }
+}

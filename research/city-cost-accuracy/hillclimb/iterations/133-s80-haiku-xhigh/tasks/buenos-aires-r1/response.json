@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food anchors mix source dates: July 2026 peso averages (Expat Arrivals), undated or 2025 peso figures (Mylifeelsewhere, Numbeo via Combien Coute, Buenos Aires Herald) and January 2026 USD ranges (Expats Argentina, Viajandox). Peso prices rose very fast through 2026, so these are bounded estimates for the July 2026 window. Peso figures were converted at about 1,450 ARS per USD, the rate implied by the sources' own conversions, not an official rate. Cocktail and wine anchors rely partly on price ratios to beer because direct data was weak. Accommodation anchors are holistic model estimates from general knowledge only; no live listings or booking pages were checked. The FX observation is the RBA exchange-rates overview listing for 18 November 2026 at 4.00 pm, read from search results rather than a directly opened page. It is an AUD observation and does not drive the USD anchors.",
+  "comparable_city_reasoning": "No specific comparable city was priced. Food anchors come from Buenos Aires' own 2026 price reports, converted at the dollar level implied by those sources. Accommodation was reasoned from general knowledge of tourist lodging in mid-sized Latin American capitals, without a comparable-city search.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 8.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 110.00
+  }
+}

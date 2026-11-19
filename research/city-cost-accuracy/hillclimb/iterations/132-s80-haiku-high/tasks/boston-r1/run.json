@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "60c9c02a06750be6d64aa99eb146802aa1f3d28bc2322f3da618680584995ca4",
+  "requestSha256": "a2394188538e09682aef3f96b17b225b15e2f3a74faca6dc71b4f6b2a443f58e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 74992,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 106936,
+          "outputTokens": 12925,
+          "cacheReadInputTokens": 32541,
+          "cacheCreationInputTokens": 14129,
+          "webSearchRequests": 7,
+          "costUSD": 0.09030730999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 7124,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.09030730999999999,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily F11 USD per AUD latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Boston cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Boston average price cappuccino beer cocktail wine glass bar prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11 exchange rates USD AUD latest observation",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Boston cappuccino price coffee shop 2026 average",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Boston 2026 average price draft beer pint wine by the glass cocktail bar cost",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:58:49.001Z",
+      "finishedAt": "2026-11-19T03:00:03.993Z"
+    }
+  ]
+}

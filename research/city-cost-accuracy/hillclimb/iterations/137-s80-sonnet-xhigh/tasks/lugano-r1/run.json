@@ -1,0 +1,107 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "f38095013c08f8f229b60bc339db0a57cfe0541c6a4c3a608165080e57739917",
+  "requestSha256": "48c7846375f7b1a60167ae24fbb1329501a497559bb285f49b4cf87891c11070",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 50283,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 3119,
+          "cacheReadInputTokens": 17268,
+          "cacheCreationInputTokens": 12523,
+          "webSearchRequests": 0,
+          "costUSD": 0.0847476,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1472,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 107123,
+          "outputTokens": 7404,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 7,
+          "costUSD": 0.0844143,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2514,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1691619,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lugano cost of living restaurant meal cappuccino beer prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lugano Numbeo cost of living inexpensive restaurant domestic beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lugano cocktail price bar glass of wine price restaurant CHF",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lugano three-course meal for two mid-range restaurant price glass of wine Expatistan Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lugano cost of living meal for 2 people mid-range restaurant three-course cocktail wine",
+            "mode": "standard",
+            "allowed_domains": [
+              "expatistan.com",
+              "mylifeelsewhere.com",
+              "numbeo.com",
+              "expatica.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:43:44.064Z",
+      "finishedAt": "2026-11-19T06:44:34.348Z"
+    }
+  ]
+}

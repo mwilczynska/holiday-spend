@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "ed544e165cd2b22578e44022062d3faa0d5c2d38a38d0d037b3dcf1d14a901c5",
+  "requestSha256": "efcfbeb85edb167c4792e2c231a231ae492a619c7c892ce9d28a0120c77bd240",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 42244,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 1669,
+          "cacheReadInputTokens": 13232,
+          "cacheCreationInputTokens": 7186,
+          "webSearchRequests": 0,
+          "costUSD": 0.0935384,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 336,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 57897,
+          "outputTokens": 3968,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 4,
+          "costUSD": 0.0477737,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1325,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1413121,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD AUD latest November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Foz do Iguaçu cost of living prices restaurant meal cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Foz do Iguaçu preço caipirinha taça de vinho chopp restaurante 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Foz do Iguacu prices meal inexpensive restaurant domestic beer cappuccino",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:39:59.598Z",
+      "finishedAt": "2026-11-19T06:40:41.842Z"
+    }
+  ]
+}

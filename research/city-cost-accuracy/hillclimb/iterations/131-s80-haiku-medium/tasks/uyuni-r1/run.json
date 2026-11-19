@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b4ebeec8978d0ec1737aaf0207f3ac42f95324a1b1824dd39008d4b6f877ddc2",
+  "requestSha256": "ee3a72c3434030a64835dd6259302c959598f7207feb843ff3b4c4203b76668c",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 33645,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 43418,
+          "outputTokens": 7311,
+          "cacheReadInputTokens": 6686,
+          "cacheCreationInputTokens": 6099,
+          "webSearchRequests": 3,
+          "costUSD": 0.03928396,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3896,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.03928396,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD per AUD latest observation rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Uyuni Bolivia restaurant meal prices cost of living tourists",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bolivia cost of coffee beer cocktail wine prices restaurant La Paz Uyuni 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:04:22.099Z",
+      "finishedAt": "2026-11-19T03:04:55.745Z"
+    }
+  ]
+}

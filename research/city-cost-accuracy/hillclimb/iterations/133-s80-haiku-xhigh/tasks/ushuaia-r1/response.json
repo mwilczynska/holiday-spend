@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Overall low. Food and drink anchors come from mixed, partly dated sources (crowdsourced Expatistan figures, Almurakib, a Patagonia price guide, and mainland Argentina aggregators), and several are quoted in ARS with no reliable 2026 conversion. Beer is the most-sourced anchor. Cocktail and wine lean on relative pricing to beer, since no by-the-glass Ushuaia price was found. Accommodation anchors are holistic model estimates for the July winter season; no booking pages or current listings were inspected. The FX figure (0.6720 for 2026-11-18) came from search-result snippets citing RBA data, which needed a second RBA-targeted search; the RBA page itself was not read directly.",
+  "comparable_city_reasoning": "No direct peer city. Food and drink are priced from Ushuaia-specific data points and mainland Argentine tourist-town benchmarks, adjusted upward for Ushuaia's Patagonia premium. Accommodation is a holistic estimate based on Ushuaia's July winter tourism demand and general knowledge of comparable Patagonian towns.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.75,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 8.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 160.00
+  }
+}

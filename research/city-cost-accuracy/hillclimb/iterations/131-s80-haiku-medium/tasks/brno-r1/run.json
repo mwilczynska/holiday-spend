@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b98fdeb8be4954461d5973d1ed1ce2f7e0070eb788e28513b9208d768887d624",
+  "requestSha256": "3f89c5aca8c99e6f8360e408a3e57fffda0a740a1d27ec58acfa63a0542bc24f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 46633,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 97868,
+          "outputTokens": 10160,
+          "cacheReadInputTokens": 20069,
+          "cacheCreationInputTokens": 12079,
+          "webSearchRequests": 7,
+          "costUSD": 0.08748328999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 4085,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.08748328999999999,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD per AUD latest observation rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Brno restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Czech Republic beer price pub restaurant 0.5 l average 2026 Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Brno cappuccino cocktail wine glass price average",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia F11 exchange rates daily USD AUD November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:03:10.574Z",
+      "finishedAt": "2026-11-19T07:03:57.207Z"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "50fcc275052e1e0ba08aa3185903487f92c4a27bfd0ae67241df9cce28b62f18",
+  "requestSha256": "6318520461b5e1766a8d4ef1452852351fb79cb9f63862076252f497d0865984",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 55107,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 77364,
+          "outputTokens": 13377,
+          "cacheReadInputTokens": 17367,
+          "cacheCreationInputTokens": 9887,
+          "webSearchRequests": 5,
+          "costUSD": 0.06657597,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 7947,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06657597,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest F11 USD per AUD",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Palermo Italy prices 2026 cappuccino beer cocktail wine restaurant meal cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Palermo cost of living restaurant meal price pizza trattoria menu average",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates F11.1 daily AUD USD November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:07:46.165Z",
+      "finishedAt": "2026-11-19T07:08:41.272Z"
+    }
+  ]
+}

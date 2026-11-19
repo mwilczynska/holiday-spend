@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Six searches used: one RBA lookup and five Bangkok price checks. The RBA rate (18 Nov 2026) was read from a search summary of RBA pages; I did not open the page myself. Restaurant meals (about THB 100 inexpensive, about THB 1,250 mid-range for two; Numbeo-style figures that may be dated) and cappuccino (about THB 105; typical range 60-130) are best supported. Beer (about THB 110) is mostly judgement: only blog and menu ranges were found (large local bottle about THB 80-100 at local restaurants, hotels much higher). Cocktail (about THB 300) and wine glass (about THB 285) rest on thin 2026 venue and guide ranges (cocktails roughly 200-420, wine roughly 200-500) and a 2.6-2.7x beer multiple. THB was converted to USD at an assumed 33 THB per USD from general knowledge, not looked up. Accommodation is a holistic model estimate for a July low-season window; no accommodation searches or listings were checked, and Bangkok hostel-private, 1-star and 3-star prices overlap widely.",
+  "comparable_city_reasoning": "No single comparator city used. Estimates combine Bangkok-specific price ranges from the searches with general knowledge of large Southeast Asian tourist cities. Wine and cocktails are priced at roughly 2.6-2.7x beer, reflecting Thailand's relatively high alcohol taxes.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.30,
+    "coffee": 3.15,
+    "inexp_meal_1p": 3.10,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 9.10,
+    "wine_glass": 8.60,
+    "hostel_dorm_1p": 11.50,
+    "hostel_private_2p": 27.00,
+    "hotel_1star_2p": 28.50,
+    "hotel_3star_2p": 52.00
+  }
+}

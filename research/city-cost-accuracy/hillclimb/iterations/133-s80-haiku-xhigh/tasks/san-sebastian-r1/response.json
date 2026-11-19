@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Restaurant and drink anchors come from aggregated third-party figures (Numbeo-derived guides, Expatistan, WhereAndWhen and similar guides) with mixed dates, adjusted for July peak season. The cappuccino, inexpensive meal and mid-range three-course meal for two are the best supported; beer is moderately supported. The cocktail estimate is weak: no dated 2026 euro price was found, so it is a judgement for a mid-range bar, cross-checked against the beer anchor (about 3.4 times the beer price). The wine glass estimate starts from pintxos-bar wine prices of about EUR 2.50 to 4 and is uplifted for a sit-down restaurant; no sit-down by-the-glass price was found, so it also relies partly on the beer relationship. Accommodation anchors are holistic model estimates for a July peak-season Basque coastal city, not based on live booking pages or current listings. EUR amounts were converted to USD at an assumed 1.15 USD per EUR from general knowledge; no EUR/USD observation was verified. The fx block is the most recent RBA observation visible in my search results (20 March 2026). I could not confirm an RBA observation close to the 2026-11-19 generation date, so the FX value may be stale and should be re-checked before use.",
+  "comparable_city_reasoning": "Restaurant and drink anchors are based on San Sebastian's own aggregated price data where found. One aggregator describes the city's prices as similar to Barcelona and Madrid, used only as a sense check. Accommodation anchors are holistic estimates for a Basque coastal city in peak summer and are not derived from a comparable city.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.03,
+    "coffee": 2.99,
+    "inexp_meal_1p": 18.40,
+    "midrange_meal_2p": 64.40,
+    "cocktail": 13.80,
+    "wine_glass": 5.18,
+    "hostel_dorm_1p": 48.30,
+    "hostel_private_2p": 109.25,
+    "hotel_1star_2p": 126.50,
+    "hotel_3star_2p": 241.50
+  }
+}

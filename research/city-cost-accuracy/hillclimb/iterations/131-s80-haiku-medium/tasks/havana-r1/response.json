@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and drink anchors are rough: sources were travel aggregators and older or cruise-ship menus, mixed currencies (USD, EUR, CUP, CUC), and no current 2026 Havana bar menus were found. Beer, coffee, cocktail and wine are bounded estimates tied to tourist-venue levels. Restaurant anchors come from a 6 USD cheap-meal figure and a 20 to 27 USD mid-range two-person figure, with a 2 to 8 USD range for basic meals. Accommodation anchors are holistic model estimates from general knowledge and the Havana context, not checked against live listings. Havana's dual-economy pricing and shortages make prices volatile. The FX observation is the latest RBA figure I could verify (20 March 2026), not a November 2026 value; a search for the RBA F11 series did not return a current official observation.",
+  "comparable_city_reasoning": "No direct comparable city was used. The basis is tourist-oriented price levels in Caribbean and Latin American capitals, adjusted for Havana's shortages, dual-currency pricing and the prevalence of casas particulares for lodging.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/chart-pack/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.25,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 7.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 120.00
+  }
+}

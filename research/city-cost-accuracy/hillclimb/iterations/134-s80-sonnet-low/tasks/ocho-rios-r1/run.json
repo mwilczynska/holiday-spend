@@ -1,0 +1,80 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "08fb48cad34267c998c16d84e2aa29c89fdf3749679a7a7ab3da8052e7b12d25",
+  "requestSha256": "9170a0433bf87d07283c77bedaf9736d84104b9e1d188af8938be3889ef95f39",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 23145,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 893,
+          "cacheReadInputTokens": 4552,
+          "cacheCreationInputTokens": 7950,
+          "webSearchRequests": 0,
+          "costUSD": 0.0416484,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 46690,
+          "outputTokens": 5038,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 3,
+          "costUSD": 0.037188,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2153,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0788364,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ocho Rios Jamaica restaurant prices beer cappuccino cocktail meal cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jamaica cost of living prices meal inexpensive restaurant Red Stripe beer cappuccino numbeo",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:30:55.166Z",
+      "finishedAt": "2026-11-19T06:31:18.312Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "These are USD figures converted from Swiss-franc (CHF) prices. The CHF-to-USD rate of about 1.25 USD per CHF is my estimate from general knowledge. I did not search for it, so the USD anchors shift if the actual July 2026 rate differs. Restaurant meal, coffee and beer come from crowd-sourced cost-of-living sites. The inexpensive meal is about CHF 25 (CHF 26 for a lunch menu). The mid-range three-course meal for two is about CHF 148-158. A cappuccino is about CHF 3.65-3.90; I rounded it up slightly to about CHF 4 for restaurant prices. Beer is about CHF 5.9-6.2 for a pub pint. The cocktail is about CHF 14 from a thin sample of 8 data points, which I nudged up for July tourist season. I found no aggregated per-glass wine price. The wine figure, about CHF 8, comes from local bottle prices of CHF 33-39 and the usual Swiss ratio of wine to beer, so it is less certain. Accommodation anchors are my own judgement, not taken from any listings. Lugano has very few hostels, and July is peak lakeside season, so the hostel and 1-star figures are especially uncertain.",
+  "comparable_city_reasoning": "Food and drink are based on Lugano-specific cost-of-living figures, which say Lugano restaurants are slightly cheaper than the Swiss average. Accommodation is benchmarked against other Swiss lake and tourist cities such as Lucerne and Locarno, adjusted for July peak demand. Lugano is cheaper than Zurich or Geneva but still at Swiss price levels.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.75,
+    "coffee": 5.00,
+    "inexp_meal_1p": 31.00,
+    "midrange_meal_2p": 188.00,
+    "cocktail": 18.50,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 65.00,
+    "hostel_private_2p": 160.00,
+    "hotel_1star_2p": 185.00,
+    "hotel_3star_2p": 285.00
+  }
+}

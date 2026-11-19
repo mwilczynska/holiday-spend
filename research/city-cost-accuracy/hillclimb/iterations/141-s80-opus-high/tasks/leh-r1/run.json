@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "434c767dc1845764342afed57e03ca15e3f67ab04d3db1ce88825e2cd823343a",
+  "requestSha256": "f7a675587858a5984d9777615c81f8a6b1d0bd6869c999641f08af83491b32f8",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 45641,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 1774,
+          "cacheReadInputTokens": 15814,
+          "cacheCreationInputTokens": 7989,
+          "webSearchRequests": 0,
+          "costUSD": 0.1025788,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 543,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 58918,
+          "outputTokens": 5702,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 4,
+          "costUSD": 0.048742799999999996,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1964,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1513216,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD/USD latest November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Leh Ladakh cost of living restaurant meal cappuccino beer prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Leh Ladakh food prices cafe coffee meal cost for tourists 2025 budget",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Leh bar beer price Kingfisher cocktail wine restaurant Ladakh alcohol prices",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:40:34.120Z",
+      "finishedAt": "2026-11-19T06:41:19.761Z"
+    }
+  ]
+}

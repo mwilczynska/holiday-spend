@@ -1,0 +1,63 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "d8ba0b0f99959ed6479a17d1634bd813c793dd29591ffa46ec7def5e8d9e4836",
+  "requestSha256": "eb4e72856516f3de89a36b95de0aaa47425d84a15dc24ea86d9bbe9a89049db9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 45905,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 72851,
+          "outputTokens": 10256,
+          "cacheReadInputTokens": 6676,
+          "cacheCreationInputTokens": 8257,
+          "webSearchRequests": 5,
+          "costUSD": 0.06413126,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 6596,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06413126,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mérida Yucatán cost of living restaurant meal beer prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mérida Mexico cappuccino coffee price cocktail wine prices typical",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:07:34.917Z",
+      "finishedAt": "2026-11-19T07:08:20.822Z"
+    }
+  ]
+}

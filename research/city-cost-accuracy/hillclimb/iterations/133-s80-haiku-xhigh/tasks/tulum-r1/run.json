@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "04528f095ad11896a2179a422dd2002682d1065c9096026e6a4cb5b5306b864f",
+  "requestSha256": "2b603d46261b4300b4746fb163cf5473baffdf68cad48c20eb609ea41a1098a6",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 131716,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 118089,
+          "outputTokens": 29482,
+          "cacheReadInputTokens": 18724,
+          "cacheCreationInputTokens": 12756,
+          "webSearchRequests": 7,
+          "costUSD": 0.09928833999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 24212,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.09928833999999999,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD per AUD latest F11 daily",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tulum Mexico cost of living restaurant meal prices beer cappuccino 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tulum cocktail price wine glass price restaurant bars",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tulum copa de vino precio pesos restaurante 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:14:47.774Z",
+      "finishedAt": "2026-11-19T07:16:59.491Z"
+    }
+  ]
+}

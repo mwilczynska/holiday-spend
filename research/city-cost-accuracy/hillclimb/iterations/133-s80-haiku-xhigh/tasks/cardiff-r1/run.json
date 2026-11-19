@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "5ae47949f0124e0d3083f74b529b1fb229b522569c32b7d7d163c438218c257c",
+  "requestSha256": "5590d5a6ac04b03eb5a833a40cddede354b2b9497534fa5849c94205eb22172d",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 114452,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 115181,
+          "outputTokens": 33751,
+          "cacheReadInputTokens": 18252,
+          "cacheCreationInputTokens": 13445,
+          "webSearchRequests": 7,
+          "costUSD": 0.10126512,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 27832,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.10126512,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cardiff cost of living restaurant meal coffee beer prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cardiff UK cappuccino pint of beer cocktail glass of wine typical prices Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates F11.1 daily 2026 AUD USD rate latest published rba.gov.au",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cardiff average price glass of wine cocktail pub bar 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:09:58.641Z",
+      "finishedAt": "2026-11-19T07:11:53.094Z"
+    }
+  ]
+}

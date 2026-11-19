@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "43f51266c3df7fba6fdd898d97fb7d93ced2ce4f139b02eb5bdcc5a447d1fadd",
+  "requestSha256": "699077d1509bcbb9a295062a9ab2882d3cefc443ebce7cc70081e8df2aac971b",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 28801,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 92612,
+          "outputTokens": 9940,
+          "cacheReadInputTokens": 4567,
+          "cacheCreationInputTokens": 15564,
+          "webSearchRequests": 7,
+          "costUSD": 0.08738967,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3167,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.08738967,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Melbourne cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Melbourne average cappuccino price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Melbourne pub beer schooner price 2026 cocktail wine glass price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Melbourne price index cafe bar restaurant prices average 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Melbourne cocktail average price bar 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:01:40.545Z",
+      "finishedAt": "2026-11-19T07:02:09.347Z"
+    }
+  ]
+}

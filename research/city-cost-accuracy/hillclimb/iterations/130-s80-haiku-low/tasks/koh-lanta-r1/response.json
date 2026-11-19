@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from aggregated but mixed sources (Numbeo entries, Wise, and travel blogs). Some are dated, and tourist-strip prices vary widely, so they are bounded estimates. Accommodation anchors are holistic model estimates from general knowledge and the Koh Lanta context; no booking pages or current listings were inspected. Wine and cocktail anchors use the local beer relationship because direct data was thin. Converted THB figures use an approximate 2026 rate of about 34 THB per USD. The FX observation is the latest RBA figure I could verify (20 March 2026), which is stale relative to the 2026-11-19 generation date. A later third-party figure was found but is not an RBA observation, so it was not used.",
+  "comparable_city_reasoning": "Basis is Thai southern island and beach-town pricing (Krabi and Phuket area norms) adjusted to Koh Lanta's smaller, less commercialised market, with beachfront venues pricier than local eateries.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 5.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 65.00
+  }
+}

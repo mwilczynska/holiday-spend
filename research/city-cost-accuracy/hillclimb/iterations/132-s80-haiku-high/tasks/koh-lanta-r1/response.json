@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from several third-party cost-of-living aggregators, crowd-sourced averages, and a few Koh Lanta or nearby Thai menu snippets, not from a single venue, and they disagree by source. Beer, cocktail, and wine anchors rest on a beer-relative basis: cocktail is about 2x beer and wine is about 3x beer, because the Koh Lanta wine figure found was unclear. Accommodation anchors are holistic model estimates from general knowledge and the Koh Lanta context; no live booking pages or current listings were inspected. The FX observation was taken from a search-result summary of the RBA exchange-rates page and was not opened directly. It is dated 2026-03-20, and a later RBA observation for the 2026-11-19 generation date was not confirmed, so the rate may be stale.",
+  "comparable_city_reasoning": "Thai island tourist towns with similar pricing (Koh Samui, Krabi, Koh Lipe) for food and drink, with Bangkok as an upper reference for mid-range meals and wine. Accommodation is a holistic estimate for a small Andaman island guesthouse and resort market.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 6.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 75.00
+  }
+}

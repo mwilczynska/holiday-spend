@@ -1,0 +1,94 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b5f7cc2b36de6a19239149a7f40d8d0dac2487d6dc5d714950cfc82b29966ee2",
+  "requestSha256": "f170ca6a1d6bf6a2c5a149200139aeaffcf6831afd5a4b4f8122aa34c4b89312",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 48059,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 2233,
+          "cacheReadInputTokens": 17245,
+          "cacheCreationInputTokens": 9701,
+          "webSearchRequests": 0,
+          "costUSD": 0.064595,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 872,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 75149,
+          "outputTokens": 6345,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 5,
+          "costUSD": 0.06068740000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2198,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.12528240000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates statistics US dollar AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Seattle cost of living restaurant prices meal inexpensive restaurant mid-range two people Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Seattle price of cappuccino and domestic draft beer restaurant average price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Seattle cocktail price average bar glass of wine restaurant price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Seattle cost of living Numbeo domestic beer restaurant cappuccino prices",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:44:22.580Z",
+      "finishedAt": "2026-11-19T06:45:10.639Z"
+    }
+  ]
+}

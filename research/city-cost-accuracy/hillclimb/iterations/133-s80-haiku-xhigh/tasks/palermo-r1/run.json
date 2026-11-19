@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "50fcc275052e1e0ba08aa3185903487f92c4a27bfd0ae67241df9cce28b62f18",
+  "requestSha256": "6318520461b5e1766a8d4ef1452852351fb79cb9f63862076252f497d0865984",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 95750,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 142080,
+          "outputTokens": 46348,
+          "cacheReadInputTokens": 6680,
+          "cacheCreationInputTokens": 15224,
+          "webSearchRequests": 8,
+          "costUSD": 0.1204936,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 39164,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1204936,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Palermo restaurant meal prices 2026 cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Palermo cappuccino price bar euro 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Palermo beer price pub bar euro 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Palermo cocktail price euro aperitivo 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Italy restaurant glass of wine price euro typical 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:12:43.989Z",
+      "finishedAt": "2026-11-19T07:14:19.739Z"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "48ad04321c8f93803b3b8bae96933f5f27dbc41c5ec0428ae204d2e0449b0c35",
+  "requestSha256": "6b6f621e811fe954d8e9aca8b6686a3dcc7272d6f50d9bee82c5d83862fb653e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 36207,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 63068,
+          "outputTokens": 6323,
+          "cacheReadInputTokens": 14851,
+          "cacheCreationInputTokens": 10778,
+          "webSearchRequests": 5,
+          "costUSD": 0.06177240999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2332,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06177240999999999,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD per AUD F11 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Sebastian Donostia cost of living restaurant menu price cappuccino beer 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Sebastian Spain prices cocktail wine glass average 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates US dollar A$1 = US$ November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:01:53.425Z",
+      "finishedAt": "2026-11-19T07:02:29.632Z"
+    }
+  ]
+}

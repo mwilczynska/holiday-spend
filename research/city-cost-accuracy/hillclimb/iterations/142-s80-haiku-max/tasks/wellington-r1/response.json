@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee and beer anchors are triangulated from Numbeo's crowd-sourced Wellington figures and several 2026 Wellington and national NZ guides, some undated. Cocktail and wine glass rest on a few Wellington menu snippets and are less certain. Accommodation values are holistic model estimates for a July (winter) stay, not checked against live listings. NZD prices were converted at an approximate rate not sourced from search, so a few percent of conversion error is possible. The FX value (18 Nov 2026, latest found) came from search-result reports, including a third-party aggregator; the RBA page itself was not opened.",
+  "comparable_city_reasoning": "No comparable city used. Meal, coffee and beer anchors are Wellington-specific, from Numbeo's Wellington city page and 2026 Wellington guides. Cocktail and wine glass were set from thin Wellington snippets and NZ national guides, with the beer anchor used as a check (cocktail about 1.6 times beer, wine glass about 1.2 times). Accommodation is a holistic estimate from general knowledge of Wellington lodging, not a comparable-city transfer.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.38,
+    "coffee": 3.48,
+    "inexp_meal_1p": 14.46,
+    "midrange_meal_2p": 70.80,
+    "cocktail": 11.80,
+    "wine_glass": 8.85,
+    "hostel_dorm_1p": 26.55,
+    "hostel_private_2p": 73.75,
+    "hotel_1star_2p": 85.55,
+    "hotel_3star_2p": 135.70
+  }
+}

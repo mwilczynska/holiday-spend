@@ -1,0 +1,80 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3ae397fe0de7010437480e546dabfdfa719eba749ab46121c6408ae590fc8c1e",
+  "requestSha256": "0672ff612063cde9e2b3cb4d4ac550fb25b57a9ed1eb4d44c70ed5bf9d9a3d55",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 39509,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 90292,
+          "outputTokens": 7707,
+          "cacheReadInputTokens": 17264,
+          "cacheCreationInputTokens": 10726,
+          "webSearchRequests": 6,
+          "costUSD": 0.07520054,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2869,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07520054,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tampa FL cost of living restaurant meal price cappuccino beer cocktail 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tampa restaurant prices average bar beer cocktail wine glass typical cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD/USD closing rate 4pm latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tampa cost of living index restaurant meal price 2026 Numbeo",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:04:43.819Z",
+      "finishedAt": "2026-11-19T07:05:23.328Z"
+    }
+  ]
+}

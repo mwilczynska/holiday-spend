@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Six searches (1 RBA, 5 Penang prices); only search-result summaries were read, not full pages. Meal anchors are central estimates from cost-of-living aggregators (Wise, MyLifeElsewhere, Expatistan, Nomad Ranker) that disagree by 2-3x; ringgit converted at about RM4.2/USD. Coffee fits RM10-12 and beer RM10-20 ranges; cocktail reflects typical RM25-45 bar prices; wine glass is weakest (one undated RM21 house-wine listing) and was set at about 1.8x beer. Accommodation is a holistic estimate from general knowledge, with no booking pages or listings inspected. FX is from a search result for the RBA exchange-rate page (18 Nov 2026); an older cached value near 0.72 was treated as stale.",
+  "comparable_city_reasoning": "Penang/George Town priced from Malaysian ringgit aggregator data, cross-checked against general knowledge of Kuala Lumpur and other Malaysian and Southeast Asian tourist cities; far below Singapore.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.90,
+    "coffee": 2.70,
+    "inexp_meal_1p": 3.30,
+    "midrange_meal_2p": 21.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 10.50,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 27.00,
+    "hotel_3star_2p": 50.00
+  }
+}

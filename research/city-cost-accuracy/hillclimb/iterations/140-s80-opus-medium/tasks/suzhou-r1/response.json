@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "I based the restaurant meal, coffee and beer anchors on web searches of aggregated cost-of-living sites. Their figures vary: an inexpensive meal is about $3.50–8.40, a cappuccino about $3.35–6.00 (about ¥22–28), and a mid-range three-course dinner for two is about $30. Many sources quote beer as a cheap 0.5L bottle at about $1–2, while bar or pub beer is quoted at ¥40–80. I estimated a mid-point draft serving in a restaurant. I found no aggregated cocktail price for Suzhou. One upscale hotel bar menu, Niccolo Suzhou, lists cocktails at about ¥98–108 plus a service charge. I scaled the cocktail estimate down toward a typical non-hotel bar price and checked it against the local beer price. I found no Suzhou price for wine by the glass. I estimated it from the local beer price and from a retail benchmark of about ¥183 for a good-quality bottle. Cocktail and wine are therefore lower-confidence. The four accommodation anchors are holistic model estimates from general knowledge only. I did not search or inspect any booking pages or listings. Prices in July 2026 may be higher during the summer domestic travel peak. The FX figure is the RBA 4pm rate reported for 18 November 2026. It came from search results that cited RBA pages; I did not open the RBA page directly.",
+  "comparable_city_reasoning": "Suzhou is a wealthy, heavily touristed Jiangsu city close to Shanghai. I assumed prices somewhat below central Shanghai and broadly similar to Hangzhou. One source says Suzhou restaurant prices are well above the Chinese national average, and my estimates reflect that.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 11.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 55.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are based on aggregated 2026-dated and undated Korean price sources (Numbeo/Expatistan-style averages and travel guides), converted from KRW at an assumed rate of about 1,400 KRW per USD. Restaurant anchors are the most reliable. Cocktail and wine anchors are less certain and rely on Seoul bar data and a 2024 bar menu, adjusted down for Jeonju. Accommodation anchors are holistic model estimates from general knowledge and the city context, not from inspected booking pages or current listings. The FX observation came from an RBA exchange-rates overview summary returned by search and was not checked against the RBA F11.1 table directly.",
+  "comparable_city_reasoning": "No single comparable city was used. Korean price levels were taken from national and Seoul-based aggregates, then adjusted down for Jeonju as a mid-sized regional city. Jeonju restaurant and bibimbap price references were used where available.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.90,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 43.00,
+    "cocktail": 10.50,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 85.00
+  }
+}

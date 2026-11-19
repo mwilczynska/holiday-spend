@@ -1,0 +1,80 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b5f7cc2b36de6a19239149a7f40d8d0dac2487d6dc5d714950cfc82b29966ee2",
+  "requestSha256": "f170ca6a1d6bf6a2c5a149200139aeaffcf6831afd5a4b4f8122aa34c4b89312",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 49530,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 87899,
+          "outputTokens": 12268,
+          "cacheReadInputTokens": 16608,
+          "cacheCreationInputTokens": 11437,
+          "webSearchRequests": 6,
+          "costUSD": 0.07737738,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 7009,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07737738,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Seattle cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Seattle cappuccino beer cocktail wine glass average price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "F11.1 exchange rates daily USD AUD rba.gov.au",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Seattle glass of wine restaurant price average 2026 cost of living",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:08:20.692Z",
+      "finishedAt": "2026-11-19T07:09:10.222Z"
+    }
+  ]
+}

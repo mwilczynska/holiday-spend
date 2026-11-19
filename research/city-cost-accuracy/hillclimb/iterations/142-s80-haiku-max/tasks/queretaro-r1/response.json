@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Meal and coffee anchors rest on mixed-date Querétaro snippets (roughly 2023 to 2026 cost-of-living guides, chain and delivery-app menus) converted at about 18 MXN per USD, so they are moderately reliable. Beer is weaker: the best hint is a hotel-list price of about 65 MXN for a 355 ml domestic bottle, adjusted down for a neighborhood restaurant. Cocktail and wine_glass lack direct Querétaro restaurant prices and are derived from the beer anchor using typical bar markups, so drinks and accommodation are less certain than restaurant anchors. Accommodation anchors are holistic model estimates; no accommodation search or booking-page check was run, and they may be off by a wide margin. FX: the 2026-11-18 rate was taken from a search-result summary of the RBA exchange-rates page; no 2026-11-19 value was found.",
+  "comparable_city_reasoning": "No single comparable city was used; food and drink anchors rest mainly on Querétaro-specific snippets. A Mérida bar price snippet served only as a loose cross-check for drinks. Accommodation anchors reflect general knowledge of Querétaro's mid-sized business and leisure hotel and hostel market.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.10,
+    "coffee": 3.80,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 7.50,
+    "wine_glass": 7.20,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 100.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on several travel and cost-of-living sites (dated roughly 2023 to 2026) that broadly agree on bands but conflict in detail and mix resort and local venues. Beer is a domestic bottle at restaurant prices, the nearest basis for draft. wine_glass has no direct restaurant price source and is set at 2x the beer anchor, the local beer-relationship basis. Cocktail is based on several bar price ranges (about $6 to $12). Accommodation anchors are holistic model estimates for assumed July low-season rates, with no accommodation search, listing check or tax/fee breakdown, so they are the least certain. FX is the latest RBA figure found in search results (18 Nov 2026); no 19 Nov figure was located.",
+  "comparable_city_reasoning": "Dominican Republic resort-coast basis: restaurant and drink anchors reflect Punta Cana tourist-zone price guides cross-checked against Dominican Republic-wide cost-of-living estimates. A Western Union city comparison puts a mid-range dinner for two at about $50 in Punta Cana, Santo Domingo and Cabarete. Accommodation anchors are general-knowledge estimates for a resort-dominated market with few hostels, not a named comparable city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 120.00
+  }
+}

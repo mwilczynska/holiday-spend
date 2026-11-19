@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "d8ba0b0f99959ed6479a17d1634bd813c793dd29591ffa46ec7def5e8d9e4836",
+  "requestSha256": "eb4e72856516f3de89a36b95de0aaa47425d84a15dc24ea86d9bbe9a89049db9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 26654,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 731,
+          "cacheReadInputTokens": 4541,
+          "cacheCreationInputTokens": 6136,
+          "webSearchRequests": 0,
+          "costUSD": 0.0646322,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 28777,
+          "outputTokens": 3245,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 2,
+          "costUSD": 0.0245002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1187,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0891324,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD/USD latest November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mérida Mexico cost of living prices restaurant meal cappuccino beer",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:32:56.340Z",
+      "finishedAt": "2026-11-19T06:33:22.994Z"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3992389c83ecf0f63658b254f2ff16716066cb9149d721e75e91dd7eabcdd825",
+  "requestSha256": "845bf606721af89e196beda59192cd48f5fd529a66d8670e3766efc8358ce134",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 34928,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 1540,
+          "cacheReadInputTokens": 6654,
+          "cacheCreationInputTokens": 5210,
+          "webSearchRequests": 0,
+          "costUSD": 0.0738268,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 272,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 42133,
+          "outputTokens": 3898,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 3,
+          "costUSD": 0.0361623,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1302,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1099891,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD/USD latest daily observation November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Trinidad Cuba cost of living prices restaurant meal beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Trinidad Cuba 2026 travel prices mojito beer dinner cost",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:37:02.486Z",
+      "finishedAt": "2026-11-19T06:37:37.414Z"
+    }
+  ]
+}

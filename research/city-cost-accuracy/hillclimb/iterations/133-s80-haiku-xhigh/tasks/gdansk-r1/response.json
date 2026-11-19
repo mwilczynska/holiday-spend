@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on several cost-of-living aggregator figures (Numbeo, Expatistan, Whereandwhen, Gotripzi, Combien Coute, LifeIndexed, and a Tri-City guide) with mixed dates and methods. Złoty figures were converted at about 0.27 USD per PLN, the rate implied by the sources' own conversions. Coffee and beer are the most consistent anchors. The cocktail rests on one aggregator figure from 8 data points and was cross-checked against the local beer ratio (about 2.1x). Wine rests on one 2024 venue menu, adjusted upward modestly and cross-checked against beer (about 1.5x). Accommodation anchors are holistic model estimates for July peak season, with no accommodation search or live listings, so they are lower confidence than the food anchors. The FX value (0.7088 USD per AUD, dated 2026-03-20) came from search results rather than the live RBA table, and it is about eight months older than the generation date.",
+  "comparable_city_reasoning": "Food anchors are Gdansk-specific and were cross-checked against Warsaw restaurant figures from the same aggregator data. Accommodation anchors are a holistic estimate benchmarked to mid-sized Polish Baltic and tourism cities at July peak demand, not to one named comparable city.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.30,
+    "coffee": 4.40,
+    "inexp_meal_1p": 9.70,
+    "midrange_meal_2p": 51.00,
+    "cocktail": 9.20,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 26.00,
+    "hostel_private_2p": 66.00,
+    "hotel_1star_2p": 78.00,
+    "hotel_3star_2p": 135.00
+  }
+}

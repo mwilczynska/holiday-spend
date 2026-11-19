@@ -1,0 +1,107 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0341f6285c32e99b90057f961bec01a1fb284402d5484533b1dbf554e0662966",
+  "requestSha256": "cb2f612ddaeb2f82c9044b541b7f24061b16df1fb28232ce6aadec8eafbab60c",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 197978,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 24534,
+          "cacheReadInputTokens": 19411,
+          "cacheCreationInputTokens": 21260,
+          "webSearchRequests": 0,
+          "costUSD": 0.3342742,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 23079,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 96991,
+          "outputTokens": 8946,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 7,
+          "costUSD": 0.0841721,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3263,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.41844630000000005,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest US dollar AUD",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Muscat Oman restaurant prices domestic beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Muscat Oman price of beer, cocktail and glass of wine in hotel bar restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Muscat Oman cappuccino price cafe cost of coffee and mid-range restaurant meal for two",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Muscat cost of living restaurant prices domestic beer 0.5 draught cappuccino inexpensive meal mid-range meal for two",
+            "mode": "standard",
+            "allowed_domains": [
+              "citycost.org",
+              "numbeo.com",
+              "expatistan.com",
+              "traveltables.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Muscat hotel bar menu prices OMR cocktail glass of house wine pint of beer",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:52:01.661Z",
+      "finishedAt": "2026-11-19T06:55:19.639Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from five web searches that found aggregated cost-of-living data (Numbeo-derived figures via Expatica dated June 2026, older TravelTables, MyLifeElsewhere, Expatistan, Zumper), Toast's 2026 beer-price data and Square bar-menu data. Beer is anchored near Toast's San Antonio median pint of about $5.99. Cappuccino sits within the roughly $4.1 to $5.4 range across sources. The inexpensive meal sits within the $15 to $20 range. The mid-range dinner for two is about $55 to $65 in the sources. Cocktail and wine had no reliable city-wide average, so I used Square's roughly $8 to $10 cocktail range, nudged up for restaurant and current prices, and a wine range of about $7 to $10 from sample venue menus. That makes them less certain. Accommodation anchors are holistic model estimates from general knowledge only. I did not search accommodation prices or inspect any booking pages or listings. They are the least certain anchors, especially hostel dorm and private-room prices because San Antonio has few hostels, and hotel rates vary with events and season. The FX figure is the latest RBA observation reported by search for 2026-11-18.",
+  "comparable_city_reasoning": "No proxy city was used for food and drink; the figures reflect San Antonio data. Accommodation is a holistic estimate based on mid-sized, tourism-oriented Sun Belt cities such as Austin (somewhat cheaper) and Nashville, and on San Antonio's Riverwalk and Alamo tourism market. San Antonio is cheaper than Austin and Dallas for beer and dining.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 4.75,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 11.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 62.00,
+    "hotel_3star_2p": 130.00
+  }
+}

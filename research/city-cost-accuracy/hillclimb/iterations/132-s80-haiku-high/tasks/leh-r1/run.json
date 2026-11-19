@@ -1,0 +1,63 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "434c767dc1845764342afed57e03ca15e3f67ab04d3db1ce88825e2cd823343a",
+  "requestSha256": "f7a675587858a5984d9777615c81f8a6b1d0bd6869c999641f08af83491b32f8",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 49478,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 85670,
+          "outputTokens": 12048,
+          "cacheReadInputTokens": 6674,
+          "cacheCreationInputTokens": 8874,
+          "webSearchRequests": 5,
+          "costUSD": 0.06643254000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 7692,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06643254000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates latest USD per AUD F11 rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Leh Ladakh restaurant meal prices cappuccino beer cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Leh travel budget food prices per meal India Ladakh cafe",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:07:21.336Z",
+      "finishedAt": "2026-11-19T07:08:10.814Z"
+    }
+  ]
+}

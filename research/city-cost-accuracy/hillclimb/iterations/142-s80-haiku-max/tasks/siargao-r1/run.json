@@ -1,0 +1,80 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "5408d74ba5a2d967bfdd3e07644349e2284dca02acaa08dc71893b9428033f5b",
+  "requestSha256": "de5d18d87385f3059982f4f22d7ca2f95dd193f6af4d09f5da029b2ce5e01324",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 444431,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 125691,
+          "outputTokens": 253933,
+          "cacheReadInputTokens": 6679,
+          "cacheCreationInputTokens": 21037,
+          "webSearchRequests": 10,
+          "costUSD": 0.24380979,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 246029,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.24380979,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates AUD USD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siargao General Luna restaurant meal prices 2026 peso budget and mid-range",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siargao cafe cappuccino coffee price peso 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siargao bar prices San Miguel beer cocktail wine glass peso 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Philippines cost of living restaurant prices beer cappuccino wine index 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:32:00.577Z",
+      "finishedAt": "2026-11-19T07:39:25.008Z"
+    }
+  ]
+}

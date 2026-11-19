@@ -1,0 +1,87 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "9dfa70c12f65d4fda4f745c753ce79cb37423b460a28d8f62c08a183081700b2",
+  "requestSha256": "746ae8abc0eb46036a93cc5c5b5df459de26f1328b45aadf2c66c74f5d611b08",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 70406,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 86492,
+          "outputTokens": 15048,
+          "cacheReadInputTokens": 28501,
+          "cacheCreationInputTokens": 11327,
+          "webSearchRequests": 6,
+          "costUSD": 0.07872361,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 8862,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07872361,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kaohsiung cost of living restaurant meal cappuccino beer prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Taiwan cost of living 2026 restaurant meal coffee beer price NT$",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11.1 exchange rates AUD USD November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Taiwan bar cocktail wine glass price NT$ Kaohsiung Taipei 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank exchange rates AUD USD 4.00 pm November 2026",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:06:24.499Z",
+      "finishedAt": "2026-11-19T07:07:34.905Z"
+    }
+  ]
+}

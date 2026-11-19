@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are medium confidence. They come from aggregated sources (Numbeo figures via Expatica, MyLifeElsewhere, Whereandwhen, Italy Handbook, and Italian national espresso surveys) and were not checked against individual venues. Cocktail and wine anchors are weaker: no direct La Spezia or national data was found, so cocktail is based on Italian aperitivo price ranges and wine on casual-restaurant glass prices, and both are adjusted down for a smaller port city. Accommodation anchors (dorm, private hostel, 1-star, 3-star) are holistic model estimates from general knowledge and the July-season context. They are low confidence, were not checked against live listings or booking pages, and no accommodation searches were run. The EUR-to-USD conversion used in the estimates is derived from the RBA AUD/EUR and AUD/USD cross rates, so it is approximate (about 1.10 USD per EUR).",
+  "comparable_city_reasoning": "Priced as a mid-sized Ligurian coastal city in Italy, with restaurant and bar prices between Italian provincial levels and tourist-centre prices. Food and drink anchors are based on aggregated Italian and La Spezia cost-of-living data. Accommodation is a model estimate for a small Italian port city with summer demand from Cinque Terre and Riviera visitors.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.20,
+    "coffee": 1.76,
+    "inexp_meal_1p": 16.50,
+    "midrange_meal_2p": 86.00,
+    "cocktail": 9.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 33.00,
+    "hostel_private_2p": 77.00,
+    "hotel_1star_2p": 94.00,
+    "hotel_3star_2p": 154.00
+  }
+}

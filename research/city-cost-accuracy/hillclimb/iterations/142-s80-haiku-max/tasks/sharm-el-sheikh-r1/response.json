@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee and beer anchors triangulate across several aggregator sources (Wise, Numbeo, TravelTables, Hikersbay, GoTripzi), but the sources conflict and some are undated or from 2023. No Sharm menus were checked directly. Cocktail rests on one undated bar guide, named-venue ranges and a beer-relative check. Wine_glass has no Sharm per-glass price and is inferred from bottle prices, beer levels and a non-Sharm hotel benchmark. All four accommodation anchors are holistic July estimates from general knowledge; no accommodation search was run and no live listings were checked. The FX value 0.7088 (2026-03-20) is the newest RBA figure the search surfaced. It comes from search-result text attributed to the RBA overview page and I did not re-open that page. A later observation likely exists and should be checked before use.",
+  "comparable_city_reasoning": "No single comparable city. The basis is Red Sea resort-town pricing in Egypt, using Sharm-specific aggregator figures and cross-checks against Numbeo Sharm-vs-Cairo and Alexandria comparisons, not European or Gulf resort levels. Region is Africa under the UN geoscheme, though Sinai resort pricing is arguably closer to Middle East tourist markets. Cocktail and wine_glass use beer-relative ratios where direct evidence was weak.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.80,
+    "coffee": 2.00,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 60.00
+  }
+}

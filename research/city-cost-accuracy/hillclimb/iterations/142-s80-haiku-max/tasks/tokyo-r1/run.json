@@ -1,0 +1,87 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0935b861f4f179335f8ecd5f229dcc3c48c07e1d6b1e4e7d66f2e9bff6ed923a",
+  "requestSha256": "dc043ac04dffa516e4f7febedf2a8435e76fc989f610669ac1c29f7b6923ddae",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 548984,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 135588,
+          "outputTokens": 271533,
+          "cacheReadInputTokens": 30013,
+          "cacheCreationInputTokens": 36170,
+          "webSearchRequests": 10,
+          "costUSD": 0.25685943,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 262697,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.25685943,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates F11.1 AUD USD latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Tokyo cost of living restaurant meal prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tokyo cocktail price yen bar average glass of wine restaurant price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tokyo draft beer price yen izakaya cappuccino price cafe average",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Exchange Rates daily F11.1 AUD USD JPY 4pm November 2026",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tokyo average price cappuccino yen cafe and draft beer yen restaurant 2026 cost of living survey",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:34:32.592Z",
+      "finishedAt": "2026-11-19T07:43:41.576Z"
+    }
+  ]
+}

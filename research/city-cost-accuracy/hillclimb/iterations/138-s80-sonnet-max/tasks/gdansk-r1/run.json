@@ -1,0 +1,104 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0e47c2d90a1a604bb608e37e6dc237727d7b55370feef43db99804592db31bd2",
+  "requestSha256": "a4d838c62cab8a5cd489948369ec81e56df47d622d4022320620b64de6cfe6ac",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 152655,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 17690,
+          "cacheReadInputTokens": 18907,
+          "cacheCreationInputTokens": 11611,
+          "webSearchRequests": 0,
+          "costUSD": 0.22713740000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 16374,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 92268,
+          "outputTokens": 7283,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.0728683,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2805,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.30000570000000004,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD AUD latest observation rba.gov.au",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gdansk cost of living restaurant prices inexpensive meal three-course meal for two Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gdansk cappuccino price coffee cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gdansk draft beer price restaurant pub PLN",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gdansk cocktail price bar and glass of wine price restaurant PLN",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Gdansk prices Restaurants Meal Inexpensive Restaurant, Meal for 2 People Mid-range Restaurant Three-course, Domestic Beer, Cappuccino",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:45:50.618Z",
+      "finishedAt": "2026-11-19T06:48:23.273Z"
+    }
+  ]
+}

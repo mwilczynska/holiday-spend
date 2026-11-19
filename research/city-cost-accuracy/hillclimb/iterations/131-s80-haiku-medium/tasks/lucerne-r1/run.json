@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "1f69fbada83e061d32b8379bca1ff6f76918ac548aeda2aaf7f13c0a5177675a",
+  "requestSha256": "e9c467b8339bde94feeb0909bae3513fcd6f93e3af04f3c949258d08c41b8232",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 43483,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 78565,
+          "outputTokens": 8203,
+          "cacheReadInputTokens": 16491,
+          "cacheCreationInputTokens": 8272,
+          "webSearchRequests": 5,
+          "costUSD": 0.06377731,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3787,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06377731,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lucerne Switzerland cost of living restaurant meal beer cappuccino prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Switzerland restaurant prices 2026 beer wine cocktail cappuccino typical cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates latest AUD/USD 2026 November F11.1 daily",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:03:58.759Z",
+      "finishedAt": "2026-11-19T07:04:42.242Z"
+    }
+  ]
+}

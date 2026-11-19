@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on Numbeo and Expatistan aggregates and travel-guide ranges. These are user-submitted, conflict by several euros across pages, and are dated 2026 rather than July 2026. Cocktail and wine_glass use wider guide ranges, cross-checked against the local beer price (cocktail about 2.7x beer, wine glass about 1.5x); no aggregate price for either was found. Hostel and hotel anchors are holistic model estimates from general knowledge, not from any search or listing. EUR figures use an assumed 1.16 USD per EUR, which was not verified and is not from the RBA observation. FX is the RBA 4 pm rate for 2026-11-18; a 2026-11-19 value was not confirmed.",
+  "comparable_city_reasoning": "Food and drink anchors use Bratislava-specific aggregates and guides, with no substitute city. Hostel and hotel anchors are general-knowledge estimates, loosely cross-checked against Prague, which search comparisons place within about 13% of Bratislava overall.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.48,
+    "coffee": 3.65,
+    "inexp_meal_1p": 12.18,
+    "midrange_meal_2p": 63.80,
+    "cocktail": 9.28,
+    "wine_glass": 5.22,
+    "hostel_dorm_1p": 26.68,
+    "hostel_private_2p": 62.64,
+    "hotel_1star_2p": 69.60,
+    "hotel_3star_2p": 133.40
+  }
+}

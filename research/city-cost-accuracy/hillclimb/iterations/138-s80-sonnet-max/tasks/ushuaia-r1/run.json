@@ -1,0 +1,101 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "973d7dcb988e336c9e30db953d7bd1a17e416c222cde4f875d2d74e048f67b93",
+  "requestSha256": "aa069cf85e0fb1f69bfa1e54bbf2a2b8d76bd2b94d3da09dce6de7c1798d772a",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 259078,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 31255,
+          "cacheReadInputTokens": 20385,
+          "cacheCreationInputTokens": 25435,
+          "webSearchRequests": 0,
+          "costUSD": 0.41837900000000006,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 29849,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 86960,
+          "outputTokens": 8235,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.07281349999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2895,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.49119250000000003,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates US dollar AUD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Ushuaia Argentina restaurant prices meal inexpensive cappuccino domestic beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ushuaia precios restaurantes 2026 menú del día cerveza café cappuccino precio",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ushuaia cost of food and drink 2026 how much is a meal beer coffee for tourists",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ushuaia precio trago cóctel copa de vino bar restaurante 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "cuánto cuesta comer en Ushuaia 2026 precios en pesos plato principal pinta cerveza artesanal café con leche copa de vino",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:56:11.674Z",
+      "finishedAt": "2026-11-19T07:00:30.752Z"
+    }
+  ]
+}

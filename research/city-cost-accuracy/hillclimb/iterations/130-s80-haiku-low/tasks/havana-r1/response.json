@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Restaurant, drink and accommodation anchors are rough bounded estimates. Searches returned sparse, conflicting and partly outdated Havana sources (some from Miami venues or pre-2026 guides, and a few with unreliable currency labels), so no anchor is well verified. Beer is the most-sourced anchor (tourist-bar bottles around $2 to $2.50, Numbeo draft about $1.25 to $2). Cocktail uses mojito ranges of about $2 to $5. Wine is derived from the beer relationship (about 2 times beer), not from a Havana wine price. Accommodation is a model estimate from general knowledge and was not checked against live listings. Prices in Cuba are quoted in USD in tourist settings but paid in CUP, and the official and informal exchange rates diverge widely, so actual costs can differ substantially. The FX observation is the most recent rba.gov.au page confirmed in search (20 March 2026), which is older than the generation date; a third-party page showed a later figure that could not be verified against the RBA.",
+  "comparable_city_reasoning": "Regional basis: Caribbean and Latin American tourist cities with comparable dual pricing and limited formal accommodation supply, adjusted to Havana's tourist-facing price levels using the budget-guide and Numbeo ranges found in search.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 110.00
+  }
+}

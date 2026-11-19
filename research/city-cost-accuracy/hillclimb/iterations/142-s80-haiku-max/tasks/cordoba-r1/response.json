@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant meal and cappuccino anchors rest on Numbeo's Cordoba figures (May 2026 label) and travel-guide ranges, the strongest part of this estimate. Beer serving size is unconfirmed. Wine by the glass rests on one secondhand guide range (EUR 3-5), and the cocktail on a generic range; both were sanity-checked against the beer relationship. Hostel and hotel anchors are holistic model estimates for July 2026 with no accommodation searches or live listings, so treat them as roughly 25% either way. EUR prices were converted at an assumed general-knowledge rate of about 1.16 USD per EUR, not a fetched rate. The RBA rate comes from search-result text for the RBA exchange-rates page, not a direct page read.",
+  "comparable_city_reasoning": "Food and drink anchors use Cordoba-specific figures (Numbeo and travel-guide ranges), not a proxy city. Accommodation anchors are general-knowledge estimates for comparable mid-sized Spanish cities in summer.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.02,
+    "coffee": 2.44,
+    "inexp_meal_1p": 15.08,
+    "midrange_meal_2p": 58.00,
+    "cocktail": 11.02,
+    "wine_glass": 4.06,
+    "hostel_dorm_1p": 29.00,
+    "hostel_private_2p": 60.32,
+    "hotel_1star_2p": 63.80,
+    "hotel_3star_2p": 116.00
+  }
+}

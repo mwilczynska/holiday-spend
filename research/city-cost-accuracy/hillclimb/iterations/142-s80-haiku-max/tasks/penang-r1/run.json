@@ -1,0 +1,83 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "54ad77d4e9b95a2401cf7acd3340876481693da2f38a788b54803ecf86a4e4fe",
+  "requestSha256": "6204655a81aa067bee5172395c2ed7138969ee41b873b771cfea00737e7832c9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 678563,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 209208,
+          "outputTokens": 243763,
+          "cacheReadInputTokens": 24746,
+          "cacheCreationInputTokens": 45017,
+          "webSearchRequests": 12,
+          "costUSD": 0.27205315999999996,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 236218,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.27205315999999996,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily AUD USD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living George Town Penang restaurant prices beer cappuccino",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Penang George Town cost of living 2026 restaurant meal coffee beer cocktail wine prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "average cocktail price ringgit Penang bars 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "average price wine by the glass ringgit Penang restaurants 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:26:33.249Z",
+      "finishedAt": "2026-11-19T07:37:51.812Z"
+    }
+  ]
+}

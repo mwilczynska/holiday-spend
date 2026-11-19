@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "26dc1011d9e21e65beeb9faf6891813421d3627fc0d176b4854096c79e67a740",
+  "requestSha256": "7b59747ab84fe0f874842bad1226cc57ae54b1c2a17ef914b9db5d0378c9c4fb",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 39515,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 60748,
+          "outputTokens": 7803,
+          "cacheReadInputTokens": 16079,
+          "cacheCreationInputTokens": 7773,
+          "webSearchRequests": 4,
+          "costUSD": 0.05169169,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3360,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05169169,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates historical US dollar per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mendoza Argentina restaurant meal prices 2026 cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mendoza Argentina coffee beer cocktail wine glass prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates current daily AUD USD 4pm",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:04:03.150Z",
+      "finishedAt": "2026-11-19T07:04:42.665Z"
+    }
+  ]
+}

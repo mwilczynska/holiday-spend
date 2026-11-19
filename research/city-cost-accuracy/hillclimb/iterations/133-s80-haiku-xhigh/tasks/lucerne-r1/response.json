@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on Lucerne-specific aggregator snippets: coffee and draft beer from mylifeelsewhere and Numbeo-derived pages, meal ranges from Lucerne cost-of-living pages, and cocktail and wine figures from Lucerne hotel bar menus. The sources mix years and some are dated. No Lucerne-wide drink average was found, so cocktail and wine anchors are set from hotel bar menus adjusted down for ordinary restaurants and checked against the local beer relationship. The three-course mid-range meal is a model estimate because the snippets were inconsistent. Accommodation anchors are holistic model estimates from general knowledge of Lucerne's summer demand; no booking pages or current listings were inspected, so treat them as low confidence. CHF to USD uses an approximate 1.25 USD per CHF that I chose; the USD equivalents quoted in the sources imply roughly 1.23 to 1.32. The FX observation is the 18 November 2026 RBA 4pm rate of 0.6720, taken from search snippets that reproduce RBA values. I did not open the RBA table, and no 19 November figure was found. Prices are for the July 2026 window.",
+  "comparable_city_reasoning": "Lucerne-specific sources were used first. Zurich snippets and Swiss national figures served as cross-checks, since Lucerne runs slightly below Zurich on restaurant coffee and beer prices. Accommodation is a holistic comparison with other Swiss lakeside tourist cities in peak summer. No comparable-city dataset was searched for accommodation.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 6.50,
+    "inexp_meal_1p": 25.00,
+    "midrange_meal_2p": 150.00,
+    "cocktail": 22.50,
+    "wine_glass": 12.50,
+    "hostel_dorm_1p": 65.00,
+    "hostel_private_2p": 160.00,
+    "hotel_1star_2p": 190.00,
+    "hotel_3star_2p": 360.00
+  }
+}

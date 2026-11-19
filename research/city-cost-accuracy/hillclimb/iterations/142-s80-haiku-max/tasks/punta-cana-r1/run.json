@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "59ef652433b3687353408093b21bd986b19245bbfda370b9b0403fdf762b218c",
+  "requestSha256": "0ab4434d6fa8560b1cfc99e5bf99d9f2efce9aa74e90e5c2d9c0dd903a949e9c",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 486650,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 76005,
+          "outputTokens": 273199,
+          "cacheReadInputTokens": 4568,
+          "cacheCreationInputTokens": 14907,
+          "webSearchRequests": 6,
+          "costUSD": 0.20722708,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 265749,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.20722708,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Punta Cana cost of living restaurant meal prices beer cappuccino cocktail wine",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Dominican Republic typical restaurant meal prices cost of living 2026 USD",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Punta Cana bar prices average beer cocktail glass of wine restaurant 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:27:41.010Z",
+      "finishedAt": "2026-11-19T07:35:47.661Z"
+    }
+  ]
+}

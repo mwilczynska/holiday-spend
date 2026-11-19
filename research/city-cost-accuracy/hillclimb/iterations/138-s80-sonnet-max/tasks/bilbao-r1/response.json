@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Cappuccino and cocktail are reasonably supported by search results citing aggregated sources (Numbeo-derived figures via Expatica, Expatistan, Gotripzi, and a Bilbao cocktail-bar menu listing). EUR evidence was expressed in USD at roughly 1.17 USD/EUR. Meal figures varied by source (inexpensive ~EUR 10-18; mid-range for two ~EUR 40-63), so I leaned to the upper-middle for 2026. Beer blends low cana/zurito prices (~EUR 1.5-3) with a ~EUR 4.6 half-litre pub average. Wine by the glass had no reliable Bilbao price, so it uses the typical Spanish bar/restaurant range (~EUR 2.5-5) and a local wine-to-beer relationship. Cocktail was cross-checked on a cocktail-to-beer basis. Accommodation anchors are holistic model estimates for a July window, not live listings. The FX rate comes from a search result summarizing the RBA exchange-rate statistics, not a direct page read.",
+  "comparable_city_reasoning": "Bilbao is priced as a northern Spanish (Basque) city. Aggregator comparisons in the search results put restaurants modestly above the Spain average and overall costs below Madrid and Barcelona. Accommodation is inferred from general knowledge of Bilbao and comparable Spanish city-break markets in summer.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.8,
+    "coffee": 2.55,
+    "inexp_meal_1p": 18.5,
+    "midrange_meal_2p": 79,
+    "cocktail": 10.5,
+    "wine_glass": 5.1,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 80,
+    "hotel_1star_2p": 88,
+    "hotel_3star_2p": 140
+  }
+}

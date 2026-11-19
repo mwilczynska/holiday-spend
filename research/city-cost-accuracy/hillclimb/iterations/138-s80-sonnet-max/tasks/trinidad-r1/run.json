@@ -1,0 +1,101 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3992389c83ecf0f63658b254f2ff16716066cb9149d721e75e91dd7eabcdd825",
+  "requestSha256": "845bf606721af89e196beda59192cd48f5fd529a66d8670e3766efc8358ce134",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 195469,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 23966,
+          "cacheReadInputTokens": 20566,
+          "cacheCreationInputTokens": 18271,
+          "webSearchRequests": 0,
+          "costUSD": 0.31686919999999996,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 22485,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 96866,
+          "outputTokens": 7783,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 7,
+          "costUSD": 0.0835781,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2502,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.4004473,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates US dollar USD AUD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Trinidad Cuba restaurant prices meal cost per person paladar 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Trinidad Cuba bar prices mojito cocktail beer Cristal Bucanero cost USD",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cuba cost of living prices cappuccino coffee domestic beer restaurant meal Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cuba travel prices 2026 glass of wine restaurant coffee cappuccino beer price tourists",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "how much do food and drinks cost in Trinidad Cuba 2026 beer mojito coffee glass of wine paladar dinner",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:55:46.371Z",
+      "finishedAt": "2026-11-19T06:59:01.840Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors come from aggregated, crowd-sourced and modeled cost-of-living sources that disagree; Kaohsiung figures were adjusted down from Taipei-based data. Wine by the glass has no direct Kaohsiung source and is inferred from the local beer and cocktail relationship. Accommodation anchors are holistic model estimates from general knowledge and city context, not checked against live listings. The FX observation is the latest RBA figure I could verify (20 March 2026), so it is older than the generation date. Conversions assume roughly TWD 31.5 per USD.",
+  "comparable_city_reasoning": "Taiwan secondary-city basis, using Taipei restaurant, cafe and bar data reduced for Kaohsiung's lower price level. Wine is estimated from the local beer and cocktail relationship.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.80,
+    "coffee": 3.50,
+    "inexp_meal_1p": 5.70,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 11.00,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 85.00
+  }
+}

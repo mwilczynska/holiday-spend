@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "5ae47949f0124e0d3083f74b529b1fb229b522569c32b7d7d163c438218c257c",
+  "requestSha256": "5590d5a6ac04b03eb5a833a40cddede354b2b9497534fa5849c94205eb22172d",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 75822,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 136078,
+          "outputTokens": 11988,
+          "cacheReadInputTokens": 33285,
+          "cacheCreationInputTokens": 16865,
+          "webSearchRequests": 9,
+          "costUSD": 0.11330765,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 5279,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.11330765,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cardiff cost of living restaurant meal coffee beer prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "UK pub pint price average 2026 cocktail wine glass restaurant price survey",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD USD latest daily F11.1 Australian dollar US cents",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "UK average cocktail price 2026 bar wine by the glass price restaurant meal cost survey",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates 18 November 2026 AUD USD 4pm",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:03:10.642Z",
+      "finishedAt": "2026-11-19T07:04:26.464Z"
+    }
+  ]
+}

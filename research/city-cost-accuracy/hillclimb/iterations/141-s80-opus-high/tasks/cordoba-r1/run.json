@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "063d75421bcae5338842396812e25b65c0326f2357ebfa64aeddf2fb7cdd748f",
+  "requestSha256": "e0549669ee147a13f29fd4854181fab16b5596b92d1674fcc5ef72d4304a49db",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 58461,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 8,
+          "outputTokens": 1913,
+          "cacheReadInputTokens": 23619,
+          "cacheCreationInputTokens": 9931,
+          "webSearchRequests": 0,
+          "costUSD": 0.1224638,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 677,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 72034,
+          "outputTokens": 5749,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.0700779,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1941,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.19254169999999998,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cost of living Córdoba Spain prices restaurant cappuccino beer Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Córdoba Spain prices 2026 meal inexpensive restaurant mid-range three-course for two cocktail glass of wine",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Córdoba Spain price cocktail bar copa de vino glass of wine price 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:39:59.424Z",
+      "finishedAt": "2026-11-19T06:40:57.885Z"
+    }
+  ]
+}

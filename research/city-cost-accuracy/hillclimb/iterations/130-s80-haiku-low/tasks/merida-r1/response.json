@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are rough: sources conflict and several are dated (2016 to 2023 reviews and expat calculators, plus April 2026 bar tour articles). Cappuccino and wine are the weakest. Cocktail and wine use local price relationships to beer and menu-based peso figures converted at about 17.2 MXN per USD, implied by an Expatistan beer quote; no live FX rate was checked. Accommodation anchors are holistic model estimates from general knowledge of Mérida, not from inspected booking pages or current listings. The FX observation was taken from secondary reporting that cites the RBA 4pm rate for 2026-11-18, and I did not verify it on the rba.gov.au page.",
+  "comparable_city_reasoning": "Latin American mid-sized tourist city in Yucatán. Restaurant and drink anchors are based on Mérida-specific aggregated sources (Expatistan, Numbeo, Yucatán Today bar tour, Boston's Pizza Mérida menu) with peso figures converted to USD. Cocktail is set from the Mex$90 to 150 range. Wine is set from the local beer relationship, since no direct Mérida wine price was found. Accommodation anchors are holistic model estimates for a mid-sized Mexican heritage city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 3.00,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 75.00
+  }
+}

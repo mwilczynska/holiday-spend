@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Beer, coffee and both meal anchors rest on Numbeo Suzhou averages and 2026 Expatistan benchmarks from search results; these are crowd-sourced, with wide snapshot ranges. Cocktail is an Expatistan downtown-club figure (about CNY 69), adjusted down for typical bars. Wine_glass had no by-the-glass data, so it is inferred from the draft beer price. Hostel and hotel anchors are holistic model estimates, not searched and not checked against live listings, so treat them as low confidence. CNY converted at an assumed 7.1 per USD, not searched. FX 0.6720 is the latest RBA figure found in search results (18 Nov 2026); no 19 Nov figure was confirmed.",
+  "comparable_city_reasoning": "No comparable city was used for food and drink; those anchors use Suzhou-specific aggregates from Numbeo and Expatistan search results. Wine_glass is set at about 3x the local draft beer price. Accommodation uses a general regional basis (Suzhou in the Yangtze River Delta near Shanghai) from model knowledge, with no accommodation search.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.11,
+    "coffee": 3.94,
+    "inexp_meal_1p": 4.23,
+    "midrange_meal_2p": 35.21,
+    "cocktail": 8.45,
+    "wine_glass": 6.34,
+    "hostel_dorm_1p": 9.86,
+    "hostel_private_2p": 26.76,
+    "hotel_1star_2p": 23.94,
+    "hotel_3star_2p": 59.15
+  }
+}

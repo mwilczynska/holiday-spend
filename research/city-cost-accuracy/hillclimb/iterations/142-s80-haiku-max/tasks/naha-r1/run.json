@@ -1,0 +1,87 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "2f9227b7baa241428e1072e22a08b4f865b36ddd55d565520962337bdb275c16",
+  "requestSha256": "59b78c5c9e6f095c1f1900720326fc7114cf0a9498ff3289793010e7c93eb80d",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 583355,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 214841,
+          "outputTokens": 316247,
+          "cacheReadInputTokens": 33062,
+          "cacheCreationInputTokens": 37541,
+          "webSearchRequests": 13,
+          "costUSD": 0.31744641999999995,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 307202,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.31744641999999995,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11.1 daily USD per AUD latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Naha Japan cost of living restaurant meal cappuccino beer wine prices Numbeo Expatistan",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Naha Okinawa inexpensive restaurant lunch and dinner typical prices yen 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Naha Okinawa bar cocktail and draft beer typical price yen",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Naha cafe cappuccino price yen and wine by the glass restaurant Okinawa",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily observation November 2026",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:24:37.360Z",
+      "finishedAt": "2026-11-19T07:34:20.716Z"
+    }
+  ]
+}

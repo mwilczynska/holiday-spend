@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are medium confidence: sources are crowd-sourced or model-based and disagree by a meaningful margin, and the Tainan-specific figures were mostly drawn from cost-of-living databases. Beer and cappuccino agree closely across sources. Cocktail rests on Taipei venue and city-average figures adjusted down for Tainan. Wine_glass was not directly observed; it is set from the local beer relationship (about 2.3x beer), not from a glass-price source. Accommodation anchors (dorm, private, 1-star, 3-star) are holistic model estimates from general knowledge and the Tainan context, with low confidence. No live booking pages or current listings were inspected. The FX observation (0.6720 for 2026-11-18) came from a secondary page citing RBA data; the rba.gov.au page itself was not opened to confirm the figure.",
+  "comparable_city_reasoning": "Taiwan price levels, anchored to published Taipei and Taichung restaurant, café and beer figures, then adjusted down for Tainan as a smaller southern city. Cocktail and wine use Taipei bar listings and the local beer relationship. Accommodation is a general-knowledge estimate for Tainan's guesthouse, hostel and mid-range hotel stock, not a comparison to a specific city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.20,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 36.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 90.00
+  }
+}

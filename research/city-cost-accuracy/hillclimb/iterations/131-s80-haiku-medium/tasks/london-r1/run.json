@@ -1,0 +1,80 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "8d7d93070e9ceae433d832464fe087b80e5eb8035ec54c7b05c3ca9c3b10f721",
+  "requestSha256": "464c685229915aeb6dcde0a20c5b525fcd479a6d3fb2d6c4f930ab4472355a49",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 36756,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 74121,
+          "outputTokens": 8432,
+          "cacheReadInputTokens": 17664,
+          "cacheCreationInputTokens": 9625,
+          "webSearchRequests": 5,
+          "costUSD": 0.06372974,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3690,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06372974,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD per AUD F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "London pint of lager price 2026 average pub",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "London cost of living restaurant meal cappuccino cocktail price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "London average price glass of wine restaurant cocktail 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD USD daily rate",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:03:57.936Z",
+      "finishedAt": "2026-11-19T07:04:34.692Z"
+    }
+  ]
+}

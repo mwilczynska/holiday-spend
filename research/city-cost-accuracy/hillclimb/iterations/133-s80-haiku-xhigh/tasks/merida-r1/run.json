@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "d8ba0b0f99959ed6479a17d1634bd813c793dd29591ffa46ec7def5e8d9e4836",
+  "requestSha256": "eb4e72856516f3de89a36b95de0aaa47425d84a15dc24ea86d9bbe9a89049db9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 132724,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 217064,
+          "outputTokens": 38787,
+          "cacheReadInputTokens": 22693,
+          "cacheCreationInputTokens": 21938,
+          "webSearchRequests": 12,
+          "costUSD": 0.16571443,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 30746,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.16571443,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11.1 USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mérida Yucatán cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mérida Mexico beer coffee cappuccino price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mérida Mexico cocktail wine glass price restaurant bar 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates daily F11.1 AUD USD November 2026 rba.gov.au",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "precio cóctel copa de vino Mérida Yucatán pesos 2026 menú bar",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:12:21.963Z",
+      "finishedAt": "2026-11-19T07:14:34.687Z"
+    }
+  ]
+}

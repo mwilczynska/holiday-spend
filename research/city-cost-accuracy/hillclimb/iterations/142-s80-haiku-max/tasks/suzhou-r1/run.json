@@ -1,0 +1,79 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "accf35d8ad43240be3b9cbfbbb7998e392da3431536bf1240fe37d9dfbb630ea",
+  "requestSha256": "b63267c384f74c263c0ab4156967118069704a4652fd714df24a49cf92fec4db",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 361197,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 66211,
+          "outputTokens": 131379,
+          "cacheReadInputTokens": 21549,
+          "cacheCreationInputTokens": 24988,
+          "webSearchRequests": 4,
+          "costUSD": 0.11752369,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 126592,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.11752369,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates AUD USD latest observation",
+            "allowed_domains": [
+              "rba.gov.au"
+            ],
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Suzhou cost of living restaurant meal cappuccino beer wine prices",
+            "allowed_domains": [
+              "numbeo.com"
+            ],
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Suzhou cost of living prices restaurants bars cocktail coffee",
+            "allowed_domains": [
+              "expatistan.com"
+            ],
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Suzhou price of a glass of wine in restaurants yuan average",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:33:05.256Z",
+      "finishedAt": "2026-11-19T07:39:06.453Z"
+    }
+  ]
+}

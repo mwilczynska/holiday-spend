@@ -1,0 +1,106 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "24bfad4a2f2a96445ff88129566c798072dd68d211c2f626c5a7bb69ee7e9678",
+  "requestSha256": "908924f3d5fee2a2ba2f1f1b58730f2745da93d43bceb3c8ee4708ce323d5edc",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 211104,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 25854,
+          "cacheReadInputTokens": 19356,
+          "cacheCreationInputTokens": 16363,
+          "webSearchRequests": 0,
+          "costUSD": 0.32787520000000003,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 24471,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 85404,
+          "outputTokens": 6775,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.0719279,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2178,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.3998031,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates US dollar AUD latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur cost of living restaurant prices inexpensive meal mid-range meal for two",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur cappuccino price cafe coffee cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur beer price restaurant bar domestic beer Rajasthan",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur cocktail and glass of wine price rooftop restaurant bar",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur cost of living domestic beer restaurant cappuccino cocktail glass of wine mid-range meal for two prices",
+            "mode": "extended",
+            "allowed_domains": [
+              "mylifeelsewhere.com",
+              "numbeo.com",
+              "expatistan.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:55:58.666Z",
+      "finishedAt": "2026-11-19T06:59:29.770Z"
+    }
+  ]
+}

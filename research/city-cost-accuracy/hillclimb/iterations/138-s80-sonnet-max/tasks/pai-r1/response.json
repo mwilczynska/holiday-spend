@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Cappuccino, domestic beer and inexpensive meal rest on search-result summaries of aggregator figures for Pai (Numbeo, CityCost, NomadRanker, nomad.watch) that broadly agree: cappuccino about 55-70 THB, beer about 60-90 THB, cheap meal about 65-105 THB. The mid-range dinner for two is the least consistent food anchor (sources span about 9-24 USD; I used about 20). Cocktail follows a Pai bar-price guide range of about 120-180 THB. Wine has no confirmed Pai menu price and is inferred at roughly 2.2x beer plus one anecdotal 200 THB large glass. Accommodation anchors are holistic estimates from general knowledge for the July rainy low season, not from listings. Baht converted at an assumed ~33 THB per USD. The RBA figure came from search results for RBA pages, not a direct page read.",
+  "comparable_city_reasoning": "Pai-specific aggregator figures used where found; otherwise northern Thailand backpacker-town norms (Chiang Mai region) from general knowledge, with cocktail and wine scaled from the local beer price.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.25,
+    "coffee": 1.80,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 20.00,
+    "cocktail": 4.20,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 6.50,
+    "hostel_private_2p": 16.00,
+    "hotel_1star_2p": 17.00,
+    "hotel_3star_2p": 40.00
+  }
+}

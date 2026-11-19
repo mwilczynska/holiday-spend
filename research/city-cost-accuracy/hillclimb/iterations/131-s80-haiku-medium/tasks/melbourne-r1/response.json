@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from aggregator and travel-guide ranges for 2026 Melbourne, with a few Time Out and venue-level references. Beer, coffee and meal figures are reasonably consistent across sources; cocktail and wine are less certain, and I set them from the reported ranges rather than from a survey. Accommodation anchors are holistic model estimates from general knowledge and were not checked against live listings or searched. The FX observation is weak: the latest RBA figure I could confirm is 0.7088 USD per AUD for 20 March 2026, not a figure for 19 November 2026, and I could not retrieve a newer one. I used that rate to convert my AUD estimates to USD.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors are based on Melbourne-specific 2026 price ranges, and accommodation anchors are a general model estimate for a mid-sized Australian capital.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.21,
+    "coffee": 3.90,
+    "inexp_meal_1p": 15.59,
+    "midrange_meal_2p": 92.14,
+    "cocktail": 16.30,
+    "wine_glass": 9.92,
+    "hostel_dorm_1p": 31.90,
+    "hostel_private_2p": 99.23,
+    "hotel_1star_2p": 106.32,
+    "hotel_3star_2p": 155.94
+  }
+}

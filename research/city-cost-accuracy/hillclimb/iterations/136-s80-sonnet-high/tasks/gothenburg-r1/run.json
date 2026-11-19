@@ -1,0 +1,79 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "95004eea1b209f92ec60a902756e53bef86b5ee542da42b2a554f73113d86b9d",
+  "requestSha256": "f8e7b2397270bd6da46aa907902542ead2e306fa4c3c8c7ad8a3cdb1b3efdb7e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 30809,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 1360,
+          "cacheReadInputTokens": 6665,
+          "cacheCreationInputTokens": 5441,
+          "webSearchRequests": 0,
+          "costUSD": 0.036705,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 367,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 48415,
+          "outputTokens": 4279,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 3,
+          "costUSD": 0.036981,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1828,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.073686,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gothenburg Sweden cost of living restaurant prices meal cappuccino beer wine cocktail",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Gothenburg prices domestic beer restaurant cappuccino",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:59:47.702Z",
+      "finishedAt": "2026-11-19T03:00:18.511Z"
+    }
+  ]
+}

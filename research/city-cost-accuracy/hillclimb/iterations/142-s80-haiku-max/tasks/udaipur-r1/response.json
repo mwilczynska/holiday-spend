@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Low overall. Food and coffee anchors are aggregated estimates from Mylifeelsewhere, Expatistan and combien-coute, some dated 2024 or undated, not live menus. Beer is inferred from pint, bottle and shop prices. Cocktail and wine_glass have no Udaipur-specific price evidence and use beer-relative ratios (about 3.0x and 3.5x) plus other Indian hotel bar menus. Midrange meal is adjusted down from a dinner-for-two figure that included wine. All four accommodation anchors are holistic model estimates for a July monsoon-season window; no listings or booking pages were checked. INR was converted at about 95 per USD, a rate implied by one aggregator and not verified. The FX value comes from search results summarising the RBA exchange-rate overview for 18 Nov 2026; the F11.1 table was not opened, and an older cached figure near 0.72 was disregarded.",
+  "comparable_city_reasoning": "No single comparable city. Food and drink anchors are Udaipur-specific aggregator figures, with cocktail and wine benchmarked to Indian hotel bar menus from Mumbai, Delhi (Dwarka), Goa and Coorg. Accommodation reflects general knowledge of Rajasthan tourist-city tariffs, broadly in line with cities such as Jaipur and Jodhpur, and was not checked against listings.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.10,
+    "coffee": 2.00,
+    "inexp_meal_1p": 3.15,
+    "midrange_meal_2p": 19.50,
+    "cocktail": 6.30,
+    "wine_glass": 7.35,
+    "hostel_dorm_1p": 6.85,
+    "hostel_private_2p": 15.80,
+    "hotel_1star_2p": 10.50,
+    "hotel_3star_2p": 42.00
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "1f69fbada83e061d32b8379bca1ff6f76918ac548aeda2aaf7f13c0a5177675a",
+  "requestSha256": "e9c467b8339bde94feeb0909bae3513fcd6f93e3af04f3c949258d08c41b8232",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 31362,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 56791,
+          "outputTokens": 5907,
+          "cacheReadInputTokens": 13782,
+          "cacheCreationInputTokens": 9755,
+          "webSearchRequests": 4,
+          "costUSD": 0.050721419999999996,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1584,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.050721419999999996,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD per AUD latest F11 historical",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lucerne Switzerland restaurant prices cappuccino beer cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Switzerland cost of living restaurant meal price index Numbeo Lucerne",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia AUD/USD exchange rate November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:01:22.055Z",
+      "finishedAt": "2026-11-19T07:01:53.417Z"
+    }
+  ]
+}

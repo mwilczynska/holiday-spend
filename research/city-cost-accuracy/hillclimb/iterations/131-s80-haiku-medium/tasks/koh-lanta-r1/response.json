@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from aggregator estimates (Wise, Almurakib, a Thai travel budget guide, and cost-of-living sites) for Koh Lanta, and they often disagree. Beer and cappuccino are the best supported. Cocktail and wine are weaker; cocktail is set from the local beer relationship and wine from general Thai tourist pricing, not direct Koh Lanta menu data. Accommodation anchors are holistic model estimates. I ran one accommodation-related search by mistake, which the request excluded, and I did not use its results. The FX observation is the most recent RBA figure I could verify (2026-03-20), not a rate for the generation date. I found no official RBA figure after that date.",
+  "comparable_city_reasoning": "Southern Thai tourist islands and Andaman-coast beach towns, using Koh Lanta-specific aggregator data where available, cross-checked against general Thai beach-town pricing.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 6.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 60.00
+  }
+}

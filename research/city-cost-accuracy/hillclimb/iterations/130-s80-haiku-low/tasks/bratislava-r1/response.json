@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from aggregated cost-of-living estimates and crowd-sourced price data found in search, with some conflicting figures; beer and wine are the least consistent. Restaurant anchors are medium confidence. Accommodation anchors are holistic model estimates from general knowledge and the city context, not checked against live booking pages or current listings. The FX observation came from search-result snippets of the RBA F11.1 daily table; I did not open the RBA page or CSV directly.",
+  "comparable_city_reasoning": "Priced as a mid-sized Central European capital with a modest cost base relative to Western European capitals, comparable to Ljubljana and Budapest for food and drink. Accommodation is based on general knowledge of Bratislava's mix of budget hostels and business-oriented hotels.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.90,
+    "coffee": 3.40,
+    "inexp_meal_1p": 11.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.50,
+    "wine_glass": 4.60,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 52.00,
+    "hotel_1star_2p": 63.00,
+    "hotel_3star_2p": 115.00
+  }
+}

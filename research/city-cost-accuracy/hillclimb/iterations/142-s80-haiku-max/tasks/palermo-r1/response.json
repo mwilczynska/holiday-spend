@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors cross-check against Numbeo's November 2026 Palermo page (user-submitted) and several cost-of-living guides, though some inputs date from 2023-2024. Cocktail (about 1.9x beer) and wine by the glass (about 1.1x beer) are the weakest food anchors because no direct Palermo restaurant benchmark was found for either; they are sense-checked against Kalsa bar price ranges. Beer assumes a 0.5 L draught, and euro figures use an approximate 1.13 USD per EUR, not a live rate. Accommodation anchors are model estimates for July peak season, with no accommodation searches or live listings checked, so they are the least certain. The FX value comes from a search summary of the RBA page, not a direct page read.",
+  "comparable_city_reasoning": "No comparable city was used for food or drink. Those anchors follow Palermo-specific figures from Numbeo and cost-of-living guides, and one index places Palermo below the Italian average. Accommodation is a holistic model estimate by analogy with other mid-sized southern Italian cities at July peak demand, not checked against live listings.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.10,
+    "coffee": 2.20,
+    "inexp_meal_1p": 15.25,
+    "midrange_meal_2p": 57.00,
+    "cocktail": 9.60,
+    "wine_glass": 5.65,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 155.00
+  }
+}

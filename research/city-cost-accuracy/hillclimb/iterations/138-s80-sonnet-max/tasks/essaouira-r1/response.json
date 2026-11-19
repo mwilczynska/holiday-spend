@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Food and coffee anchors come from search-result summaries of cost-of-living aggregators (largely Numbeo-derived or crowd-sourced; no pages opened). Their spreads are wide, so I used central values leaning toward tourist-area prices. Beer assumes a domestic beer in a licensed restaurant (draft is rare and alcohol licensing is limited). No Essaouira restaurant cocktail or wine-glass price was found. Both are set from the local beer relationship (about 2x and 1.4x) and loosely cross-checked against an undated luxury-bar cocktail listing and a traveller's roughly USD 7 wine-glass report. Accommodation anchors are holistic model estimates for July peak season; no booking pages or listings were inspected. MAD prices were assumed at roughly 9.3 per USD. FX is the latest RBA observation found (18 Nov 2026), taken from a search-result summary of RBA content; no 19 Nov figure was found.",
+  "comparable_city_reasoning": "Essaouira-specific aggregator figures were used where available. Marrakech, the nearest larger Moroccan tourist city with licensed bars, served as an upper reference for beer, cocktail and wine, with Essaouira assumed somewhat cheaper. Accommodation was benchmarked holistically against Moroccan medina and Atlantic-coast tourist towns, with a July peak-season uplift.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.7,
+    "coffee": 2.1,
+    "inexp_meal_1p": 5.9,
+    "midrange_meal_2p": 30.0,
+    "cocktail": 9.5,
+    "wine_glass": 6.5,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 30.0,
+    "hotel_1star_2p": 32.0,
+    "hotel_3star_2p": 85.0
+  }
+}

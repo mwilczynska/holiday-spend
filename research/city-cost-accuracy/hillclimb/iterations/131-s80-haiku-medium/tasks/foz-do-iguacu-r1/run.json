@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "ed544e165cd2b22578e44022062d3faa0d5c2d38a38d0d037b3dcf1d14a901c5",
+  "requestSha256": "efcfbeb85edb167c4792e2c231a231ae492a619c7c892ce9d28a0120c77bd240",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 46170,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 71424,
+          "outputTokens": 8406,
+          "cacheReadInputTokens": 16334,
+          "cacheCreationInputTokens": 10113,
+          "webSearchRequests": 5,
+          "costUSD": 0.06353134,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3146,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06353134,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 USD per AUD latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Foz do Iguaçu restaurant prices meal cost 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Foz do Iguaçu cost of living beer cappuccino price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates daily F11 AUD USD November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Foz do Iguaçu cocktail wine glass price bar restaurant",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:03:11.758Z",
+      "finishedAt": "2026-11-19T07:03:57.929Z"
+    }
+  ]
+}

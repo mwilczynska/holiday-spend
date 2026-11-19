@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "accf35d8ad43240be3b9cbfbbb7998e392da3431536bf1240fe37d9dfbb630ea",
+  "requestSha256": "b63267c384f74c263c0ab4156967118069704a4652fd714df24a49cf92fec4db",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 54041,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 77001,
+          "outputTokens": 13008,
+          "cacheReadInputTokens": 18037,
+          "cacheCreationInputTokens": 11460,
+          "webSearchRequests": 5,
+          "costUSD": 0.06667647000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 7713,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06667647000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 historical",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Suzhou restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Suzhou coffee cappuccino beer price yuan",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Suzhou bar cocktail price wine by the glass yuan",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:08:21.709Z",
+      "finishedAt": "2026-11-19T07:09:15.750Z"
+    }
+  ]
+}

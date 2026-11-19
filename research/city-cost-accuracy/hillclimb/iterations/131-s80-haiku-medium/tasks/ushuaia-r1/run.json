@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "973d7dcb988e336c9e30db953d7bd1a17e416c222cde4f875d2d74e048f67b93",
+  "requestSha256": "aa069cf85e0fb1f69bfa1e54bbf2a2b8d76bd2b94d3da09dce6de7c1798d772a",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 50328,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 69149,
+          "outputTokens": 9565,
+          "cacheReadInputTokens": 16107,
+          "cacheCreationInputTokens": 9153,
+          "webSearchRequests": 5,
+          "costUSD": 0.06368907000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 4511,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06368907000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 historical USD per AUD latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ushuaia restaurant prices meal cost USD 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Argentina cost of living restaurant beer cappuccino wine prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates current A$1=USD F11 daily",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Patagonia Ushuaia cocktail price bar USD typical",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:04:58.196Z",
+      "finishedAt": "2026-11-19T07:05:48.524Z"
+    }
+  ]
+}

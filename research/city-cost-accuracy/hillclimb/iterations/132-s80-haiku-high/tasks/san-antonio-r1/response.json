@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors rest on aggregated 2026 sources (Numbeo-based restaurant figures, a cappuccino average, and bar pricing benchmarks), though sources conflict on dinner-for-two and some pages are dated. Beer and cocktail are partly inferred. Wine uses a beer-relative basis because direct standard-menu data was weak. Accommodation anchors are holistic model estimates from general knowledge, not from inspected listings, and are less certain. The FX observation was taken from a search summary of the RBA page, not a direct page read.",
+  "comparable_city_reasoning": "No comparable city was needed. Anchors are based on San Antonio, Texas, a mid-sized US metro where restaurant and bar prices are near or somewhat below national averages. Accommodation reflects typical budget and midscale US city rates.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 4.17,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 12.00,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 175.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from aggregated Cardiff cost-of-living figures (Expatica/Numbeo-style averages, June 2026 snapshot) and UK-wide 2026 pub and cocktail surveys, with Cardiff pricing assumed close to the UK average. Cocktail and wine anchors are weaker: the cocktail figure is a 2025 DesignMyNight average and the wine figure is a January 2025 175ml average uplifted for 2026, and no 2026 Cardiff wine or cocktail survey was found. Restaurant meal anchors are less certain because the sources are crowd-sourced. Accommodation anchors are holistic model estimates from general knowledge of mid-sized UK cities; live booking pages were not inspected. GBP-to-USD conversion used an assumed rate of about 1.30 USD per GBP, which was not verified by search. FX: the only RBA exchange-rate page retrieved showed 0.7088 as at 20 March 2026, so this is not the latest observation. A later 18 November 2026 figure of 0.6720 appeared only in a third-party source citing the RBA and could not be confirmed on rba.gov.au, so it is not used here. Treat the FX field as stale and re-verify before use.",
+  "comparable_city_reasoning": "Cardiff is priced against UK national survey averages for pints, cocktails and wine, and against Cardiff-specific aggregated restaurant and café averages. Accommodation is based on comparable mid-sized UK cities with similar tourism demand.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.90,
+    "coffee": 4.50,
+    "inexp_meal_1p": 19.70,
+    "midrange_meal_2p": 85.50,
+    "cocktail": 12.80,
+    "wine_glass": 7.80,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 78.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 156.00
+  }
+}

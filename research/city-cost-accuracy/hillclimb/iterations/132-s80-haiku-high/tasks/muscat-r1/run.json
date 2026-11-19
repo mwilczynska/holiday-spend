@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0341f6285c32e99b90057f961bec01a1fb284402d5484533b1dbf554e0662966",
+  "requestSha256": "cb2f612ddaeb2f82c9044b541b7f24061b16df1fb28232ce6aadec8eafbab60c",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 57917,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 94921,
+          "outputTokens": 14950,
+          "cacheReadInputTokens": 17476,
+          "cacheCreationInputTokens": 11568,
+          "webSearchRequests": 6,
+          "costUSD": 0.07945546,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 8809,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07945546,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Muscat Oman cost of living restaurant meal prices coffee beer 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Muscat Oman cappuccino price cocktail price wine glass restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates A$1 USD latest observation November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Muscat Oman beer price restaurant bar OMR per bottle draft",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:07:34.951Z",
+      "finishedAt": "2026-11-19T07:08:32.869Z"
+    }
+  ]
+}

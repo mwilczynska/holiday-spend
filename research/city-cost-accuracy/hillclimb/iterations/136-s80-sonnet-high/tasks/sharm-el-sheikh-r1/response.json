@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "low",
+  "confidence_notes": "Three web searches were run: one for the RBA rate and two for local prices. The price sources were aggregator and cost-of-living sites that disagree with each other. Inexpensive-meal estimates ranged from about $4 to $8, and domestic draft beer from about $1.7 to $3.1. The beer, coffee and meal anchors are bounded blends of those figures. No search returned cocktail or wine prices, so I set both from a typical restaurant markup over beer. Mid-range meal for two is a judgement from the inexpensive-meal figures and one Hurghada guide, not a direct Sharm El Sheikh source. Accommodation anchors are holistic model estimates, with no booking pages or listings inspected. Hostels are scarce in Sharm El Sheikh, and hotel prices swing widely by season and resort area. Prices in resort areas such as Naama Bay run well above the Old Market.",
+  "comparable_city_reasoning": "Based on Egyptian Red Sea resort pricing, comparing Sharm El Sheikh with Hurghada. Prices are in the mid-range between Old Market local venues and tourist-area or hotel venues.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.0,
+    "coffee": 2.2,
+    "inexp_meal_1p": 6.5,
+    "midrange_meal_2p": 24.0,
+    "cocktail": 6.5,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 30.0,
+    "hotel_1star_2p": 25.0,
+    "hotel_3star_2p": 50.0
+  }
+}

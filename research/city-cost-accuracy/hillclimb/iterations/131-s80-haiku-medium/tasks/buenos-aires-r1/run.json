@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "a899b70263add018260bbf3ea45b4ac25eac1d1cf789dda1df7a844ce2d37e56",
+  "requestSha256": "bebffe4353661d7ecb155cf9498a6e1b5c1f51324436eb84be7d6572b636797f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 52521,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 83315,
+          "outputTokens": 10986,
+          "cacheReadInputTokens": 17478,
+          "cacheCreationInputTokens": 11603,
+          "webSearchRequests": 6,
+          "costUSD": 0.07631988,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 4737,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07631988,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD per AUD F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Buenos Aires restaurant meal prices 2026 cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Buenos Aires cappuccino beer price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Buenos Aires cocktail wine glass price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11 exchange rates AUD USD November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Buenos Aires beer draft price cocktail price per glass wine restaurant 2026 Numbeo",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:03:10.608Z",
+      "finishedAt": "2026-11-19T07:04:03.129Z"
+    }
+  ]
+}

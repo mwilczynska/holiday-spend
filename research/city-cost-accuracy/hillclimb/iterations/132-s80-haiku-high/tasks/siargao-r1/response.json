@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from aggregated Philippine and Siargao cost-of-living and listing data. Most sources are crowd-sourced, some are undated, and they disagree somewhat, so restaurant and beer anchors are medium confidence. Cocktail and wine_glass are less certain: no Siargao-specific aggregate was found, so they are bounded using the beer relationship and national bottle-price references. Accommodation anchors are holistic model estimates from general knowledge of Siargao's General Luna and Cloud 9 lodging market for a July (low-season) window. No booking pages or current listings were inspected. The FX value (0.6720 USD per AUD, 2026-11-18) was taken from search-result text describing the RBA exchange rates page; the RBA table itself was not opened in full, and an earlier search returned older, conflicting values. Verify it on rba.gov.au before use. Two RBA-directed searches were used, not one.",
+  "comparable_city_reasoning": "No direct comparable city. Food and drink are benchmarked to Philippine tourist-town and national aggregates, including Siargao-specific cost-of-living pages, with Siargao placed below Boracay and roughly at Coron/El Nido levels. Accommodation is a holistic estimate relative to other Philippine island beach destinations, without inspection of live listings.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.25,
+    "inexp_meal_1p": 3.20,
+    "midrange_meal_2p": 18.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 80.00
+  }
+}

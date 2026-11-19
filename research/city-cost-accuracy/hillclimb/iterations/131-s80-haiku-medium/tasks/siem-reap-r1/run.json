@@ -1,0 +1,63 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "8f8560a301a8c08af3663089ad4cbc80db12cb07864140473be914de90554ba3",
+  "requestSha256": "8a0721ee914e32593c980f23d5f38f9f94f27fc3fcb371f6f2aeada9bd98eb00",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 32762,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 64289,
+          "outputTokens": 7311,
+          "cacheReadInputTokens": 6691,
+          "cacheCreationInputTokens": 7628,
+          "webSearchRequests": 4,
+          "costUSD": 0.051676910000000006,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3604,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.051676910000000006,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD per AUD latest observation November 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siem Reap restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siem Reap beer cocktail wine coffee prices 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:04:41.695Z",
+      "finishedAt": "2026-11-19T07:05:14.457Z"
+    }
+  ]
+}

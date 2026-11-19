@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "364c4a7ae9c9b44e80b81f38a6b6328c04344ebbe7df0df71b98938a8bcd4218",
+  "requestSha256": "3e61d08dc55eac5a425e3781704ed7a610b0af0617dff07c73d96beff05238e0",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 130260,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 105735,
+          "outputTokens": 45465,
+          "cacheReadInputTokens": 21959,
+          "cacheCreationInputTokens": 17911,
+          "webSearchRequests": 7,
+          "costUSD": 0.10710779000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 37300,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.10710779000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Varanasi cost of living restaurant meal prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Varanasi beer price bar restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "India cappuccino price cafe cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "India cocktail price bar wine glass price cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "wine by the glass price restaurant India rupees typical",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:20:29.299Z",
+      "finishedAt": "2026-11-19T03:22:39.559Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "I used six web searches: one for the RBA rate and five for Lugano prices. Restaurant meal, beer and cappuccino anchors rest on aggregated cost-of-living figures seen in search results: Numbeo-derived figures (mid-range meal for two about CHF 150, inexpensive meal about CHF 30, draught beer CHF 8.42 in a Numbeo snapshot via Expatica), MyLifeElsewhere (inexpensive meal about CHF 25, beer about CHF 6, cappuccino about CHF 3.65) and Expatistan (pub beer about CHF 5.93, club cocktail about CHF 14). These sources are crowd-sourced and disagree with each other. I read search-result summaries, not full pages. I found no direct Lugano price for a glass of wine. I estimated it from local beer and cocktail levels and the Ticino wine-by-the-glass norm (roughly CHF 7-9). The cocktail is anchored on the Expatistan CHF 14 club figure, nudged up for restaurant and bar venues. I converted CHF to USD at roughly 1.24-1.25 USD per CHF, implied by the aggregator's own conversions, so this is approximate. Accommodation anchors are holistic estimates from general knowledge, assuming July peak season for a lakeside Swiss-Italian tourist city. I did not search for accommodation or inspect any listings, so those four anchors are the least certain.",
+  "comparable_city_reasoning": "Lugano is a high-cost Swiss lakeside tourist and financial city. Aggregators put it slightly below the Swiss average (about 10% cheaper than Switzerland overall per MyLifeElsewhere) but among the most expensive cities in the world for restaurant meals. Accommodation is benchmarked against Swiss-Italian lake destinations such as Locarno, with a premium for July peak season and below Zurich and Geneva city levels.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.6,
+    "coffee": 4.9,
+    "inexp_meal_1p": 35.0,
+    "midrange_meal_2p": 185.0,
+    "cocktail": 18.5,
+    "wine_glass": 9.5,
+    "hostel_dorm_1p": 55.0,
+    "hostel_private_2p": 138.0,
+    "hotel_1star_2p": 160.0,
+    "hotel_3star_2p": 275.0
+  }
+}

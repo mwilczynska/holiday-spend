@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors come from aggregated cost-of-living sites (ranges of about RMB 25-50 for a local meal, RMB 180-300 for a three-course dinner for two, RMB 25-35 for a cappuccino, and about RMB 40-80 for bar beer) and are converted at an approximate CNY/USD rate of about 7.1. These are crowdsourced and dated, so they are ballpark figures. Cocktail is an inference from bar-beer and hotel-bar data points, not a Suzhou-specific observation. Wine glass is a bounded estimate from a retail bottle price of about RMB 183 and a typical restaurant markup. Accommodation anchors are holistic model estimates from general knowledge and city context, not from inspected listings or live booking pages. The RBA FX observation could not be verified: the search did not return the official RBA F11 or F11.1 table, so as_of_date and source_rate are null rather than guessed. The USD conversion should be re-checked against the official RBA figure before use.",
+  "comparable_city_reasoning": "Food and drink anchors are based on Suzhou-specific aggregated price ranges, which sit above the national Chinese average and below Tier-1 cities such as Shanghai. Accommodation anchors are modelled on mid-sized Chinese prefecture-level cities with comparable tourism demand, Yangtze River Delta location, and registered hostel and hotel stock.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": null,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 11.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 70.00
+  }
+}

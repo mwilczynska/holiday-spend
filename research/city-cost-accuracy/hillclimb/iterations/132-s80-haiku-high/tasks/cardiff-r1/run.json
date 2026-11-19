@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "5ae47949f0124e0d3083f74b529b1fb229b522569c32b7d7d163c438218c257c",
+  "requestSha256": "5590d5a6ac04b03eb5a833a40cddede354b2b9497534fa5849c94205eb22172d",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 89244,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 132403,
+          "outputTokens": 15725,
+          "cacheReadInputTokens": 33503,
+          "cacheCreationInputTokens": 16317,
+          "webSearchRequests": 9,
+          "costUSD": 0.11470123,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 9044,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.11470123,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cardiff cost of living restaurant meal coffee beer prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cardiff pint of beer price cappuccino cocktail wine glass price pub restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD USD today November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "UK average price glass of wine restaurant cocktail price 2026 survey",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates 18 November 2026 USD GBP per AUD",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:06:16.914Z",
+      "finishedAt": "2026-11-19T07:07:46.158Z"
+    }
+  ]
+}

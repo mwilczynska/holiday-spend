@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Beer, coffee and restaurant-meal anchors rest on Numbeo's Cluj-Napoca figures (Oct 2026 snapshot, surfaced via web search). Those figures were: inexpensive meal 52.5-60 lei, mid-range meal for two about 257-260 lei, draft beer about 15-15.5 lei, cappuccino about 15.7-17.6 lei. I cross-checked them against older Expatistan, Wise and MyLifeElsewhere results. Lei were converted at an assumed ~4.4 lei per USD, because no RON exchange-rate search was run. I found no reliable current direct data for cocktails or wine by the glass, only a dated Expatistan club cocktail (23 lei) and a retail bottle price. Those two are derived from the local beer relationship (cocktail about 2.3x beer, glass of wine about 1.4x beer) plus general knowledge. Accommodation anchors are holistic model estimates from general knowledge; no accommodation searches or live listings were checked, and festival periods can push prices well above them. The RBA rate comes from web-search results for the RBA exchange-rates page (18 Nov 2026 observation); I did not open the page directly.",
+  "comparable_city_reasoning": "Cluj-Napoca's own Numbeo data was used for meals, beer and coffee. Cocktail, wine and accommodation were set by holistic comparison with other Romanian cities (Bucharest, Brasov, Sibiu) and mid-sized Central/Eastern European cities such as Krakow and Budapest, with Cluj slightly cheaper than Budapest for lodging.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.75,
+    "inexp_meal_1p": 12.70,
+    "midrange_meal_2p": 58.50,
+    "cocktail": 8.00,
+    "wine_glass": 4.90,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 82.00
+  }
+}

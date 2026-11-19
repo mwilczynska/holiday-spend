@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on five price searches that returned Wellington figures in NZD, mainly from Numbeo and Expatistan plus other aggregators. These are crowd-sourced and disagree with each other, beer most of all. NZD was converted to USD at an approximate NZD/USD level from general knowledge, not a looked-up rate. Cocktail uses a few Wellington data points. Wine by the glass had only a New Zealand-wide range, so it was set from that range and its usual relationship to beer. Accommodation anchors are holistic estimates for a July low-season window from general knowledge; no accommodation prices were searched and no live listings were inspected, so they are the least certain. The FX figure is the latest RBA observation found (18 Nov 2026); a 19 Nov figure was not located.",
+  "comparable_city_reasoning": "Food and drink are based on Wellington-specific price indexes. Accommodation is judged by analogy with other New Zealand and Australian capital-city markets such as Auckland, adjusted for Wellington's government and business-driven midweek hotel demand and a July low season.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.30,
+    "coffee": 3.50,
+    "inexp_meal_1p": 15.30,
+    "midrange_meal_2p": 72.00,
+    "cocktail": 11.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 68.00,
+    "hotel_1star_2p": 76.00,
+    "hotel_3star_2p": 105.00
+  }
+}

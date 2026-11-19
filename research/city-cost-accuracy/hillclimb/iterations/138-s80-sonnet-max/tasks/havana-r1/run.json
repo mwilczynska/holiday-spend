@@ -1,0 +1,112 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "d5bce11998c8e3b71b1420bd57722e23c5ab30d0a0f2a42bff33e72207f3153c",
+  "requestSha256": "cc61bc53573ee7dcdc940b86d5524621ec476267092ba202fe1c58fe5b4c3ba8",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 222719,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 27174,
+          "cacheReadInputTokens": 20608,
+          "cacheCreationInputTokens": 18728,
+          "webSearchRequests": 0,
+          "costUSD": 0.35078560000000003,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 25625,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 108170,
+          "outputTokens": 8070,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 7,
+          "costUSD": 0.08485200000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2586,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.4356376,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates US dollar Australian dollar latest daily observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba cost of living Numbeo restaurant prices meal inexpensive restaurant beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba paladar meal price per person USD 2026 how much does dinner cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba mojito cocktail price bar USD beer Cristal Bucanero price restaurant 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba glass of wine price restaurant USD cappuccino coffee price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba prices 2026 meal inexpensive restaurant, three-course meal for two mid-range, domestic beer, cappuccino, glass of wine, cocktail",
+            "mode": "extended",
+            "allowed_domains": [
+              "numbeo.com",
+              "hikersbay.com",
+              "gotripzi.com",
+              "combien-coute.net",
+              "expatistan.com",
+              "mylifeelsewhere.com",
+              "traveltables.com",
+              "trek.zone",
+              "travelcostcalculator.org"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:48:19.917Z",
+      "finishedAt": "2026-11-19T06:52:02.636Z"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0fac42ac694c9ab97234d9e1d8ff4c0b210af3fbac742c981ac44e2882d6ac6f",
+  "requestSha256": "36b18f11d1b9482b6f707ee0c84034465765cb5b1b2399d59c102b2509746944",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 635064,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 127863,
+          "outputTokens": 269765,
+          "cacheReadInputTokens": 27430,
+          "cacheCreationInputTokens": 36646,
+          "webSearchRequests": 8,
+          "costUSD": 0.23527230000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 262701,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.23527230000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates AUD USD November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pai Thailand restaurant prices beer cocktail cappuccino typical meal cost 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chiang Mai Thailand cost of living restaurant meal beer cappuccino cocktail wine prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pai Thailand wine by the glass price baht restaurant bar",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:25:21.435Z",
+      "finishedAt": "2026-11-19T07:35:56.499Z"
+    }
+  ]
+}

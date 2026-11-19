@@ -1,0 +1,30 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are based on a few web-search snippets of hotel and restaurant menus and a cost-of-living guide, with mixed dates, so they are approximate. Beer and wine carry the most uncertainty because alcohol is heavily taxed and hotel menus add service charge and tax. Accommodation anchors are holistic model estimates from general knowledge and the city context; no accommodation prices were searched or inspected. Hotel-bar cocktail and wine prices were taken as the upper-middle of the observed OMR 3 to 9 range. FX: the 2026-11-18 observation of 0.6720 is reported on the RBA exchange-rates overview page per a search summary; it was not independently verified on the RBA page itself, and the RBA may have published later business-day prints.",
+  "comparable_city_reasoning": "Priced against observed Muscat restaurant and hotel-bar menus (OMR converted at the USD peg of about 2.60 USD per OMR). Restaurant meals and coffee use cost-of-living guide figures. Hotel-tier accommodation is a holistic model estimate informed by general Gulf-region lodging levels, with Muscat's relatively moderate hotel pricing compared with Dubai or Doha.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 5.50,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 26.00,
+    "cocktail": 12.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 110.00
+  }
+}
+
+Sources:
+- [RBA exchange rates overview](https://www.rba.gov.au/exchange-rates-overview.html)
+- [Muscat cost of living and cappuccino/restaurant prices](https://www.whereandwhen.net/budget/oman/muscat/)
+- [Muscat hotel bar wine and cocktail listings](https://thediscreetgentleman.pages.dev/countries/oman/muscat/al-khuwair/olivo)

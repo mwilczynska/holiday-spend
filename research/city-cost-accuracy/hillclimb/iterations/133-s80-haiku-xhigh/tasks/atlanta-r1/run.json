@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "573621513b30fbce7ff113eaa5761989cc95205499f0a10d656ea510e3de8f8a",
+  "requestSha256": "c149a2af00cf4ce55ff0a23465fcaf968a2b6851fc0108714f21162aa87ca677",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 118355,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 89826,
+          "outputTokens": 35296,
+          "cacheReadInputTokens": 17904,
+          "cacheCreationInputTokens": 14513,
+          "webSearchRequests": 6,
+          "costUSD": 0.08971224,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 28891,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.08971224,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 historical",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Atlanta cost of living restaurant meal prices average 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Atlanta average price cappuccino beer cocktail wine restaurant bar 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA AUD/USD exchange rate today latest daily 4pm rba.gov.au November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Atlanta average glass of wine restaurant price 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:09:58.469Z",
+      "finishedAt": "2026-11-19T07:11:56.825Z"
+    }
+  ]
+}

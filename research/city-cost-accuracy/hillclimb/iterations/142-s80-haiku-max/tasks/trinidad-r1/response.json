@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Trinidad-specific 2026 menu prices were scarce, so food and drink anchors are bounded from Cuba-wide 2026 budget guides, aggregated price listings and Trinidad budget notes. Some sources are undated or use 2024-era peso prices, and mixed USD/EUR/CUP pricing plus a volatile informal exchange rate add uncertainty. Accommodation anchors are holistic model estimates from general knowledge; no live booking pages or listings were checked, and hostel anchors are least certain. Cocktail follows Trinidad budget figures of about 3 to 5 USD. Wine by the glass has no direct price data, so it is set at 1.5 times the beer anchor. FX was taken from RBA search results, not a direct page read.",
+  "comparable_city_reasoning": "No single comparable foreign city was used. Trinidad is treated as a Cuban provincial colonial tourist town, with food and drink anchors set from Cuba-wide 2026 price ranges and Trinidad budget notes, plus a modest tourist premium. Accommodation reflects general knowledge of Cuban casa particular and registered hotel pricing.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.00,
+    "inexp_meal_1p": 6.50,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 4.50,
+    "wine_glass": 3.75,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 110.00
+  }
+}

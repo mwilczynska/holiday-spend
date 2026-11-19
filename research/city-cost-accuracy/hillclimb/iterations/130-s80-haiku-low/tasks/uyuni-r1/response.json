@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are based on a few secondary sources (travel blogs, price aggregators, and cost-of-living sites) with mixed dates, so they are rough. Cappuccino and beer cluster around BOB 14-19 across sources. Cocktail and wine are not directly sourced; cocktail is set at roughly twice the beer anchor and wine at about 1.4 times, which is the local price-relationship basis. Restaurant meal ranges come from inconsistent sources (market almuerzo to tourist restaurants), so the inexpensive and mid-range anchors are wide. Accommodation anchors are holistic model estimates from general knowledge and the Uyuni tourism context, not from inspected booking pages or current listings. The FX observation is the latest RBA figure I could confirm from search results, dated 2026-03-20, and may not be the newest published rate on the generation date (2026-11-19).",
+  "comparable_city_reasoning": "Priced as a remote, tourist-oriented Bolivian highland town, using La Paz and Cochabamba price points from the search sources as the Bolivian reference, with Uyuni's higher tourist-restaurant prices and limited supply of hostel and hotel rooms taken into account.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.60,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 20.00,
+    "cocktail": 4.50,
+    "wine_glass": 3.50,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 45.00
+  }
+}

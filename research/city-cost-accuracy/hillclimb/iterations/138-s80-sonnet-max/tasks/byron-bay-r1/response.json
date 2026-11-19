@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Based on five price-check searches plus one RBA search. Byron Bay aggregator cost-of-living pages disagreed widely on cappuccino, draught beer, cheap meals and dinner for two, so I used central values weighted for a tourist town. Cocktail and wine come from several Byron venue menus returned in search. They reflect regular prices, with happy-hour listings used only as a lower bound. I sanity-checked them against the beer anchor (cocktail roughly double, glass of wine roughly 1.4x). The three-course dinner for two is the least certain food anchor. The aggregator figures looked too low for Byron, so it is mostly inferred from venue price tiers and Australian city benchmarks. Accommodation anchors are holistic estimates from general knowledge of a premium, seasonal leisure market, with July partly overlapping school holidays. They are not from live listings or searches. The FX observation comes from a single RBA search result for 18 Nov 2026.",
+  "comparable_city_reasoning": "Restaurant and drink prices are benchmarked against Byron Bay-specific aggregator data and venue menus, and against east-coast Australian cities (Brisbane, Gold Coast, Sydney) with a tourist-town premium. Accommodation is benchmarked against premium Australian coastal leisure destinations such as Noosa, from general knowledge.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.7,
+    "coffee": 3.55,
+    "inexp_meal_1p": 16.8,
+    "midrange_meal_2p": 99.0,
+    "cocktail": 14.8,
+    "wine_glass": 9.4,
+    "hostel_dorm_1p": 33.6,
+    "hostel_private_2p": 94.0,
+    "hotel_1star_2p": 114.0,
+    "hotel_3star_2p": 195.0
+  }
+}

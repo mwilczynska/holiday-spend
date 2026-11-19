@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Restaurant anchors rest on crowdsourced Numbeo and 2026 guide figures that conflict (mid-range meal for two about $27 to $30; inexpensive meal about $4.40 with a $3 to $10 range). Drink anchors are weaker: beer and coffee come from mixed Numbeo, guide and tourist-bar figures. Cocktail and wine are inferred from the local beer relationship, with wine also checked against Numbeo's bottle price, because no direct current Havana cocktail or glass-of-wine price was found. Cuba's dual-currency and informal exchange-rate pricing makes USD conversion uncertain. Accommodation anchors are holistic model estimates from general knowledge and the city context; no live booking pages or current listings were inspected. Several search results cited CUC prices, which are outdated and were not used as anchors. The FX observation is the most recent RBA 4pm rate found (18 November 2026); no 19 November figure was located.",
+  "comparable_city_reasoning": "No close single comparator was used. The basis is the Caribbean and Latin American tourist-city pattern, with a state-influenced dual price structure, cheap local meals, tourist-facing restaurant and bar pricing, and hotel rates above the local norm. Restaurant anchors are cross-checked against Numbeo and 2026 cost-of-living guides. Cocktail and wine use the beer-relationship method described above. Accommodation rests on general knowledge of registered casas particulares, state and joint-venture hotels, and hostels in Havana.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 5.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 140.00
+  }
+}

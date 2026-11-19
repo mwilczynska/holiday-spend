@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on aggregated crowdsourced cost-of-living figures from 2026 and older pages, so they are moderate quality. Beer and cappuccino are the best-supported. Inexpensive and mid-range meal anchors vary widely by source, so they are bounded estimates. Cocktail is a bar-tier range from one 2026 guide. Wine_glass has no direct local source; it is estimated from the beer anchor, roughly 1.5x beer, which is a model assumption. Accommodation anchors are holistic model estimates from general knowledge and regional context; no booking pages or current listings were inspected. July is peak season and the August festival period can push hotel rates up, so these anchors may understate peak-week prices. FX: the 2026-11-18 value of 0.6720 was taken from a secondary site (ozfinancehub.com.au) that states it reflects RBA data. I did not open rba.gov.au and could not confirm the figure on the RBA page, so the source_url is the official RBA exchange-rates page as a reference, not a page I read.",
+  "comparable_city_reasoning": "Based on aggregated 2026 cost-of-living figures for Cluj-Napoca and Romanian national price levels (Cluj reported as about 22 percent above the national average, with restaurants about 23 percent above), benchmarked against mid-sized Central and Eastern European cities with comparable tourism demand. Accommodation is a holistic regional estimate.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 6.50,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 6.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 110.00
+  }
+}

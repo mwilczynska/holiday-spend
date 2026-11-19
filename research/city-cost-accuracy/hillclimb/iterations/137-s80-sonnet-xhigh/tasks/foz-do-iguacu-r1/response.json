@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "I ran 5 web searches for food and drink prices and 1 for the RBA rate. The sources were aggregated cost-of-living sites (Expatistan, MyLifeElsewhere, TravelTables, LivingCost). They are crowd-sourced, thin and often undated, and they disagree. For example, a basic meal ranged from about $2.80 to about $10, and a mid-range dinner for two from about $13 to about $36. I weighted the newer and Expatistan figures and nudged them up slightly because Foz is a tourist hub. Beer, coffee, cocktail and inexpensive meal were reasonably supported. I found no per-glass wine price, only a bottle of table wine at about R$34, so wine_glass is an estimate from the local wine and beer price relationship. Cocktail is based on Expatistan-style figures of about R$20 to R$21, adjusted up for restaurant and tourist pricing. BRL/USD was not looked up, so BRL-to-USD conversions are approximate. All four accommodation anchors are holistic estimates from general knowledge of Foz do Iguaçu's tourism-driven lodging market. I did not search accommodation prices or inspect any booking pages or listings.",
+  "comparable_city_reasoning": "Basis is Foz do Iguaçu's own aggregated price indexes, which place it below Rio de Janeiro and São Paulo and close to other mid-sized southern Brazilian cities such as Cascavel. Accommodation is benchmarked loosely against other Brazilian tourist gateway cities with strong domestic and international demand.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.3,
+    "coffee": 2.0,
+    "inexp_meal_1p": 7.0,
+    "midrange_meal_2p": 36.0,
+    "cocktail": 4.8,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 32.0,
+    "hotel_1star_2p": 27.0,
+    "hotel_3star_2p": 65.0
+  }
+}

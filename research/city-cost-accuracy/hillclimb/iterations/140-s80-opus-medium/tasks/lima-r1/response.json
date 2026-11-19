@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Searches found aggregated crowdsourced prices in Peruvian soles for restaurant meals, cappuccino and draft beer (Numbeo's Lima page updated 16 Nov 2026, Hikersbay, Wise, Expatistan). They were converted to USD at about 3.4-3.5 PEN per USD, which is a model assumption and was not searched. The search found no aggregated per-drink prices for cocktails or wine by the glass. The cocktail estimate (pisco sour, about S/22-28) and the wine estimate (about S/20-24) are general-knowledge estimates, cross-checked against roughly 2.3-2.5 times the local draft beer price. They are less certain. Accommodation anchors are holistic model estimates for tourist-friendly districts such as Miraflores and Barranco and do not come from booking searches. They could vary by about 20-30% with season and neighbourhood. Prices were requested for July 2026 but are based on late-2026 data, which assumes little change over that period.",
+  "comparable_city_reasoning": "Food and drink anchors are mainly based on aggregated Lima cost-of-living data. Accommodation was benchmarked against Andean and Pacific-coast Latin American capitals such as Bogotá and Quito. Lima's tourist districts are priced slightly above Bogotá and well below Santiago.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.90,
+    "coffee": 3.20,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 70.00
+  }
+}

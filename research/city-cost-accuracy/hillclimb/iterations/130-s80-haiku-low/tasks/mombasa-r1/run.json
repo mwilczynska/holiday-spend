@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "87e0392843fcb7bc2f1e460aabcdc9d5773f0b3b75a2debf8f9104006bc5a2bf",
+  "requestSha256": "9fbcc663c8783dca472ea088b91a4ce714b874a3213b43131534bb3e3fc49183",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 44861,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 79595,
+          "outputTokens": 7151,
+          "cacheReadInputTokens": 16572,
+          "cacheCreationInputTokens": 12794,
+          "webSearchRequests": 6,
+          "costUSD": 0.07425952000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2442,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07425952000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mombasa restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kenya beer price bar restaurant Mombasa KES",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mombasa cappuccino cocktail wine glass price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates 2026 AUD USD historical F11.1 daily",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:01:45.635Z",
+      "finishedAt": "2026-11-19T07:02:30.496Z"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "c00643d71288f698ec9c14b333e665063cb7b414af21973b3585f3af687c253b",
+  "requestSha256": "812072a0fde269bf8d00cd1ceefcc04f193d80ea9ef523a2708d6d9d6fca9fb8",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 31203,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 2134,
+          "cacheReadInputTokens": 6660,
+          "cacheCreationInputTokens": 7267,
+          "webSearchRequests": 0,
+          "costUSD": 0.051747999999999995,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 751,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 60752,
+          "outputTokens": 4537,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 4,
+          "costUSD": 0.0483437,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1118,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.10009169999999999,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Hampi restaurant meal price beer price cappuccino cost backpacker budget",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Hampi Karnataka cost of living prices beer restaurant meal numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Karnataka beer price restaurant bar cocktail glass of wine price Bangalore cost of living",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:15:33.130Z",
+      "finishedAt": "2026-11-19T03:16:04.333Z"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "c72e33ef6fae1d6b7d9559fb7674be04948174d539c78028ef7848988cb231bd",
+  "requestSha256": "533ff10a68356a945e540bfded7f5336c0a2d41d07bea7b7e78a3abf1aeefc01",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 50824,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 95395,
+          "outputTokens": 8272,
+          "cacheReadInputTokens": 25551,
+          "cacheCreationInputTokens": 14813,
+          "webSearchRequests": 7,
+          "costUSD": 0.08689361000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2846,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.08689361000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD per AUD F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arica Chile cost of living restaurant meal price coffee beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chile restaurant prices cappuccino beer cocktail wine glass typical price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11.1 exchange rates AUD USD November 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chile restaurant cocktail price glass of wine price CLP typical 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rate AUD USD 4pm Sydney reference rate 18 November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:00:31.222Z",
+      "finishedAt": "2026-11-19T07:01:22.048Z"
+    }
+  ]
+}

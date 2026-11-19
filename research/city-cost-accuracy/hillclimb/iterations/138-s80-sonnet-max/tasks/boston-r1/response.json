@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Meal, beer and coffee anchors rest on Boston-specific aggregates seen in web search result summaries (Numbeo-credited figures via Expatica and combien-coute, plus Wise, MyLifeElsewhere, Where and When). I did not open the underlying pages, and the data is crowd-sourced. Cocktail ($15-18 across sources; Expatistan's $18 uses few data points) is moderately supported. No Boston-specific wine-by-the-glass average was found, so wine is inferred from national and other-city reports (about $14-16+ per glass) and a ~1.9x relationship to the ~$8 beer. Accommodation anchors are holistic model estimates for July peak season (no accommodation searches or live listings checked); Boston's small hostel supply and possible event-driven July demand make them the least certain.",
+  "comparable_city_reasoning": "Food and drink use Boston-specific aggregate figures. Accommodation is judged by analogy to other high-cost US Northeast urban markets such as New York and Washington DC, adjusted for Boston's limited hostel supply and strong July peak-season hotel demand.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 5.25,
+    "inexp_meal_1p": 25.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 17.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 75.00,
+    "hostel_private_2p": 165.00,
+    "hotel_1star_2p": 180.00,
+    "hotel_3star_2p": 290.00
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "57542a0721c093892f134b67e8cd95e993b8618debf3c6e26c161e0ffc682a23",
+  "requestSha256": "8cf3014e69a98fdb88a5a87fa51f79f1d1f07e43c92f353077f2e21054753694",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 103274,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 141310,
+          "outputTokens": 36674,
+          "cacheReadInputTokens": 16352,
+          "cacheCreationInputTokens": 17324,
+          "webSearchRequests": 9,
+          "costUSD": 0.12609631999999998,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 29366,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.12609631999999998,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD per AUD latest daily observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Munnar Kerala cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "India cost of living cappuccino price restaurant beer price 2026 Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kerala bar beer price wine price restaurant liquor cost rupees",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Munnar cafe cappuccino price rupees tourist",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kerala cost of living cocktail price restaurant meal for two Numbeo",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:16:58.357Z",
+      "finishedAt": "2026-11-19T03:18:41.631Z"
+    }
+  ]
+}

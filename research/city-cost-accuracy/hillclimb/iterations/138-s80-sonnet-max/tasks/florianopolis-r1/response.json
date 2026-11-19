@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors draw on indicative search results: Expatistan (cappuccino ~R$14, basic business lunch ~R$42), Rocks Investments (local lunch R$20-50, mid-range R$60-120 per person), NSC Total reporting on the ABBT lunch survey (Florianopolis ranked Brazil's priciest capital for lunch), and a nightlife guide (bar beer R$12-20, signature cocktails R$30-50). Numbeo item-level prices were not retrieved and no wine-glass price was found, so wine and cocktail lean on the local relationship to beer (~2.1x and ~2.2x). BRL prices were converted at an assumed ~5.2 BRL per USD that was not searched. Accommodation anchors are holistic model estimates for July (winter, moderate school-holiday demand) with no booking pages or listings inspected, so they are the least certain. The RBA rate was taken from search-tool summaries of RBA pages rather than a direct page fetch.",
+  "comparable_city_reasoning": "No single comparable city was used. Search results rank Florianopolis as Brazil's most expensive capital for lunch, so restaurant and drink anchors sit in the upper tier of Brazilian cities, near Sao Paulo and Rio. Accommodation reflects a popular southern-Brazil beach destination in its winter, non-peak season.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.80,
+    "coffee": 2.70,
+    "inexp_meal_1p": 8.60,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 6.20,
+    "wine_glass": 5.80,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 39.00,
+    "hotel_1star_2p": 43.00,
+    "hotel_3star_2p": 70.00
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "26cf1aa1667afd5695fe44ce3be48bef29a903503a48203a42839d40ec284491",
+  "requestSha256": "c5043cc52a9c11d0eff7bfb4f6b82c9bcdf338746f986354f1f2432228a81381",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 42952,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 57825,
+          "outputTokens": 9183,
+          "cacheReadInputTokens": 16178,
+          "cacheCreationInputTokens": 7860,
+          "webSearchRequests": 4,
+          "costUSD": 0.05210778,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 4245,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05210778,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Marmaris restaurant meal prices beer coffee cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Turkey cost of living 2026 restaurant beer cappuccino cocktail wine prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11.1 daily exchange rates AUD/USD November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:04:00.855Z",
+      "finishedAt": "2026-11-19T07:04:43.807Z"
+    }
+  ]
+}

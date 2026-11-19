@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "e310a989e59ea42fbfae0721b99b29e1370564047410ee799d7a622d61182865",
+  "requestSha256": "70a134d862665e05da7f7d3c2da65aeaeee4439375b077a965465519ddad6f19",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 50466,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 80804,
+          "outputTokens": 8717,
+          "cacheReadInputTokens": 13984,
+          "cacheCreationInputTokens": 13190,
+          "webSearchRequests": 6,
+          "costUSD": 0.07521674,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2754,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07521674,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates Australian dollar US dollar latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Japan restaurant meal coffee beer cocktail wine typical prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tottori city cost of living prices restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia AUD USD exchange rate November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Japan izakaya draft beer price cocktail price wine glass price yen 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:02:18.758Z",
+      "finishedAt": "2026-11-19T07:03:09.224Z"
+    }
+  ]
+}

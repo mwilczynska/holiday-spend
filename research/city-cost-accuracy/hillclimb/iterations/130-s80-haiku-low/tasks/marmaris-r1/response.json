@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are medium-confidence. They rest on crowd-sourced and aggregator estimates (Numbeo, CityCost, almurakib, Oysterlist, Wohin-und-Wann, departly), several undated, and wine is weakest. Wine_glass is inferred from the local beer price, since no reliable 2026 per-glass restaurant figure was found. Accommodation anchors are holistic model estimates from general knowledge for July peak season; no accommodation searches were run and no live listings were checked. FX: the 0.6976 value is for 2026-11-03, not the latest observation on 2026-11-19. It was reported by a third-party site as the RBA 4pm Sydney reference, and I could not open the RBA F11.1 table to verify it directly. The official RBA exchange-rates page was not read.",
+  "comparable_city_reasoning": "Marmaris is a Turkish Aegean resort in Muğla province on the Anatolian (Asian) side. Prices are benchmarked to Turkish coastal resort pricing with a tourist-season premium for July 2026. Region is set to Middle East on the Anatolian geography. Restaurant anchors are based on aggregated Marmaris estimates: beer about 3.0-3.2 USD, cappuccino 2.5-3.7 USD, inexpensive meal 7-10 USD, mid-range meal for two 22-44 USD. Cocktail is based on Bar Street reports of about 5-10 GBP. Wine_glass is set at roughly 1.5x the local beer price because direct evidence was weak. Accommodation is a holistic estimate for resort hostels and hotels in peak season.",
+  "fx": {
+    "as_of_date": "2026-11-03",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6976,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 3.00,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 8.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 75.00
+  }
+}

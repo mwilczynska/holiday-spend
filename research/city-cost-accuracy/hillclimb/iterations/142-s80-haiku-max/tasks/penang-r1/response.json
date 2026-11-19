@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors draw on Penang-specific Numbeo entries cross-checked against George Town figures and aggregator summaries. Sources are sample-based, mixed-date and not specifically July 2026, so treat them as ballpark. Beer assumes a 0.5 L draught; Numbeo's George Town (RM10) and Penang (RM17) draught figures disagree. Cocktail (about 2.2x beer) and wine_glass (about 1.7x beer) rest mainly on the local beer relationship, which is the disclosed basis: cocktail direct evidence was scattered RM30-50 bar figures, and wine direct evidence was one undated house-wine price of RM21. Ringgit values use an assumed working rate of about 4.2 MYR per USD from general knowledge, not a live quote; a travel site's 4.7 may be outdated, and at that level food USD values would be about 10-12% too high. Accommodation values are holistic model estimates from general knowledge and city context; no accommodation searches were run and no booking pages or listings were checked. FX is the latest RBA observation found (18 Nov 2026); no 19 Nov reading was located.",
+  "comparable_city_reasoning": "Penang-specific basis: Numbeo entries for Penang and George Town (the island's main city) plus aggregator summaries for food and drink; no separate comparable city was used. Accommodation is a general-knowledge comparison with budget and mid-range hostels and hotels in George Town, Penang.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.90,
+    "coffee": 2.85,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 21.00,
+    "cocktail": 8.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 60.00
+  }
+}

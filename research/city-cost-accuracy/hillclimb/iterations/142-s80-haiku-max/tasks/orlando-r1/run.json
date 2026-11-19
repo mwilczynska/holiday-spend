@@ -1,0 +1,80 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "d9e05052b46a762e9ef98e940c6c68b3680d134d3eb8f2e268f7e2ea4c8397ae",
+  "requestSha256": "674c5f6b1561e4566f534f05fcefd4c01551b6bc382ca76f59fca1624038e396",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 332604,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 76674,
+          "outputTokens": 197469,
+          "cacheReadInputTokens": 4563,
+          "cacheCreationInputTokens": 17470,
+          "webSearchRequests": 5,
+          "costUSD": 0.15994153,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 190997,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.15994153,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates USD AUD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Orlando FL cost of living restaurant prices meal beer cappuccino Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Orlando restaurant meal prices typical cost per person 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Orlando bar prices draft beer cocktail glass of wine average 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Orlando cappuccino coffee price average cafe 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:25:04.206Z",
+      "finishedAt": "2026-11-19T07:30:36.810Z"
+    }
+  ]
+}

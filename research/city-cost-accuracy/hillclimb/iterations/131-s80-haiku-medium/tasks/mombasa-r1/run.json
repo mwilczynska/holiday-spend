@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "87e0392843fcb7bc2f1e460aabcdc9d5773f0b3b75a2debf8f9104006bc5a2bf",
+  "requestSha256": "9fbcc663c8783dca472ea088b91a4ce714b874a3213b43131534bb3e3fc49183",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 43235,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 57600,
+          "outputTokens": 8424,
+          "cacheReadInputTokens": 15981,
+          "cacheCreationInputTokens": 7580,
+          "webSearchRequests": 4,
+          "costUSD": 0.051647809999999995,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 4135,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.051647809999999995,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mombasa cost of living restaurant meal coffee beer prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kenya Mombasa bar beer cocktail wine glass price KES 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD USD F11.1 daily",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:04:05.512Z",
+      "finishedAt": "2026-11-19T07:04:48.747Z"
+    }
+  ]
+}

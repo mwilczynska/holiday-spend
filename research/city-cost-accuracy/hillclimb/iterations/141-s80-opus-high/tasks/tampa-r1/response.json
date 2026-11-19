@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "I used three web searches. The food and drink anchors come from crowdsourced cost-of-living figures. Expatica, using Numbeo data from June 2026, gave about $20 for an inexpensive meal, $80 for a three-course meal for two, $5.81 for a cappuccino and $7 for a 0.5 L domestic draught beer. Citycost gave about $19.64, $75 and $5.91 for the same items, and MyLifeElsewhere gave about $6 for a domestic pint. These sources roughly agree, so the meal and coffee anchors are fairly reliable. The cocktail anchor of $14 relies on a 2023 study reported by a local radio site and on Expatistan's $12 downtown figure, which is based on only 8 data points, so it is less certain. I found no per-glass wine price for Tampa. The wine anchor is my estimate based on the local cocktail and beer prices and on typical US restaurant prices, so treat it as uncertain. The accommodation anchors are my estimates from general knowledge only; I did not search for or check any booking pages or listings. Tampa has very few registered hostels, so the hostel anchors are especially uncertain. They are based on typical Florida and Southeast US hostel prices. July is low season in Tampa, so hotel rates should be moderate. Actual prices can still vary widely by neighbourhood, for example Downtown, Ybor City or Westshore compared with outer motel strips.",
+  "comparable_city_reasoning": "I compared Tampa with other mid-to-large Sun Belt US metros, mainly Orlando, Jacksonville, Atlanta and Charlotte. Tampa's restaurant and bar prices are a little above the national average, and its July hotel rates are lower than in its peak winter season. For hostel prices I used St. Petersburg, Orlando and Miami, because Tampa itself has very few hostels.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 5.75,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 14.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 80.00,
+    "hotel_3star_2p": 145.00
+  }
+}

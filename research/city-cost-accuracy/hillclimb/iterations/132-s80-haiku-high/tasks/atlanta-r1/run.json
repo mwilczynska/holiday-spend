@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "573621513b30fbce7ff113eaa5761989cc95205499f0a10d656ea510e3de8f8a",
+  "requestSha256": "c149a2af00cf4ce55ff0a23465fcaf968a2b6851fc0108714f21162aa87ca677",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 85320,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 55222,
+          "outputTokens": 15651,
+          "cacheReadInputTokens": 16087,
+          "cacheCreationInputTokens": 11400,
+          "webSearchRequests": 4,
+          "costUSD": 0.055788569999999996,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 11233,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.055788569999999996,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 USD per AUD latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Atlanta cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Atlanta average price cappuccino beer cocktail wine glass bar restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11.1 exchange rates daily table USD latest observation 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:06:16.754Z",
+      "finishedAt": "2026-11-19T07:07:42.074Z"
+    }
+  ]
+}

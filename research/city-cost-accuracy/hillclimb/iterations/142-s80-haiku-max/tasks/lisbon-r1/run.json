@@ -1,0 +1,66 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "4b974d61d3e339456489b0ec46e789052ee1f4b123752d7fdda51c10fc192787",
+  "requestSha256": "020c82bdb720a04fd4a195d5d8930260d9c8ddad40b64460fc038f71b993d532",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 384800,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 104013,
+          "outputTokens": 169141,
+          "cacheReadInputTokens": 6681,
+          "cacheCreationInputTokens": 14971,
+          "webSearchRequests": 8,
+          "costUSD": 0.17803281,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 163702,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.17803281,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates A$1 US dollar latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lisbon cost of living 2026 restaurant meal prices inexpensive mid-range three course meal for two beer cappuccino cocktail wine",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lisbon cappuccino price euros cocktail price wine glass price bar 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:17:49.720Z",
+      "finishedAt": "2026-11-19T07:24:14.521Z"
+    }
+  ]
+}

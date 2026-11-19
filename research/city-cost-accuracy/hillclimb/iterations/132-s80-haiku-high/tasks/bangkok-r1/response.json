@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from scattered 2026 Bangkok menus, travel guides and cost-of-living snippets that disagree by 20-50%, converted at an assumed ~34 THB per USD. Restaurant meal and coffee anchors are the firmer ones; cocktail and wine are bounded by mid-range hotel-bar menus. Accommodation anchors are holistic model estimates with no accommodation search. The FX observation was not verified on an rba.gov.au page: the figure came from a search-result summary attributing 0.6976 to the RBA 4pm reference on 2026-11-03, which is about two weeks before the generation date. Treat source_rate as unverified and check the RBA F11.1 table before use.",
+  "comparable_city_reasoning": "Bangkok-specific food and drink basis from 2026 menus and guides, with prices converted at about 34 THB per USD. Accommodation is a holistic estimate for Bangkok's mid-range and budget segments, not based on any comparable city or live listings. Bangkok is treated as a mid-cost Southeast Asian capital.",
+  "fx": {
+    "as_of_date": "2026-11-03",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6976,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.80,
+    "coffee": 2.95,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 10.30,
+    "wine_glass": 11.75,
+    "hostel_dorm_1p": 11.75,
+    "hostel_private_2p": 29.50,
+    "hotel_1star_2p": 23.50,
+    "hotel_3star_2p": 73.50
+  }
+}

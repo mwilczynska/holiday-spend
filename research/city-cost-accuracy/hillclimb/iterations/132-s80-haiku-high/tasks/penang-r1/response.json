@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from several 2026-dated or recently updated aggregated sources (Numbeo, CityCost, WhereAndWhen, MyLifeElsewhere) that are crowd-sourced and disagree by about 10-20%, so they are bounded estimates. Cocktail rests on one weak source (an Expatistan figure last updated in 2024), so it is anchored to the local beer relationship (about 1.8x a draft beer). Wine glass is derived from the Numbeo mid-range bottle price (RM78) and a restaurant glass markup, not from a direct glass price. Dorm, private, and hotel anchors are holistic model estimates from general knowledge and the Penang context; no accommodation searches were run and no live listings were checked, so they are the least certain. Ringgit figures were converted at roughly 4.2 MYR per USD. The FX value is taken from a search snippet that attributes 0.6720 USD per AUD at 4pm on 2026-11-18 to the RBA overview page; I did not open the RBA page to confirm it, and no 2026-11-19 observation was found.",
+  "comparable_city_reasoning": "No named comparable city. The basis is Penang-specific aggregated price listings, cross-checked against typical Southeast Asian price levels for a mid-sized tourist city in Malaysia. Accommodation is a holistic estimate, not a comparison to a specific city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.60,
+    "coffee": 2.90,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 24.00,
+    "cocktail": 7.20,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 62.00
+  }
+}

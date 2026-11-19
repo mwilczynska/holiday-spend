@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Beer, coffee and meal anchors are triangulated from a few Tottori price-index and crowd-sourced pages. I saw these only as search-result summaries and did not open them. They disagree by roughly 10-15% and their dates are unclear. A few single-venue listings served as sanity checks. I found no Tottori cocktail or wine prices, so those use typical Japanese ratios to beer (cocktail about 1.5x, glass of wine about 1.25x). Yen quotes were converted to USD at an assumed approximate JPY/USD rate that I did not search, which adds FX uncertainty. Accommodation anchors are holistic model estimates from general knowledge of regional Japanese lodging, not live listings, and are the least certain (thin hostel supply, summer demand swings). The FX figure is the latest RBA USD/AUD observation surfaced by one search (18 Nov 2026), taken from a search-result summary of the RBA pages.",
+  "comparable_city_reasoning": "Small regional Japanese prefectural capital on the San'in coast, priced below Tokyo, Osaka and Kyoto and in line with other secondary Japanese cities. Tottori-specific index figures were weighted first, then general regional-Japan price levels.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.60,
+    "coffee": 3.40,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 5.30,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 21.00,
+    "hostel_private_2p": 43.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 75.00
+  }
+}

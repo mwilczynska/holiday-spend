@@ -1,0 +1,33 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and bar anchors are rough estimates. Coffee has the best national data (a 2026 national average near A$4.69, adjusted up for Byron's premium tourist pricing). Beer, cocktail and wine anchors rest on sparse 2025-2026 Byron venue menus and happy-hour listings, so they are less certain. Meal anchors are estimates with weak direct support. Accommodation anchors are holistic model estimates from general knowledge and city context; no booking pages or current listings were inspected. FX is the RBA 4pm observation for 18 Nov 2026 as reproduced in search results; the RBA page itself was not opened directly, and no 19 Nov observation was found.",
+  "comparable_city_reasoning": "Regional Australian coastal tourist towns such as the Gold Coast and Sunshine Coast, adjusted upward for Byron Bay's premium visitor pricing for food, drink and accommodation. Accommodation is based on general knowledge of Byron's peak-season room and bed rates, not on live listings.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.40,
+    "coffee": 3.70,
+    "inexp_meal_1p": 14.80,
+    "midrange_meal_2p": 128.00,
+    "cocktail": 16.10,
+    "wine_glass": 8.75,
+    "hostel_dorm_1p": 34.00,
+    "hostel_private_2p": 101.00,
+    "hotel_1star_2p": 114.00,
+    "hotel_3star_2p": 188.00
+  }
+}
+
+Sources:
+- [RBA exchange rates page](https://www.rba.gov.au/statistics/frequency/exchange-rates.html)
+- [Ozfinancehub RBA exchange rates (18 Nov 2026)](https://ozfinancehub.com.au/exchange-rates)
+- [Hey You / Westpac DataX Daily Brew Report 2026, via search](https://www.timeout.com/australia/news/good-news-australias-coffee-price-hikes-are-slowing-down-heres-what-a-cuppa-costs-in-each-state-082526)
+- [Elements of Byron Bar Menu 2025](https://elementsofbyron.com.au/wp-content/uploads/2025/12/2025-BAR-MENU-3.12.2025-FINAL.pdf)
+- [Three Blue Ducks Byron drinks menu](https://www.threeblueducks.com/wp-content/uploads/2025/10/Byron-drinks-x-1.pdf)
+- [Eat Drink Cheap Byron Bay wine specials](https://www.eatdrinkcheap.com.au/new-south-wales/wines-specials-byron+bay)

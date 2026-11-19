@@ -1,0 +1,63 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "5408d74ba5a2d967bfdd3e07644349e2284dca02acaa08dc71893b9428033f5b",
+  "requestSha256": "de5d18d87385f3059982f4f22d7ca2f95dd193f6af4d09f5da029b2ce5e01324",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 31680,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 52337,
+          "outputTokens": 5116,
+          "cacheReadInputTokens": 4567,
+          "cacheCreationInputTokens": 9016,
+          "webSearchRequests": 4,
+          "costUSD": 0.04964057,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1970,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.04964057,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD per AUD F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siargao restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siargao beer cocktail wine coffee prices",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:01:57.561Z",
+      "finishedAt": "2026-11-19T07:02:29.241Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, beer, cocktail and wine anchors are based on aggregated 2026 guide and comparison-site figures for Chania and Greece, which vary by source and date; harbour-area prices run well above the rest of town. Cocktail and wine anchors lean on Greek price benchmarks rather than Chania-specific data. Accommodation anchors are holistic model estimates from general knowledge of Chania's July tourist season and were not checked against live listings. The FX observation (0.6720 for 18 November 2026) was taken from a secondary summary that cites the RBA 4.00 pm rate; the full RBA F11.1 table was not retrieved, so verify it there.",
+  "comparable_city_reasoning": "Benchmarked against Greek tourist-oriented mainland and island towns such as Rethymno and Heraklion, with Chania's harbour and Old Town premium applied to the July pricing window. EUR figures were converted at an assumed rate of about 1.16 USD per EUR.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 12.50,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 10.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 160.00
+  }
+}

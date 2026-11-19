@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are triangulated from web-search result summaries (price-comparison pages such as Expatistan and a Feb 2026 city guide); no individual pages were opened. Beer, cappuccino and cocktail sources broadly agree (apart from a lower outlier on beer). The inexpensive meal is reasonably supported. The two-person mid-range meal varied by about 30% across sources and a bottom-up check, so a bounded middle value was used. No clear per-glass restaurant wine index was found, so wine rests on a guide's house-wine range nudged up for restaurants and a roughly 1.05x relationship to beer. Cocktail was also sense-checked at roughly 1.6x beer. Accommodation anchors are holistic model estimates from general knowledge for a July winter/school-holiday window (no accommodation searches or booking pages inspected) and are the least certain. FX is the RBA 4 pm AUD/USD observation for 2026-11-18 as reported in the search result.",
+  "comparable_city_reasoning": "Food and drink use Melbourne-specific price-index and guide data. Sydney is the closest comparable Australian city (one guide put Sydney pints slightly above Melbourne), and accommodation was positioned a little below Sydney-level big-city pricing.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.40,
+    "coffee": 3.85,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 88.00,
+    "cocktail": 15.40,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 29.00,
+    "hostel_private_2p": 76.00,
+    "hotel_1star_2p": 82.00,
+    "hotel_3star_2p": 104.00
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b5f7cc2b36de6a19239149a7f40d8d0dac2487d6dc5d714950cfc82b29966ee2",
+  "requestSha256": "f170ca6a1d6bf6a2c5a149200139aeaffcf6831afd5a4b4f8122aa34c4b89312",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 129708,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 102514,
+          "outputTokens": 30784,
+          "cacheReadInputTokens": 17904,
+          "cacheCreationInputTokens": 12954,
+          "webSearchRequests": 7,
+          "costUSD": 0.09841324000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 25411,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.09841324000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 historical rates",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Seattle cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Seattle average price cappuccino beer cocktail wine glass restaurant 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD/USD 4pm November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Seattle average price glass of wine restaurant 2026 cost",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:14:12.142Z",
+      "finishedAt": "2026-11-19T07:16:21.851Z"
+    }
+  ]
+}

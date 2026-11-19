@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are based on aggregated cost-of-living figures (Numbeo-derived listings republished by Expatica and Apartment List, a SumUp survey reported by the San Antonio Current, and Square's bar price averages), but several sources are dated or conflict. Beer and cappuccino are the best-supported anchors. The cocktail anchor is an average of Square's bar menu averages. The wine glass anchor has no citywide average; it is estimated from sampled venue menus ($6 to $10 per glass) and the local price relationship to beer. Hostel and hotel anchors are holistic model estimates from general knowledge and city context, with no accommodation search or live listing check, so they are lower confidence. Estimates assume a July 2026 summer peak-season window.",
+  "comparable_city_reasoning": "No comparable city was used. The estimates are based on San Antonio's own published price data where available, with a US mid-sized metropolitan tourism baseline for accommodation and the beer-to-wine relationship for wine.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 5.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 9.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 175.00
+  }
+}

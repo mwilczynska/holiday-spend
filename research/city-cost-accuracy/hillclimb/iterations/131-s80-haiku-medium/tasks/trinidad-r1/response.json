@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors rest on a few sparse, partly outdated sources: a Euro-based price site with figures from around 2017 to 2026, a 2026 Havana cocktail guide, and older USD/CUC-era references. Cuba has a dual currency and rapidly rising prices, and tourist venues often quote USD or EUR, so the USD values are rough. Wine glass has no direct source and is estimated from beer. Accommodation anchors are holistic model estimates from general knowledge of Trinidad's casa particular, guesthouse and hotel market; no live booking pages or current listings were inspected. The FX observation could not be confirmed as the latest, so it may be stale.",
+  "comparable_city_reasoning": "Priced against Cuban colonial tourist towns and Havana, using Havana cocktail prices as an upper reference for drinks. Accommodation is benchmarked to Cuban registered private lodging (casas particulares) and state hotels in comparable provincial tourism centres. Wine is estimated from the beer anchor because direct local wine prices were not found.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 5.00,
+    "wine_glass": 3.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 120.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium. Search summaries (pages not opened directly) support the restaurant anchors best: Cardiff inexpensive meal ~GBP 15 and mid-range meal for two ~GBP 62 (Numbeo-derived), and pint ~GBP 4.90-5.35 (Numbeo-derived, Expatistan). Cappuccino rests on rough cafe-coffee ranges (GBP 2.80-3.70) plus general knowledge. Cocktail rests on crowd-sourced and guide ranges (GBP 7-12). No current Cardiff glass-of-wine price was found, so wine uses ~1.2x the pint price and the UK ONS-reported 175ml average (GBP 5.17 in Jan 2025), uplifted. Accommodation is a holistic model estimate for July 2026, not live listings. It is the least certain, and event weekends can run much higher. GBP was converted at an assumed ~1.34 USD/GBP, which was not searched. FX is the RBA 4:00 pm observation of 18 Nov 2026 as shown on its exchange rates page in search results; no 19 Nov observation was found.",
+  "comparable_city_reasoning": "Food and drink are based on Cardiff-specific aggregated figures. Cocktail and wine are scaled off the local pint price (cocktail ~1.9x, 175ml glass ~1.2x), which is typical of UK on-trade pricing. Accommodation is treated like other mid-sized UK regional cities such as Bristol, Manchester and Birmingham: a bit below Bristol and Edinburgh and well below London.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.70,
+    "coffee": 4.55,
+    "inexp_meal_1p": 20.10,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 12.75,
+    "wine_glass": 8.10,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 88.00,
+    "hotel_1star_2p": 96.00,
+    "hotel_3star_2p": 147.00
+  }
+}

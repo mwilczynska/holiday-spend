@@ -1,0 +1,107 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "24f4c8f7941f819f386c24fc8997d649a49281be0ed3d1e239051ad748911a5d",
+  "requestSha256": "bd647435d53e9fd918cf321a2edbb74c200574e68ba4a19d7ba61a69f019bcda",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 204363,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 26100,
+          "cacheReadInputTokens": 19768,
+          "cacheCreationInputTokens": 19005,
+          "webSearchRequests": 0,
+          "costUSD": 0.3409856,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 24618,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 87531,
+          "outputTokens": 6836,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.0721711,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2352,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.41315670000000004,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates US dollar Australian dollar latest daily rate",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wollongong cost of living restaurant meal price inexpensive meal mid-range for two Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wollongong cappuccino price coffee cost cafe",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wollongong pub beer price schooner pint draft beer cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wollongong cocktail price and glass of wine price restaurant bar",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wollongong cost of living prices domestic beer draught cappuccino inexpensive restaurant meal three-course meal for two mid-range",
+            "mode": "extended",
+            "allowed_domains": [
+              "numbeo.com",
+              "expatica.com",
+              "mylifeelsewhere.com",
+              "expatistan.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:57:16.785Z",
+      "finishedAt": "2026-11-19T07:00:41.148Z"
+    }
+  ]
+}

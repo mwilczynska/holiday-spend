@@ -1,0 +1,63 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "fb3ecade3a925b4b05c040af9956ee959417ff5a36e67a645551347626dede15",
+  "requestSha256": "349c4a7bb5f6c85ad8ccc9f33e4f5993097e99e1d0ac2c43865da1faa7dd7f30",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 104661,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 77659,
+          "outputTokens": 27150,
+          "cacheReadInputTokens": 6683,
+          "cacheCreationInputTokens": 8570,
+          "webSearchRequests": 5,
+          "costUSD": 0.07312173,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 22855,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07312173,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD per AUD F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florianópolis restaurant prices meal cost cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florianópolis beer cappuccino cocktail wine glass price bar 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:10:15.765Z",
+      "finishedAt": "2026-11-19T07:12:00.427Z"
+    }
+  ]
+}

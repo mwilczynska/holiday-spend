@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded estimates from thin, partly secondary sources: an aggregator's Pai meal figure, one Reggae Pai review (beer about 100 THB), one Jazz House drink price, a French price-comparison cappuccino figure, and general Thailand price pages. Pai-specific cocktail and wine prices were not found, so cocktail and wine use the local beer relationship (about 2 to 2.5 times beer for a mixed drink, about 2.5 to 3 times beer for a restaurant glass of wine). Accommodation anchors are holistic model estimates from general knowledge and the Pai context; no live booking pages or current listings were inspected. The FX observation is stale: the RBA page snippet found showed 0.7088 as at 20 March 2026, and no RBA observation for November 2026 could be verified, so the rate should be refreshed from the RBA F11 table before use. Thai baht prices were converted at roughly 32 to 36 THB per USD.",
+  "comparable_city_reasoning": "Northern Thai tourist towns such as Chiang Mai, adjusted downward for food and drink and accommodation to reflect Pai's smaller, more budget-oriented scale, with a modest premium for Western-style restaurant and bar offerings.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 5.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 55.00
+  }
+}

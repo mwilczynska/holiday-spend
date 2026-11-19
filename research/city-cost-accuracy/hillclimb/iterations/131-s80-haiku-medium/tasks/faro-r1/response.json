@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on several aggregated sources (Numbeo-derived figures via Expatica, combien-coute.net, and guide estimates) and are moderately reliable. Beer, cocktail and wine anchors are less certain: beer comes from bar guides and Expatistan, cocktail from Expatistan Faro (about EUR 8, low sample), and wine from Algarve guides (EUR 3-4). Accommodation anchors are holistic model estimates from general knowledge and the Faro summer-season context. No accommodation search was run, and no live listings were inspected. EUR-to-USD conversion for these anchors assumes about 1 EUR = 1.15 USD, which was not searched. The FX observation of 0.6720 USD per AUD as at 18 November 2026 came from a search result summarising the RBA exchange rates page, not from a directly opened RBA table, so verify it against the RBA F11.1 table.",
+  "comparable_city_reasoning": "Anchored to Faro's own aggregated 2026 price data, cross-checked against Lisbon and Porto bar and restaurant ranges and the wider Algarve, with a summer tourist-season adjustment for accommodation and bar prices.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.45,
+    "coffee": 2.30,
+    "inexp_meal_1p": 13.50,
+    "midrange_meal_2p": 48.00,
+    "cocktail": 10.50,
+    "wine_glass": 4.60,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 155.00
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "2f9227b7baa241428e1072e22a08b4f865b36ddd55d565520962337bdb275c16",
+  "requestSha256": "59b78c5c9e6f095c1f1900720326fc7114cf0a9498ff3289793010e7c93eb80d",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 263225,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 33598,
+          "cacheReadInputTokens": 19771,
+          "cacheCreationInputTokens": 22611,
+          "webSearchRequests": 0,
+          "costUSD": 0.4303902,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 32339,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 95167,
+          "outputTokens": 7955,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 7,
+          "costUSD": 0.0834942,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3310,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.5138844,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD AUD latest daily rate rba.gov.au",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Naha Okinawa cost of living prices meal inexpensive restaurant mid-range restaurant for two Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Naha Okinawa cappuccino coffee price cafe yen",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Naha Okinawa draft beer price restaurant izakaya yen Orion beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Naha Okinawa cocktail price bar yen glass of wine price restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Okinawa Naha cost of living Numbeo domestic beer 0.5 draught restaurant cappuccino regular meal inexpensive restaurant mid-range three-course two people yen",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:52:02.659Z",
+      "finishedAt": "2026-11-19T06:56:25.884Z"
+    }
+  ]
+}

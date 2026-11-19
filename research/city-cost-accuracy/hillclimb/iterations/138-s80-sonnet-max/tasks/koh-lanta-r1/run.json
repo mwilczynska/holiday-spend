@@ -1,0 +1,109 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "18414e03e13f7a2a262810e9deffddefa0211a907f260bcaa69b30d5cecc2e83",
+  "requestSha256": "986696d6b893baca862524f14bf91169747ea5a0391b2e792d78ae2f29b99272",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 161225,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 18733,
+          "cacheReadInputTokens": 19143,
+          "cacheCreationInputTokens": 13027,
+          "webSearchRequests": 0,
+          "costUSD": 0.24327859999999998,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 17278,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 95809,
+          "outputTokens": 7315,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.0732384,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2744,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.316517,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates daily US dollar AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Lanta cost of living restaurant meal price inexpensive restaurant baht",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Lanta cappuccino coffee price baht cafe",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Lanta beer price Chang Singha bar restaurant baht",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Lanta cocktail price glass of wine price baht bar",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Lanta cost of living domestic beer 0.5 liter restaurant cappuccino glass of wine cocktail price",
+            "mode": "extended",
+            "allowed_domains": [
+              "numbeo.com",
+              "wise.com",
+              "citycost.org",
+              "traveltables.com",
+              "nomad.watch",
+              "digitalnomads.world"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:48:53.218Z",
+      "finishedAt": "2026-11-19T06:51:34.445Z"
+    }
+  ]
+}

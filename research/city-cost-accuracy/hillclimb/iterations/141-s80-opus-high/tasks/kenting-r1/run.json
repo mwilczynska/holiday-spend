@@ -1,0 +1,91 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "c28b2d42a8b44ef99b93edc999c57f69f5f5530e7b69012d16efc3574c2c9c1e",
+  "requestSha256": "4c24faca2ebd5c4d3939e2ad7be3f52022b5572c2f8179f577bef4c03e4295eb",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 48748,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 2223,
+          "cacheReadInputTokens": 16394,
+          "cacheCreationInputTokens": 10778,
+          "webSearchRequests": 0,
+          "costUSD": 0.13398680000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 680,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 90261,
+          "outputTokens": 5976,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.0720141,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1777,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.2060009,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD AUD latest daily rba.gov.au November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kenting Taiwan cost of living prices restaurant meal beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pingtung Taiwan cost of living numbeo prices cappuccino domestic beer meal inexpensive restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kenting bar cocktail price NT$ glass of wine price Kenting Street bars 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Taiwan typical cocktail price bar NT$ glass of wine restaurant price",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:40:21.602Z",
+      "finishedAt": "2026-11-19T06:41:10.350Z"
+    }
+  ]
+}

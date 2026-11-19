@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on aggregated Cairo prices surfaced in search (Numbeo and Citycost, dated Oct 2026; Expatistan; plus mixed hotel menus and blogs), converted at roughly 52-53 EGP per USD. Meals and coffee track the aggregates closely. Beer is set above Numbeo's crowd-sourced draft price (about EGP 78, range 50-200) to reflect licensed, tourist-facing venues (New Cairo about EGP 150; hotel drafts EGP 200+). Cocktail and wine evidence is thin (crowd-sourced figures and mostly undated hotel menus), so they were set from the local relationship to beer (about 2.4x and 2.1x) and sanity-checked against those listings. Accommodation anchors are holistic model estimates from general knowledge for a low-season July 2026 window; no accommodation searches or live listings were inspected, so they are the least certain. EGP volatility and mixed source dates add uncertainty.",
+  "comparable_city_reasoning": "No proxy city was needed for food and drink: Cairo-specific aggregates were used directly. Accommodation is a general-knowledge estimate for Cairo's budget-to-mid-range tourist market (Downtown, Giza, Zamalek), typical of lower-cost North African and Middle Eastern tourist capitals.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 1.80,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 28.50,
+    "cocktail": 5.25,
+    "wine_glass": 4.60,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 50.00
+  }
+}

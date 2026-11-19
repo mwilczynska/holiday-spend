@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Searches turned up aggregated cost-of-living data for Ocho Rios: an inexpensive meal is about USD 7.5, a cappuccino USD 2.7-4, and a local pint USD 2.2-3.2. Jamaica-wide aggregates put an inexpensive meal at USD 7-9, a cappuccino at USD 3.5-3.7, and a mid-range three-course dinner for two at about USD 63. Much of this data dates from 2025, so the anchors were raised slightly to reflect reported 2026 inflation and tourist-area pricing near the cruise port and resorts. The beer anchor sits between local-bar database prices and tourist venues (a travel-guide nightlife summary puts a Red Stripe at about USD 4). Cocktail and wine are less certain. One travel guide gave cocktails at about USD 8, rising to about USD 12 at premium resorts, and no reliable wine-by-the-glass data was found. Wine is therefore estimated from its usual relationship to the beer and cocktail prices plus the cost of imported wine in Jamaica. All accommodation anchors are holistic model estimates from general knowledge, not from searches or listings. Ocho Rios has very few registered hostels, so the hostel anchors are especially uncertain.",
+  "comparable_city_reasoning": "Based mainly on Ocho Rios and Jamaica-wide aggregated prices, checked against other Jamaican tourist towns such as Montego Bay and Negril. Ocho Rios restaurant prices are roughly in line with or slightly below the national average, but tourist venues charge more.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 3.5,
+    "inexp_meal_1p": 9.5,
+    "midrange_meal_2p": 65.0,
+    "cocktail": 9.0,
+    "wine_glass": 8.0,
+    "hostel_dorm_1p": 25.0,
+    "hostel_private_2p": 55.0,
+    "hotel_1star_2p": 60.0,
+    "hotel_3star_2p": 130.0
+  }
+}

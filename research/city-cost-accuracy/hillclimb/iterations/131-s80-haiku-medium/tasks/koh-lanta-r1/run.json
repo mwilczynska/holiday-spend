@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "18414e03e13f7a2a262810e9deffddefa0211a907f260bcaa69b30d5cecc2e83",
+  "requestSha256": "986696d6b893baca862524f14bf91169747ea5a0391b2e792d78ae2f29b99272",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 48312,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 89051,
+          "outputTokens": 10613,
+          "cacheReadInputTokens": 20692,
+          "cacheCreationInputTokens": 13331,
+          "webSearchRequests": 6,
+          "costUSD": 0.07708472000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3712,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07708472000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD per AUD latest F11 historical",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Lanta restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Lanta beer price cocktail price wine price bars",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Thailand cappuccino price baht cafe 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Krabi islands Koh Lanta hostel dorm price guesthouse 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD USD November 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:03:45.745Z",
+      "finishedAt": "2026-11-19T07:04:34.057Z"
+    }
+  ]
+}

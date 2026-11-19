@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, beer, cocktail and wine anchors are based on aggregator and crowd-sourced price pages (Expatistan, World Travel Guide, nightlife guides, Italy-wide guides) that are approximate, partly dated, and not Palermo-specific in every case. Cocktail and wine values follow local price relationships to beer where direct data was thin. Accommodation anchors are holistic model estimates from general knowledge and city context, with no live booking pages inspected, and July high-season demand is assumed. Euro-to-USD conversion uses an approximate rate of about 1.15, which is an assumption. FX observation: the RBA rate was taken from search-result summaries that cited the RBA exchange rates overview for 18 November 2026, and I could not open the RBA F11 table directly, so the value should be verified against rba.gov.au.",
+  "comparable_city_reasoning": "Priced against Sicilian and other mid-sized southern Italian cities with similar tourism demand. Palermo's restaurant and drink prices are generally below the Italian national average, so anchors sit at the lower end of typical Italian city ranges.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 2.30,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 9.20,
+    "wine_glass": 5.75,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 150.00
+  }
+}

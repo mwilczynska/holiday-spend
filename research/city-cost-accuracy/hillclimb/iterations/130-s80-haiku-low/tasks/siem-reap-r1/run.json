@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "8f8560a301a8c08af3663089ad4cbc80db12cb07864140473be914de90554ba3",
+  "requestSha256": "8a0721ee914e32593c980f23d5f38f9f94f27fc3fcb371f6f2aeada9bd98eb00",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 36089,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 56664,
+          "outputTokens": 5535,
+          "cacheReadInputTokens": 13711,
+          "cacheCreationInputTokens": 9389,
+          "webSearchRequests": 4,
+          "costUSD": 0.050448810000000004,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1416,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.050448810000000004,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siem Reap cost of living restaurant meal beer cappuccino prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siem Reap Cambodia prices cocktail wine glass bar price guide",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates A$1=USD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:01:57.737Z",
+      "finishedAt": "2026-11-19T07:02:33.826Z"
+    }
+  ]
+}

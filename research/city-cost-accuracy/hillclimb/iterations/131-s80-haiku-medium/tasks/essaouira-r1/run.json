@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "04ec1d1e1a1af8a3a0c6d2fa6ae94475c193d8e7550c3daf270a150fb4e457d0",
+  "requestSha256": "8fb0d5c2561897ddbbf88ec9ed40294826b5858cca2d81cd5090d66bde34f6ed",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 47112,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 105568,
+          "outputTokens": 10287,
+          "cacheReadInputTokens": 22331,
+          "cacheCreationInputTokens": 14180,
+          "webSearchRequests": 7,
+          "costUSD": 0.08875961,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 4074,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.08875961,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Morocco restaurant meal prices cost of living 2026 Essaouira",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Morocco beer price restaurant bar dirham 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Morocco cappuccino coffee price dirham cafe 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Morocco cocktail wine glass price restaurant dirham",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD per AUD November 2026 latest daily rate",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:03:11.639Z",
+      "finishedAt": "2026-11-19T07:03:58.751Z"
+    }
+  ]
+}

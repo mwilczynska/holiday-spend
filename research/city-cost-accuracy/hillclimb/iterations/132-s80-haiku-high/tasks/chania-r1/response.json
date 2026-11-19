@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are medium confidence. They rest on secondary travel-guide, aggregator and delivery-app figures from 2025-2026 that partly disagree, mostly in EUR and converted to USD at roughly 1.10 USD per EUR. Cocktail and wine rest on sparse samples: cocktail on one club average and a guide range, wine on a bar list rather than taverna pricing, so the beer relationship was used only as a sanity check. Restaurant meal anchors are medium confidence and reflect typical mid-season taverna pricing, not specific venues. Accommodation anchors are low confidence and are holistic model estimates for July peak season from general knowledge; no booking pages or current listings were inspected and no accommodation searches were run. Chania harbour-front prices run notably higher than inland side streets.",
+  "comparable_city_reasoning": "Anchored to Crete and Greek tourist-town price levels, with Chania's harbour and Old Town pricing treated as a mid-to-upper band within Crete. Accommodation is benchmarked to other mid-sized Greek and Cretan leisure towns in July peak season.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.70,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 58.00,
+    "cocktail": 10.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 33.00,
+    "hostel_private_2p": 66.00,
+    "hotel_1star_2p": 77.00,
+    "hotel_3star_2p": 154.00
+  }
+}

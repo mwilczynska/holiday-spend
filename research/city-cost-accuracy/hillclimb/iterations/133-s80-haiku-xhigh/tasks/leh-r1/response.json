@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Overall low confidence. Food anchors come from scattered travel blogs and aggregator snippets of mixed age and method. Beer figures range from about 1.70 to 3.00 USD depending on source and serving size; cappuccino figures range from about 1.80 to 2.50. There is no direct price evidence for cocktails or wine, so cocktail is set at about 2x beer and wine at about 1.6x beer as a local price-relationship estimate. Accommodation anchors are holistic model estimates from general knowledge and July peak-season context; no live booking pages or current listings were inspected. FX: the 0.6720 USD per AUD observation for 2026-11-18 was taken from a third-party site (ozfinancehub.com.au) that reports it as the RBA 4pm rate. The rba.gov.au daily table was not retrieved; the cached RBA page showed March 2026 values. Verify against the official RBA table. A non-RBA FRED table lists 0.6775 for 13 Nov 2026, which is consistent.",
+  "comparable_city_reasoning": "South Asia basis: Leh is a high-altitude Himalayan tourist town. Food and lodging prices are benchmarked to Indian tourist-town dhaba, budget restaurant and cafe price points, with cross-checks against aggregator figures (Nomad Watch, Oysterlist, a Ladakh destination cost guide). Drink anchors use beer as the local reference, and accommodation is set for July peak season.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.20,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 18.00,
+    "cocktail": 5.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 16.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 80.00
+  }
+}

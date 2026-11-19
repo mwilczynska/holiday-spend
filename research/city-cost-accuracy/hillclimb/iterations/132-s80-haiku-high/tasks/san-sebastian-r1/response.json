@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are medium confidence. They rest on crowd-sourced, partly dated aggregator snapshots (Numbeo data via Expatica from June 2026, Expatistan, and travel guides) and were estimated in euros, then converted to USD at about 1.10 USD per EUR, a cross-rate from a secondary FX source. Cocktail is less certain because the sources are mostly Madrid, Barcelona and club-style pricing used as a proxy. Wine is the most consistent across sources. Accommodation anchors are holistic model estimates of July peak-season pricing from general knowledge, not from inspected live listings or accommodation searches, so they are low confidence. The FX observation was taken from the RBA homepage/RSS figure reported in search results; the F11.1 table itself was not loaded.",
+  "comparable_city_reasoning": "Basque coastal tourist city in Spain. Food and drink anchors are based on aggregated Spanish city cost-of-living data, cross-checked against national Spanish guides. Cocktail pricing uses larger Spanish cities as a proxy. Accommodation is a holistic estimate for a Spanish coastal city in peak summer season, comparable to other high-demand Spanish resort cities.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.80,
+    "coffee": 2.85,
+    "inexp_meal_1p": 16.50,
+    "midrange_meal_2p": 56.00,
+    "cocktail": 12.10,
+    "wine_glass": 4.40,
+    "hostel_dorm_1p": 46.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 126.00,
+    "hotel_3star_2p": 220.00
+  }
+}

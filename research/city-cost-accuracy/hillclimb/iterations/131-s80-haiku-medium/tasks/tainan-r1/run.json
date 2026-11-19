@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "13f320cc0567a496729c8d16eadbc69bb6f661d4995cbc46558da74b67dcb0cb",
+  "requestSha256": "09086a85f97cecc8c620f65081745d9ce9e15f184922136f54051f9b069f83e0",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 53507,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 59290,
+          "outputTokens": 8333,
+          "cacheReadInputTokens": 16053,
+          "cacheCreationInputTokens": 7793,
+          "webSearchRequests": 4,
+          "costUSD": 0.05181463,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3627,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05181463,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tainan Taiwan cost of living restaurant meal coffee beer prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Taiwan restaurant prices cappuccino beer cocktail wine glass price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates historical F11 USD per AUD",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:04:42.676Z",
+      "finishedAt": "2026-11-19T07:05:36.184Z"
+    }
+  ]
+}

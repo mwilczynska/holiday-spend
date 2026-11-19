@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b98fdeb8be4954461d5973d1ed1ce2f7e0070eb788e28513b9208d768887d624",
+  "requestSha256": "3f89c5aca8c99e6f8360e408a3e57fffda0a740a1d27ec58acfa63a0542bc24f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 149061,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 123115,
+          "outputTokens": 42503,
+          "cacheReadInputTokens": 17840,
+          "cacheCreationInputTokens": 15771,
+          "webSearchRequests": 8,
+          "costUSD": 0.11689559999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 35289,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.11689559999999999,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest observation rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Brno cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Brno beer price restaurant cappuccino cocktail wine glass prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia F11 exchange rates United States dollar latest daily observation November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Brno wine glass price CZK restaurant cocktail price koruna 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:09:58.566Z",
+      "finishedAt": "2026-11-19T07:12:27.628Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors rest on a few undated or user-generated sources: one budget guide (coffee about $1, beer $2, cocktail $4, fine-dining meal $30), one Wanderlog listing (local beer about $1), and Cuba-wide meal ranges. No 2026 Trinidad-specific wine or cocktail price was found, so cocktail and wine are estimates. Accommodation anchors are holistic model estimates from general knowledge and the city context; no live booking pages or current listings were checked. Dollar-price menus at tourist venues run well above local rates, so the anchors lean toward tourist-facing prices. The FX rate (0.6720 USD per AUD, 18 November 2026) comes from a search summary that cites the RBA 4.00 pm table; the rba.gov.au page itself was not opened directly, so verify it before relying on it.",
+  "comparable_city_reasoning": "Priced as a tourist-facing Cuban colonial town, using Cuba-wide meal ranges (inexpensive about $2 to $8; mid-range for two about $15 to $40) and Trinidad budget-guide drink prices. Cocktail was anchored on the guide's $4 figure and wine was set at a similar level because the local wine price data was unusable. Accommodation is a model estimate based on casa particular and state-hotel norms in Cuban tourist towns.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 5.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 110.00
+  }
+}

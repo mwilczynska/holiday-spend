@@ -1,0 +1,80 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0935b861f4f179335f8ecd5f229dcc3c48c07e1d6b1e4e7d66f2e9bff6ed923a",
+  "requestSha256": "dc043ac04dffa516e4f7febedf2a8435e76fc989f610669ac1c29f7b6923ddae",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 37895,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 81350,
+          "outputTokens": 6859,
+          "cacheReadInputTokens": 14529,
+          "cacheCreationInputTokens": 12044,
+          "webSearchRequests": 6,
+          "costUSD": 0.07411859,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2013,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07411859,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 USD per AUD latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tokyo cost of living restaurant meal price beer cappuccino 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tokyo cocktail price wine glass price bar 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD USD today 4pm",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tokyo draft beer price izakaya restaurant 2026 typical yen",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:02:17.091Z",
+      "finishedAt": "2026-11-19T07:02:54.988Z"
+    }
+  ]
+}

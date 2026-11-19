@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "347f2cc098022656a4289798ed1a5a33336163a285492f826fec240843e01536",
+  "requestSha256": "32ff3bd51c52d586585277c39210653e2c294272be26c35312541dcdd914d01f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 557003,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 125237,
+          "outputTokens": 226603,
+          "cacheReadInputTokens": 19580,
+          "cacheCreationInputTokens": 32166,
+          "webSearchRequests": 9,
+          "costUSD": 0.2224542,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 219601,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.2224542,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates AUD USD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Denver cost of living restaurant prices inexpensive meal mid-range three-course meal for two",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Denver average price draft beer cappuccino cocktail glass of wine restaurant 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "how much does a cocktail cost in Denver bars 2026 average craft cocktail price",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Expatistan Denver cost of living July 2026 restaurant beer wine cappuccino prices",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:48:48.554Z",
+      "finishedAt": "2026-11-19T02:58:05.557Z"
+    }
+  ]
+}

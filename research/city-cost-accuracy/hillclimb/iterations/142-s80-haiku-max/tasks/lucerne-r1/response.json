@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on a few mixed-date comparison-site, guide and menu figures (some undated, some from 2023), with CHF amounts converted to USD at an approximate assumed rate rather than a dedicated FX source. Beer and coffee are the best supported. The cocktail is based on hotel-bar menus. Wine by the glass is the weakest food anchor: it is inferred from older 10 cl pour prices and the local beer relationship because no dated 2026 restaurant wine price was found. Accommodation anchors are unsearched model estimates for July peak season, the least certain values, and no live listings were checked.",
+  "comparable_city_reasoning": "Regional basis: Swiss tourist-city price levels. Food and drink use Lucerne-specific figures, with wine by the glass inferred from the local beer relationship. Accommodation is a general-knowledge July peak-season estimate, not benchmarked to a named comparable city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.75,
+    "coffee": 6.50,
+    "inexp_meal_1p": 30.00,
+    "midrange_meal_2p": 150.00,
+    "cocktail": 20.00,
+    "wine_glass": 11.25,
+    "hostel_dorm_1p": 70.00,
+    "hostel_private_2p": 170.00,
+    "hotel_1star_2p": 190.00,
+    "hotel_3star_2p": 320.00
+  }
+}

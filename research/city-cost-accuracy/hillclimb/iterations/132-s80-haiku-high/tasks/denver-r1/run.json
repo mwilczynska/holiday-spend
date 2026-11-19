@@ -1,0 +1,63 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "347f2cc098022656a4289798ed1a5a33336163a285492f826fec240843e01536",
+  "requestSha256": "32ff3bd51c52d586585277c39210653e2c294272be26c35312541dcdd914d01f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 46133,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 62348,
+          "outputTokens": 9889,
+          "cacheReadInputTokens": 6673,
+          "cacheCreationInputTokens": 6487,
+          "webSearchRequests": 4,
+          "costUSD": 0.05254343,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 6701,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05254343,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily F11 rate",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Denver cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Denver average price cappuccino beer cocktail wine glass restaurant",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:06:17.036Z",
+      "finishedAt": "2026-11-19T07:07:03.170Z"
+    }
+  ]
+}

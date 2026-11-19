@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are rough aggregates from crowdsourced and travel-guide price lists dated mid-2025 to mid-2026, not live menus. Beer, coffee, and wine are the more consistent values; the inexpensive and mid-range meal anchors are less certain because sources disagree. Cocktail is weakly sourced: it is set from the local beer relationship and general Swiss bar pricing rather than a direct price check. Accommodation anchors are holistic model estimates from general knowledge of Lucerne's lodging market and July peak-season demand. Live booking pages and current listings were not inspected. Figures were converted from CHF at approximate rates and are not tied to a specific FX date.",
+  "comparable_city_reasoning": "Benchmarked against Swiss mid-sized and tourist cities with similar restaurant and lodging price levels, such as Zurich and Bern, adjusted down for Lucerne's smaller market and somewhat lower restaurant prices. Cocktail and wine were anchored to the local beer price using the typical Swiss bar relationship.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 6.50,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 125.00,
+    "cocktail": 20.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 48.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 260.00
+  }
+}

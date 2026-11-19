@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "I ran three web searches: one for the RBA rate and two for Mérida prices. The price sources disagree and are mostly undated or crowd-sourced. The beer range was about $1.65–$4, cappuccino about $2.46–$3.87, and inexpensive meals about $4.45–$13.51. I set beer, coffee and meal anchors near the middle of those ranges, leaning toward tourist-area restaurant prices. I found no reliable cocktail or wine-by-the-glass prices. I estimated them from the local beer price, with a cocktail at roughly 2x beer and a glass of wine at roughly 2x beer. The mid-range two-person meal comes from a roughly $25 older guide and a French site's three-course dinner estimate of about €26 per person, and I adjusted it upward for tourist-area restaurants. All four accommodation anchors are holistic estimates from general knowledge. I did not search for accommodation prices or inspect any listings. They are the least certain anchors, because Mérida's historic-centre boutique hotels and seasonal demand cause wide variation.",
+  "comparable_city_reasoning": "Basis is Mérida price data from Numbeo, Traveltables, MyLifeElsewhere and the World Travel Index. For context, Mérida sits below Mexico City and Cancún in tourist pricing and is comparable to other mid-sized Mexican colonial tourist cities such as Oaxaca and Puebla.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.9,
+    "coffee": 3.3,
+    "inexp_meal_1p": 7.5,
+    "midrange_meal_2p": 38.0,
+    "cocktail": 6.0,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 35.0,
+    "hotel_1star_2p": 32.0,
+    "hotel_3star_2p": 75.0
+  }
+}

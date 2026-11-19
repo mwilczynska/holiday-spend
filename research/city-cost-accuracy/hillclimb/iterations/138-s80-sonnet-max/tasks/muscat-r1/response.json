@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Food, coffee and drink anchors come from five web price searches, plus one search for the RBA rate. The result summaries cited crowdsourced indexes (Numbeo, CityCost, TravelTables, MyLifeElsewhere) and a few hotel-bar menu listings. These disagree: mid-range dinner for two is roughly OMR 10.5-15 and draught beer roughly OMR 2.5-5.8. I used bounded mid-points, translated at the OMR/USD peg. Alcohol is served only in licensed venues, so beer, cocktail and wine reflect hotel-bar menu prices. Those prices are partly dated or ambiguous and are before service charge and tax. Cocktail and wine are set relative to local beer and hotel-bar price levels. Accommodation anchors are holistic model estimates from general knowledge, with no accommodation searches or listing checks. They assume July low season and are the least certain, especially hostels, which are scarce in Muscat.",
+  "comparable_city_reasoning": "Mainly Muscat-specific cost-of-living indexes and hotel-bar menus. Dubai and other Gulf cities with hotel-only alcohol licensing were used from general knowledge as a sense check for drink and accommodation levels.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 12.00,
+    "coffee": 4.90,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 33.00,
+    "cocktail": 14.80,
+    "wine_glass": 12.60,
+    "hostel_dorm_1p": 17.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 72.00
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "376a670fccf925b590cc876b0c68768a90e40b9e435741d0f90b214b28c425ba",
+  "requestSha256": "a06ca02f88ab985227635afe3a5e7e60e2c00d2aaca8a338211da19a98e7077f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 622593,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 277150,
+          "outputTokens": 307918,
+          "cacheReadInputTokens": 26369,
+          "cacheCreationInputTokens": 44031,
+          "webSearchRequests": 15,
+          "costUSD": 0.34074389,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 298030,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.34074389,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Querétaro cost of living restaurant meal beer cappuccino prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Querétaro prices 2026 restaurant meal cost pesos cheap eats",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Querétaro bar cocktail wine glass beer price pesos",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "precio cerveza cóctel copa de vino bar restaurante Querétaro 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "cuantomecuesta Querétaro costo de vida precio cerveza café capuchino 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:28:25.044Z",
+      "finishedAt": "2026-11-19T07:38:47.637Z"
+    }
+  ]
+}

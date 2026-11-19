@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "ccb8f68ca37f5fc05577b548fc29f0ef5dc8a260118914230186ee7b483b79f0",
+  "requestSha256": "ef61a647d6f6c82fcc7bc056ba34b925ef098a384bc05b5a23c0aa8fa73ff038",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 51776,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 75481,
+          "outputTokens": 7609,
+          "cacheReadInputTokens": 14402,
+          "cacheCreationInputTokens": 12279,
+          "webSearchRequests": 5,
+          "costUSD": 0.06395242,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2790,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06395242,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chania restaurant meal prices cappuccino beer cost 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Greece cost of living restaurant prices coffee beer wine cocktail 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates F11.1 daily United States dollar November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:00:31.458Z",
+      "finishedAt": "2026-11-19T07:01:23.235Z"
+    }
+  ]
+}

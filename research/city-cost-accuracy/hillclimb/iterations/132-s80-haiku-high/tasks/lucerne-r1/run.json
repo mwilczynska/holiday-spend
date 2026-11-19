@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "1f69fbada83e061d32b8379bca1ff6f76918ac548aeda2aaf7f13c0a5177675a",
+  "requestSha256": "e9c467b8339bde94feeb0909bae3513fcd6f93e3af04f3c949258d08c41b8232",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 51419,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 77336,
+          "outputTokens": 14798,
+          "cacheReadInputTokens": 6687,
+          "cacheCreationInputTokens": 8997,
+          "webSearchRequests": 5,
+          "costUSD": 0.06699887,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 9854,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06699887,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 USD per AUD latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lucerne restaurant meal prices cappuccino beer cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Switzerland cost of living restaurant prices beer cappuccino wine glass 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lucerne cocktail price bar Switzerland typical",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:07:29.549Z",
+      "finishedAt": "2026-11-19T07:08:20.968Z"
+    }
+  ]
+}

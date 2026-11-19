@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors use Mombasa and Nyali venue listings and cost-of-living aggregators, several undated or from mixed years. KES figures were converted at about 133 per USD, the rate implied by the cited listings. Nairobi hotel menus were used only as an upper-bound check. None were checked against a July 2026 menu. Accommodation anchors are holistic model estimates from general knowledge with no accommodation search, so they are the least certain. The FX value (0.6976 for 2026-11-03) was taken from a third-party report of the RBA 4pm reference rate. I did not read the value on the rba.gov.au page, and a later observation may exist.",
+  "comparable_city_reasoning": "No comparable city was used. Drink and meal anchors are based on Mombasa-specific Nyali bar and restaurant listings and Mombasa aggregator figures, cross-checked against Nairobi menus as a higher-price reference. Accommodation anchors are a model estimate for Mombasa's coastal budget and mid-range lodging, not taken from live listings.",
+  "fx": {
+    "as_of_date": "2026-11-03",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6976,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 6.00,
+    "wine_glass": 5.25,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 85.00
+  }
+}

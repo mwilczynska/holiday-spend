@@ -1,0 +1,101 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "5408d74ba5a2d967bfdd3e07644349e2284dca02acaa08dc71893b9428033f5b",
+  "requestSha256": "de5d18d87385f3059982f4f22d7ca2f95dd193f6af4d09f5da029b2ce5e01324",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 180782,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 21465,
+          "cacheReadInputTokens": 20198,
+          "cacheCreationInputTokens": 14463,
+          "webSearchRequests": 0,
+          "costUSD": 0.2765536,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 20054,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 110370,
+          "outputTokens": 6912,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 8,
+          "costUSD": 0.094493,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2448,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.3710466,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates US dollar Australian dollar latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siargao General Luna cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siargao General Luna cappuccino coffee price cafe pesos",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siargao San Miguel beer price restaurant bar pesos General Luna",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Siargao cocktail price glass of wine price bar General Luna pesos",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "General Luna Siargao prices 2026 beer cappuccino cocktail glass of wine restaurant meal pesos cost of living digital nomad",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:54:40.750Z",
+      "finishedAt": "2026-11-19T06:57:41.532Z"
+    }
+  ]
+}

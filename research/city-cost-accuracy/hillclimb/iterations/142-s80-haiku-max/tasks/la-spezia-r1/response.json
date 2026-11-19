@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Overall medium. Restaurant meal and beer anchors are best supported by Numbeo's La Spezia page (Oct 2026, user-submitted), which travel-guide ranges broadly match. Coffee blends Numbeo, Italy-wide and travel-guide figures. Cocktail and wine lack La Spezia per-drink data (only single aperitivo reviews, about EUR 7 and EUR 10), so they follow the local beer relationship: cocktail about 1.7x draught beer and wine glass about 1x, checked against Italy-wide ranges. Beer uses a 0.5 L draught benchmark, so a smaller pour would cost less. Hostel and hotel anchors are holistic model estimates for July peak season; no accommodation search was run and no booking pages or listings were inspected. FX is the latest RBA observation found in search results (2026-11-18), not verified on the live RBA table; search results carried conflicting dates.",
+  "comparable_city_reasoning": "No accommodation comparables were searched. Food and drink are anchored to La Spezia's own Numbeo figures, cross-checked against Numbeo comparison pages for Genoa (about 5% higher on eating out) and Pisa (about 9% higher) and against Italy-wide restaurant and aperitivo ranges. Hostel and hotel values are set against Italian coastal mid-sized cities in peak July demand, with Cinque Terre spillover. Euro prices were converted to USD using a EUR/USD cross-rate derived from the same RBA observation.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.49,
+    "coffee": 1.98,
+    "inexp_meal_1p": 16.48,
+    "midrange_meal_2p": 79.12,
+    "cocktail": 9.34,
+    "wine_glass": 5.49,
+    "hostel_dorm_1p": 35.17,
+    "hostel_private_2p": 82.42,
+    "hotel_1star_2p": 87.91,
+    "hotel_3star_2p": 142.86
+  }
+}

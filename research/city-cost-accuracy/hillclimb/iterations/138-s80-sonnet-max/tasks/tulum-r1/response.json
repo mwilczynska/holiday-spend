@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Beer, coffee and the two restaurant-meal anchors come from five price searches. The search summaries cited Numbeo-style and other crowdsourced indexes, which reported roughly MXN 55 for a draft beer, MXN 71 for a cappuccino, about MXN 1,000 for a mid-range meal for two and about US$10 for an inexpensive meal. I did not open those pages myself, and the sources disagree, especially on town versus beach-zone prices (beach is often 2-3x higher or more). Cocktail rests on a few 2026 blog and review mentions (town margarita about MXN 120, beach zone MXN 200-350) and a ratio of about 2.5x beer, weighted toward town. No reliable Tulum wine-by-the-glass price turned up, so wine_glass is derived from a ratio of about 2.4x beer and is low confidence. Accommodation anchors are holistic model estimates for a July 2026 low/shoulder-season window, not based on live listings or searches, and vary widely between town and beach zone.",
+  "comparable_city_reasoning": "Tulum is priced like the Riviera Maya tourist corridor (Playa del Carmen and Cancún), at a premium to typical Mexican cities. The anchors blend town (pueblo) prices with a modest weighting for the much pricier beach-road zone.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.40,
+    "coffee": 3.90,
+    "inexp_meal_1p": 9.50,
+    "midrange_meal_2p": 52.00,
+    "cocktail": 8.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 19.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 47.00,
+    "hotel_3star_2p": 95.00
+  }
+}

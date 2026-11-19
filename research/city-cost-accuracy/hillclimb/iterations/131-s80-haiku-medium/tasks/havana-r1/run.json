@@ -1,0 +1,63 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "d5bce11998c8e3b71b1420bd57722e23c5ab30d0a0f2a42bff33e72207f3153c",
+  "requestSha256": "cc61bc53573ee7dcdc940b86d5524621ec476267092ba202fe1c58fe5b4c3ba8",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 39195,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 62047,
+          "outputTokens": 7611,
+          "cacheReadInputTokens": 6679,
+          "cacheCreationInputTokens": 7428,
+          "webSearchRequests": 4,
+          "costUSD": 0.05156259,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3852,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05156259,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 statistics",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba beer cocktail coffee prices bar restaurant",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:03:11.851Z",
+      "finishedAt": "2026-11-19T07:03:51.047Z"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "50fcc275052e1e0ba08aa3185903487f92c4a27bfd0ae67241df9cce28b62f18",
+  "requestSha256": "6318520461b5e1766a8d4ef1452852351fb79cb9f63862076252f497d0865984",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 487030,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 75651,
+          "outputTokens": 222722,
+          "cacheReadInputTokens": 24257,
+          "cacheCreationInputTokens": 34373,
+          "webSearchRequests": 5,
+          "costUSD": 0.17604327,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 216130,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.17604327,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily USD per AUD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Palermo Italy cost of living restaurant meal beer cappuccino cocktail wine prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Palermo prices 2026 cappuccino espresso bar price euro",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Palermo bar prices cocktail beer glass of wine euro 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Palermo meal inexpensive restaurant domestic beer cappuccino cocktail bottle of wine",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:25:34.742Z",
+      "finishedAt": "2026-11-19T07:33:41.772Z"
+    }
+  ]
+}

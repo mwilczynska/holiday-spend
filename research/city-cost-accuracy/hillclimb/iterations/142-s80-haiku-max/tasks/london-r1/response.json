@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from London-specific 2026 web sources (crowd-sourced Numbeo figures, UK pub-trade surveys, guide sites) that often disagree, so each is a bounded central estimate. Beer assumes a pint and wine a 175 ml glass. Cocktail and wine are the weakest drink anchors and were cross-checked against the local beer price relationship. Accommodation anchors are holistic model estimates for London's July peak-season level, not inspected booking pages or current listings; the hotel and mid-range meal anchors are the least certain. Pound prices were converted to USD at an approximate rate, and the RBA rate came from search-result text citing the RBA daily exchange-rate page, which I did not open directly.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors are London-specific from web sources, and accommodation anchors are holistic estimates of London's central-area July price level.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.71,
+    "coffee": 6.30,
+    "inexp_meal_1p": 26.80,
+    "midrange_meal_2p": 113.90,
+    "cocktail": 20.77,
+    "wine_glass": 13.40,
+    "hostel_dorm_1p": 56.28,
+    "hostel_private_2p": 154.10,
+    "hotel_1star_2p": 174.20,
+    "hotel_3star_2p": 294.80
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "18414e03e13f7a2a262810e9deffddefa0211a907f260bcaa69b30d5cecc2e83",
+  "requestSha256": "986696d6b893baca862524f14bf91169747ea5a0391b2e792d78ae2f29b99272",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 416528,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 73609,
+          "outputTokens": 286804,
+          "cacheReadInputTokens": 6684,
+          "cacheCreationInputTokens": 17579,
+          "webSearchRequests": 5,
+          "costUSD": 0.20434554,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 277941,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.20434554,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD daily",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Lanta Thailand restaurant meal beer cappuccino cocktail wine prices 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Thailand restaurant beer price baht cappuccino cafe price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Thailand bar cocktail price baht wine glass restaurant price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Thailand restaurant meal beer cappuccino",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:17:40.743Z",
+      "finishedAt": "2026-11-19T07:24:37.271Z"
+    }
+  ]
+}

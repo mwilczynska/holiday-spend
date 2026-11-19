@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b98fdeb8be4954461d5973d1ed1ce2f7e0070eb788e28513b9208d768887d624",
+  "requestSha256": "3f89c5aca8c99e6f8360e408a3e57fffda0a740a1d27ec58acfa63a0542bc24f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 74689,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 103045,
+          "outputTokens": 17138,
+          "cacheReadInputTokens": 17247,
+          "cacheCreationInputTokens": 13036,
+          "webSearchRequests": 7,
+          "costUSD": 0.09165317,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 10431,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.09165317,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 historical",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Brno restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Brno beer cappuccino cocktail wine prices Czech Republic",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rate AUD USD November 2026 official rate",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Czech beer price pub Brno 0.5 l draft 2026 Kč average",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Brno wine glass price restaurant Czech Republic 2026 average Kč",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:06:16.852Z",
+      "finishedAt": "2026-11-19T07:07:31.542Z"
+    }
+  ]
+}

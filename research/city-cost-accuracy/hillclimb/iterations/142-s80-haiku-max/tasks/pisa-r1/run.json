@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "ba6e58edf3dfe440fac4f515e2406f35009a752cce7a8f06edf724695c771ef6",
+  "requestSha256": "69384a5e9d9a798b05ccc7796fbf1bda1b0c6b6e39f270098025ad1893df7e50",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 589443,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 135933,
+          "outputTokens": 258923,
+          "cacheReadInputTokens": 29429,
+          "cacheCreationInputTokens": 31521,
+          "webSearchRequests": 9,
+          "costUSD": 0.23965329000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 251522,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.23965329000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates AUD USD latest F11.1",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pisa Italy cost of living restaurant meal beer cappuccino wine prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pisa typical restaurant prices pizza pasta menu 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pisa bar prezzi cappuccino birra spritz calice di vino 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA AUD USD exchange rate November 2026 4pm latest observation rba.gov.au",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:26:42.255Z",
+      "finishedAt": "2026-11-19T07:36:31.698Z"
+    }
+  ]
+}

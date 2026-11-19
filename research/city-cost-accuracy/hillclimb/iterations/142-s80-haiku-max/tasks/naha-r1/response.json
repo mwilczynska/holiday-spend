@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee and beer anchors draw on Naha-specific aggregated cost-of-living listings plus Okinawa venue listings. These are user-submitted, unevenly dated and sometimes disagree, so ranges are wide. Cocktail and wine rest on fewer venue listings and are less robust. Yen figures were converted at an assumed 156 yen per US dollar, taken from one third-party page and not independently verified. Accommodation anchors are holistic estimates for July peak season, with no booking pages or current listings inspected, and are the least certain. The FX observation is the latest RBA figure found (18 November 2026); no 19 November reading was located.",
+  "comparable_city_reasoning": "No comparable city used. Food and drink anchors are Naha-specific, with Okinawa venue listings for drinks. Tokyo appeared only as a sanity check that Naha dining is cheaper. Accommodation anchors reflect general knowledge of a mid-sized Japanese regional tourist city in peak summer.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.85,
+    "coffee": 3.65,
+    "inexp_meal_1p": 6.09,
+    "midrange_meal_2p": 32.05,
+    "cocktail": 7.05,
+    "wine_glass": 4.81,
+    "hostel_dorm_1p": 22.44,
+    "hostel_private_2p": 51.28,
+    "hotel_1star_2p": 64.10,
+    "hotel_3star_2p": 102.56
+  }
+}

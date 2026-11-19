@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "d5bce11998c8e3b71b1420bd57722e23c5ab30d0a0f2a42bff33e72207f3153c",
+  "requestSha256": "cc61bc53573ee7dcdc940b86d5524621ec476267092ba202fe1c58fe5b4c3ba8",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 541704,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 187881,
+          "outputTokens": 247633,
+          "cacheReadInputTokens": 6676,
+          "cacheCreationInputTokens": 18559,
+          "webSearchRequests": 8,
+          "costUSD": 0.48119715999999996,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 240244,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.48119715999999996,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates A$1 US dollar latest daily observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba cost of living prices meal beer cappuccino cocktail wine",
+            "mode": "extended",
+            "allowed_domains": [
+              "numbeo.com",
+              "expatistan.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba restaurant prices 2026 paladar meal cost tourists in USD",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana bar cocktail mojito daiquiri beer Cristal price 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:17:40.542Z",
+      "finishedAt": "2026-11-19T07:26:42.246Z"
+    }
+  ]
+}

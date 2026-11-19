@@ -1,0 +1,101 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "04ec1d1e1a1af8a3a0c6d2fa6ae94475c193d8e7550c3daf270a150fb4e457d0",
+  "requestSha256": "8fb0d5c2561897ddbbf88ec9ed40294826b5858cca2d81cd5090d66bde34f6ed",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 223790,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 27386,
+          "cacheReadInputTokens": 20530,
+          "cacheCreationInputTokens": 18483,
+          "webSearchRequests": 0,
+          "costUSD": 0.35191,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 25954,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 83292,
+          "outputTokens": 8369,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.0725137,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2896,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.4244237,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates US dollar AUD latest daily rate",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Essaouira cost of living prices meal inexpensive restaurant dirhams Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Essaouira cappuccino coffee price dirhams cafe",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Essaouira beer price restaurant dirhams Casablanca Flag Spéciale",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Essaouira cocktail and glass of wine price restaurant bar dirhams",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Essaouira restaurant prices 2026 mid-range meal for two three-course, beer 33cl, glass of wine, cocktail in MAD",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:45:50.461Z",
+      "finishedAt": "2026-11-19T06:49:34.251Z"
+    }
+  ]
+}

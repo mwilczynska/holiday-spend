@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from web search results summarizing aggregated Lima cost-of-living and menu-price guides. The sources disagree, some pages are dated well before July 2026, and their dollar conversions are inconsistent, so local prices were converted at an approximate sol-dollar level, which is itself uncertain. Restaurant meals and coffee are the most consistent across sources. The cocktail anchor rests on mixed venue and guide data. The wine-by-the-glass anchor was set from glass-price data and cross-checked against the beer anchor (roughly twice a domestic draft) because glass-price data were thin. Accommodation anchors are holistic model estimates from general knowledge, not checked against live listings, and July tourist demand could push them higher.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors rest on Lima's own aggregated price data. Accommodation anchors are holistic estimates positioned against Lima's hostel and mid-market hotel supply rather than a named comparable city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.30,
+    "coffee": 3.25,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 9.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 34.00,
+    "hotel_3star_2p": 105.00
+  }
+}

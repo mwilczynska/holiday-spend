@@ -1,0 +1,80 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "1f69fbada83e061d32b8379bca1ff6f76918ac548aeda2aaf7f13c0a5177675a",
+  "requestSha256": "e9c467b8339bde94feeb0909bae3513fcd6f93e3af04f3c949258d08c41b8232",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 645387,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 145356,
+          "outputTokens": 240611,
+          "cacheReadInputTokens": 24801,
+          "cacheCreationInputTokens": 37642,
+          "webSearchRequests": 8,
+          "costUSD": 0.22261751000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 233830,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.22261751000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily AUD USD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Lucerne cost of living restaurant prices beer cappuccino cocktail",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lucerne Switzerland average restaurant meal price CHF beer wine cocktail 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lucerne Switzerland cocktail price average bar CHF cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lucerne glass of wine restaurant price CHF average cost of living",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:17:49.782Z",
+      "finishedAt": "2026-11-19T07:28:35.169Z"
+    }
+  ]
+}

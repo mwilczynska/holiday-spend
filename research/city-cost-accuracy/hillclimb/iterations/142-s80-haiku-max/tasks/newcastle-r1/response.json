@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Coffee and beer are best supported, from web-search summaries of Numbeo Newcastle user-reported prices and 2026 national Australian price reports, adjusted by judgment to July 2026. Restaurant meal anchors are less settled: sources disagree, and Numbeo's Newcastle meal figure sits above Sydney's, which may be sample noise. No Newcastle-specific cocktail or wine data was found, so those follow national and city bar ranges cross-checked against beer (cocktail about 1.8x beer, wine glass about 1.2x beer). Accommodation anchors are holistic model estimates from general knowledge, not inspected listings, and are the least certain. USD values use the latest RBA rate, not a July 2026 rate.",
+  "comparable_city_reasoning": "Treated as a mid-sized NSW coastal city priced close to national Australian levels. Food and drink follow Numbeo Newcastle figures and national Australian price reports; accommodation is benchmarked to comparable regional coastal cities such as Wollongong and the Central Coast.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.06,
+    "coffee": 3.49,
+    "inexp_meal_1p": 17.47,
+    "midrange_meal_2p": 84.00,
+    "cocktail": 14.78,
+    "wine_glass": 9.41,
+    "hostel_dorm_1p": 28.22,
+    "hostel_private_2p": 77.28,
+    "hotel_1star_2p": 80.64,
+    "hotel_3star_2p": 127.68
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors rest on 2026 aggregator figures (mostly Numbeo-derived, June 2026 snapshot) and travel-guide estimates, not live menus. Cocktail and wine are weaker: the cocktail uses a crowd-sourced Faro figure plus Lisbon ranges, and the wine uses national and Lisbon ranges because no Faro-specific 2026 glass price was found. Both were cross-checked against the beer anchor (cocktail about 2.9 times beer, wine about 1.4 times beer). Accommodation anchors are holistic model estimates for a July 2026 peak-season window; no accommodation searches or live listings were consulted. EUR figures were converted at an assumed rate of about 1.17 USD per EUR, which was not separately sourced. The FX value comes from search-result summaries attributed to the RBA's 18 November 2026 observation; I did not open the RBA page directly and found no 19 November observation.",
+  "comparable_city_reasoning": "Primary basis is Faro-specific 2026 food and drink reporting. Lisbon cocktail and wine ranges were used as a ceiling check, since Faro is reported to be cheaper than Lisbon. Accommodation is benchmarked to mid-sized southern Portuguese coastal tourist towns in July peak season.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.63,
+    "coffee": 2.16,
+    "inexp_meal_1p": 14.63,
+    "midrange_meal_2p": 52.65,
+    "cocktail": 10.53,
+    "wine_glass": 4.97,
+    "hostel_dorm_1p": 35.10,
+    "hostel_private_2p": 76.05,
+    "hotel_1star_2p": 87.75,
+    "hotel_3star_2p": 152.10
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors come from crowd-sourced 2026 snapshots (Numbeo via Expatica, MyLifeElsewhere, Expatistan) and are converted from CHF at an assumed 1.25 USD per CHF. Cocktail and wine are not directly sourced: cocktail is about 2.1x the beer anchor and wine about 1.2x, based on general Swiss bar pricing. Accommodation is a holistic model estimate, not checked against live listings, and assumes July peak demand on Lake Lugano. The FX observation (0.6720, 2026-11-18) comes from search-result summaries and was not verified on the RBA page itself. Earlier searches returned conflicting values (0.7088 for March 2026, and third-party figures near 0.70 in late 2026), and I ran two RBA searches rather than one.",
+  "comparable_city_reasoning": "Lugano-specific price signals for food and drink; cocktail and wine derived from the beer anchor; accommodation from general knowledge of Lugano as a lakeside Swiss tourist city with no listings inspected.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.38,
+    "coffee": 4.88,
+    "inexp_meal_1p": 37.50,
+    "midrange_meal_2p": 197.50,
+    "cocktail": 20.00,
+    "wine_glass": 11.25,
+    "hostel_dorm_1p": 56.25,
+    "hostel_private_2p": 137.50,
+    "hotel_1star_2p": 162.50,
+    "hotel_3star_2p": 275.00
+  }
+}

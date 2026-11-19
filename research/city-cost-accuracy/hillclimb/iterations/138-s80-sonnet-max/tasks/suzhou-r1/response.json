@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food, coffee and beer anchors come from crowd-sourced price indexes surfaced in web search results (I did not inspect the pages themselves). These were Numbeo-derived Suzhou figures (mid-range meal for two about CNY 200-250, cappuccino about CNY 23-24, domestic draft beer about CNY 15), a Numbeo-attributed Nomad Watch listing (inexpensive meal about CNY 28, Oct 2026), and Expatistan May 2026 (downtown-club cocktail CNY 69, pub beer CNY 44). I nudged these up slightly for tourist-area venues. No direct Suzhou glass-of-wine price was found. Wine and cocktail lean on the local beer relationship (cocktail about 3.4x and wine about 3x restaurant beer) plus general knowledge of mainland China bar and restaurant pricing. CNY values were converted at an assumed rate of about 7.0 CNY per USD, which was not sourced from a search. Accommodation anchors are holistic model estimates for July 2026 summer domestic-tourism demand. No booking pages or listings were checked, so they are the least certain. The RBA rate was read from search results for the RBA exchange-rates page.",
+  "comparable_city_reasoning": "Suzhou is a wealthy Yangtze River Delta tier-1.5 city next to Shanghai. Expatistan comparisons in the search results put Suzhou's overall cost of living about 12 percent below Shanghai and roughly level with Guangzhou. Food and drink are therefore priced a notch below Shanghai, while hotel pricing reflects strong domestic tourism and business demand.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 3.8,
+    "inexp_meal_1p": 4.2,
+    "midrange_meal_2p": 33.0,
+    "cocktail": 8.5,
+    "wine_glass": 7.4,
+    "hostel_dorm_1p": 9.5,
+    "hostel_private_2p": 26.5,
+    "hotel_1star_2p": 27.5,
+    "hotel_3star_2p": 52.0
+  }
+}

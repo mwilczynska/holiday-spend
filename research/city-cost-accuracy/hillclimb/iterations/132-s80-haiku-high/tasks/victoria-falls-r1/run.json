@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "18ed144acfb9ef859b83ba9d721f7706888c9b645f6bb993c1c6ecf721fb97f0",
+  "requestSha256": "edfded1696202bc32194b1b1f7a1b9a2434207d29af56cbe91c85a066c0386a6",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 69254,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 112190,
+          "outputTokens": 17374,
+          "cacheReadInputTokens": 17466,
+          "cacheCreationInputTokens": 15072,
+          "webSearchRequests": 7,
+          "costUSD": 0.09309506,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 11370,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.09309506,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD per AUD F11 rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Victoria Falls Zimbabwe cost of living restaurant meal beer cappuccino prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Victoria Falls town prices cocktail wine glass restaurant 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Victoria Falls Zimbabwe restaurant beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Victoria Falls town budget guide 2026 meal prices USD local restaurant pub beer",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:08:45.321Z",
+      "finishedAt": "2026-11-19T03:09:54.575Z"
+    }
+  ]
+}

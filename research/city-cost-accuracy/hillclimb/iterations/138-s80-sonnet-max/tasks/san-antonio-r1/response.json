@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food/drink anchors are based on web-search result summaries (not full page reads): Numbeo San Antonio TX (inexpensive meal ~$18, domestic draft pint ~$5.25-5.50, cappuccino ~$5.2-5.3, mid-range meal for two ~$75 on the newest snapshot vs ~$65 on older ones), a March 2026 pint study (median ~$5.99) and Square bar averages (domestic beer ~$5, classic cocktail ~$9). No citywide average for cocktails or wine by the glass was found, so they are set from individual venue menus in the results ($8-13) and ~1.9x (cocktail) and ~1.75x (wine) the beer anchor; these are the least certain food/drink anchors. Accommodation anchors are holistic model estimates for a July 2026 window, not from listings; no accommodation prices were searched or inspected. FX is the 18 Nov 2026 RBA observation as reported in search results for the RBA exchange-rates page.",
+  "comparable_city_reasoning": "San Antonio appears directly in Numbeo-type aggregates, so no proxy city was needed for meals, beer and coffee. Search results show it is cheaper than Austin and Dallas for beer. Cocktail and wine use the local beer relationship. Accommodation is benchmarked holistically against mid-sized Sun Belt tourist cities with a River Walk and convention market, limited hostel supply and plentiful budget motels.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.75,
+    "coffee": 5.20,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 11.00,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 78.00,
+    "hotel_3star_2p": 135.00
+  }
+}

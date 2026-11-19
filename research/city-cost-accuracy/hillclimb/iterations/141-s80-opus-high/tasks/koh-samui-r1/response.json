@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Searches found Numbeo's November 2026 Koh Samui prices: about 72 THB for a cappuccino, 80 THB for a 0.5 L domestic draught beer, 150 THB for a cheap meal and about 1,000 THB for a mid-range meal for two. Wise, Hikersbay and Conrad Properties gave similar figures. No search was used for the baht exchange rate. I converted at about 33 THB per USD, so any error in that rate affects all ten anchors. Restaurant and coffee prices were nudged up slightly for tourist-area pricing. Cocktail prices vary widely: about 99 THB at budget bars and happy hours, 250-400 THB in mid-range and Chaweng venues, and 450+ THB at resorts. I used a central value of about 215 THB. I found no aggregated wine-by-the-glass price, only one review mentioning 150 THB. Wine is set at about 200 THB, based on Thailand's high wine taxes and the local premium over beer, so it is low confidence. All four accommodation anchors are model estimates from general knowledge, not checked against any live listings. Koh Samui is a premium island where July is a busy mid-year season, so three-star prices are especially uncertain.",
+  "comparable_city_reasoning": "Main basis is search-reported Koh Samui food and drink prices. Phuket and Krabi/Ao Nang were the reference points for island accommodation and drink markups. Samui prices sit above Bangkok and northern Thailand and close to Phuket levels.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.60,
+    "coffee": 2.30,
+    "inexp_meal_1p": 4.75,
+    "midrange_meal_2p": 33.00,
+    "cocktail": 6.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 70.00
+  }
+}

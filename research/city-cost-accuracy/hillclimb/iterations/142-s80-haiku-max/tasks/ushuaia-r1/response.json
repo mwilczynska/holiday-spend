@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Overall low. Food and drink anchors come from Ushuaia cost-of-living indices (e.g., Numbeo, Wise, Livingcost, Expatistan) and a June 2026 Mundo Austral estimate. Sources are mostly dated Feb to Jun 2026, partly peso-quoted (so exchange-rate assumptions add error), and disagree most on meal prices; coffee and draught beer agree closely. Cocktail rests on one club price and is set at about 2x the beer anchor. Wine by the glass has no direct Ushuaia by-glass price and is set at about 0.9x the beer anchor. Accommodation anchors are general-knowledge model estimates; no accommodation searches or live listings were checked, and July ski and school-holiday demand may push rates above shoulder levels. FX 0.6720 is the latest (18 Nov 2026) observation found, taken from the RBA overview and RSS feed as reported by search; the F11.1 table itself was not opened.",
+  "comparable_city_reasoning": "No comparable city used. Food and drink anchors are Ushuaia-specific aggregated sources; accommodation anchors are general-knowledge estimates for Ushuaia as a Patagonian tourist gateway, not transfers from another city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 10.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 80.00,
+    "hotel_3star_2p": 140.00
+  }
+}

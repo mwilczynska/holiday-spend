@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "I ran six web searches (one RBA FX, five Lucerne price checks) and read only the search-result summaries, not the pages themselves. Meal anchors blend a Numbeo-derived June 2026 snapshot republished by Expatica (inexpensive meal about CHF 36.85, mid-range for two about CHF 105) with CityCost (about CHF 29.66 and CHF 112). That gives roughly CHF 32 and CHF 110. Coffee (about CHF 5.4) and beer (about CHF 7.1 for 0.5 L) come from crowd-sourced and national-average figures of about CHF 5.0-5.5 and about CHF 7. Cocktail (about CHF 15.5) rests on one hotel-bar menu price (CHF 16) plus a typical cocktail-to-beer ratio of about 2.2x. Wine glass (about CHF 8.7) rests on an undated forum comment (about CHF 6-7 per dl) plus a ratio of about 1.2x beer. Both are weaker estimates. I converted CHF at an assumed 1.26 USD per CHF, which I did not verify independently. Accommodation anchors are holistic model estimates with a July peak-season tilt. I ran no accommodation searches and checked no live listings.",
+  "comparable_city_reasoning": "Lucerne-specific aggregator data was used for food and drink where available. Other judgment is benchmarked to German-speaking Swiss tourist cities such as Zurich. July peak-season tourist demand lifts lodging toward the upper end of Swiss city ranges.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 6.70,
+    "inexp_meal_1p": 40.00,
+    "midrange_meal_2p": 140.00,
+    "cocktail": 19.50,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 65.00,
+    "hostel_private_2p": 175.00,
+    "hotel_1star_2p": 200.00,
+    "hotel_3star_2p": 310.00
+  }
+}

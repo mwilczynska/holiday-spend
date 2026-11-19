@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors draw on several Orlando cost-of-living guides and listings of mixed date and quality; older 2023-2024 figures were discounted. Beer and cocktail rest on single aggregator estimates plus happy-hour listings, and wine is set at about 1.7x the beer anchor because no full-price Orlando wine figure was found. Cappuccino uses a euro-denominated cafe aggregate and a delivery-app listing, so it is approximate. Meal and drink figures are assumed to be menu prices before tax and tip. Accommodation anchors are holistic model estimates for July peak season, not based on live listings or accommodation searches. FX is the latest RBA observation I could verify (18 November 2026); a 19 November figure was not verified.",
+  "comparable_city_reasoning": "No foreign comparable city used. Anchors are North American and Orlando-specific where sources allowed. Wine is cross-checked against a national US reference, and accommodation reflects Orlando's theme-park tourist market in July.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 88.00,
+    "cocktail": 15.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 225.00
+  }
+}

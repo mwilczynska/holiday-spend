@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors are triangulated from several Wellington guides and venue menus, so they are moderately reliable. Beer, cocktail and wine are less certain: they come from aggregator estimates and a few dated menus, and cocktails and wine vary widely by venue. Accommodation anchors are holistic model estimates from general knowledge of Wellington's lodging market, not from live listings. The midrange_meal_2p source figures conflict (NZ$60-90 per person for three courses vs. about NZ$80 for two), so the anchor reflects the per-person figure. The FX rate was taken from search-result reporting of the RBA 4.00 pm observation for 2026-11-18; I did not open the RBA page directly. The NZD-to-USD conversion used for the drink and meal anchors assumes about 0.60 USD per NZD, which was not verified by search.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors are based on Wellington-specific guide estimates and venue menus, cross-checked against each other. Accommodation anchors are model estimates for Wellington from general knowledge and the city context, not from a comparable city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.20,
+    "coffee": 3.60,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 84.00,
+    "cocktail": 10.80,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 33.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 96.00,
+    "hotel_3star_2p": 168.00
+  }
+}

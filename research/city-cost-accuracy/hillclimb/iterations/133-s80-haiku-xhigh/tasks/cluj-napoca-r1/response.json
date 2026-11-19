@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from crowd-sourced and aggregator sites (Expatistan, MyLifeElsewhere, Nomad Ranker, GlobalCostData) and local cost guides, some dated 2023, and sources disagree widely on meal prices, so the meal anchors are bounded estimates. Cocktail and wine rest on sparse, dated listings; they were set using the local price relationship to beer (cocktail about 2.2x beer, house-wine glass about 1.5x beer), as instructed. Accommodation anchors are holistic model estimates from general knowledge; I did not inspect booking pages or current listings. Local RON prices were converted to USD at roughly 4.5 RON per USD. The 0.6720 FX value (18 Nov 2026) was seen in search-result text citing RBA data; I did not open rba.gov.au to confirm it.",
+  "comparable_city_reasoning": "No comparable city was formally used for food and drink; anchors reflect Cluj-Napoca price points from the searched sources. Accommodation tiers reflect general knowledge of mid-sized Romanian city pricing in peak summer.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.20,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 6.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 19.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 95.00
+  }
+}

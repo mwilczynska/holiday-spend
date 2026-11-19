@@ -1,0 +1,101 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "c00643d71288f698ec9c14b333e665063cb7b414af21973b3585f3af687c253b",
+  "requestSha256": "812072a0fde269bf8d00cd1ceefcc04f193d80ea9ef523a2708d6d9d6fca9fb8",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 285728,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 35724,
+          "cacheReadInputTokens": 20012,
+          "cacheCreationInputTokens": 22305,
+          "webSearchRequests": 0,
+          "costUSD": 0.4504744,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 34352,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 95376,
+          "outputTokens": 7123,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 7,
+          "costUSD": 0.0830991,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2055,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.5335734999999999,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest US dollar AUD USD",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Hampi restaurant meal price per person thali cost 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Hampi cappuccino coffee price cafe menu",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Hampi beer price bottle restaurant Virupapuram Gaddi alcohol",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Hampi Hospet cocktail wine glass price bar Karnataka",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Hampi backpacker budget 2025 2026 prices cappuccino ₹ beer ₹ cocktail wine glass Virupapur Gadde cafes cost of drinks",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:48:17.013Z",
+      "finishedAt": "2026-11-19T06:53:02.741Z"
+    }
+  ]
+}

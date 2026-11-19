@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors rest on a few Interlaken and Swiss menu snippets and secondary Numbeo-derived figures (Basel and Zurich, with Zurich costing more), so they are bounded estimates, not a survey. Main-course prices came from individual menus, not an aggregate index. Accommodation anchors are holistic model estimates from general knowledge of Interlaken's July resort pricing; no accommodation search or live listing was checked. CHF-to-USD conversion for the food anchors assumes roughly 1.25 USD per CHF. FX: the 2026-11-18 observation came from a search snippet that cited the RBA Exchange Rates page; I did not open the page directly, so verify it against the RBA F11 table.",
+  "comparable_city_reasoning": "Swiss alpine resort towns with Interlaken-like menus (Lauterbrunnen, Grindelwald), adjusted with Basel and Zurich Numbeo-derived figures for Swiss drink and meal levels. Accommodation is based on general knowledge of July resort rates in Interlaken.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 7.90,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 135.00,
+    "cocktail": 19.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 175.00,
+    "hotel_3star_2p": 320.00
+  }
+}

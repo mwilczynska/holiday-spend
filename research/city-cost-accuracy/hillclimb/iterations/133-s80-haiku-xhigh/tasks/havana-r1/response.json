@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors come from search-result summaries of 2026 travel and cost-of-living guides, which conflict widely and sometimes use outdated CUC or peso-based figures; I did not open the underlying pages. Cocktail and wine are the thinnest: cocktail is bounded from bar listings, and wine_glass is derived from bottle-price reports rather than a direct glass price. Accommodation anchors are holistic model estimates from general knowledge; I did not search lodging prices or check live listings. The FX observation is the RBA 4.00 pm rate for 18 November 2026, taken from RBA summary pages and feed, not the F11 table itself.",
+  "comparable_city_reasoning": "No comparable city was used. The food and drink basis is Havana-specific 2026 aggregator reporting, cross-checked against tourist-facing price ranges. Accommodation tiers reflect general knowledge of Havana registered casa particular, hostel and state-hotel pricing.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 1.75,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 6.50,
+    "wine_glass": 3.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 110.00
+  }
+}

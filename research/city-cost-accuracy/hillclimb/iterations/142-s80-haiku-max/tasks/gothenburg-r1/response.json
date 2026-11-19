@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Restaurant, cappuccino and draught-beer anchors triangulate several Gothenburg cost-of-living sources seen only as search snippets (crowd-sourced, partly undated); beer assumes a 0.5 L domestic draught. Cocktail and wine anchors are weaker, based on city bar-price bands and sanity-checked against typical beer ratios. Accommodation anchors are holistic model estimates from general knowledge, not checked against live listings. SEK prices were converted to USD at an approximate general-knowledge rate, not a live quote, so expect a few percent of FX error.",
+  "comparable_city_reasoning": "No comparable city was used for food and drink, which rest on Gothenburg-specific aggregates. Accommodation anchors are holistic estimates from general knowledge of Gothenburg's hotel and hostel market, placed somewhat below Stockholm-level pricing.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.89,
+    "coffee": 5.05,
+    "inexp_meal_1p": 14.74,
+    "midrange_meal_2p": 89.47,
+    "cocktail": 16.32,
+    "wine_glass": 13.16,
+    "hostel_dorm_1p": 42.11,
+    "hostel_private_2p": 105.26,
+    "hotel_1star_2p": 126.32,
+    "hotel_3star_2p": 200.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors are based on aggregated aggregator and cost-of-living guides, which are crowdsourced, undated in places, and disagree with each other, so they are approximate. Beer and cappuccino figures are consistent across sources. The cocktail and wine anchors are weaker: Gdansk-specific figures were not found, so they rely on Polish city-level ranges (Krakow) and the local beer relationship. Old Town and tourist-area prices run higher than these averages. Accommodation anchors are holistic model estimates from general knowledge and city context. No live booking pages or current listings were inspected. Anchors are intentionally set to typical rather than peak-season rates.",
+  "comparable_city_reasoning": "Based on aggregated Polish cost-of-living guides and Gdansk-specific restaurant estimates, with Krakow and Warsaw used as Polish city-level references for drinks. Accommodation is a holistic estimate for a mid-sized Polish Baltic tourist city, informed by general knowledge of Gdansk's tourism demand.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 11.50,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 8.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 120.00
+  }
+}

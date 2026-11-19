@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Beer, coffee and inexpensive-meal anchors are reasonably consistent across several crowd-sourced aggregator figures and menus, dated 2025 to 2026 rather than July 2026 specifically. The mid-range two-person meal is least certain because sources differ about two-fold. Cocktail and wine rest on a small, mixed-age set of venue listings, mostly beach clubs, not a beer-based estimate; beer was used only as a plausibility check. Accommodation anchors are holistic model estimates from general knowledge; no accommodation searches, booking pages or current listings were used, so treat them as lower confidence. The FX value comes from a search-result summary citing the RBA page, which was not opened directly.",
+  "comparable_city_reasoning": "No comparable city was used for food and drink. Those anchors rest on Mombasa-specific cost-of-living aggregator figures and Mombasa-area venue listings seen in web search results (no full page reads). Accommodation is a general-knowledge estimate for the coastal Kenya hotel market around Mombasa (island, Nyali, Bamburi).",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 2.90,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 7.00,
+    "wine_glass": 5.80,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 90.00
+  }
+}

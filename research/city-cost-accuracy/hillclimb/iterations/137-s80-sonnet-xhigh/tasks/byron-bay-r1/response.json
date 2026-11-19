@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on five web searches that returned crowdsourced or auto-generated cost-of-living pages for Byron Bay. Those pages disagree and are undated: they give a budget meal of about A$18-25, a mid-range dinner for two of about A$72-115, a cappuccino of about A$4.50-5.50, and a 0.5L draught beer of about A$7.50-9. National figures are a pint average of about A$13.76 and a coffee average of about A$4.69. I adjusted upward slightly for Byron Bay's tourist pricing. I found no full-price Byron Bay menu data for cocktails or wine by the glass, only happy-hour listings (about A$14-16 cocktails, about A$7-8 house wine and schooners). I scaled those up to full price using the local beer relationship, with cocktail about 1.9x beer and wine about 1.2x beer, so these two are the least certain food and drink anchors. Accommodation anchors are holistic model estimates from general knowledge and were not checked against live listings. Byron Bay accommodation varies a lot by season and school holidays, and the July whale-season window is mid-to-high demand. The FX rate is the RBA 18 November 2026 USD rate (0.6720 USD per AUD) as reported by a web search of RBA pages. I did not open the RBA page directly.",
+  "comparable_city_reasoning": "Byron Bay is a premium coastal tourist town in regional NSW. Food and drink are priced between regional Australian towns and Sydney, near Gold Coast and Sunshine Coast tourist-strip levels. Accommodation is priced above most regional NSW towns because of strong leisure demand and limited supply.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.3,
+    "coffee": 3.45,
+    "inexp_meal_1p": 16.5,
+    "midrange_meal_2p": 80.0,
+    "cocktail": 14.0,
+    "wine_glass": 9.0,
+    "hostel_dorm_1p": 32.0,
+    "hostel_private_2p": 95.0,
+    "hotel_1star_2p": 120.0,
+    "hotel_3star_2p": 215.0
+  }
+}

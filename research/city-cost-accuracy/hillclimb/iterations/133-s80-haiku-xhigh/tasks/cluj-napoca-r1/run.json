@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b9aae5303682b28d75f68a7ef4c9afd3f2ecfd464c51c86651e818cd03b75669",
+  "requestSha256": "a868a90407ac399319170155bddd3664ddb50366973b50a34c96bf1b3bbed48f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 143911,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 132653,
+          "outputTokens": 44226,
+          "cacheReadInputTokens": 18006,
+          "cacheCreationInputTokens": 16674,
+          "webSearchRequests": 9,
+          "costUSD": 0.12889316,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 36545,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.12889316,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia F11 exchange rates USD per AUD latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cluj-Napoca cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cluj-Napoca beer cappuccino cocktail wine prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates November 2026 AUD USD 4pm rate",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Cluj-Napoca prices cappuccino beer restaurant meal",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cluj-Napoca restaurant three course dinner for two price cocktail glass of wine",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:09:58.706Z",
+      "finishedAt": "2026-11-19T07:12:22.617Z"
+    }
+  ]
+}

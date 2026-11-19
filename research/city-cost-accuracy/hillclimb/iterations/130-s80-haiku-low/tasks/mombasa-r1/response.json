@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and beer anchors rest on aggregator estimates with inconsistent dates and methodology, plus a few venue listings in Nyali; treat them as rough. Cappuccino, wine and the accommodation anchors are model estimates with weak direct support. No live booking pages or current listings were checked, and the hostel and hotel anchors are holistic estimates. The FX observation is the most recent RBA figure I could surface (AUD/USD 0.7088 at 4pm on 2026-03-20, from the RBA overview page in search results). I could not confirm the F11.1 table or whether a newer observation exists, so it may be stale.",
+  "comparable_city_reasoning": "Basis is general East African coastal-city pricing, anchored on Nairobi-style restaurant pricing and Mombasa venue examples. Beer and cocktail figures use Nyali venue examples, with cocktails set at roughly 2 to 2.5 times the beer price and wine at roughly 2 times, since direct knowledge of those prices is weak. Accommodation anchors are holistic model estimates from general knowledge and the supplied city context.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 6.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 95.00
+  }
+}

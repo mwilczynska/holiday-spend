@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3e50623c64b5a2af5c7ad1a2c296c3960e94881667e658ff7886e7a4ee068306",
+  "requestSha256": "1fe1a3baa8630c123e7c57fe527540d932771dcb17184d6e97561f047f00347a",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 33587,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 57302,
+          "outputTokens": 5601,
+          "cacheReadInputTokens": 13483,
+          "cacheCreationInputTokens": 9212,
+          "webSearchRequests": 4,
+          "costUSD": 0.05050793,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1798,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05050793,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 historical",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Samui restaurant meal prices beer cappuccino cocktail cost 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Thailand cost of living restaurant prices beer wine coffee typical price index",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD/USD latest daily November 2026",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:01:11.797Z",
+      "finishedAt": "2026-11-19T07:01:45.385Z"
+    }
+  ]
+}

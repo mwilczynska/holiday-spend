@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food, coffee and beer anchors come from web-search results summarising Numbeo's Lisbon city page (Nov 2026: inexpensive meal ~EUR 15, mid-range meal for two ~EUR 55, draft beer ~EUR 3.00, cappuccino ~EUR 2.72) and local price guides. Numbeo's wider Lisbon-district pages run lower. Cocktail (guides: ~EUR 6-12) and wine glass (~EUR 2-4 house wine, EUR 5-12 in wine bars) are looser, so I sanity-checked them against the beer price (cocktail ~3x, glass ~1.4x). Euro prices were converted at an assumed ~1.16 USD/EUR that I did not search. Accommodation anchors are holistic model estimates for July high season from general knowledge, not live booking pages or listings, and are the least certain.",
+  "comparable_city_reasoning": "Lisbon-specific price data was used for food and drink. Accommodation was set by comparison with other Southern European capital-city tourist markets such as Madrid and Barcelona (general knowledge, not searched), with July treated as high season.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.15,
+    "inexp_meal_1p": 17.40,
+    "midrange_meal_2p": 65.50,
+    "cocktail": 10.80,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 44.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 97.00,
+    "hotel_3star_2p": 162.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Coffee, beer and restaurant anchors draw on Numbeo's San Sebastian city figures (crowd-sourced, labelled Nov 2026) and 2025-26 travel and price guides, nudged up for July peak season. Cocktail is the least certain drink (2025 guide plus venue reviews). The wine glass is inferred from txakoli and Rioja glass ranges, and both drinks were sanity-checked against the beer level. Accommodation anchors are holistic estimates for July peak season from general knowledge, not from any search or live listing. The FX observation (2026-11-18, latest confirmed) came from an RBA exchange-rate search result; the page was not opened directly. EUR to USD uses an assumed rate of about 1.16 from general knowledge, not a searched rate, so USD values may be off by several percent.",
+  "comparable_city_reasoning": "Food and drink anchors are San Sebastian-specific rather than borrowed from a comparable city. Accommodation is a holistic estimate for a peak-season Basque coastal city, not calibrated to a named comparable city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.71,
+    "coffee": 2.67,
+    "inexp_meal_1p": 19.72,
+    "midrange_meal_2p": 71.92,
+    "cocktail": 13.92,
+    "wine_glass": 5.22,
+    "hostel_dorm_1p": 48.72,
+    "hostel_private_2p": 116.00,
+    "hotel_1star_2p": 127.60,
+    "hotel_3star_2p": 232.00
+  }
+}

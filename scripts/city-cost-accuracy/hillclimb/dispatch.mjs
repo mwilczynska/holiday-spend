@@ -110,6 +110,9 @@ function runOnce(task, request) {
   });
 }
 
+// A usage or rate limit stops the whole dispatch: no retry, no new tasks, exit code 3. Unanswered tasks stay pending.
+const LIMIT_PATTERN = /usage limit|hit your limit|limit reached|rate limit|rate_limit|429|quota|resets? (at|in)/i;
+let limitHit = null;
 async function runTask(task) {
   const attempts = [];
   const request = requestText(task);
@@ -117,6 +120,8 @@ async function runTask(task) {
     const startedAt = new Date().toISOString();
     const r = await runOnce(task, request);
     attempts.push({ ...r, text: undefined, hasText: !!r.text, startedAt, finishedAt: new Date().toISOString() });
+    const limitText = `${r.isError || !r.text ? r.text ?? "" : ""} ${r.code !== 0 || !r.text ? r.stderr : ""}`;
+    if (LIMIT_PATTERN.test(limitText)) { limitHit = limitText.trim().slice(0, 300); break; }
     if (r.text && !r.isError) {
       fs.writeFileSync(path.join(dir, 'tasks', task.id, 'response.json'), r.text);
       break;
@@ -140,7 +145,7 @@ function claim(task) {
 
 let next = 0, ok = 0, failed = 0;
 await Promise.all(Array.from({ length: Math.min(concurrency, pending.length) }, async () => {
-  while (next < pending.length) {
+  while (next < pending.length && !limitHit) {
     const task = pending[next++];
     if (!claim(task)) continue;
     (await runTask(task)) ? ok++ : failed++;
@@ -148,3 +153,4 @@ await Promise.all(Array.from({ length: Math.min(concurrency, pending.length) }, 
   }
 }));
 console.log(`Finished ${iteration}: ${ok} ok, ${failed} failed.`);
+if (limitHit) { console.log(`STOPPED: usage limit: ${limitHit}`); process.exit(3); }

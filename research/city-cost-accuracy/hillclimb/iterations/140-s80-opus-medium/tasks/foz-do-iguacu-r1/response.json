@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from web search summaries of crowdsourced cost-of-living sites (traveltables, livingcost, expatistan, citycost). Some of these pages are a few years old. I used them to set the Brazilian real (BRL) price level. Then I adjusted upward for July 2026 inflation and for sit-down restaurant prices in a tourist town, using roughly 5.3-5.5 BRL to the USD. Search results gave about USD 5.4-5.6 for an inexpensive meal, USD 1.5-1.9 for a cappuccino and USD 1.1-1.7 for domestic beer in shops or as a pint. The draft beer figure is raised to about R$10-12 for restaurant service. The mid-range meal for two has only one sourced figure, Expatistan's R$139 dinner including wine, which I treated as a floor. I estimated about R$180 for three courses without drinks. I found no direct cocktail or wine-by-the-glass prices. The cocktail (caipirinha-type, about R$25-30) and glass of wine (about R$22-28) are therefore based on their usual price relationship to beer in Brazil and are the least certain of the drink anchors. All four accommodation anchors are general-knowledge estimates and were not searched. Foz has many hostels and budget-to-mid-range hotels because of tourism at the falls. July is a winter school-holiday peak, so prices may be somewhat higher. The RBA rate and dates were taken from a web search result summary that cited rba.gov.au. I did not open the RBA page directly.",
+  "comparable_city_reasoning": "Treated as a mid-sized Brazilian tourist gateway city, priced at or slightly below the Brazilian national average. It is comparable to Curitiba or Florianópolis outside peak season for food, and accommodation follows the norms of Brazilian secondary tourist cities.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.0,
+    "coffee": 1.8,
+    "inexp_meal_1p": 6.5,
+    "midrange_meal_2p": 34.0,
+    "cocktail": 5.2,
+    "wine_glass": 4.6,
+    "hostel_dorm_1p": 11.0,
+    "hostel_private_2p": 30.0,
+    "hotel_1star_2p": 28.0,
+    "hotel_3star_2p": 55.0
+  }
+}

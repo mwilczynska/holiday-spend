@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant meal anchors blend Numbeo-derived figures reported for June 2026 (about $18 for an inexpensive meal and $65 for a mid-range dinner for two) with lower third-party guides, making them the strongest set. Beer and coffee come from undated, partly opinion-based San Antonio venue averages. Cocktail is about 2x the beer anchor, between Square's roughly $9 and TripBase's roughly $13 averages. Wine glass has no citywide source and is about 1.8x beer. Accommodation anchors are holistic model estimates from general knowledge, not checked against live listings or booking pages, and are the least certain. FX is the 18 Nov 2026 RBA observation. A second RBA search was needed after the first returned an older figure, no 19 Nov publication was located, and the F11.1 table was not opened directly.",
+  "comparable_city_reasoning": "No external comparable city used. Food and drink anchors are San Antonio-specific aggregated snapshots, cross-checked where possible against US national levels (for example, cappuccino in San Antonio versus the US average). Accommodation reflects a model judgement of mid-sized US Sun Belt city hotel and hostel tiers.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 4.50,
+    "inexp_meal_1p": 16.50,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 12.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 80.00,
+    "hotel_3star_2p": 175.00
+  }
+}

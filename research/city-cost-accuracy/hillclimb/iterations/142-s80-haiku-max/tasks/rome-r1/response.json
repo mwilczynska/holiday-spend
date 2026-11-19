@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are triangulated from several Rome-specific aggregated sources (Numbeo-based cost-of-living pages, Expatistan, 2026 price guides). Several are secondary or undated, so expect roughly +/-20%. Cocktail and wine were set from direct price reports, not from beer; beer assumes a 0.4-0.5 L draught. Accommodation anchors are holistic model estimates from general knowledge of central Rome in July peak season. No booking pages or current listings were consulted, so expect roughly +/-30%. The FX value was taken from a third-party listing (ozfinancehub.com.au) that presents it as the RBA rate for 2026-11-18; rba.gov.au was not opened directly, so verify before use. Euro prices were converted at an approximate working rate, not a verified July 2026 quote.",
+  "comparable_city_reasoning": "No comparable city substituted. Food and drink anchors rest on Rome-specific price points; accommodation rests on general knowledge of central Rome July hotel and hostel rates.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.83,
+    "coffee": 2.25,
+    "inexp_meal_1p": 17.20,
+    "midrange_meal_2p": 73.00,
+    "cocktail": 10.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 46.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 240.00
+  }
+}

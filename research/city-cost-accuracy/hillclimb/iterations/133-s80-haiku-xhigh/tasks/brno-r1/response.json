@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Beer, coffee, cocktail and inexpensive-meal anchors rest on Brno and Czech price points from crowd-sourced comparison sites, undated venue menus and travel guides. Those were converted at roughly 21-22 CZK per USD, as implied by the conversions in those sources; no live CZK rate was searched. The sources are mixed in date, so none is confirmed for July 2026 specifically. midrange_meal_2p and wine_glass are the least certain. The aggregator figures of about $14 for two people look low against local CZK menu points, so the estimate sits above them. No Brno restaurant wine-by-the-glass price was found, so wine_glass is bounded from the beer anchor (about 1.15x) with Prague and regional glass prices as cross-checks. Accommodation anchors are holistic model estimates from general knowledge for a mid-sized Czech city in summer. They were not checked against live listings or booking pages, and no accommodation search was run. FX 0.6720 for 2026-11-18 was taken from search-result snippets that attribute it to the RBA and to a third-party site; the rba.gov.au page itself was not opened, and no 2026-11-19 observation was found.",
+  "comparable_city_reasoning": "No comparable city was used for food and drink; the basis is Brno-specific Czech price points. Prague guides served only as a ceiling check for cocktails and wine glasses. Accommodation is a holistic model estimate for Brno, benchmarked to typical Czech regional-city rates rather than a named comparable city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.25,
+    "coffee": 3.75,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 8.00,
+    "wine_glass": 3.75,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 130.00
+  }
+}

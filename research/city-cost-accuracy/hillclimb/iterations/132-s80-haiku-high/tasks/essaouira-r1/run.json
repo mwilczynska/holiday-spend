@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "04ec1d1e1a1af8a3a0c6d2fa6ae94475c193d8e7550c3daf270a150fb4e457d0",
+  "requestSha256": "8fb0d5c2561897ddbbf88ec9ed40294826b5858cca2d81cd5090d66bde34f6ed",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 88766,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 136410,
+          "outputTokens": 15550,
+          "cacheReadInputTokens": 28160,
+          "cacheCreationInputTokens": 13626,
+          "webSearchRequests": 8,
+          "costUSD": 0.1044228,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 9472,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1044228,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 historical",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Essaouira Morocco cost of living restaurant meal beer cappuccino prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates today AUD USD rate 2026 rba.gov.au statistics exchange rates",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Essaouira cost of living cocktail wine glass restaurant prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Essaouira bar prices 2026 glass of wine MAD cocktail beer pression 50cl",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:06:24.160Z",
+      "finishedAt": "2026-11-19T07:07:52.926Z"
+    }
+  ]
+}

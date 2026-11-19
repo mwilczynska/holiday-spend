@@ -1,0 +1,35 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on aggregator estimates and a few dated or mixed-quality sources, with the 2025 7-Eleven draft prices and 2026 hotel menus the most current. The Kaohsiung-specific figures are thin, so Taiwan-wide and Taipei data were used as proxies. The wine glass anchor is a weak estimate, derived from a Taipei hotel bar's house wine price and a dated 2014 review, and is not a verified Kaohsiung glass price. Cocktail is a judgement from Taipei bar ranges, adjusted down for Kaohsiung. Accommodation anchors are holistic model estimates from general knowledge and the city context. No live booking pages or current listings were inspected, and no accommodation searches were performed. The TWD-to-USD conversion used for the local-currency figures is an assumption of about 31.5 TWD per USD, so the anchors carry some FX uncertainty.",
+  "comparable_city_reasoning": "Priced against Taiwan's general price level, with Kaohsiung set below Taipei. One aggregator puts Kaohsiung's cost of living about 35% below the US level, and Kaohsiung's city-level cappuccino and beer figures sit near the national range. Cocktail and wine anchors use Taipei bar ranges adjusted down for Kaohsiung, with the wine glass estimated from the Taipei hotel house-wine price and dated Taipei wine-bar data. Accommodation anchors are holistic estimates for a mid-sized Taiwanese port city with a tourist guesthouse and hotel market, not based on searched prices.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 3.10,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 9.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 80.00
+  }
+}
+
+Sources:
+- [RBA exchange rates overview](https://www.rba.gov.au/exchange-rates-overview.html)
+- [Kaohsiung cost of living, WhereAndWhen](https://www.whereandwhen.net/budget/taiwan/kaohsiung/)
+- [Kaohsiung cost of living, LifeIndexed](https://lifeindexed.com/cost/asia/taiwan/kaohsiung/2026/)
+- [Kaohsiung cost of living, Travel Tables](https://traveltables.com/country/taiwan/city/kaohsiung/cost-of-living)
+- [Kaohsiung cappuccino, combien-coute.net](https://www.combien-coute.net/cappuccino/taiwan/kaohsiung/)
+- [Taiwan bar and draft beer prices, 7-Eleven guide](https://taiwanderers.com/taiwan-7-eleven-bars/)
+- [Taipei bar prices, cloudpipe guide](https://cloudpipe-macao-app.vercel.app/taiwan/insights/tw-bar-guide-20260517-01?lang=en)
+- [URBAN331 drink menu, Cathay Hotel Madison](https://madison.cathayhotel.com.tw/files/2025_Madison_MCOM/URBAN331/2026_Q1/20260421_URBAN331_DrinkMenu.pdf)

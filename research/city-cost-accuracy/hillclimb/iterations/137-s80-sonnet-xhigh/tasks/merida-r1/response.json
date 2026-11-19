@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "I ran five web searches: one for the RBA rate and four for Mérida prices. The price searches returned aggregated cost-of-living sources (Numbeo, Expatistan, Traveltables, Yucatán Magazine, a local bar-tour article). Those sources disagree. Numbeo shows an inexpensive meal near US$13.5 (range about $4–20), while other guides give $5–9. Numbeo shows mid-range dinner for two at about $54, while other sources give $25–37. I set the meal anchors between these, leaning towards typical local and tourist-area restaurants rather than the Numbeo high end. Beer (about $3 on Numbeo) and cappuccino ($3–3.9) are better supported. I found no direct per-glass wine price and only one cocktail data point, mezcal cocktails at about 145–160 MXN at one Mérida bar. So cocktail and wine are set from the beer relationship plus that data point and Numbeo's mid-range bottle price (about $10.85), with a restaurant markup. They are the least certain food and drink anchors. Accommodation anchors are holistic model estimates from general knowledge of Mérida as a popular, moderately priced tourist city. I did not search for or inspect any listings. Hostel and hotel prices vary a lot by season, location (Centro vs. outlying areas) and whether the room has air conditioning.",
+  "comparable_city_reasoning": "Mérida is a mid-sized, tourist-oriented Mexican city with lower prices than Mexico City, Cancún or Playa del Carmen. I based the estimates on the web-sourced Mérida price data above. For cocktails, wine and accommodation I used the typical relationships in comparable secondary Mexican cities such as Oaxaca, Puebla and Guanajuato.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.8,
+    "coffee": 3.3,
+    "inexp_meal_1p": 8.0,
+    "midrange_meal_2p": 40.0,
+    "cocktail": 7.5,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 13.0,
+    "hostel_private_2p": 36.0,
+    "hotel_1star_2p": 33.0,
+    "hotel_3star_2p": 72.0
+  }
+}

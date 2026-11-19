@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors come from aggregated crowd-sourced cost-of-living data found by web search. Numbeo puts an inexpensive meal at about $20, a mid-range dinner for two at $80, a cappuccino at $6.09 and a domestic draft beer at about $7. Expatica, using Numbeo's June 2026 snapshot, gives $20, $95, $5.67 and $7.25 for the same items. I used midpoints and rounded slightly up to allow for tax and a pint-size serving. No reliable citywide average for cocktails or wine turned up. Expatistan gives about $16 for a downtown club cocktail, but from few data points. Scattered venue listings show roughly $10-16 for cocktails and $9-15 for wine. So the cocktail figure is about 2x the beer price and wine about 1.6x, and both are less certain. All four accommodation figures are model estimates from general knowledge, not searched or checked against live listings, and assume July peak-season demand. Denver has few hostels, which makes the hostel figures the least certain. The FX value is the RBA's 4.00 pm observation for 18 November 2026, the latest published when this was generated. The rate for 19 November was not yet published.",
+  "comparable_city_reasoning": "Based on Denver crowd-sourced price data, cross-checked against similar US cities with mid-to-high costs, such as Austin, Portland and Minneapolis. Accommodation assumes US summer peak pricing for a mid-sized tourist and convention city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 6.00,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 88.00,
+    "cocktail": 14.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 48.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 195.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee and beer anchors come from web searches of price aggregators and a few Interlaken-area menus. They suggest an inexpensive meal of about CHF 25, a three-course meal for two of about CHF 117-125, a cappuccino of CHF 4.8-6.5, and draught beer of CHF 6-10 (3 dl vs 5 dl). Sources vary, and some are dated or are hotel/tourist menus. No aggregated Interlaken cocktail or wine price was found. Cocktail (about CHF 17) and wine glass (about CHF 9.5) rest on travel-guide ranges (cocktails about CHF 14-24, wine about CHF 9-14) and Swiss price relationships to beer (about 2.2x and 1.3x). Accommodation anchors are holistic model estimates for July peak season, not from live listings or any accommodation search. CHF to USD uses an assumed rate of about 1.25 USD per CHF from general knowledge, not searched, which adds roughly 5% uncertainty. The RBA rate is the 18 Nov 2026 observation from the RBA exchange-rates page search result. Older cached RBA snapshots showed higher values and were treated as stale.",
+  "comparable_city_reasoning": "Treated as a high-demand Swiss Alps tourist gateway. Restaurant and drink prices sit near Bern/Lucerne levels with a tourist premium. July accommodation reflects peak-season pricing typical of Swiss Alpine tourist towns such as Lucerne and Grindelwald.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.40,
+    "coffee": 6.90,
+    "inexp_meal_1p": 31.50,
+    "midrange_meal_2p": 152.00,
+    "cocktail": 21.00,
+    "wine_glass": 11.90,
+    "hostel_dorm_1p": 66.00,
+    "hostel_private_2p": 185.00,
+    "hotel_1star_2p": 206.00,
+    "hotel_3star_2p": 320.00
+  }
+}

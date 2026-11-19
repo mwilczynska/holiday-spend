@@ -4376,3 +4376,14 @@ worker message and live search. Lanes 121 (Sol max), 122 (Terra max) and 123 (Lu
 runner) all answered 20/20. Sol is the most accurate model before correction (raw 0.215 against Luna 0.327); with own
 per-anchor fits Sol 0.169, Terra 0.174 and Luna 0.178 are within noise. New `sample-size.mjs`: paired per-city noise,
 correction learning curve and a transfer test; findings in `sweep-2026-11-19.md`.
+
+## 19 November 2026 — Claude models on 80 cities
+
+Owner request: all Haiku and Sonnet efforts and Opus low/medium/high on 80 cities, then a summary of every model
+tested. Lanes 130 to 142 (80 hash-ordered dev cities containing the 20-city sweep sample, earlier answers reused, 841
+new answers on the subscription). With own corrections Sonnet max matches Luna (0.178 against 0.176), Opus is about
+0.012 behind at every effort, other Sonnet efforts 0.023 to 0.042 behind and Haiku 0.016 (max) to 0.044 behind. The
+20-city screen's Sonnet xhigh tie did not hold. Luna's country table plus a model's own per-anchor shift beats the
+model's own per-anchor fit for Sonnet and Opus at 80 cities, reversing the 20-city transfer result. `dispatch.mjs`
+now stops on a usage limit (exit 3); `sample-size.mjs` reports paired bootstrap intervals. Results in
+`sweep-2026-11-19.md`.

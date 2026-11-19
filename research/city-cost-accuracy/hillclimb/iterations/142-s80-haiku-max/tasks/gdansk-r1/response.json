@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Overall medium. Restaurant, coffee and beer anchors come from several aggregated cost-of-living and guide sources (Numbeo, Expatistan, MyLifeElsewhere, Freenance and similar), read as search-result snippets rather than full pages. Source dates span 2019 to 2026. I discounted the oldest items and added a modest July tourist-season uplift, so this is not a verified July 2026 snapshot. Zloty figures were converted to USD at approximate rates implied by those sources (about +/-5% uncertainty). Beer is a 0.5 L draught basis. Cocktail is anchored to the Gdansk price range in the snippets. Wine glass uses the local price relationship to beer (about 1.5 times a 0.5 L draught), because direct recent restaurant wine-by-the-glass data was thin and the only dated menu was a 2019 hotel bar. All four accommodation anchors are holistic model estimates from general knowledge of Gdansk summer rates, not live booking pages or current listings, which makes them the least certain anchors.",
+  "comparable_city_reasoning": "Gdansk-specific food and drink snippets from aggregated cost-of-living and guide sources, cross-checked against general knowledge of Polish mid-sized tourist-city price levels. Accommodation is a model estimate from general knowledge of Tricity summer rates, not from Gdansk listings.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.20,
+    "coffee": 4.10,
+    "inexp_meal_1p": 10.50,
+    "midrange_meal_2p": 46.00,
+    "cocktail": 9.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 64.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 125.00
+  }
+}

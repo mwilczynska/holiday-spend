@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Overall low confidence. Beer, coffee and meal anchors rest on crowdsourced cost-of-living aggregators with mixed dates (2023 to 2026), not official price surveys; the resort uplift over Egypt-wide prices is a judgment. Cocktail anchor uses undated venue and guide EGP ranges. Wine has no usable price, so it is a judgment at about 2x the beer anchor. Accommodation anchors are holistic model estimates for July 2026. No booking pages or live listings were checked, and no accommodation searches were run. FX: the observation came from a search-result summary of the RBA exchange-rates page, not a direct page read. It is dated 2026-03-20, so it is not the latest RBA observation as of 2026-11-19; a newer RBA figure could not be retrieved within the one-search allowance. Non-RBA sites showed roughly 0.68-0.69 USD per AUD in November 2026; these were not used.",
+  "comparable_city_reasoning": "No direct comparable city. Basis is Sharm El Sheikh's Red Sea resort pricing, cross-checked against Egypt-wide cost-of-living aggregators and Naama Bay venue guides, with an upward adjustment for tourist-resort pricing. EGP figures were converted at an assumed rough 50-52 EGP per USD, not an official rate.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.25,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 6.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 75.00
+  }
+}

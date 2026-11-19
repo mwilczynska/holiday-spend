@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food/drink anchors use Tokyo-specific figures from four web searches (aggregators such as Wise, Mylifeelsewhere and Expatistan plus travel-budget guides; not official statistics, sources conflict, Numbeo's page itself was not retrieved): cheap meal ~JPY 1,000-1,200, mid-range 3-course for two ~JPY 6,400-10,000, cappuccino ~JPY 550-600, draft beer ~JPY 500-700. Cocktail (~2x beer) and wine glass (~1.5x beer) are inferred from the beer price because direct wine data was thin. Yen prices were converted at an assumed ~JPY 157/USD (not a searched rate), adding roughly +/-5% uncertainty. Accommodation anchors are holistic model estimates for a July 2026 window; no accommodation searches or live listings were consulted, so they are the least certain. FX is the RBA 18 Nov 2026 rate as surfaced by an rba.gov.au-restricted search (an earlier RBA search returned only a stale March 2026 figure).",
+  "comparable_city_reasoning": "Tokyo-specific price points were used for food and drink, so no substitute comparable city was needed. Accommodation reflects general knowledge of Tokyo's hostel and small-room business-hotel market, where basic hotel rooms price close to private hostel rooms and inbound-tourism demand is high.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.15,
+    "coffee": 3.65,
+    "inexp_meal_1p": 7.30,
+    "midrange_meal_2p": 47.50,
+    "cocktail": 8.30,
+    "wine_glass": 6.20,
+    "hostel_dorm_1p": 29.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 78.00,
+    "hotel_3star_2p": 122.00
+  }
+}

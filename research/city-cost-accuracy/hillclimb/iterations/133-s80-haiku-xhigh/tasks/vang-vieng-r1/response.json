@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Restaurant, beer and coffee anchors rest on a few dated or user-submitted Vientiane and Vang Vieng price snapshots converted at inconsistent kip rates, so they are only rough. A single 2018-era cocktail figure (10,000 kip) was judged too old and was not used. Cocktail and wine_glass are set from the beer relationship (about 2x and 3x) because direct Vang Vieng data is weak. Accommodation anchors are holistic model estimates from general knowledge and the supplied context; booking pages and current listings were not inspected. The FX value comes from search-result text attributed to the RBA rate series for 2026-11-18; the rba.gov.au page itself was not opened.",
+  "comparable_city_reasoning": "Food and drink anchors are based on Vientiane restaurant and cafe price snapshots, adjusted upward for the tourist-town premium that Vang Vieng-focused guides report. Cocktail and wine use the local beer relationship. Accommodation is a holistic estimate of Vang Vieng's backpacker-led lodging market.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 1.60,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 20.00,
+    "cocktail": 3.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 16.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 45.00
+  }
+}

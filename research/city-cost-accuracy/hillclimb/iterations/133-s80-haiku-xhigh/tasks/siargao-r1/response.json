@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and drink anchors draw on mixed-age aggregator and listing data (roughly 2018 to 2026). The mid-range three-course meal estimate is disputed between sources, ranging from about $4 to about $20 for two. No Siargao-specific wine price was found, so the wine anchor is derived from the beer anchor. The cappuccino anchor is inferred from one flat white listing and generic menus. Accommodation anchors are holistic model estimates from general knowledge, with no accommodation searches run. The FX observation is stale: the latest RBA figure the search surfaced is dated 20 March 2026, and I could not verify a newer observation for the 19 November 2026 generation date. Peso figures were converted at roughly 64 PHP per USD.",
+  "comparable_city_reasoning": "Peso-priced Philippine island beach-tourism towns, with a tourist premium in central areas. Wine is set at about 2.5 times the beer anchor because no direct Siargao wine price was found. Accommodation tiers use general knowledge of Siargao guesthouse, hostel and hotel levels, not current listings.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.20,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 18.00,
+    "cocktail": 5.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 80.00
+  }
+}

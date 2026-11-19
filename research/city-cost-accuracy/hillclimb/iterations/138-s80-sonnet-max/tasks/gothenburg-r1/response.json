@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from five web searches of secondary sources (cost-of-living aggregators including Expatistan-derived figures, and travel guides). These quote SEK prices that disagree and are sometimes dated or Sweden-wide. I converted at about 9.7 SEK/USD, inferred from those pages' own conversions rather than a separately sourced rate. Beer (~SEK 75), coffee (~SEK 45) and inexpensive meal (~SEK 130) are best supported. Mid-range meal for two (~SEK 900; sources span about 600-1,000) is least certain. Cocktail (~SEK 150) and wine glass (~SEK 105) use travel-guide ranges and a local relationship to beer (about 2.0x and 1.4x), not current menus. Accommodation anchors are holistic model estimates from general knowledge. I did not search accommodation prices or check live listings, and July event demand can lift rates. The FX figure was taken from a search result reporting the RBA exchange-rates page; I did not open the page itself.",
+  "comparable_city_reasoning": "Food and drink are based on Gothenburg-specific aggregator and travel-guide figures. From general knowledge, Gothenburg sits slightly below Stockholm and well below Copenhagen and Oslo. Accommodation is anchored to mid-sized Nordic city levels with mixed business and leisure demand.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.70,
+    "coffee": 4.65,
+    "inexp_meal_1p": 13.40,
+    "midrange_meal_2p": 92.00,
+    "cocktail": 15.50,
+    "wine_glass": 10.90,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 145.00
+  }
+}

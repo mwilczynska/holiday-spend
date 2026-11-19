@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded from aggregator and travel-guide ranges (2026 and some undated), not verified against a single authoritative price index. Restaurant and hawker anchors are the most reliable. Cappuccino was not found in search results and is estimated from cafe ranges. Wine has no direct price data and is set at about 2.2 times beer, a local price-relationship assumption. Accommodation anchors are holistic model estimates from general knowledge and were not checked against live listings. FX: the rba.gov.au page used gave 0.7088 USD per AUD as at 2026-03-20, which is stale for a July 2026 window. A third-party aggregator reported 0.7021 for 2026-10-27 and attributed it to the RBA, but I could not verify that against rba.gov.au, so I used the official-page figure.",
+  "comparable_city_reasoning": "Priced against Malaysian and Southeast Asian mid-sized tourist cities. Local hawker food and beer prices reflect Penang's cost level, with imported drinks and Western-style cafes priced higher.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 70.00
+  }
+}

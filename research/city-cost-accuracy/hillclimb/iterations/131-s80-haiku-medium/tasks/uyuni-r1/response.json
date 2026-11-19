@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and drink anchors are rough bounded estimates from aggregator and travel-blog figures that conflict; no Uyuni-specific drink prices were found, so beer, coffee, cocktail and wine rely on La Paz and general highland-town levels. Accommodation anchors are holistic model estimates from general knowledge and the Uyuni tourism context, not checked against live listings. The FX observation is the latest RBA figure I could tie to an rba.gov.au page (20 March 2026), not the most recent one available on the generation date, so it may be stale. Cocktail and wine were set relative to beer, reflecting a bar and wine premium over a domestic draft.",
+  "comparable_city_reasoning": "Regional basis: Bolivian highland tourist towns, with La Paz and Sucre restaurant and drink levels as the reference. Uyuni is priced slightly above La Paz for restaurants and tours because of its remoteness. Accommodation is a model estimate based on the Uyuni tourism market.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 4.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 60.00
+  }
+}

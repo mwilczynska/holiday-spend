@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are based on aggregated cost-of-living and travel-budget pages found by search. Sources are mixed in date (2023 to 2026), and beach-zone prices run well above town prices, so the anchors reflect a town-centre tourist mix. Beer, coffee and cocktail anchors are medium confidence. Wine glass is low confidence: no direct restaurant glass price was found, so it is estimated from the local beer and cocktail relationship and bottle retail prices. Accommodation anchors are holistic model estimates from general knowledge and the Tulum context, not from inspected booking pages or current listings. Hotel and hostel anchors are low confidence and may vary widely by season and location. The FX observation is the most recent official RBA figure surfaced by search (March 2026), not a verified July 2026 or November 2026 value, so it may be stale.",
+  "comparable_city_reasoning": "Priced against Tulum's own town-centre and tourist-restaurant levels in Quintana Roo, Mexico, which sit above mainland Mexico city averages and below beach-club pricing. Wine is estimated from the beer and cocktail relationship. Accommodation is based on general knowledge of mid-sized Caribbean-coast Mexican tourist towns.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 140.00
+  }
+}

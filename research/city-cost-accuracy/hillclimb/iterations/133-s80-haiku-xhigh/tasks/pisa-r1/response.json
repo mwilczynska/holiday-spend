@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on crowd-sourced and mixed-date Pisa and Italy-wide price data, so they are approximate. Cocktail and wine anchors are partly inferred from Rome, Venice and Pisa spritz and beer price ratios, and wine by the glass is the weakest drink anchor. Accommodation anchors are holistic model estimates from general knowledge; no booking pages or live listings were checked, making them the least certain. EUR was converted to USD at an assumed 1.15 USD per EUR, not a looked-up rate. The RBA observation came from a search summary of the RBA exchange-rates page and was not opened directly.",
+  "comparable_city_reasoning": "Food and drink anchors are based on Pisa-specific aggregators and Italy-wide counter and table price data. Accommodation anchors are benchmarked to mid-sized Tuscan tourist and university cities, with Pisa assumed to sit somewhat below Florence in price level.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.33,
+    "coffee": 2.07,
+    "inexp_meal_1p": 17.25,
+    "midrange_meal_2p": 75.90,
+    "cocktail": 9.20,
+    "wine_glass": 4.60,
+    "hostel_dorm_1p": 34.50,
+    "hostel_private_2p": 80.50,
+    "hotel_1star_2p": 97.75,
+    "hotel_3star_2p": 172.50
+  }
+}

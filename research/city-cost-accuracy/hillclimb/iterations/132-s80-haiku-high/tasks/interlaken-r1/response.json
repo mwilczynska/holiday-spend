@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded estimates from travel-cost and cost-of-living aggregator sites. They conflict with each other, use mixed dates and currencies, and were converted to USD roughly. Restaurant meal anchors are the most reliable. Cocktail and wine are less certain, and the cocktail anchor is partly benchmarked to Swiss city bar prices. The July 2026 peak-season premium is a judgment. Accommodation anchors are holistic model estimates from general knowledge of Interlaken's summer demand. They were not checked against live booking pages or current listings, and no accommodation search was run. FX: the RBA AUD/USD observation of 0.6720 as at 4.00 pm on 2026-11-18 was taken from search-result text attributed to the RBA exchange rates overview page. I did not open that page or the F11.1 table, so verify the figure there.",
+  "comparable_city_reasoning": "No single comparable city was used. Interlaken is priced as a Swiss alpine resort town comparable to Lauterbrunnen, Grindelwald and Lucerne in peak season. Zurich-level bar prices were used as a reference point for cocktails and wine, and beer and wine were kept in the local relationship to each other.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.50,
+    "coffee": 6.50,
+    "inexp_meal_1p": 30.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 20.00,
+    "wine_glass": 12.50,
+    "hostel_dorm_1p": 65.00,
+    "hostel_private_2p": 165.00,
+    "hotel_1star_2p": 190.00,
+    "hotel_3star_2p": 350.00
+  }
+}

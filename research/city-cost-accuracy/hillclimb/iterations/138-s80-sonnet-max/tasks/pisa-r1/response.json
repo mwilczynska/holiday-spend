@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Meal, mid-range dinner-for-two and cappuccino anchors rest on several broadly consistent cost-of-living snapshots surfaced in search (Numbeo-derived pages, Expatica, Citycost, Expatistan). Beer is less certain: sources span roughly EUR 3.5-6.25, so I set it between them, nearer the restaurant-based figures. I found no reliable Pisa cocktail or wine-by-the-glass price. Cocktail is set at about 1.4x beer, informed by a low-sample Expatistan figure, a bar promotion and Florence spritz comparators. Wine glass is set at about 0.9x beer. Accommodation anchors are holistic model estimates for July 2026 peak season from general knowledge; no live listings or booking pages were checked. Euro prices were converted to USD at an assumed ~1.16 USD per EUR, from general knowledge and not searched.",
+  "comparable_city_reasoning": "Pisa-specific aggregated index figures were used for meals, coffee and beer. Florence, a nearby Tuscan tourist city, served as a comparator for spritz and cocktail pricing and as an upper reference for lodging. Pisa is assumed somewhat cheaper than Florence for hotels and drinks, but busy in July from Leaning Tower tourism.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.35,
+    "coffee": 2.15,
+    "inexp_meal_1p": 20.30,
+    "midrange_meal_2p": 81.20,
+    "cocktail": 8.80,
+    "wine_glass": 5.80,
+    "hostel_dorm_1p": 38.30,
+    "hostel_private_2p": 90.50,
+    "hotel_1star_2p": 92.80,
+    "hotel_3star_2p": 148.50
+  }
+}

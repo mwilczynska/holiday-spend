@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from five searches of mostly undated or crowd-sourced sources, including cost-of-living sites, delivery-app menus, travel guides, and a 2011 and a 2016 item. They are rough estimates, not verified current menu prices. Beer, coffee and inexpensive-meal figures broadly agree across sources. Midrange meal, cocktail and wine figures rest on fewer and wider data points. Accommodation anchors are holistic model estimates for a non-peak July window and were not searched. FX is not verified as latest: the search budget ran out before a current RBA observation could be retrieved. The only RBA figure seen is 0.7088 USD per AUD for 2026-03-20, from a cached RBA page snapshot, so it is stale relative to 2026-11-19. Third-party sites showed about 0.68 in mid-November 2026, but those are not RBA observations and were not used. The server should check as_of_date against the generation date before conversion.",
+  "comparable_city_reasoning": "No single comparable city was used. Food and drink anchors are based on Siem Reap-specific aggregator and menu prices, cross-checked against a Cambodia-wide cost index. Accommodation anchors are a holistic model estimate informed by general Southeast Asian tourist-town guesthouse and hostel pricing. No accommodation search or live booking check was performed.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.75,
+    "coffee": 2.25,
+    "inexp_meal_1p": 2.75,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 55.00
+  }
+}

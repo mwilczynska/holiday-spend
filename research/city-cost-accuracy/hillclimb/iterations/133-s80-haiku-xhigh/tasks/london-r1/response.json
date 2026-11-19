@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Overall medium. Restaurant and beer anchors rest on 2026 London benchmarks (Numbeo snapshots and pub-price surveys), which disagree by a few percent. Cocktail is medium-low: the sources are a hotel-bar figure and a tentative club figure. Wine glass is low: no 2026 London figure was found, so it uses a UK national 175ml average from January 2025 with an assumed London uplift, checked for plausibility against the beer anchor. Accommodation anchors are holistic model estimates for central London in peak July season from general knowledge; no accommodation searches or live listings were used, so they are low-to-medium confidence. GBP-quoted sources were converted to USD at a sterling-dollar rate consistent with the RBA observation date, which is a November rate applied to a July pricing window. The FX observation was taken from RBA pages surfaced by search; the F11.1 table itself was not retrieved.",
+  "comparable_city_reasoning": "No comparable city used. Food and drink anchors are London-specific 2026 benchmarks. Wine glass is a UK national average uplifted for London. Accommodation is a holistic central-London July estimate.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.91,
+    "coffee": 5.54,
+    "inexp_meal_1p": 26.39,
+    "midrange_meal_2p": 105.58,
+    "cocktail": 19.80,
+    "wine_glass": 9.90,
+    "hostel_dorm_1p": 59.39,
+    "hostel_private_2p": 151.77,
+    "hotel_1star_2p": 164.96,
+    "hotel_3star_2p": 277.14
+  }
+}

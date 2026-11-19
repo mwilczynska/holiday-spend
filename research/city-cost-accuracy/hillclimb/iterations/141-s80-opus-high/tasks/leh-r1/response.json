@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Restaurant meal and coffee estimates are based on recent travel guides and budget pages for Leh. They put local or budget meals at about INR 150-500 per person, Changspa Road cafe meals at about INR 400-800, and coffee at about USD 2. These sources are blogs or crowd-sourced, and many are undated. I found no aggregated cappuccino price for Leh, so the coffee figure uses a generic coffee price. I also found no bar menu prices. Leh has few bars, draft beer is rare, and beer is usually served by the bottle, so the beer anchor is an estimate of one standard bottled serving. One budget table gave beer at about USD 2.50, and I adjusted that upward for peak-season restaurant markup in July. Cocktail and wine prices are mainly inferred from typical Indian ratios of cocktail and wine to beer, and Ladakh's new excise policy adds more uncertainty. Accommodation anchors are model estimates from general knowledge, not from searches. They assume July peak-season pricing, which can be well above shoulder-season rates. Leh has a limited supply of registered hostels, so the hostel anchors are especially uncertain. The rupee-to-USD conversion assumes about INR 88-90 per USD.",
+  "comparable_city_reasoning": "Based on Leh-specific travel budget guides, with Indian Himalayan backpacker towns such as Manali and McLeod Ganj as reference points. Leh's remote location and short peak season in July push food, drink and room prices somewhat above those towns.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 2.0,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 20.0,
+    "cocktail": 7.0,
+    "wine_glass": 6.5,
+    "hostel_dorm_1p": 8.0,
+    "hostel_private_2p": 22.0,
+    "hotel_1star_2p": 18.0,
+    "hotel_3star_2p": 65.0
+  }
+}

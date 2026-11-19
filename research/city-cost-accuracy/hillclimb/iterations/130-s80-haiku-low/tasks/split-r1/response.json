@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded estimates from travel-guide and cost-of-living sources dated 2025-2026. These sources are mixed in method and several are affiliate or blog estimates, so treat them as rough. Peak-season (July) uplift of about 20-30% on restaurant prices is applied. Accommodation anchors are holistic model estimates from general knowledge and city context only; no live booking pages or current listings were inspected. Converted at roughly 1.10 USD per EUR, derived from the RBA AUD rate and a cross-rate, so the EUR-to-USD step is approximate. The FX observation is the most recent RBA 4pm rate found (18 Nov 2026), not the 19 Nov fix, which was not located.",
+  "comparable_city_reasoning": "Priced against Adriatic Croatian coastal tourism centres and mid-sized Southern European seaside cities in peak season. Split's Riva and old-town venues are weighted toward tourist pricing, with cheaper konoba and bakery options for the inexpensive tier.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 2.75,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 72.00,
+    "cocktail": 10.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 33.00,
+    "hostel_private_2p": 88.00,
+    "hotel_1star_2p": 88.00,
+    "hotel_3star_2p": 165.00
+  }
+}

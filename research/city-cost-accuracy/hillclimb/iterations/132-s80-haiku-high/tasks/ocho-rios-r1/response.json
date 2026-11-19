@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Beer, coffee and restaurant anchors rest on several aggregated sources that roughly agree but are dated (some from 2023 to 2025), mix currencies, and are unclear on whether the 15% GCT and 10% service charge are included; resort-area prices run higher. No reliable Ocho Rios cocktail or wine-by-the-glass aggregate was found, so cocktail is set at about three times the beer anchor and wine_glass is a bounded estimate. Accommodation anchors are holistic model estimates from general knowledge and city context; no live listings were inspected. FX: the 2026-11-18 value of 0.6720 came from a third-party site reporting an RBA 4pm reading for that date. I did not open rba.gov.au, so the source_url is the RBA exchange-rates page where the series is published, not a page I read. Verify the value against the RBA F11.1 table before relying on it.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is Jamaica's north-coast resort-town pricing: Ocho Rios aggregates where found, Jamaica-wide figures otherwise, with prices adjusted upward for tourist-area venues. Cocktail and wine anchors use the local beer relationship because direct data was weak.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 9.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 160.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Beer and coffee anchors come from aggregated 2026 Taiwan price estimates (about NT$60 draft beer and NT$95 cappuccino) and are the most reliable. Inexpensive and mid-range meal anchors are bounded from conflicting aggregator ranges, so they are less certain. Cocktail and wine have no usable direct price data; they are set at about 3x and about 2.4x the beer anchor. Hostel and hotel anchors are holistic model estimates from general knowledge and city context, not from live listings. The FX observation (2026-11-18, 0.6720 USD per AUD) comes from a search summary of RBA data, and I did not open the RBA page directly, so it should be verified against the official F11 table before use.",
+  "comparable_city_reasoning": "Priced against mid-sized Taiwanese cities (Kaohsiung, Taichung, Hsinchu), whose 2026 coffee and beer estimates are close to Tainan's, with East Asia accommodation levels used for the lodging anchors.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 3.20,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 36.00,
+    "hotel_3star_2p": 90.00
+  }
+}

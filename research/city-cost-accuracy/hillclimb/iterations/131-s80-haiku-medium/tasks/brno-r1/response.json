@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from aggregator estimates (Expatistan, GlobalCostData, LifeIndexed, and a local café article) that conflict and have unclear dates, so they are rough. Wine by the glass has no direct Brno restaurant source; it is a judgement based on the local beer relationship and bottle prices. Accommodation anchors are holistic model estimates from general knowledge and Brno's city context. No live booking pages or current listings were inspected. Medium confidence for meals and beer; low for hostel and hotel anchors. The FX value (0.6720 for 2026-11-18) was taken from a third-party page that cites RBA data, and the RBA page itself was not confirmed for that date.",
+  "comparable_city_reasoning": "Brno price levels were benchmarked against Czech national and Prague reference points, with Brno generally priced below Prague. Accommodation was estimated from general knowledge of mid-sized Czech regional cities, not from inspected listings.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.90,
+    "coffee": 3.90,
+    "inexp_meal_1p": 9.50,
+    "midrange_meal_2p": 48.00,
+    "cocktail": 7.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 24.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 130.00
+  }
+}

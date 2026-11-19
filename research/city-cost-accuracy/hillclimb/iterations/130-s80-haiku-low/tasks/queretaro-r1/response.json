@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on a few web searches of mixed quality and date (some 2023 sources, some 2026 aggregators), so they are bounded estimates. Beer and coffee are the most consistent across sources. Cocktail and wine are weaker: no reliable 2026 Querétaro per-glass wine price was found, so the cocktail and wine anchors use the local beer-to-drink relationship and Mexico City cocktail ranges. The RBA observation is from 2026-03-20, not the latest available as of 2026-11-19; the search did not surface a newer published observation, so the FX figure may be stale. Accommodation anchors are holistic model estimates from general knowledge and city context, not from inspected booking pages or current listings, so they are low confidence.",
+  "comparable_city_reasoning": "Basis is a mid-sized Mexican inland city with a moderate tourist and expat presence, priced below Mexico City. Restaurant and café anchors are set against national Mexican restaurant aggregates and Querétaro cost-of-living snapshots. Cocktail and wine are derived from the local beer relationship, using Mexico City cocktail ranges as a ceiling check. Accommodation is a holistic model estimate for a comparable Mexican mid-sized city.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 5.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 70.00
+  }
+}

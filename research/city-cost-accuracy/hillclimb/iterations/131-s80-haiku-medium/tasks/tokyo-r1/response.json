@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on aggregated 2026 Tokyo averages from Numbeo-derived and cost-of-living sites (about JPY 1,200 for an inexpensive meal, JPY 530-585 for a cappuccino, JPY 550-600 for a draft beer, JPY 7,000-8,000 for a three-course meal for two). The JPY-to-USD conversion assumes roughly JPY 150-155 per USD. Cocktail and wine anchors are weaker: they are estimated from general Tokyo bar and restaurant knowledge and kept in a consistent relationship to the beer anchor, with no direct price search. Hostel and hotel anchors are holistic model estimates from general knowledge and the July 2026 peak-season context, not from live booking pages or current listings. The accommodation range is wide, especially for the 3-star hotel. The FX observation is the RBA USD-per-AUD rate of 0.6720 for 18 November 2026. It was reported in a search result attributed to the RBA exchange-rates overview page, and I did not directly confirm the RBA table, so the provenance is secondary.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors come from Tokyo-specific aggregated price averages. Accommodation anchors come from a holistic model estimate for Tokyo as a large, high-demand Japanese city, with the July 2026 pricing window taken into account.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 9.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 190.00
+  }
+}

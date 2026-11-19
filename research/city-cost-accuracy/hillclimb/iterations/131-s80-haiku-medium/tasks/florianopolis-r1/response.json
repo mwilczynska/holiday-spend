@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors use a few web price points: MyLifeElsewhere user-submitted averages for an inexpensive meal and a cappuccino, Expatistan's crowd-sourced cappuccino estimate (about R$14), and beach-kiosk beer and caipirinha prices from NSC Total (summer season, so likely above typical bar prices). Draft beer, wine and cocktail anchors are partly inferred from these and from local beer-to-cocktail relationships, not from direct menu checks. Restaurant meal anchors are rough estimates from seafood and buffet price points and are less certain. Hostel and hotel anchors are holistic model estimates from general knowledge and the Florianopolis context for July (winter, school-holiday demand); they were not checked against live listings or any accommodation search. FX: the latest RBA observation I could verify was AUD/USD 0.7088 on 2026-03-20; I could not retrieve the RBA table for November 2026, so this value is stale relative to the 2026-11-19 generation date. Third-party reports for later 2026 dates were not used because they are not RBA data. Price sources are undated or mixed-date, and the pricing window is July 2026.",
+  "comparable_city_reasoning": "Benchmarked to Brazilian southern coastal tourism destinations with similar price levels, adjusted with the Florianopolis-specific price points above; accommodation is a holistic model estimate for the southern Brazilian coastal resort market.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 6.50,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 90.00
+  }
+}

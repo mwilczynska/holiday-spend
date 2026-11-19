@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3e50623c64b5a2af5c7ad1a2c296c3960e94881667e658ff7886e7a4ee068306",
+  "requestSha256": "1fe1a3baa8630c123e7c57fe527540d932771dcb17184d6e97561f047f00347a",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 67425,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 107601,
+          "outputTokens": 16345,
+          "cacheReadInputTokens": 32083,
+          "cacheCreationInputTokens": 13935,
+          "webSearchRequests": 7,
+          "costUSD": 0.09204043,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 10005,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.09204043,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Samui restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Samui beer cocktail wine coffee prices bar",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates statistics AUD USD November 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Samui cappuccino price restaurant wine glass price Numbeo beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11 daily exchange rates table AUD USD 2026 official Reserve Bank of Australia",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:07:14.274Z",
+      "finishedAt": "2026-11-19T07:08:21.699Z"
+    }
+  ]
+}

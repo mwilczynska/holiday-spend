@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, beer, cocktail and wine anchors are bounded from travel blogs and cost-of-living sites that disagree on exact figures, so they are rough. Meal anchors are the better-supported group. Accommodation anchors are holistic model estimates from general knowledge for July peak season; no booking pages or current listings were checked. The RBA observation returned by search is from 2026-03-20, about eight months before the generation date, so it may not be the latest published rate.",
+  "comparable_city_reasoning": "Basis is Rome's own typical tourist-zone price levels for food and drink, cross-checked against other major Italian and Western European capital tourist cities. Accommodation is a model estimate for Rome in July peak season.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 2.75,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 13.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 230.00
+  }
+}

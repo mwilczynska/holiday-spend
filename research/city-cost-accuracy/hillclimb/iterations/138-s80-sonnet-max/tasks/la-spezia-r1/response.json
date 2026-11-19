@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Search results from aggregator and guide pages (user-reported, uncertain recency) supported draught beer at about EUR 5, cappuccino at about EUR 1.6 and an inexpensive meal at about EUR 15. I nudged the cappuccino up for July tourist pricing. I found no La Spezia-specific three-course price for two, only a local guide's roughly EUR 50 per person for two courses with wine, so the mid-range meal is a bounded estimate. Cocktail (about 1.6x beer) and wine glass (about 1.05x beer) rest on the beer relationship plus general Italian bar price ranges, not direct La Spezia menus. EUR prices were converted to USD at an assumed 1.16 USD per EUR from general knowledge, which I did not search. Accommodation is a holistic estimate for July peak-season demand as a Cinque Terre gateway. I checked no booking pages or listings, so those four anchors are the least certain.",
+  "comparable_city_reasoning": "No close database comparable. Food and drink are anchored on La Spezia aggregator figures. Accommodation is judged from general knowledge against mid-sized Italian gateway cities such as Genoa and Pisa, priced below the Cinque Terre villages but above non-tourist provincial Italian cities.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 1.95,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 76.50,
+    "cocktail": 9.30,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 160.00
+  }
+}

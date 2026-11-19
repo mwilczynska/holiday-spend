@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are based on a few web searches. The aggregated cost-of-living sources (Traveltables, MyLifeElsewhere, Expat Exchange) are dated 2023–2024 or undated, and they disagree with each other. Their figures were: inexpensive meal about $4.45–$10, mid-range dinner for two about $25–$50, domestic beer about $1.65–$3, and cappuccino about $2.46–$3.69. A local article gave cappuccino at about 71 MXN, which it called high for Mexico. Tulum's tourist zone usually charges well above these older averages, so I set each anchor above the low aggregates. Cocktail and wine come mainly from one casual chain menu in Tulum (about 134–149 MXN for a cocktail and about 172–177 MXN for a glass of wine). Upscale and beach-zone bars charge more, so I estimated somewhat above that menu, also using the local price gap between beer and other drinks. All four accommodation anchors are model estimates from general knowledge, not from searches. Tulum's lodging prices are very high and vary widely for Mexico, and July is a shoulder or low season with sargassum. The hostel and 3-star figures are the most uncertain.",
+  "comparable_city_reasoning": "Tulum is a tourist town on the Riviera Maya and is priced above most of Mexico. I treated it as similar to or slightly above Playa del Carmen, and above typical Mexican cities such as Mérida or Oaxaca. Resort-style costs like Cancún's hotel zone and Tulum's beach zone pull the averages up.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 3.5,
+    "inexp_meal_1p": 10,
+    "midrange_meal_2p": 55,
+    "cocktail": 9,
+    "wine_glass": 9,
+    "hostel_dorm_1p": 20,
+    "hostel_private_2p": 60,
+    "hotel_1star_2p": 55,
+    "hotel_3star_2p": 120
+  }
+}

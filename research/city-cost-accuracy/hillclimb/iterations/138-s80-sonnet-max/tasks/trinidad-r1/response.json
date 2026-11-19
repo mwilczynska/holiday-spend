@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Low confidence: five price searches returned mostly Cuba-wide or Havana-level secondary figures (crowd-sourced Numbeo Havana data, travel-budget guides, a few Trinidad-focused guides) and no Trinidad aggregate index with usable figures, so food and drink anchors are triangulated for tourist-facing, USD-linked venues. Beer is a standard domestic bottle/can serving (true draft is rare); cocktail is about 1.5x beer, in line with the $3-5 mojito/cocktail ranges found; no per-glass wine price was found, so wine_glass is set relative to beer and cocktail (about 1.75x beer). Accommodation anchors are holistic model estimates from general knowledge (casa-particular-dominated market, few true hostels); no listings were inspected. Cuba's multiple exchange rates and USD-versus-CUP pricing add uncertainty. The latest RBA observation found was 2026-11-18; a 2026-11-19 value could not be confirmed.",
+  "comparable_city_reasoning": "Havana crowd-sourced Numbeo figures were used as the low bound and Cuba/Trinidad travel-budget guide ranges (beer $2-4, cocktails $3-5, paladar meals about $6-15) as the tourist-venue bound; one search result noted Trinidad's private restaurants cost less than Havana's. Accommodation is judged against a casa-particular-dominated colonial tourist town with a few 3-star hotels.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.25,
+    "coffee": 1.75,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 3.50,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 70.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Overall low. Leh-specific food figures came from undated or conflicting travel-guide excerpts, cross-checked against Numbeo India averages (no Leh Numbeo entry found), so restaurant and coffee anchors are approximate. Beer is inferred from sparse Leh mentions and Numbeo draft-beer ranges, plausibly USD 2.00 to 3.50. No direct Leh cocktail or wine prices were found, so cocktail is set at about 2.2 times the beer anchor and wine glass at about 1.8 times, typical Indian bar markups. Accommodation anchors are holistic estimates for July peak season from general knowledge, not checked against live listings; the 3-star anchor could plausibly range from about USD 45 to 90. Rupee figures were converted at about INR 93.5 per USD, a rate implied by Numbeo India-US comparison figures in search excerpts, not separately verified.",
+  "comparable_city_reasoning": "No Leh cost-of-living index entry was found. Food, coffee and beer anchors sit within the range of India's national averages and the Delhi, Bangalore and Mumbai figures, adjusted for Leh's remote, high-altitude peak-season pricing. Cocktail and wine are derived from the beer anchor as described in the notes. Hostel and hotel anchors are knowledge-based estimates of Leh's July tourist-season rates, not a comparable-city lookup.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.00,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 20.00,
+    "cocktail": 5.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 8.50,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 65.00
+  }
+}

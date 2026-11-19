@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded estimates from several conflicting, partly undated aggregator and venue-menu results; no Matsuyama-wide drink survey was found. Beer excludes happy-hour promotions. Mid-range meal for two is the least certain food anchor (one aggregator implies about USD 33). Wine glass rests on four menu listings at JPY 600-880, not all confirmed in Matsuyama. Cocktail rests on one listed price (about USD 8) plus a cheaper lemon-style item, and is set at about 1.9x beer per the local beer relationship. Accommodation anchors (dorm, private hostel, 1-star, 3-star) are holistic model estimates from general knowledge and were not checked against listings. Yen figures use an assumed JPY 155 per USD, not the RBA rate; a 10 percent yen move shifts them by about 10 percent. The FX value came from a search-result summary of the RBA exchange-rates page; the F11 table itself was not opened.",
+  "comparable_city_reasoning": "Regional basis: a mid-sized Japanese prefectural capital priced below Tokyo and Osaka. Restaurant anchors follow Matsuyama-listed figures, including a Numbeo inexpensive-meal figure of about JPY 1,000; Tokyo expat-area cafe prices (about JPY 600) serve as an upper bound. Accommodation tiers rest on general knowledge of regional Japanese hotels.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.25,
+    "inexp_meal_1p": 6.50,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 6.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 24.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 110.00
+  }
+}

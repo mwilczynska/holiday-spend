@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and draught beer anchors rest on several Kaohsiung cost-of-living aggregates that broadly agree but are undated and not July-specific; beer is set slightly above their cluster to allow for restaurant service. Cocktail rests on a few bar and reviewer figures, cross-checked against the local beer relationship. Wine_glass is set from the beer relationship and cross-checked against one wine-shop promotion, since no restaurant glass prices were found. Accommodation anchors are holistic model estimates; no accommodation search or live listing check was done. FX is the latest RBA figure the search surfaced (2026-03-20, rba.gov.au snapshot), not confirmed as the latest for 2026-11-19; unverified third-party figures near 0.70 for late 2026 suggest it may be stale.",
+  "comparable_city_reasoning": "No comparable city was used for food and drink; those anchors are Kaohsiung-specific aggregates. Accommodation is a holistic estimate for a mid-sized Taiwanese port city within East Asia, not based on a comparable-city search.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.80,
+    "coffee": 3.10,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 11.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 80.00
+  }
+}

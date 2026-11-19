@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3292484ab3f700c29c5c99014ee6e0b75fb3c33374e5b16fdde31cbb8b4c0c78",
+  "requestSha256": "ca717fb5cc904521a5bae6a0149b294c1471bb2ab89f2e2f29397bc8b82f3699",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 67991,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 171655,
+          "outputTokens": 16359,
+          "cacheReadInputTokens": 18398,
+          "cacheCreationInputTokens": 15582,
+          "webSearchRequests": 11,
+          "costUSD": 0.13864537999999998,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 9903,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.13864537999999998,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "La Spezia Italy restaurant meal prices cappuccino beer cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Italy cappuccino coffee price euro average 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD/USD today 2026 F11 historical daily USD per AUD",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Italy beer draft 0.4 l price euro bar cocktail price wine glass price Liguria 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:07:20.279Z",
+      "finishedAt": "2026-11-19T07:08:28.270Z"
+    }
+  ]
+}

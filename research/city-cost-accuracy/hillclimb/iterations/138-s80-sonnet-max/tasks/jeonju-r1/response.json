@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from five price searches. I used search-result summaries of aggregator pages such as Numbeo and Expatistan, plus travel-guide price lists, and did not open pages directly. Beer, coffee and inexpensive meal were fairly consistent across sources (about KRW 5,000, KRW 5,000 and KRW 9,000-10,000). The mid-range meal for two is less certain: sources ranged roughly KRW 30,000-60,000 and I set an intermediate value. No reliable Jeonju cocktail or wine-glass prices were found. Both are set from the local beer relationship (cocktail about 2x draft beer, wine glass about 1.8x) and sanity-checked against a travel-guide range of KRW 8,000-12,000 for a glass of natural wine. KRW prices were translated to USD at an approximate, unverified working rate of roughly KRW 1,480 per USD. Accommodation anchors are holistic model estimates from general knowledge of Korean provincial heritage cities and the July 2026 window. No accommodation prices or listings were searched or inspected.",
+  "comparable_city_reasoning": "The base is Jeonju-specific aggregator and guide pricing. It sits below Seoul (an Expatistan comparison headline put Jeonju about 13% cheaper than Seoul overall). From general knowledge, I placed it in line with other Korean provincial cities such as Gwangju and Daegu. Accommodation is reasoned from Korean regional heritage destinations with weekend-driven demand (e.g., Gyeongju) plus Jeonju's Hanok Village guesthouse market.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.40,
+    "coffee": 3.40,
+    "inexp_meal_1p": 6.40,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.10,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 31.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 65.00
+  }
+}

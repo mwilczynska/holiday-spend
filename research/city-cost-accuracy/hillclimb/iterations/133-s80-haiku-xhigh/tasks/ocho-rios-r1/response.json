@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are rough. Sources are crowd-sourced, some are dated (2012 to 2021), and they convert JMD to USD inconsistently. No Ocho Rios menus were checked, and it is unclear whether the 15% GCT, 10% service charge and tips are included. Accommodation anchors are holistic model estimates; no live listings were inspected. Cocktail and wine anchors use the local beer relationship because direct evidence is weak. The FX value comes from search-result summaries that reproduce the RBA table for 2026-11-18. The rba.gov.au page was not opened directly, and no RBA observation for 2026-11-19 was found.",
+  "comparable_city_reasoning": "No direct Ocho Rios price index was found. The basis is Jamaican north-coast resort pricing, using Montego Bay and Negril reference points, adjusted upward for Ocho Rios as a tourist hub. Jamaica is grouped under Latin America and the Caribbean.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 9.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 170.00
+  }
+}

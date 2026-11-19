@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors cross-check several aggregated San Antonio sources (Numbeo-based city figures, Square, PriceListo, GOBankingRates), although their dates and methods vary. Beer and cocktail anchors rest on fewer, mixed-quality figures. The wine glass anchor is derived from the beer anchor (about 1.5x) because no reliable per-glass restaurant average was found, so it may be off by a few dollars. Accommodation anchors are holistic model estimates from general knowledge and San Antonio context for July 2026; no accommodation search was run and no live booking pages or listings were checked. FX: the 2026-11-03 value came from third-party reporting attributed to the RBA and was not read directly from the RBA table. The RBA page snapshot in search showed 0.7088 for 2026-03-20, so the FX provenance is unverified and the value should be checked against the official F11.1 series.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors are San Antonio-specific where aggregated city data was found. Accommodation anchors reflect general knowledge of US mid-sized metro hotel and hostel pricing for July 2026.",
+  "fx": {
+    "as_of_date": "2026-11-03",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6976,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 4.50,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 10.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 165.00
+  }
+}

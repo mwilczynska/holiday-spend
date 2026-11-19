@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Beer, coffee and meal anchors rest on Muscat cost-of-living listings (mostly crowd-sourced) that broadly agree, though their dates are mixed and some figures are Oman-wide, so treat them as ballpark. Beer uses a 0.5 L draught benchmark. Wine glass is anchored to Muscat hotel wine-list prices, which skew high, and is set slightly below their average. No bar or restaurant cocktail price was found, so cocktail is set at roughly half again the beer anchor and only cross-checked against one crowd-sourced nightclub price. Accommodation anchors are holistic model estimates from general knowledge; no accommodation search, booking page or listing was inspected. Hostel supply is likely thin and July is a hot low season, so hotel anchors assume summer rates. Overall medium: food, coffee and beer are firmest; hostel, hotel and cocktail anchors are least certain.",
+  "comparable_city_reasoning": "No comparable-city proxy was used. Food, coffee and beer come from Muscat-specific listings; wine glass comes from Muscat hotel wine lists; cocktail is set relative to the beer anchor. Accommodation reflects general Gulf-regional knowledge of Muscat's budget and three-star stock, not a comparable-city dataset.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 13.00,
+    "coffee": 4.80,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 19.50,
+    "wine_glass": 17.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 90.00
+  }
+}

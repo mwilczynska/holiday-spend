@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Inexpensive meal, mid-range meal for two, beer and coffee rest on web-search summaries of crowd-sourced Wollongong price aggregates (Numbeo-labelled Jan 2026 data, cross-checked against MyLifeElsewhere and Expatistan), nudged slightly upward toward the July 2026 window; pages were not opened directly. Cocktail (one low-sample Expatistan figure plus happy-hour listings) and wine glass (one happy-hour listing) are weaker, so both are set mainly from typical local relationships to the beer anchor (cocktail about 1.9x, wine glass about 1.3x). Accommodation anchors are holistic model estimates from general knowledge; no accommodation prices were searched and no live listings were inspected. Hostel anchors are least certain because Wollongong's hostel supply appears limited. The RBA observation was taken from a search-result summary of the RBA exchange-rates page, not from a directly opened page.",
+  "comparable_city_reasoning": "Regional NSW coastal city about 80 km south of Sydney with beach-weekend and university-driven demand. Food and drink use Wollongong's own aggregated data. Accommodation is benchmarked below Sydney levels (an Expatistan overall comparison lists Wollongong roughly a third cheaper than Sydney) and alongside regional NSW coastal peers such as Newcastle and the Central Coast.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.55,
+    "coffee": 3.40,
+    "inexp_meal_1p": 16.15,
+    "midrange_meal_2p": 80.50,
+    "cocktail": 12.20,
+    "wine_glass": 8.40,
+    "hostel_dorm_1p": 28.20,
+    "hostel_private_2p": 64.00,
+    "hotel_1star_2p": 73.50,
+    "hotel_3star_2p": 104.00
+  }
+}

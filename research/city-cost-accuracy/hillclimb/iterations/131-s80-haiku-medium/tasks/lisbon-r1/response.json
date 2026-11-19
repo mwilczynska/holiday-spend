@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, beer, cocktail and wine anchors come from aggregated crowdsourced and travel-guide price ranges (Numbeo-style and Expatistan-style data, plus guide ranges), not official surveys, and sources conflicted somewhat. Prices were converted from EUR to USD at an assumed rate of about 1.16 USD per EUR, which I did not verify by search. Accommodation anchors are holistic model estimates from general knowledge and the city context; I did not inspect live booking pages or current listings and did not search for accommodation prices. The FX observation is the RBA 4.00pm rate for 2026-11-18 as shown on the RBA RSS feed and exchange-rates overview; I could not open the F11.1 table itself.",
+  "comparable_city_reasoning": "Food and drink anchors are based on aggregated Lisbon price ranges for tascas, cafés, pubs and mid-range bars, with the assumed EUR-to-USD conversion noted above. Accommodation anchors are based on general knowledge of mid-sized Western European capital hostel and hotel tiers, benchmarked loosely against comparable Southern European city markets. The cocktail and wine anchors were taken from direct price ranges rather than derived from the beer anchor.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.80,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 12.75,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 175.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant meal anchors agree most closely across Lisbon cost aggregators (Numbeo, Expatistan, Hikersbay, Expatica) and guides, as seen in search summaries rather than full page reads. Beer, coffee, cocktail and wine rely on cafe and bar ranges rather than restaurant menus, with rooftop and expat-area outliers excluded; cocktail and wine are direct listing ranges, not beer-ratio estimates. Accommodation is a holistic July peak-season estimate from general knowledge, not checked against live listings. EUR figures use roughly 1.13 to 1.14 USD per EUR, as implied by 2026 sources. The RBA rate is from a search summary, and the 19 November 2026 figure was not confirmed as posted.",
+  "comparable_city_reasoning": "No comparable-city proxy was used for food or drink; those anchors come from Lisbon-specific sources. Accommodation is a Lisbon-specific holistic estimate from general knowledge, not a regional or comparable-city figure.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.99,
+    "coffee": 2.85,
+    "inexp_meal_1p": 15.39,
+    "midrange_meal_2p": 57.00,
+    "cocktail": 12.54,
+    "wine_glass": 5.13,
+    "hostel_dorm_1p": 43.32,
+    "hostel_private_2p": 102.60,
+    "hotel_1star_2p": 114.00,
+    "hotel_3star_2p": 205.20
+  }
+}

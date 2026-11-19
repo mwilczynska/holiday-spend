@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on 2026 aggregator guides and venue menus (Time Out, Expatistan, Citiesinsider, Boothby, eatdrinkcheap), not an official price index; beer, wine and cocktail figures vary by venue type and suburb. Accommodation anchors are holistic model estimates from general knowledge and the comparable-city basis, not from live listings, so they are low confidence. FX: the 0.7021 USD_PER_AUD value for 2026-10-27 was taken from a third-party mirror (allratestoday.com) that reports the RBA rate. I did not open rba.gov.au, so the official RBA F11 series should be checked before use. The latest RBA observation for 2026-11-19 was not confirmed.",
+  "comparable_city_reasoning": "Melbourne is priced from its own 2026 food and drink sources, cross-checked against Sydney, which sources describe as broadly comparable on restaurant meals and somewhat pricier on pub meals. Accommodation is benchmarked against mid-sized Australian capital hotel and hostel levels, with no live price checks.",
+  "fx": {
+    "as_of_date": "2026-10-27",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7021,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.30,
+    "coffee": 3.90,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 15.50,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 170.00
+  }
+}

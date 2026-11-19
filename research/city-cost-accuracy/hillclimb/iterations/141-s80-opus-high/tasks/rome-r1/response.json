@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors come from aggregated cost-of-living figures found in searches. Numbeo's Nov 2026 snapshot lists an inexpensive meal at about EUR 18 (Oct: EUR 15), a mid-range meal for two at about EUR 65, a draft pint at about EUR 5.50 and a cappuccino at about EUR 1.87. Expatica and HousingAnywhere give similar figures: a meal for EUR 15-16, a meal for two for EUR 62-64, beer for EUR 5-5.3 and a cappuccino for EUR 1.96-2.13. I converted at roughly 1.10 USD per EUR, worked out from the RBA AUD/USD rate and an AUD/EUR rate reported by a secondary site. The cocktail estimate is based on weaker data: Expatistan's EUR 11 average, which it says is not yet reliable, and guide ranges of EUR 8-10 for side-street bars and more in tourist areas. Wine by the glass ranges widely, from about EUR 4 for house wine to EUR 8-12 at central restaurants, so I used a midpoint of about EUR 6, which fits the local beer price. These are recent 2026 prices and are not adjusted for any change from the July 2026 pricing window. Accommodation anchors are model estimates from general knowledge of Rome in July, which is peak season, and include the expected premium. I didn't check any listings. They are less certain than the food and drink anchors, and Rome's city tourist tax could add to the actual cost.",
+  "comparable_city_reasoning": "Based directly on Rome's aggregated cost-of-living data for food and drink. Accommodation follows high-season patterns for major Western European tourist capitals such as Barcelona, Florence and Paris, with Rome placed slightly below Paris.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 2.10,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 71.00,
+    "cocktail": 11.50,
+    "wine_glass": 6.60,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 190.00
+  }
+}

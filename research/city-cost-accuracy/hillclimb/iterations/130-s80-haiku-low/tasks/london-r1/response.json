@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on Numbeo and editorial 2026 London figures (inexpensive meal about GBP 20, cappuccino about GBP 4.10-4.25, three-course mid-range for two about GBP 80-85), so they are moderately reliable. Beer (about GBP 7 for a 500ml draught) is also sourced, but London pub prices vary widely. Cocktail (about GBP 15) reflects several loosely dated, unverified sources. Wine by the glass had no reliable 2026 average, so its anchor uses an assumed price relationship to beer (about 1.3 times the beer price) and should be treated as low confidence. Accommodation anchors are holistic model estimates from general knowledge and were not checked against live listings or any search. GBP-to-USD conversion uses an assumed rate of about 1.30 USD per GBP, which was not separately verified. FX observation: RBA AUD/USD of 0.6720 for 2026-11-18 from the RBA exchange rates overview, as reported in a search result; the F11 table itself was not opened.",
+  "comparable_city_reasoning": "London-specific food and drink price sources (Numbeo, expat and travel guides, and a London drinks-price article). Accommodation anchors are from general model knowledge of central London hostel and hotel tiers, with no accommodation searches performed.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 5.30,
+    "inexp_meal_1p": 26.00,
+    "midrange_meal_2p": 104.00,
+    "cocktail": 19.50,
+    "wine_glass": 11.70,
+    "hostel_dorm_1p": 39.00,
+    "hostel_private_2p": 117.00,
+    "hotel_1star_2p": 143.00,
+    "hotel_3star_2p": 260.00
+  }
+}

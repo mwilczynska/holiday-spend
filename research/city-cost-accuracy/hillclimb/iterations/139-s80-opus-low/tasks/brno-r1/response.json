@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Beer, cappuccino and inexpensive-meal figures are based on crowd-sourced Brno data from MyLifeElsewhere (2026): local beer about CZK 55-57, cappuccino about CZK 71-76 and an inexpensive meal about CZK 200. A national guide from Freenance gives similar ranges. No Brno-specific data was found for mid-range meals, cocktails or wine. These are model estimates scaled from beer and meal prices and known Czech price ratios, so they are less certain. All accommodation anchors are general-knowledge model estimates, not checks of live listings. They reflect July peak-season demand and how cheap Brno is compared with Prague. The FX figure is the RBA 4pm rate for 18 Nov 2026. Search results showed it on a secondary site citing RBA data, alongside the official RBA exchange-rate page.",
+  "comparable_city_reasoning": "Brno is the Czech Republic's second city. Prices are calibrated as clearly below Prague and broadly similar to Ostrava, Plzen and mid-sized Central European cities such as Bratislava or Krakow.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.65,
+    "coffee": 3.45,
+    "inexp_meal_1p": 9.50,
+    "midrange_meal_2p": 52.00,
+    "cocktail": 8.50,
+    "wine_glass": 4.20,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 90.00
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-sonnet-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "bafad6af9310168c3b37e82a26dbb2803aeaad1329d73e11c7bfd6b33297a0b9",
+  "requestSha256": "8eb874165b4c154a8a88bdad45601d15e1ac055c80555d564cd86206ef556a18",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 228127,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 26860,
+          "cacheReadInputTokens": 20307,
+          "cacheCreationInputTokens": 17643,
+          "webSearchRequests": 0,
+          "costUSD": 0.3432454,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 25478,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 89993,
+          "outputTokens": 7823,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.0729108,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3141,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.4161562,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD AUD US dollar",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lima Peru cost of living prices restaurants meal inexpensive restaurant mid-range two people three-course Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lima Peru cappuccino price coffee cost cafe 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lima Peru domestic beer price restaurant bar Cusqueña Pilsen cost in soles",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lima Peru cocktail price bar pisco sour glass of wine restaurant price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lima Peru price of dinner for two mid-range restaurant three-course, meal in inexpensive restaurant, domestic beer restaurant",
+            "mode": "extended",
+            "allowed_domains": [
+              "numbeo.com",
+              "expatistan.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T06:49:30.280Z",
+      "finishedAt": "2026-11-19T06:53:18.407Z"
+    }
+  ]
+}

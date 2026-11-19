@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, beer and coffee anchors use Lugano-specific crowd-sourced medians (Numbeo, 2026) cross-checked with Expatistan and Ticino menus. The mid-range dinner is the least certain restaurant figure (Numbeo range about CHF 70-180 for two). Cocktail (near Expatistan's Lugano average of about CHF 14 and about 2x local beer) and wine glass (assumed 1 dl pour, about 1.1x local beer, from Ticino and Zurich menus) are lower confidence. CHF prices were converted at about 1.25 USD per CHF, the rate implied by those sources, not checked for July 2026. Accommodation anchors are lower-confidence holistic model estimates for July, not searched or checked against listings. FX: the latest RBA observation could not be retrieved. The 0.7088 rate for 2026-03-20 comes from a search summary, not an rba.gov.au page read directly, and is likely stale.",
+  "comparable_city_reasoning": "Food and drink anchors rely on Lugano-specific sources (Numbeo, Expatistan, Ticino menus), with Zurich prices used only as an upper reference. Accommodation is a holistic estimate for a lakeside Ticino tourist city in peak season.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.75,
+    "coffee": 5.00,
+    "inexp_meal_1p": 32.50,
+    "midrange_meal_2p": 187.50,
+    "cocktail": 18.75,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 56.25,
+    "hostel_private_2p": 156.25,
+    "hotel_1star_2p": 162.50,
+    "hotel_3star_2p": 262.50
+  }
+}

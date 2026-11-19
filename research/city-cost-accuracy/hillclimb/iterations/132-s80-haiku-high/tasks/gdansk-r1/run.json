@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0e47c2d90a1a604bb608e37e6dc237727d7b55370feef43db99804592db31bd2",
+  "requestSha256": "a4d838c62cab8a5cd489948369ec81e56df47d622d4022320620b64de6cfe6ac",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 70638,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 123761,
+          "outputTokens": 19618,
+          "cacheReadInputTokens": 20767,
+          "cacheCreationInputTokens": 14622,
+          "webSearchRequests": 8,
+          "costUSD": 0.10531717000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 12224,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.10531717000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD per AUD latest F11 historical rates",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gdansk prices 2026 cost of living restaurant meal beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gdansk cost of living index restaurant prices Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Poland restaurant prices beer cocktail wine glass average Krakow Gdansk Warsaw 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates current USD AUD November 2026 A$1=USD",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gdansk bar cocktail price wine glass price zloty 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T07:06:24.302Z",
+      "finishedAt": "2026-11-19T07:07:34.941Z"
+    }
+  ]
+}
