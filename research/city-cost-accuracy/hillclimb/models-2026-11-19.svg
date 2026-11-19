@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 636" width="760" height="636" role="img" aria-labelledby="t d">
+<title id="t">City-cost accuracy by model and effort, relative to GPT-6 Luna max</title>
+<desc id="d">For each model and effort, the difference in budget-weighted loss from GPT-6 Luna max on the same cities, each model with its own per-anchor correction, with 95% paired bootstrap intervals. Positive is less accurate than Luna.</desc>
+<style>
+  svg { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#8a8984; --grid:#e8e7e3; --zero:#52514e;
+    --s0:#2a78d6; --s1:#eb6834; --s2:#1baf7a; --s3:#eda100; }
+  @media (prefers-color-scheme: dark) { svg { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#8f8e86; --grid:#2e2e2c; --zero:#c3c2b7;
+    --s0:#3987e5; --s1:#d95926; --s2:#199e70; --s3:#c98500; } }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 12px; }
+  .title { fill: var(--ink); font-size: 16px; font-weight: 600; } .sub { font-size: 12px; } .lbl { fill: var(--ink); font-size: 12.5px; }
+  .val { font-variant-numeric: tabular-nums; } .axis { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+  .row:hover .hit { fill: var(--grid); }
+</style><rect width="760" height="636" fill="var(--surface)"/>
+<text class="title" x="16" y="28">Accuracy against GPT-6 Luna max, each model with its own correction</text>
+<text class="sub" x="16" y="48">Loss difference from Luna on the same cities (budget-weighted mean |ln(estimate/reference)|), 95% paired bootstrap interval.</text>
+<text class="sub" x="16" y="66">Claude models: 80 dev cities. OpenAI models: 20 of those cities, so their intervals are wider.</text>
+<line x1="190" x2="190" y1="88" y2="558" stroke="var(--grid)" stroke-width="1"/>
+<text class="axis" x="190" y="574" text-anchor="middle">−0.060</text>
+<line x1="258.57142857142856" x2="258.57142857142856" y1="88" y2="558" stroke="var(--grid)" stroke-width="1"/>
+<text class="axis" x="258.57142857142856" y="574" text-anchor="middle">−0.040</text>
+<line x1="327.1428571428571" x2="327.1428571428571" y1="88" y2="558" stroke="var(--grid)" stroke-width="1"/>
+<text class="axis" x="327.1428571428571" y="574" text-anchor="middle">−0.020</text>
+<line x1="395.71428571428567" x2="395.71428571428567" y1="88" y2="558" stroke="var(--zero)" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text class="axis" x="395.71428571428567" y="574" text-anchor="middle">0</text>
+<line x1="464.2857142857143" x2="464.2857142857143" y1="88" y2="558" stroke="var(--grid)" stroke-width="1"/>
+<text class="axis" x="464.2857142857143" y="574" text-anchor="middle">+0.020</text>
+<line x1="532.8571428571429" x2="532.8571428571429" y1="88" y2="558" stroke="var(--grid)" stroke-width="1"/>
+<text class="axis" x="532.8571428571429" y="574" text-anchor="middle">+0.040</text>
+<line x1="601.4285714285713" x2="601.4285714285713" y1="88" y2="558" stroke="var(--grid)" stroke-width="1"/>
+<text class="axis" x="601.4285714285713" y="574" text-anchor="middle">+0.060</text>
+<line x1="670" x2="670" y1="88" y2="558" stroke="var(--grid)" stroke-width="1"/>
+<text class="axis" x="670" y="574" text-anchor="middle">+0.080</text>
+<text class="axis" x="395.71428571428567" y="82" text-anchor="middle">Luna</text>
+<text class="axis" x="190" y="592">← more accurate than Luna</text>
+<text class="axis" x="670" y="592" text-anchor="end">less accurate than Luna →</text>
+<g class="row"><title>Haiku low (80 cities): loss 0.220 vs Luna 0.176; difference +0.044 [+0.021, +0.067]</title>
+<rect class="hit" x="8" y="97" width="744" height="24" rx="4" fill="transparent"/>
+<text class="lbl" x="176" y="113" text-anchor="end">Haiku low</text>
+<line x1="467.71428571428567" x2="625.4285714285713" y1="109" y2="109" stroke="var(--s0)" stroke-width="2" stroke-linecap="round"/>
+<line x1="467.71428571428567" x2="467.71428571428567" y1="104" y2="114" stroke="var(--s0)" stroke-width="2" stroke-linecap="round"/>
+<line x1="625.4285714285713" x2="625.4285714285713" y1="104" y2="114" stroke="var(--s0)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="546.5714285714286" cy="109" r="5" fill="var(--s0)" stroke="var(--surface)" stroke-width="2"/>
+<text class="val" x="682" y="113">+0.044</text>
+</g>
+<g class="row"><title>Haiku medium (80 cities): loss 0.209 vs Luna 0.176; difference +0.033 [+0.007, +0.059]</title>
+<rect class="hit" x="8" y="123" width="744" height="24" rx="4" fill="transparent"/>
+<text class="lbl" x="176" y="139" text-anchor="end">Haiku medium</text>
+<line x1="419.71428571428567" x2="598" y1="135" y2="135" stroke="var(--s0)" stroke-width="2" stroke-linecap="round"/>
+<line x1="419.71428571428567" x2="419.71428571428567" y1="130" y2="140" stroke="var(--s0)" stroke-width="2" stroke-linecap="round"/>
+<line x1="598" x2="598" y1="130" y2="140" stroke="var(--s0)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="508.85714285714283" cy="135" r="5" fill="var(--s0)" stroke="var(--surface)" stroke-width="2"/>
+<text class="val" x="682" y="139">+0.033</text>
+</g>
+<g class="row"><title>Haiku high (80 cities): loss 0.213 vs Luna 0.176; difference +0.038 [+0.015, +0.060]</title>
+<rect class="hit" x="8" y="149" width="744" height="24" rx="4" fill="transparent"/>
+<text class="lbl" x="176" y="165" text-anchor="end">Haiku high</text>
+<line x1="447.1428571428571" x2="601.4285714285713" y1="161" y2="161" stroke="var(--s0)" stroke-width="2" stroke-linecap="round"/>
+<line x1="447.1428571428571" x2="447.1428571428571" y1="156" y2="166" stroke="var(--s0)" stroke-width="2" stroke-linecap="round"/>
+<line x1="601.4285714285713" x2="601.4285714285713" y1="156" y2="166" stroke="var(--s0)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="526" cy="161" r="5" fill="var(--s0)" stroke="var(--surface)" stroke-width="2"/>
+<text class="val" x="682" y="165">+0.038</text>
+</g>
+<g class="row"><title>Haiku xhigh (80 cities): loss 0.204 vs Luna 0.176; difference +0.029 [+0.007, +0.051]</title>
+<rect class="hit" x="8" y="175" width="744" height="24" rx="4" fill="transparent"/>
+<text class="lbl" x="176" y="191" text-anchor="end">Haiku xhigh</text>
+<line x1="419.71428571428567" x2="570.5714285714284" y1="187" y2="187" stroke="var(--s0)" stroke-width="2" stroke-linecap="round"/>
+<line x1="419.71428571428567" x2="419.71428571428567" y1="182" y2="192" stroke="var(--s0)" stroke-width="2" stroke-linecap="round"/>
+<line x1="570.5714285714284" x2="570.5714285714284" y1="182" y2="192" stroke="var(--s0)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="495.1428571428571" cy="187" r="5" fill="var(--s0)" stroke="var(--surface)" stroke-width="2"/>
+<text class="val" x="682" y="191">+0.029</text>
+</g>
+<g class="row"><title>Haiku max (80 cities): loss 0.192 vs Luna 0.176; difference +0.016 [−0.006, +0.038]</title>
+<rect class="hit" x="8" y="201" width="744" height="24" rx="4" fill="transparent"/>
+<text class="lbl" x="176" y="217" text-anchor="end">Haiku max</text>
+<line x1="375.1428571428571" x2="526" y1="213" y2="213" stroke="var(--s0)" stroke-width="2" stroke-linecap="round"/>
+<line x1="375.1428571428571" x2="375.1428571428571" y1="208" y2="218" stroke="var(--s0)" stroke-width="2" stroke-linecap="round"/>
+<line x1="526" x2="526" y1="208" y2="218" stroke="var(--s0)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="450.57142857142856" cy="213" r="5" fill="var(--s0)" stroke="var(--surface)" stroke-width="2"/>
+<text class="val" x="682" y="217">+0.016</text>
+</g>
+<g class="row"><title>Sonnet low (80 cities): loss 0.208 vs Luna 0.176; difference +0.032 [+0.011, +0.052]</title>
+<rect class="hit" x="8" y="241" width="744" height="24" rx="4" fill="transparent"/>
+<text class="lbl" x="176" y="257" text-anchor="end">Sonnet low</text>
+<line x1="433.42857142857133" x2="573.9999999999999" y1="253" y2="253" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+<line x1="433.42857142857133" x2="433.42857142857133" y1="248" y2="258" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+<line x1="573.9999999999999" x2="573.9999999999999" y1="248" y2="258" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="505.4285714285714" cy="253" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<text class="val" x="682" y="257">+0.032</text>
+</g>
+<g class="row"><title>Sonnet medium (80 cities): loss 0.218 vs Luna 0.176; difference +0.042 [+0.024, +0.059]</title>
+<rect class="hit" x="8" y="267" width="744" height="24" rx="4" fill="transparent"/>
+<text class="lbl" x="176" y="283" text-anchor="end">Sonnet medium</text>
+<line x1="477.99999999999994" x2="598" y1="279" y2="279" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+<line x1="477.99999999999994" x2="477.99999999999994" y1="274" y2="284" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+<line x1="598" x2="598" y1="274" y2="284" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="539.7142857142858" cy="279" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<text class="val" x="682" y="283">+0.042</text>
+</g>
+<g class="row"><title>Sonnet high (80 cities): loss 0.204 vs Luna 0.176; difference +0.028 [+0.007, +0.048]</title>
+<rect class="hit" x="8" y="293" width="744" height="24" rx="4" fill="transparent"/>
+<text class="lbl" x="176" y="309" text-anchor="end">Sonnet high</text>
+<line x1="419.71428571428567" x2="560.2857142857142" y1="305" y2="305" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+<line x1="419.71428571428567" x2="419.71428571428567" y1="300" y2="310" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+<line x1="560.2857142857142" x2="560.2857142857142" y1="300" y2="310" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="491.71428571428567" cy="305" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<text class="val" x="682" y="309">+0.028</text>
+</g>
+<g class="row"><title>Sonnet xhigh (80 cities): loss 0.199 vs Luna 0.176; difference +0.023 [+0.004, +0.042]</title>
+<rect class="hit" x="8" y="319" width="744" height="24" rx="4" fill="transparent"/>
+<text class="lbl" x="176" y="335" text-anchor="end">Sonnet xhigh</text>
+<line x1="409.42857142857144" x2="539.7142857142858" y1="331" y2="331" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+<line x1="409.42857142857144" x2="409.42857142857144" y1="326" y2="336" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+<line x1="539.7142857142858" x2="539.7142857142858" y1="326" y2="336" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="474.5714285714285" cy="331" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<text class="val" x="682" y="335">+0.023</text>
+</g>
+<g class="row"><title>Sonnet max (80 cities): loss 0.178 vs Luna 0.176; difference +0.002 [−0.016, +0.019]</title>
+<rect class="hit" x="8" y="345" width="744" height="24" rx="4" fill="transparent"/>
+<text class="lbl" x="176" y="361" text-anchor="end">Sonnet max</text>
+<line x1="340.85714285714283" x2="460.85714285714283" y1="357" y2="357" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+<line x1="340.85714285714283" x2="340.85714285714283" y1="352" y2="362" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+<line x1="460.85714285714283" x2="460.85714285714283" y1="352" y2="362" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="402.57142857142856" cy="357" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<text class="val" x="682" y="361">+0.002</text>
+</g>
+<g class="row"><title>Opus low (80 cities): loss 0.189 vs Luna 0.176; difference +0.013 [−0.006, +0.033]</title>
+<rect class="hit" x="8" y="385" width="744" height="24" rx="4" fill="transparent"/>
+<text class="lbl" x="176" y="401" text-anchor="end">Opus low</text>
+<line x1="375.1428571428571" x2="508.85714285714283" y1="397" y2="397" stroke="var(--s2)" stroke-width="2" stroke-linecap="round"/>
+<line x1="375.1428571428571" x2="375.1428571428571" y1="392" y2="402" stroke="var(--s2)" stroke-width="2" stroke-linecap="round"/>
+<line x1="508.85714285714283" x2="508.85714285714283" y1="392" y2="402" stroke="var(--s2)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="440.2857142857142" cy="397" r="5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<text class="val" x="682" y="401">+0.013</text>
+</g>
+<g class="row"><title>Opus medium (80 cities): loss 0.187 vs Luna 0.176; difference +0.011 [−0.007, +0.029]</title>
+<rect class="hit" x="8" y="411" width="744" height="24" rx="4" fill="transparent"/>
+<text class="lbl" x="176" y="427" text-anchor="end">Opus medium</text>
+<line x1="371.71428571428567" x2="495.1428571428571" y1="423" y2="423" stroke="var(--s2)" stroke-width="2" stroke-linecap="round"/>
+<line x1="371.71428571428567" x2="371.71428571428567" y1="418" y2="428" stroke="var(--s2)" stroke-width="2" stroke-linecap="round"/>
+<line x1="495.1428571428571" x2="495.1428571428571" y1="418" y2="428" stroke="var(--s2)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="433.42857142857133" cy="423" r="5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<text class="val" x="682" y="427">+0.011</text>
+</g>
+<g class="row"><title>Opus high (80 cities): loss 0.189 vs Luna 0.176; difference +0.013 [−0.006, +0.033]</title>
+<rect class="hit" x="8" y="437" width="744" height="24" rx="4" fill="transparent"/>
+<text class="lbl" x="176" y="453" text-anchor="end">Opus high</text>
+<line x1="375.1428571428571" x2="508.85714285714283" y1="449" y2="449" stroke="var(--s2)" stroke-width="2" stroke-linecap="round"/>
+<line x1="375.1428571428571" x2="375.1428571428571" y1="444" y2="454" stroke="var(--s2)" stroke-width="2" stroke-linecap="round"/>
+<line x1="508.85714285714283" x2="508.85714285714283" y1="444" y2="454" stroke="var(--s2)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="440.2857142857142" cy="449" r="5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<text class="val" x="682" y="453">+0.013</text>
+</g>
+<g class="row"><title>GPT-6 Luna rerun max (20 cities): loss 0.178 vs Luna 0.176; difference +0.001 [−0.029, +0.029]</title>
+<rect class="hit" x="8" y="477" width="744" height="24" rx="4" fill="transparent"/>
+<text class="lbl" x="176" y="493" text-anchor="end">GPT-6 Luna rerun max (20)</text>
+<line x1="296.2857142857143" x2="495.1428571428571" y1="489" y2="489" stroke="var(--s3)" stroke-width="2" stroke-linecap="round"/>
+<line x1="296.2857142857143" x2="296.2857142857143" y1="484" y2="494" stroke="var(--s3)" stroke-width="2" stroke-linecap="round"/>
+<line x1="495.1428571428571" x2="495.1428571428571" y1="484" y2="494" stroke="var(--s3)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="399.1428571428571" cy="489" r="5" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<text class="val" x="682" y="493">+0.001</text>
+</g>
+<g class="row"><title>GPT-6.1 Terra max (20 cities): loss 0.174 vs Luna 0.176; difference −0.002 [−0.031, +0.026]</title>
+<rect class="hit" x="8" y="503" width="744" height="24" rx="4" fill="transparent"/>
+<text class="lbl" x="176" y="519" text-anchor="end">GPT-6.1 Terra max (20)</text>
+<line x1="289.4285714285714" x2="484.85714285714283" y1="515" y2="515" stroke="var(--s3)" stroke-width="2" stroke-linecap="round"/>
+<line x1="289.4285714285714" x2="289.4285714285714" y1="510" y2="520" stroke="var(--s3)" stroke-width="2" stroke-linecap="round"/>
+<line x1="484.85714285714283" x2="484.85714285714283" y1="510" y2="520" stroke="var(--s3)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="388.8571428571428" cy="515" r="5" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<text class="val" x="682" y="519">−0.002</text>
+</g>
+<g class="row"><title>GPT-6.2 Sol max (20 cities): loss 0.169 vs Luna 0.176; difference −0.007 [−0.033, +0.019]</title>
+<rect class="hit" x="8" y="529" width="744" height="24" rx="4" fill="transparent"/>
+<text class="lbl" x="176" y="545" text-anchor="end">GPT-6.2 Sol max (20)</text>
+<line x1="282.57142857142856" x2="460.85714285714283" y1="541" y2="541" stroke="var(--s3)" stroke-width="2" stroke-linecap="round"/>
+<line x1="282.57142857142856" x2="282.57142857142856" y1="536" y2="546" stroke="var(--s3)" stroke-width="2" stroke-linecap="round"/>
+<line x1="460.85714285714283" x2="460.85714285714283" y1="536" y2="546" stroke="var(--s3)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="371.71428571428567" cy="541" r="5" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<text class="val" x="682" y="545">−0.007</text>
+</g>
+<circle cx="21" cy="614" r="5" fill="var(--s0)"/><text x="31" y="618">Claude Haiku 5.5</text>
+<circle cx="156.6" cy="614" r="5" fill="var(--s1)"/><text x="166.6" y="618">Claude Sonnet 5.5</text>
+<circle cx="298.79999999999995" cy="614" r="5" fill="var(--s2)"/><text x="308.79999999999995" y="618">Claude Opus 5.5</text>
+<circle cx="427.79999999999995" cy="614" r="5" fill="var(--s3)"/><text x="437.79999999999995" y="618">OpenAI GPT-6.x</text>
+</svg>
