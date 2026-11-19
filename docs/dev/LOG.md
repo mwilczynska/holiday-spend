@@ -3956,3 +3956,12 @@ single-table selection. The old matcher did not recognise the library's stored "
 the new key drops the runtime note, and a recorrect dry run on a copy of the library leaves all 531 v1.2 estimates
 unchanged. Methodology page: "Choosing a model" tile with accuracy (app correction, 95% interval), estimated cost and
 time per city for each model and effort.
+
+Two-layer correction production rollout (19 November 2026). At the owner's request PR #23 was squash-merged as
+`dc4df0ec` after restoring the optional `@emnapi/runtime` lock entry that npm on Windows had pruned again (CI's
+`npm ci` rejected the lockfile). PR #24 was rebased onto it and squash-merged as `889ec0c6`; Production checks run
+44545640264 published `sha-889ec0c`. The visible VPS queue runner deployed it from a verified Git bundle with the
+revision-checked image, after a full backup taken and verified with the old running image; the previous image is
+tagged for rollback. Local and public health passed and pre/post business-table counts matched. Every stored v1.2
+estimate (531) resolves to GPT-6 Luna under `cityCostModelKey`, so no stored city changes. Private backup identifiers
+and runner logs remain in the infrastructure queue.

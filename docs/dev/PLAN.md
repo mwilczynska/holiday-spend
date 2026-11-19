@@ -47,7 +47,11 @@ two-layer plan and show the model comparison on the Methodology page.
   direction consistent, intervals include zero individually.
 - [x] Methodology page: "Choosing a model" chart (accuracy, cost, time) and the two-layer description.
 - [x] PR for `feat/two-layer-city-cost-correction` opened after PR 23 merged.
-- [ ] After deploying: `scripts/recorrect-city-costs.ts --dry-run` on the server should report every v1.2 city unchanged.
+- [x] Owner-requested rollout (19 November 2026): PR 24 squash-merged as `889ec0c6`; Production checks run 44545640264
+  published `sha-889ec0c`. Deployed through the visible VPS queue runner after a verified backup, keeping the previous
+  image for rollback. Local and public health pass; pre/post business-table counts match. All 531 stored v1.2
+  estimates resolve to GPT-6 Luna under the new model key, so the two-layer correction leaves every stored city
+  unchanged (the runner image has no recorrect script; the stored labels were checked in the container instead).
 
 ## Branch cleanup (27 October 2026)
 
