@@ -3923,3 +3923,12 @@ The correction table is selected by answering model; only Luna has one, and othe
 transports was refused by the session's permission policy and is not done. No live provider call was made: the app
 path needs an API key and the owner asked for subscription-only tests, so the transports are covered by contract
 tests on recorded response shapes.
+
+Follow-up the same day, owner approved package installs. Provider requests now use their own undici agent
+(`src/lib/llm-fetch-dispatcher.ts`) with header and body timeouts off, so non-streamed transports are no longer cut
+off at 300 seconds; a test against a local server whose headers arrive after 2.5 seconds shows Node's fetch honours
+the agent (a 1-second header limit fails, the provider agent waits). undici is bundled into the server output.
+Security updates: Next.js 16.4.6, undici 7.30.2, eslint-config-next 16.4.6 and non-breaking audit fixes; audit falls
+from 16 advisories to 4, all in the dev-only drizzle-kit/esbuild chain with no non-breaking fix. The first build on
+16.4.2 had stopped after compiling with a Next.js security notice; the build on 16.4.6 passes directly. The owner
+paused the 333-city Haiku high and Sonnet xhigh collections (lanes 119 and 120) before any new city was answered.

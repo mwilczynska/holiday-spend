@@ -19,10 +19,14 @@ for cheap tests of other Claude models and efforts on the subscription (not the 
   the estimate's stored model.
 - [x] Tests: stream reader, model limits and ladder, Anthropic/Gemini/chat-completions contracts, correction selection,
   search allowance at the generation boundary.
-- [ ] Owner decision: collect the 333 dev cities for the Claude settings worth offering (for example Sonnet xhigh,
-  Haiku high) on the subscription and fit model-specific correction tables.
-- [ ] Not done: streaming for the non-Anthropic transports (a request past 300 seconds fails there). Adding the
-  `undici` package to lift the fetch header timeout was blocked by the session's permission policy.
+- [x] Provider requests use an undici agent without Node's 300-second header/body timeouts, so the configured request
+  timeout is the only limit for every transport (owner approved the package install).
+- [x] Security updates (owner approved): Next.js 16.4.2 → 16.4.6 (cache disclosure advisories), undici 7.30.2 (high
+  advisory in 7.16), eslint-config-next 16.4.6, and non-breaking audit fixes (vitest 4.1.12, typescript-eslint,
+  minimatch, postcss-selector-parser). Remaining: four moderate advisories in the dev-only drizzle-kit/esbuild chain,
+  already at the latest drizzle-kit (0.31.11); npm's only offer is a breaking downgrade.
+- [ ] Paused by the owner: 333-city collections for Haiku high (lane 119) and Sonnet xhigh (lane 120) to fit
+  model-specific correction tables. Each holds the 20 sweep answers; `dispatch.mjs` resumes from there.
 
 ## Branch cleanup (27 October 2026)
 

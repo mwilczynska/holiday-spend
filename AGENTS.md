@@ -282,9 +282,10 @@ City generation uses these limits for both new and existing cities, with any lis
 responses are rejected even when their text parses as JSON; retries retain required web search and share the
 original timeout. Successful estimates record the effort that produced the answer. v1.1 and v1.2 never drop their
 required current-FX search. The caller passes the searches its prompt allows (`maxWebSearches`: v1.2 six, v1.1 one);
-Anthropic sends it as `max_uses`. Anthropic requests are streamed, resume `pause_turn` and report refusals. Node's
-fetch abandons a response whose headers take over 300 seconds, so the non-streamed transports cannot run longer than
-that whatever the configured timeout. See `docs/product/llm-providers.md`.
+Anthropic sends it as `max_uses`. Anthropic requests are streamed, resume `pause_turn` and report refusals. Provider
+requests use their own undici agent without Node's 300-second header and body timeouts
+(`src/lib/llm-fetch-dispatcher.ts`), so the configured request timeout is the only limit. See
+`docs/product/llm-providers.md`.
 
 Every transport path, including non-search and strict JSON retries, uses the configured limits; none imposes a
 separate small answer cap. Bulk transport has a Stop control that aborts active requests and prevents queued legs

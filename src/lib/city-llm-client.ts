@@ -19,6 +19,7 @@ import {
   type AnthropicMessage,
 } from '@/lib/anthropic-message-stream';
 import { clampOutputTokens, nextLowerReasoningEffort } from '@/lib/llm-model-limits';
+import { getLlmFetchDispatcher } from '@/lib/llm-fetch-dispatcher';
 import { resolveLlmRuntimeDefaults } from '@/lib/llm-request-limits';
 import { describeLlmRequestFailure, formatProviderHttpError, summarizeProviderError } from '@/lib/llm-error-messages';
 import {
@@ -48,7 +49,13 @@ function normalizeModel(model?: string) {
 async function fetchProvider(url: string, init: RequestInit, provider: string, deadline: number, timeoutMs: number, apiKey: string) {
   init.signal?.throwIfAborted();
   try {
-    return await analyticsLlmFetch(url, { ...init, signal: createLlmRequestSignal(deadline - Date.now(), init.signal ?? undefined) });
+    // The provider dispatcher lifts Node's 300-second header timeout; the deadline signal is the request's only limit.
+    const providerInit = {
+      ...init,
+      signal: createLlmRequestSignal(deadline - Date.now(), init.signal ?? undefined),
+      dispatcher: getLlmFetchDispatcher(),
+    } as RequestInit;
+    return await analyticsLlmFetch(url, providerInit);
   } catch (err) {
     init.signal?.throwIfAborted();
     throw new Error(describeLlmRequestFailure(err, provider, timeoutMs, apiKey));

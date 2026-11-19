@@ -69,9 +69,10 @@ ways a request can end without a usable answer the same way for every transport:
   rejected. Gemini now receives the configured limit; it previously fell back to 3,000 tokens.
 - **Anthropic specifics.** The request is streamed (`src/lib/anthropic-message-stream.ts`). A paused search turn
   (`pause_turn`) is resumed by sending the paused content back, up to four times. A refusal is reported as such.
-- **Long requests.** Node's fetch abandons a response whose headers take more than 300 seconds. Streaming avoids this
-  for Anthropic. The other transports are not streamed, so a request that runs past five minutes fails there whatever
-  the configured timeout; GPT-6 Luna at max normally finishes well within that.
+- **Long requests.** Node's fetch abandons a response whose headers take more than 300 seconds, and a non-streamed
+  request sends its headers only when the answer is complete. Provider requests therefore use their own undici agent
+  with the header and body timeouts off (`src/lib/llm-fetch-dispatcher.ts`), so the configured request timeout is the
+  only limit for every transport. Other fetches in the app keep Node's defaults.
 
 Measured on 20 cities through the Claude CLI on 19 November 2026 (Luna's exact v1.2 prompts), output tokens per city
 (median): Haiku 5.5 low 6k, medium 8k, high 16k, xhigh 39k, max 269k; Sonnet 5.5 low 0.8k, high 1.3k, xhigh 2.5k;
