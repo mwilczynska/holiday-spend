@@ -133,7 +133,7 @@ and only the eight model factors change per model.
 | --- | --- | --- |
 | GPT-6 Luna | 1 for every price (the reference) | the country table itself |
 | Claude Haiku 5.5, Sonnet 5.5, Opus 5.5 | own factors | 80 reference cities, all efforts pooled |
-| GPT-6.2 Sol, GPT-6.1 Terra | own factors | 40 reference cities |
+| GPT-6.2 Sol, GPT-6.1 Terra | own factors | 80 reference cities |
 | Any other model | a cautious default: half the average adjustment of the measured models | – |
 
 How the factors are set, from the research branch's two-layer analysis (`two-layer-analysis.mjs`, R4 references):

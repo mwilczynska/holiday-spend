@@ -78,7 +78,7 @@ export interface CityCostV12ModelAdjustment {
  * Two-layer v1.2 correction (19 November 2026): a country layer fitted on GPT-6 Luna's answers for 475 reference
  * cities, times a model layer of one factor per corrected anchor. The model layer captures how a model's prices differ
  * from Luna's (for example Claude and newer GPT models price 3-star rooms closer to booking prices, so Luna's 3-star
- * factor overshoots them). Measured models were calibrated on 40 to 80 reference cities; any other model gets the
+ * factor overshoots them). Measured models were calibrated on 80 reference cities; any other model gets the
  * unmeasured default, which the research measured as better than Luna's layer alone for a model it had not seen.
  */
 export function resolveCityCostV12ModelAdjustment(model?: string | null): CityCostV12ModelAdjustment {

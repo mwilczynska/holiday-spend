@@ -142,7 +142,7 @@ contract and adds two changes measured in the city-cost accuracy research (bundl
   (`materializeCityCostV12` reuses the v1.1 materializer);
 - the correction has two layers (19 November 2026): the country table above times a per-model factor for each
   corrected price (`src/lib/data/city-cost-model-adjustments-v1-2.json`). Luna is the reference (factor 1); Claude
-  Haiku, Sonnet and Opus 5.5 (80 cities) and GPT-6.2 Sol and GPT-6.1 Terra (40 cities) have their own factors; any
+  Haiku, Sonnet and Opus 5.5 (80 cities) and GPT-6.2 Sol and GPT-6.1 Terra (80 cities) have their own factors; any
   other model gets half the measured models' average adjustment. Estimates record `correction.modelAdjustment`; the
   correction version is `<country table>+<model adjustments>` except for Luna, so recorrection touches only changed
   estimates. Stored names such as "gpt-6-luna (Codex subagent)" resolve to the same entry (`cityCostModelKey`). New

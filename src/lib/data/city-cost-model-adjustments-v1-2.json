@@ -1,5 +1,5 @@
 {
-  "version": "v1.2-model-adjustments-2026-11-19",
+  "version": "v1.2-model-adjustments-2026-11-20",
   "countryLayer": "v1.2-corrections-2026-10-19",
   "method": "Two-layer v1.2 correction: country factor (v1.2-corrections-2026-10-19) x model factor. Measured model: exp(w x own shift + (1 - w) x pooled shift of the other measured models), w = n / (n + 20). Unmeasured model: exp(0.5 x pooled shift of all measured models). Reference model: 1.",
   "fittedOn": {
@@ -45,14 +45,14 @@
       "gpt-6.1-terra"
     ],
     "factors": {
-      "inexp_meal_1p": 1.0051,
-      "midrange_meal_2p": 0.9854,
-      "beer": 0.9771,
-      "coffee": 1.0052,
-      "hotel_3star_2p": 1.1024,
-      "hotel_1star_2p": 1.1296,
-      "hostel_dorm_1p": 1.0284,
-      "hostel_private_2p": 1.0148
+      "inexp_meal_1p": 1.0074,
+      "midrange_meal_2p": 0.9888,
+      "beer": 0.9793,
+      "coffee": 1.0004,
+      "hotel_3star_2p": 1.0954,
+      "hotel_1star_2p": 1.1168,
+      "hostel_dorm_1p": 1.0283,
+      "hostel_private_2p": 1.0169
     }
   },
   "models": [
@@ -70,14 +70,14 @@
       ],
       "weight": 0.8,
       "factors": {
-        "inexp_meal_1p": 1.0678,
-        "midrange_meal_2p": 0.9564,
-        "beer": 0.9362,
-        "coffee": 0.9695,
-        "hotel_3star_2p": 1.0622,
-        "hotel_1star_2p": 1.2194,
-        "hostel_dorm_1p": 1.0604,
-        "hostel_private_2p": 1.0516
+        "inexp_meal_1p": 1.069,
+        "midrange_meal_2p": 0.958,
+        "beer": 0.9372,
+        "coffee": 0.9671,
+        "hotel_3star_2p": 1.0588,
+        "hotel_1star_2p": 1.2125,
+        "hostel_dorm_1p": 1.0603,
+        "hostel_private_2p": 1.0527
       }
     },
     {
@@ -94,14 +94,14 @@
       ],
       "weight": 0.8,
       "factors": {
-        "inexp_meal_1p": 1.0189,
-        "midrange_meal_2p": 0.9956,
-        "beer": 0.9429,
-        "coffee": 1.0153,
-        "hotel_3star_2p": 1.2414,
-        "hotel_1star_2p": 1.3782,
-        "hostel_dorm_1p": 1.1481,
-        "hostel_private_2p": 1.0987
+        "inexp_meal_1p": 1.02,
+        "midrange_meal_2p": 0.9973,
+        "beer": 0.9439,
+        "coffee": 1.0128,
+        "hotel_3star_2p": 1.2375,
+        "hotel_1star_2p": 1.3704,
+        "hostel_dorm_1p": 1.148,
+        "hostel_private_2p": 1.0998
       }
     },
     {
@@ -116,54 +116,54 @@
       ],
       "weight": 0.8,
       "factors": {
-        "inexp_meal_1p": 0.9758,
-        "midrange_meal_2p": 0.9573,
-        "beer": 0.9482,
-        "coffee": 1.006,
-        "hotel_3star_2p": 1.213,
-        "hotel_1star_2p": 1.2791,
-        "hostel_dorm_1p": 1.0805,
-        "hostel_private_2p": 1.0276
+        "inexp_meal_1p": 0.9769,
+        "midrange_meal_2p": 0.9589,
+        "beer": 0.9492,
+        "coffee": 1.0036,
+        "hotel_3star_2p": 1.2092,
+        "hotel_1star_2p": 1.2718,
+        "hostel_dorm_1p": 1.0804,
+        "hostel_private_2p": 1.0286
       }
     },
     {
       "id": "gpt-6.2-sol",
       "label": "GPT-6.2 Sol",
       "match": "^gpt-6\\.2-sol(?:-|$)",
-      "cities": 40,
+      "cities": 80,
       "lanes": [
-        "124-s40-sol-max"
+        "127-s80-sol-max"
       ],
-      "weight": 0.6667,
+      "weight": 0.8,
       "factors": {
-        "inexp_meal_1p": 0.9981,
-        "midrange_meal_2p": 0.9664,
-        "beer": 0.9624,
-        "coffee": 1.0253,
-        "hotel_3star_2p": 1.2984,
-        "hotel_1star_2p": 1.2741,
-        "hostel_dorm_1p": 1.0381,
-        "hostel_private_2p": 1.0178
+        "inexp_meal_1p": 1.0025,
+        "midrange_meal_2p": 0.9764,
+        "beer": 0.9708,
+        "coffee": 1.0065,
+        "hotel_3star_2p": 1.2909,
+        "hotel_1star_2p": 1.2164,
+        "hostel_dorm_1p": 1.0377,
+        "hostel_private_2p": 1.0294
       }
     },
     {
       "id": "gpt-6.1-terra",
       "label": "GPT-6.1 Terra",
       "match": "^gpt-6\\.1-terra(?:-|$)",
-      "cities": 40,
+      "cities": 80,
       "lanes": [
-        "125-s40-terra-max"
+        "128-s80-terra-max"
       ],
-      "weight": 0.6667,
+      "weight": 0.8,
       "factors": {
-        "inexp_meal_1p": 0.9995,
-        "midrange_meal_2p": 0.9794,
-        "beer": 0.9763,
-        "coffee": 1.028,
-        "hotel_3star_2p": 1.244,
-        "hotel_1star_2p": 1.2446,
-        "hostel_dorm_1p": 0.9918,
-        "hostel_private_2p": 0.9768
+        "inexp_meal_1p": 1.008,
+        "midrange_meal_2p": 0.9984,
+        "beer": 0.9949,
+        "coffee": 1.0143,
+        "hotel_3star_2p": 1.2163,
+        "hotel_1star_2p": 1.1746,
+        "hostel_dorm_1p": 0.9682,
+        "hostel_private_2p": 0.9646
       }
     }
   ]
