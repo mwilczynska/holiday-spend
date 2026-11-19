@@ -29,6 +29,16 @@ for cheap tests of other Claude models and efforts on the subscription (not the 
   two-layer correction below needs 40 to 80 cities per model. PR 23 merged on 19 November 2026 (squash `dc4df0ec`),
   after restoring the optional `@emnapi/runtime` lock entry that npm on Windows had pruned again.
 
+## OpenAI models extended to 80 cities (20 November 2026)
+
+Owner direction: give every measured model 80 reference cities, starting with Luna max, then rebuild Sol and Terra's
+factors, regenerate the Methodology comparison, open a PR and deploy.
+
+- [x] codex exec lanes 126 (Luna max rerun), 127 (Sol max) and 128 (Terra max), 80 cities each, over three ChatGPT
+  usage windows with scheduled restarts.
+- [x] Rebuilt model adjustments `v1.2-model-adjustments-2026-11-20` and the comparison data; page and docs say 80 cities.
+- [ ] PR, merge after CI, deploy through the visible VPS queue runner.
+
 ## Two-layer correction and model comparison (19 November 2026)
 
 Owner direction: a full correction table per model and effort is not feasible as models arrive; implement the

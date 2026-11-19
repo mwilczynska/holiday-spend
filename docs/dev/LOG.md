@@ -3965,3 +3965,19 @@ revision-checked image, after a full backup taken and verified with the old runn
 tagged for rollback. Local and public health passed and pre/post business-table counts matched. Every stored v1.2
 estimate (531) resolves to GPT-6 Luna under `cityCostModelKey`, so no stored city changes. Private backup identifiers
 and runner logs remain in the infrastructure queue.
+
+## 20 November 2026 — OpenAI models measured on 80 cities
+
+Owner: bring every measured model to 80 reference cities, starting with GPT-6 Luna max. Lanes 126 (Luna max rerun),
+127 (Sol max) and 128 (Terra max) answered the same hash-ordered 80 dev cities as the Claude lanes through `codex exec`
+on the ChatGPT subscription, 240 answers over three usage windows. When a window ran out, Terra had 20 tasks refused
+at the limit; none saved an answer and all were retried after the reset.
+
+Rebuilt adjustments (`v1.2-model-adjustments-2026-11-20`) with Sol and Terra on 80 cities. Claude factors moved by
+under 1% (the pooled term changed). Largest shifts: Terra 1-star 1.245 to 1.175, 3-star 1.244 to 1.216, dorm 0.992
+to 0.968; Sol 1-star 1.274 to 1.216. Unmeasured default 3-star 1.102 to 1.095, 1-star 1.130 to 1.117.
+
+Accuracy against Luna under the app's correction, 80 cities each (negative is better): Luna rerun +0.003
+[-0.013, +0.017] (20-city reading was -0.012), Terra -0.001 [-0.015, +0.013], Sol -0.006 [-0.020, +0.008]. All three are
+indistinguishable from Luna. Estimated app cost per city: Luna 0.055, Terra 0.108, Sol 0.188 USD; median minutes per
+city 1.87, 1.92, 2.23. Stored library estimates are all Luna, so the new adjustments version changes no stored city.

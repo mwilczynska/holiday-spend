@@ -333,8 +333,8 @@ export default function EstimatesPage() {
           </p>
           <Note>A country with few reference cities leans on its region’s factor; a country with none uses the region’s.</Note>
           <Note>
-            The country factors were learnt from GPT-6 Luna’s prices, so Luna’s model factor is 1. Models measured on 40
-            to 80 reference cities have their own factors; any other model gets a cautious default. Each estimate records
+            The country factors were learnt from GPT-6 Luna’s prices, so Luna’s model factor is 1. Models measured on 80
+            reference cities have their own factors; any other model gets a cautious default. Each estimate records
             which one it used.
           </Note>
         </Step>
@@ -381,7 +381,7 @@ export default function EstimatesPage() {
           adds cost and time rather than accuracy.
         </p>
         <Note>
-          Claude models were measured on 80 reference cities and OpenAI models on 40 (the Luna rerun on 20), with each
+          Every model was measured on the same 80 reference cities, with each
           model’s correction fitted on those same cities, so their accuracy is slightly optimistic. Costs are estimates
           at published API prices, not what the test runs were charged.
         </Note>
